@@ -1,25 +1,53 @@
 project:
   type: book
+  output-dir: _book
+  resources:
+    - files/**    
+
 
 book:
-  title: "intro_bash_bioinfo"
-  author: "Norah Jones"
-  date: "1/20/2026"
+  title: "Introducción a la programación para bioinformática con bash"
+  author: "Dr. Cristian Cervantes y M. en I. Mauricio Morgado"
+  date: today
+  repo-url: https://ib-unisse.github.io/intro_bash_bioinfo/
+  repo-actions: [edit, issue]
+  favicon: images/baner_2.png
+  sidebar:
+    logo: images/baner_2.png   # aquí apuntas al logo
+    collapse-level: 1
+  page-navigation: true
+  search: true
+
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - unidad_1.qmd
     - references.qmd
-
-bibliography: references.bib
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-  pdf:
-    documentclass: scrreprt
+    theme: litera
+    css: styles/styles.css   # usa un solo CSS (ver punto 3)
+    toc: true
+    toc-depth: 2
+    number-sections: false
+    include-in-header:
+      text: |
+        <meta name="description" content="Introducción a la programación para bioinformática con bash">
+        <meta name="robots" content="index,follow">
+        <meta property="og:title" content="Introducción a la programación para bioinformática con bash">
+        <meta property="og:description" content="Introducción a la programación para bioinformática con bash">
+        <meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <link rel="canonical" href="https://ib-unisse.github.io/intro_bash_bioinfo/">
+        
+website:
+  site-url: https://ib-unisse.github.io/intro_bash_bioinfo/
 
 editor: visual
 
+# Publicación a gh-pages (opcional)
+publish:
+  gh-pages:
+    branch: gh-pages
+    dir: _book

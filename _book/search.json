@@ -1,0 +1,62 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introducción a la programación para bioinformática con bash",
+    "section": "",
+    "text": "Sobre este curso\nIntroducción a la programación para bioinformática con Bash es un curso del Posgrado en Ciencias Biológicas (UNAM) enfocado en aprender a usar la terminal como herramienta de trabajo para bioinformática. La meta no es memorizar una lista infinita de programas, sino entender la lógica de la línea de comandos y desarrollar habilidades para moverte con soltura en Linux, trabajar en servidores, y construir flujos de trabajo ordenados, reproducibles y escalables.\nDurante el semestre practicaremos desde lo básico (navegar por el sistema, permisos, manejo de archivos) hasta tareas más “bioinformáticas” (organización de proyectos, manipulación de archivos de secuencias, automatización con scripts, y ejecución/monitoreo de procesos). El curso será presencial y en línea, con actividades prácticas guiadas y ejercicios para consolidar lo aprendido.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#sobre-este-curso",
+    "href": "index.html#sobre-este-curso",
+    "title": "Introducción a la programación para bioinformática con bash",
+    "section": "",
+    "text": "Nota: este sitio y el temario marcan la ruta general. Algunos ejemplos, herramientas y énfasis podrán ajustarse durante el curso según el ritmo del grupo y los intereses del proyecto final.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#instructores",
+    "href": "index.html#instructores",
+    "title": "Introducción a la programación para bioinformática con bash",
+    "section": "Instructores",
+    "text": "Instructores\n\nM. en I. Mauricio Morgado — Técnico Académico Asociado C en la Unidad de Bioinformática (UNIBIO). Su experiencia se centra en ingeniería y desarrollo de software, administración de redes y servidores y seguridad informática, con aplicación directa a proyectos de bioinformática y manejo de datos.\nDr. Cristian Cervantes — Técnico Académico Asociado C en la Unidad de Síntesis en Sistemática y Evolución (UniSSE). Trabaja en bioinformática, taxonomía y sistemática, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#unidades",
+    "href": "index.html#unidades",
+    "title": "Introducción a la programación para bioinformática con bash",
+    "section": "Unidades",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_1.html",
+    "href": "unidad_1.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  }
+]

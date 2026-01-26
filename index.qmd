@@ -1,9 +1,26 @@
-# Preface {.unnumbered}
+---
+title: "Introducción a la programación para bioinformática con bash"
+---
 
-This is a Quarto book.
+![](images/baner_1.png){fig-align="center"}
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Sobre este curso
 
-```{r}
-1 + 1
-```
+**Introducción a la programación para bioinformática con Bash** es un curso del **Posgrado en Ciencias Biológicas (UNAM)** enfocado en aprender a usar la **terminal** como herramienta de trabajo para bioinformática. La meta no es memorizar una lista infinita de programas, sino **entender la lógica** de la línea de comandos y desarrollar habilidades para **moverte con soltura en Linux**, trabajar en **servidores**, y construir flujos de trabajo **ordenados, reproducibles y escalables**.
+
+Durante el semestre practicaremos desde lo básico (navegar por el sistema, permisos, manejo de archivos) hasta tareas más “bioinformáticas” (organización de proyectos, manipulación de archivos de secuencias, automatización con scripts, y ejecución/monitoreo de procesos). El curso será **presencial y en línea**, con actividades prácticas guiadas y ejercicios para consolidar lo aprendido.
+
+> Nota: este sitio y el temario marcan la ruta general. **Algunos ejemplos, herramientas y énfasis podrán ajustarse durante el curso** según el ritmo del grupo y los intereses del proyecto final.
+
+## Instructores
+
+-   [**M. en I. Mauricio Morgado**](https://www.ib.unam.mx/ib/directorio-del-personal-academico/perfil/index.php?crypt=a0FDWnY3NUo4YU1XaElSUUVndHNGdz09) — *Técnico Académico Asociado C* en la **Unidad de Bioinformática (UNIBIO)**. Su experiencia se centra en **ingeniería y desarrollo de software**, **administración de redes y servidores** y **seguridad informática**, con aplicación directa a proyectos de bioinformática y manejo de datos.
+
+-   [**Dr. Cristian Cervantes**](#0) — *Técnico Académico Asociado C* en la **Unidad de Síntesis en Sistemática y Evolución (UniSSE)**. Trabaja en **bioinformática**, **taxonomía y sistemática**, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.
+
+## Unidades
+
+-   [Unidad 1. Introducción a la Bioinformática](unidad_1.qmd)
+-   [Unidad 2. Documentación de proyectos y reproducibilidad](unidad_2.qmd)
+
+*(Iremos agregando el resto de unidades conforme avancemos en el semestre.)*

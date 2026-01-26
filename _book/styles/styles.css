@@ -1,0 +1,59 @@
+/* === SOLO la barra izquierda (navegación del libro) === */
+#quarto-sidebar.sidebar {
+  background-color: #41605D !important;  /* tu color */
+  border-right: none !important;
+}
+
+/* Texto/enlaces dentro de la izquierda */
+#quarto-sidebar .sidebar-title,
+#quarto-sidebar .sidebar-item a,
+#quarto-sidebar .sidebar-item .sidebar-link,
+#quarto-sidebar .sidebar-section h2 {
+  color: #ffffff !important;
+}
+
+/* Activo y hover en la izquierda */
+#quarto-sidebar .sidebar-item .active > .sidebar-link {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+}
+#quarto-sidebar .sidebar-item .sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+/* Logo en la izquierda */
+#quarto-sidebar .sidebar-logo img {
+  max-width: 160px;
+  height: auto;
+  display: block;
+  margin: 12px auto;
+}
+
+/* (Opcional) Ocultar el texto del título si quieres solo el logo */
+#quarto-sidebar .sidebar-title { display: none; }
+
+/* === Barra derecha (TOC por página): SIN color de fondo === */
+#quarto-sidebar-secondary.sidebar {
+  background: transparent !important;
+  border-left: none !important;
+}
+/* Y sus enlaces vuelven a estilo por defecto del tema */
+#quarto-sidebar-secondary .sidebar-item a,
+#quarto-sidebar-secondary .sidebar-item .sidebar-link {
+  color: inherit !important;
+  background: transparent !important;
+}
+
+/* Fondo de toda la página */
+body {
+  background-color: #FEFAED !important;
+}
+
+/* Fondo de los paneles de contenido (para que no tapen el color del body) */
+main.content, .content, .quarto-content {
+  background-color: transparent !important;
+}
+
+
