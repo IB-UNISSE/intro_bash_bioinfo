@@ -14,7 +14,7 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 
 ## Instructores
 
--   [**M. en I. Mauricio Morgado**](https://www.ib.unam.mx/ib/directorio-del-personal-academico/perfil/index.php?crypt=a0FDWnY3NUo4YU1XaElSUUVndHNGdz09) — *Técnico Académico Asociado C* en la **Unidad de Bioinformática (UNIBIO)**. Su experiencia se centra en **ingeniería y desarrollo de software**, **administración de redes y servidores** y **seguridad informática**, con aplicación directa a proyectos de bioinformática y manejo de datos.
+-   [**M. en I. Mauricio Morgado**](https://www.ib.unam.mx/ib/directorio-del-personal-academico/perfil/index.php?crypt=a0FDWnY3NUo4YU1XaElSUUVndHNGdz09) — *Técnico Académico Asociado C* en la **Unidad de Informática para la Biodiversidad (UNIBIO)**. Su experiencia se centra en **ingeniería y desarrollo de software**, **administración de redes y servidores** y **seguridad informática**, con aplicación directa a proyectos de informática para la biodiversidad y manejo de datos.
 
 -   [**Dr. Cristian Cervantes**](#0) — *Técnico Académico Asociado C* en la **Unidad de Síntesis en Sistemática y Evolución (UniSSE)**. Trabaja en **bioinformática**, **taxonomía y sistemática**, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.
 
