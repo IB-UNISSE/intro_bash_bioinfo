@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Dr.&nbsp;Cristian Cervantes y M. en I. Mauricio Morgado">
-<meta name="dcterms.date" content="2026-01-20">
+<meta name="dcterms.date" content="2026-01-26">
 
 <title>Introducción a la programación para bioinformática con bash</title>
 <style>
@@ -22,41 +22,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +32,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./unidad_1.html" rel="next">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -168,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
+  <a href="./unidad_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introduction</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -182,8 +147,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#sobre-este-curso" id="toc-sobre-este-curso" class="nav-link active" data-scroll-target="#sobre-este-curso">Sobre este curso</a></li>
+  <li><a href="#instructores" id="toc-instructores" class="nav-link" data-scroll-target="#instructores">Instructores</a></li>
+  <li><a href="#unidades" id="toc-unidades" class="nav-link" data-scroll-target="#unidades">Unidades</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://ib-unisse.github.io/intro_bash_bioinfo/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://ib-unisse.github.io/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -207,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 20, 2026</p>
+      <p class="date">January 26, 2026</p>
     </div>
   </div>
   
@@ -224,16 +197,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/baner_1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>This is a Quarto book.</p>
-<p>To learn more about Quarto books visit <a href="https://quarto.org/docs/books" class="uri">https://quarto.org/docs/books</a>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
+<section id="sobre-este-curso" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-este-curso">Sobre este curso</h2>
+<p><strong>Introducción a la programación para bioinformática con Bash</strong> es un curso del <strong>Posgrado en Ciencias Biológicas (UNAM)</strong> enfocado en aprender a usar la <strong>terminal</strong> como herramienta de trabajo para bioinformática. La meta no es memorizar una lista infinita de programas, sino <strong>entender la lógica</strong> de la línea de comandos y desarrollar habilidades para <strong>moverte con soltura en Linux</strong>, trabajar en <strong>servidores</strong>, y construir flujos de trabajo <strong>ordenados, reproducibles y escalables</strong>.</p>
+<p>Durante el semestre practicaremos desde lo básico (navegar por el sistema, permisos, manejo de archivos) hasta tareas más “bioinformáticas” (organización de proyectos, manipulación de archivos de secuencias, automatización con scripts, y ejecución/monitoreo de procesos). El curso será <strong>presencial y en línea</strong>, con actividades prácticas guiadas y ejercicios para consolidar lo aprendido.</p>
+<blockquote class="blockquote">
+<p>Nota: este sitio y el temario marcan la ruta general. <strong>Algunos ejemplos, herramientas y énfasis podrán ajustarse durante el curso</strong> según el ritmo del grupo y los intereses del proyecto final.</p>
+</blockquote>
+</section>
+<section id="instructores" class="level2">
+<h2 class="anchored" data-anchor-id="instructores">Instructores</h2>
+<ul>
+<li><p><a href="https://www.ib.unam.mx/ib/directorio-del-personal-academico/perfil/index.php?crypt=a0FDWnY3NUo4YU1XaElSUUVndHNGdz09"><strong>M. en I. Mauricio Morgado</strong></a> — <em>Técnico Académico Asociado C</em> en la <strong>Unidad de Bioinformática (UNIBIO)</strong>. Su experiencia se centra en <strong>ingeniería y desarrollo de software</strong>, <strong>administración de redes y servidores</strong> y <strong>seguridad informática</strong>, con aplicación directa a proyectos de bioinformática y manejo de datos.</p></li>
+<li><p><a href="#0"><strong>Dr.&nbsp;Cristian Cervantes</strong></a> — <em>Técnico Académico Asociado C</em> en la <strong>Unidad de Síntesis en Sistemática y Evolución (UniSSE)</strong>. Trabaja en <strong>bioinformática</strong>, <strong>taxonomía y sistemática</strong>, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.</p></li>
+</ul>
+</section>
+<section id="unidades" class="level2">
+<h2 class="anchored" data-anchor-id="unidades">Unidades</h2>
+<ul>
+<li><a href="./unidad_1.html">Unidad 1. Introducción a la Bioinformática</a></li>
+<li><a href="unidad_2.qmd">Unidad 2. Documentación de proyectos y reproducibilidad</a></li>
+</ul>
+<p><em>(Iremos agregando el resto de unidades conforme avancemos en el semestre.)</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -640,7 +628,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
+      <a href="./unidad_1.html" class="pagination-link" aria-label="Introduction">
         <span class="nav-page-text"><span class="chapter-title">Introduction</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -650,4 +638,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://ib-unisse.github.io/intro_bash_bioinfo/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://ib-unisse.github.io/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://ib-unisse.github.io/intro_bash_bioinfo/edit/main/index.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://ib-unisse.github.io/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
