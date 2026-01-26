@@ -24,7 +24,7 @@
     "href": "index.html#instructores",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "Instructores",
-    "text": "Instructores\n\nM. en I. Mauricio Morgado — Técnico Académico Asociado C en la Unidad de Bioinformática (UNIBIO). Su experiencia se centra en ingeniería y desarrollo de software, administración de redes y servidores y seguridad informática, con aplicación directa a proyectos de bioinformática y manejo de datos.\nDr. Cristian Cervantes — Técnico Académico Asociado C en la Unidad de Síntesis en Sistemática y Evolución (UniSSE). Trabaja en bioinformática, taxonomía y sistemática, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.",
+    "text": "Instructores\n\nM. en I. Mauricio Morgado — Técnico Académico Asociado C en la Unidad de Informática para la Biodiversidad (UNIBIO). Su experiencia se centra en ingeniería y desarrollo de software, administración de redes y servidores y seguridad informática, con aplicación directa a proyectos de informática para la biodiversidad y manejo de datos.\nDr. Cristian Cervantes — Técnico Académico Asociado C en la Unidad de Síntesis en Sistemática y Evolución (UniSSE). Trabaja en bioinformática, taxonomía y sistemática, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -42,11 +42,51 @@
   {
     "objectID": "unidad_1.html",
     "href": "unidad_1.html",
-    "title": "Introduction",
+    "title": "Unidad 1. Introducción a la Bioinformática",
     "section": "",
-    "text": "This is a book created from markdown and executable code.\nSee @knuth84 for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2",
+    "text": "Introducción\nEn las últimas décadas, la biología ha experimentado un crecimiento sin precedentes en la generación de datos, impulsado principalmente por el desarrollo de tecnologías de secuenciación y por el avance de diversas disciplinas ómicas. Este incremento ha planteado nuevos desafíos relacionados con el almacenamiento, manejo, procesamiento, análisis y movimiento de grandes volúmenes de información biológica, lo que ha llevado a la incorporación de enfoques computacionales, técnicas de datos masivos (big data), minería de datos (data mining) y ciencia de datos (data science) en la investigación biológica.\nAnte este escenario surge la bioinformática, un campo que integra conocimientos de la biología, la informática, la estadística y las matemáticas, con el objetivo de extraer información significativa a partir de datos biológicos complejos.\nDebido a su amplitud, la bioinformática es un término difícil de definir de manera única y ha sido utilizado con distintos alcances. En este sentido, Soberón y Peterson (2004) proponen que el término bioinformática se aplique, de manera general, al análisis computacional de datos provenientes principalmente de la genómica y la proteómica, mientras que el manejo y análisis de grandes volúmenes de datos asociados a la biodiversidad a gran escala corresponde al ámbito de la informática de la biodiversidad.\nDesde esta perspectiva, la bioinformática puede considerarse una aplicación de la ciencia de datos al estudio de sistemas biológicos, enfocada en el análisis computacional de grandes volúmenes de información generados por las disciplinas ómicas.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Unidad 1. Introducción a la Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_1.html#breve-historia-de-la-bioinformática",
+    "href": "unidad_1.html#breve-historia-de-la-bioinformática",
+    "title": "Unidad 1. Introducción a la Bioinformática",
+    "section": "Breve historia de la bioinformática",
+    "text": "Breve historia de la bioinformática\nEl desarrollo de la bioinformática está estrechamente vinculado a los avances en la biología molecular y a la necesidad de analizar datos cada vez más complejos. El reconocimiento del ADN como molécula portadora de la información genética, el descubrimiento de su estructura de doble hélice, la primera secuenciación completa de una proteína y la creación de las primeras bases de datos de secuencias marcaron hitos fundamentales que hicieron evidente la necesidad de herramientas computacionales.\nPosteriormente, el desarrollo de algoritmos para el alineamiento de secuencias y el análisis automatizado de datos sentó las bases de la bioinformática moderna. Estos avances muestran que la bioinformática no surge como una disciplina aislada, sino como una respuesta natural a la creciente complejidad de los datos biológicos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Unidad 1. Introducción a la Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_1.html#áreas-de-aplicación-de-la-bioinformática",
+    "href": "unidad_1.html#áreas-de-aplicación-de-la-bioinformática",
+    "title": "Unidad 1. Introducción a la Bioinformática",
+    "section": "Áreas de aplicación de la bioinformática",
+    "text": "Áreas de aplicación de la bioinformática\nLa bioinformática abarca una amplia variedad de campos, entre los que se incluyen:\n\nFilogenómica y evolución molecular, orientadas a la inferencia de relaciones evolutivas entre especies y al estudio de la evolución de genes y proteínas.\n\n\n\nTranscriptómica y proteómica, enfocadas en el análisis de la expresión génica, la cuantificación de transcritos y proteínas y la predicción de su función.\nMetagenómica y estudios de microbiomas, dedicados al análisis de comunidades microbianas en distintos ambientes.\nBiología de sistemas, centrada en el modelado de redes biológicas y la simulación de procesos complejos.\nBioinformática estructural, que incluye el modelado tridimensional de proteínas, el docking molecular y la dinámica molecular.\n\nAunque estas áreas difieren en sus objetivos biológicos, todas comparten principios comunes relacionados con el manejo de datos, la automatización de análisis y la interpretación de resultados computacionales.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Unidad 1. Introducción a la Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_1.html#flujo-de-trabajo-bioinformático-y-ciencia-de-datos",
+    "href": "unidad_1.html#flujo-de-trabajo-bioinformático-y-ciencia-de-datos",
+    "title": "Unidad 1. Introducción a la Bioinformática",
+    "section": "Flujo de trabajo bioinformático y ciencia de datos",
+    "text": "Flujo de trabajo bioinformático y ciencia de datos\nLa bioinformática se desarrolla dentro de un flujo de trabajo típico de ciencia de datos, el cual es iterativo y comienza con una pregunta biológica para culminar con la interpretación y comunicación de resultados.\n\n\n\n\n\nEtapas del flujo de trabajo:\n\nProblema o pregunta biológica\nDefinición clara de la pregunta que guiará el análisis.\nPreparación de los datos\nObtención, limpieza y formateo de los datos para su análisis computacional.\nAnálisis computacional\nEscritura y ejecución de scripts, depuración de errores y exploración de alternativas.\nSalida e interpretación de resultados\nOrganización, visualización e interpretación de los resultados obtenidos.\nReflexión y difusión\nDocumentación del análisis, discusión de resultados y preparación de reportes o publicaciones.\n\n\nLa documentación y organización del análisis son esenciales para garantizar la reproducibilidad en bioinformática.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Unidad 1. Introducción a la Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_1.html#herramientas-computacionales-y-enfoque-del-curso",
+    "href": "unidad_1.html#herramientas-computacionales-y-enfoque-del-curso",
+    "title": "Unidad 1. Introducción a la Bioinformática",
+    "section": "Herramientas computacionales y enfoque del curso",
+    "text": "Herramientas computacionales y enfoque del curso\nEn la actualidad existe una gran diversidad de software bioinformático, y su número continúa creciendo rápidamente. Existen incluso recopilaciones extensas de programas bioinformáticos disponibles en línea, como la mantenida por la Universidad de Göttingen, que ilustran la magnitud y variedad de herramientas desarrolladas para el análisis de datos biológicos. Ante este panorama, aprender a utilizar cada herramienta de manera individual resultaría imposible.\nPor esta razón, el objetivo de este curso no es la especialización en herramientas específicas, sino el desarrollo de habilidades fundamentales que permitan comprender, ejecutar y evaluar cualquier herramienta bioinformática, independientemente de su área de aplicación.\nA lo largo del curso se trabajará principalmente con herramientas que se ejecutan desde la línea de comandos, poniendo énfasis en:\n\nla organización de archivos y proyectos,\nla ejecución y automatización de análisis,\nla comprensión de flujos de trabajo reproducibles, y\nel monitoreo del uso de recursos computacionales.\n\nEstas bases nos permitirán adaptarnos con facilidad a nuevas herramientas, entender su documentación y evaluar críticamente sus resultados, sin depender de un software o plataforma específicos.\n\nNota\nExisten programas bioinformáticos con interfaces gráficas muy bonitas que hacen casi todo con un clic… pero suelen ser de paga y bastante caros (por ejemplo, Geneious).\n\n\n\n\n\nEn cambio, la mayoría de las herramientas que se ejecutan desde la línea de comandos son gratuitas, flexibles y reproducibles.\nAsí que, si tu laboratorio tiene presupuesto, pedir Geneious es opción.\nSi no (lo más común), aprender Bash te permitirá hacer lo mismo —y muchas veces más— sin pagar licencias.\nY sí: Bash nunca pasa de moda 😉",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Unidad 1. Introducción a la Bioinformática</span>"
     ]
   }
 ]
