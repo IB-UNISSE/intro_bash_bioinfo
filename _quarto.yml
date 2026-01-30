@@ -9,7 +9,7 @@ book:
   title: "Introducción a la programación para bioinformática con bash"
   author: "Dr. Cristian Cervantes y M. en I. Mauricio Morgado"
   date: today
-  repo-url: https://ib-unisse.github.io/intro_bash_bioinfo/
+  repo-url: https://ib-unisse.github.io/intro_bash_bioinfo
   repo-actions: [edit, issue]
   favicon: images/baner_2.png
   sidebar:

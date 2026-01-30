@@ -18,6 +18,10 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 
 -   [**Dr. Cristian Cervantes**](#0) — *Técnico Académico Asociado C* en la **Unidad de Síntesis en Sistemática y Evolución (UniSSE)**. Trabaja en **bioinformática**, **taxonomía y sistemática**, con énfasis en análisis de datos genómicos y apoyo metodológico para proyectos evolutivos.
 
+## Temario
+
+[Introducción a la programación para bioinformática con bash](https://pcbiol.posgrado.unam.mx/programas_cursos/2026-2/introduccion_a_la_programacion_para_bioinformatica_con_bash.pdf)
+
 ## Unidades
 
 -   [Unidad 1. Introducción a la Bioinformática](unidad_1.qmd)
