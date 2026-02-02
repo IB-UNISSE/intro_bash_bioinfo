@@ -306,12 +306,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="nomenclatura-de-archivos-y-compatibilidad-con-bash" class="level2">
 <h2 class="anchored" data-anchor-id="nomenclatura-de-archivos-y-compatibilidad-con-bash"><strong>Nomenclatura de archivos y compatibilidad con Bash</strong></h2>
 <p>El nombrado de archivos es un aspecto frecuentemente subestimado, pero tiene un impacto directo en la eficiencia y reproducibilidad de los análisis.</p>
-<p>Una nomenclatura adecuada debe:</p>
+<p>Una nomenclatura adecuada debe cumplir:</p>
 <ul>
-<li><p>Ser consistente a lo largo del proyecto.</p></li>
-<li><p>Evitar espacios, acentos y caracteres especiales.</p></li>
-<li><p>Utilizar guiones bajos (<code>_</code>) o guiones medios (<code>-</code>).</p></li>
-<li><p>Incluir información relevante como fecha, muestra, versión o etapa del análisis.</p></li>
+<li><p><strong>Consistencia</strong>: Usar un esquema de nombres consistente en todo el proyecto.</p></li>
+<li><p><strong>Descriptividad</strong>: Incluir información clave como el tipo de datos, fecha, versión, etc.</p></li>
+<li><p><strong>Evitar Espacios</strong>: Usar guiones bajos (_) o guiones (-) en lugar de espacios.</p></li>
+<li><p><strong>Fecha en Formato ISO</strong>: Usar el formato de fecha AAAA-MM-DD para asegurar un orden cronológico lógico.</p></li>
+<li><p><strong>Prefijos y Sufijos</strong>: Usar prefijos y sufijos estandarizados para identificar el estado o versión del archivo.</p></li>
+<li><p><strong>Evitar Acentos y Caracteres Especiales</strong>: No utilizar acentos, eñes ni caracteres especiales que puedan causar problemas de compatibilidad en diferentes sistemas operativos o herramientas de software.&nbsp;</p></li>
+</ul>
+<p><strong>Ejemplos:</strong></p>
+<ul>
+<li><p>2024-08-01_sample1_raw_data.fastq</p></li>
+<li><p>2024-08-11_sample1_trimmed_data.fastq</p></li>
+<li><p>2024-08-20_sample1_aligned.bam</p></li>
 </ul>
 <p>Estos criterios son especialmente importantes al trabajar con Bash, ya que muchos comandos (<code>ls</code>, <code>grep</code>, <code>sed</code>, <code>awk</code>, bucles y scripts) dependen de patrones de nombres para automatizar procesos.</p>
 <p>Una buena nomenclatura permite que los archivos “hablen por sí mismos” y reduce la necesidad de explicaciones adicionales.</p>
