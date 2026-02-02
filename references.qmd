@@ -2,14 +2,22 @@
 
 -   Bagchi, A. (s. f.). [*Introduction to Bioinformatics*]{.underline}. Alpha Science International, Limited.
 
+-   Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. *Nature, 533*(7604), 452–454. [`https://doi.org/10.1038/533452a`](https://doi.org/10.1038/533452a)
+
 -   Buffalo, V. (s. f.). [*Bioinformatics Data Skills*]{.underline}. O’Reilly Media.
 
 -   von Hagen, B., & Jones, B. K. (s. f.). *Linux server: Los mejores trucos* (D. Montero Gilarranz, Trad.). O’Reilly.
 
 -   Gómez López, J., & Puga Sabio, G. (s. f.). *Programación Shell: Aprende a programar con más de 200 ejercicios resueltos*. RA-MA.
 
+-   Markdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from \`<https://www.markdownguide.org/cheat-sheet/>\`
+
+-   Noble, W. S. (2009). A quick guide to organizing computational biology projects. *PLOS Computational Biology, 5*(7), e1000424. [`https://doi.org/10.1371/journal.pcbi.1000424`](https://doi.org/10.1371/journal.pcbi.1000424)
+
 -   [Ubuntu]{.underline}. (s. f.). *Ubuntu Server documentation*. Recuperado el 30 de enero de 2026, de [`https://ubuntu.com/server/docs`](https://ubuntu.com/server/docs)
 
 -   [Debian Project]{.underline}. (s. f.). *Manuales de usuario de Debian*. Recuperado el 30 de enero de 2026, de [`https://www.debian.org/doc/user-manuals.es.html`](https://www.debian.org/doc/user-manuals.es.html)
+
+-   Shade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. *PLOS Biology, 13*(11), e1002303. [`https://doi.org/10.1371/journal.pbio.1002303`](https://doi.org/10.1371/journal.pbio.1002303)
 
 -   Soberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. *Philosophical Transactions of the Royal Society B: Biological Sciences, 359*(1444), 689–698. [`https://doi.org/10.1098/rstb.2003.1439`](https://doi.org/10.1098/rstb.2003.1439)

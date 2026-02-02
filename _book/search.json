@@ -104,9 +104,99 @@
     "href": "references.html",
     "title": "Bibliografía complementaria",
     "section": "",
-    "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
+    "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html",
+    "href": "unidad_2.html",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "",
+    "text": "Introducción\nLa bioinformática es una disciplina altamente dependiente de procesos computacionales, scripts, versiones de software y decisiones técnicas que no siempre quedan reflejadas en los resultados finales o en los artículos científicos. A diferencia de otros enfoques experimentales, en los análisis bioinformáticos la reproducibilidad depende casi por completo de la organización, documentación y trazabilidad del proyecto.\nEn esta unidad se abordan los principios fundamentales de la documentación de proyectos bioinformáticos y las estrategias para garantizar la reproducibilidad, estableciendo las bases conceptuales y prácticas necesarias para el uso de Bash como herramienta central en flujos de trabajo reproducibles.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#importancia-de-la-documentación-en-proyectos-bioinformáticos",
+    "href": "unidad_2.html#importancia-de-la-documentación-en-proyectos-bioinformáticos",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Importancia de la documentación en proyectos bioinformáticos",
+    "text": "Importancia de la documentación en proyectos bioinformáticos\nLa documentación es un componente esencial del trabajo científico. En biología experimental, los investigadores mantienen cuadernos de laboratorio detallados que permiten reconstruir los procedimientos, condiciones y decisiones tomadas durante un experimento. En bioinformática, la documentación cumple exactamente la misma función, pero aplicada a procesos computacionales.\nUna documentación adecuada permite:\n\nEntender qué se hizo, cómo se hizo y por qué se hizo.\nFacilitar la revisión crítica del análisis.\nPermitir que otros investigadores reproduzcan o extiendan el trabajo.\nEvitar la pérdida de información a lo largo del tiempo.\n\nEn el contexto de este curso, la documentación no se considera un elemento adicional o decorativo, sino una parte integral del análisis bioinformático, tan importante como el propio código o los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#organización-de-proyectos-bioinformáticos",
+    "href": "unidad_2.html#organización-de-proyectos-bioinformáticos",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Organización de proyectos bioinformáticos",
+    "text": "Organización de proyectos bioinformáticos\nLa organización de archivos y directorios es el primer paso hacia la reproducibilidad. Un proyecto bioinformático debe contar con una estructura clara que separe los distintos componentes del análisis.\nUna organización adecuada:\n\nFacilita la navegación del proyecto.\nReduce errores al ejecutar comandos o scripts.\nPermite automatizar análisis mediante Bash.\nMejora la colaboración entre investigadores.\n\nEn esta unidad se promueve la separación explícita entre:\n\nDatos crudos y datos procesados.\nScripts y resultados.\nMetadatos y documentación.\n\n\nRutas absolutas y rutas relativas\nEn bioinformática, la correcta referencia a archivos y directorios es esencial para la ejecución de comandos y scripts en Bash. Para ello, es importante distinguir entre rutas absolutas y rutas relativas.\n\n\n\n\n\n\nRuta absoluta\nUna ruta absoluta especifica la ubicación completa de un archivo o directorio desde la raíz del sistema de archivos.\nUsando la estructura mostrada en la figura, un ejemplo de ruta absoluta sería:\nC:/Usuarios/MI_NOMBRE/Documentos/PROYECTO/DATA/muestras.xlsx\nEste tipo de ruta:\n\nNo depende del directorio desde el cual se ejecute el comando.\nEs clara y explícita.\nPuede perder portabilidad si el proyecto se mueve a otro sistema o usuario.\n\n\n\nRuta relativa\nUna ruta relativa describe la ubicación de un archivo en relación con el directorio de trabajo actual.\nPor ejemplo, si el usuario se encuentra dentro del directorio:\nC:/Usuarios/MI_NOMBRE/Documentos/PROYECTO/\nEl mismo archivo puede referenciarse como:\nDATA/muestras.xlsx\nO, si el comando se ejecuta desde BIN/:\n../DATA/muestras.xlsx\nEste tipo de ruta:\n\nFavorece la portabilidad del proyecto.\nPermite ejecutar scripts en diferentes sistemas sin modificar el código.\nEs fundamental para flujos de trabajo reproducibles en Bash.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#nomenclatura-de-archivos-y-compatibilidad-con-bash",
+    "href": "unidad_2.html#nomenclatura-de-archivos-y-compatibilidad-con-bash",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Nomenclatura de archivos y compatibilidad con Bash",
+    "text": "Nomenclatura de archivos y compatibilidad con Bash\nEl nombrado de archivos es un aspecto frecuentemente subestimado, pero tiene un impacto directo en la eficiencia y reproducibilidad de los análisis.\nUna nomenclatura adecuada debe:\n\nSer consistente a lo largo del proyecto.\nEvitar espacios, acentos y caracteres especiales.\nUtilizar guiones bajos (_) o guiones medios (-).\nIncluir información relevante como fecha, muestra, versión o etapa del análisis.\n\nEstos criterios son especialmente importantes al trabajar con Bash, ya que muchos comandos (ls, grep, sed, awk, bucles y scripts) dependen de patrones de nombres para automatizar procesos.\nUna buena nomenclatura permite que los archivos “hablen por sí mismos” y reduce la necesidad de explicaciones adicionales.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#documentación-técnica-con-markdown",
+    "href": "unidad_2.html#documentación-técnica-con-markdown",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Documentación técnica con Markdown",
+    "text": "Documentación técnica con Markdown\nMarkdown es un lenguaje de marcado ligero diseñado para facilitar la escritura de texto estructurado y legible en formato plano. En bioinformática, Markdown es ampliamente utilizado para documentar proyectos debido a su simplicidad y compatibilidad con múltiples plataformas.\nEl uso de Markdown permite:\n\nCrear archivos README.md claros y estructurados.\nDocumentar scripts y flujos de trabajo.\nGenerar reportes técnicos reproducibles.\nIntegrar documentación con repositorios de código.\n\nEn este curso, Markdown se utilizará como herramienta principal para documentar proyectos bioinformáticos, promoviendo una documentación clara, concisa y fácilmente actualizable.\n\nPráctica – Documentación con Markdown\n\nActividad\n\nUtilizar el repositorio creado en la práctica de Git y GitHub:\n\ntareas_intro_bash_bioinfo\n\nEn la raíz del repositorio, crear o editar el archivo:\n\nREADME.md\n\n\n\nContenido del README.md\nEl archivo README.md deberá incluir brevemente:\n\nNombre del estudiante\nNombre del curso\nDescripción general del repositorio\n(¿Para qué se utilizará este repositorio a lo largo del curso?)\n\n\n\nElementos de Markdown a utilizar\nPara esta práctica, el archivo README.md deberá utilizar algunos elementos básicos de la sintaxis Markdown:\n\nEncabezados\nUtilizar # para el título principal y ## para secciones secundarias, con el fin de estructurar el documento de manera clara y jerárquica.\nEjemplos:\n# Heading 1\n## Heading 2\n### Heading 3",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#control-de-versiones-y-trazabilidad",
+    "href": "unidad_2.html#control-de-versiones-y-trazabilidad",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Control de versiones y trazabilidad",
+    "text": "Control de versiones y trazabilidad\n\n¿Qué es Git?\nGit es un sistema de control de versiones diseñado para registrar y administrar los cambios realizados en un conjunto de archivos a lo largo del tiempo. Su objetivo principal es mantener un historial del desarrollo de un proyecto, permitiendo identificar qué cambios se realizaron, cuándo ocurrieron y, en caso necesario, regresar a versiones anteriores.\nGit trabaja de forma local, es decir, el historial del proyecto se guarda en la computadora del usuario, sin necesidad de conexión a internet. Esto lo convierte en una herramienta robusta para el manejo de proyectos computacionales en cualquier entorno.\n\n\n¿Qué es GitHub?\nGitHub es una plataforma en línea que permite alojar y compartir proyectos que utilizan Git. Funciona como un repositorio remoto que almacena una copia del proyecto y su historial de cambios, facilitando el acceso, la consulta y el respaldo del trabajo.\nGitHub no reemplaza a Git:\n\nGit gestiona los cambios.\nGitHub permite almacenar y visualizar esos cambios en línea.\n\n\n\n\n\n\n\n\nConceptos básicos de Git\nA lo largo del curso se utilizarán algunos conceptos fundamentales de Git. No se busca dominar la herramienta en profundidad, sino comprender su lógica y su papel dentro de un flujo de trabajo reproducible.\n\nRepositorio\nEs el espacio donde se almacena un proyecto gestionado con Git. Contiene los archivos del proyecto y el historial de cambios.\ninit\nAcción que convierte una carpeta común en un repositorio Git, permitiendo comenzar a registrar cambios.\ncommit\nEs un registro de cambios en el proyecto. Cada commit representa un punto en el tiempo que documenta el estado de los archivos y las modificaciones realizadas.\npush\nEs la acción de enviar los cambios registrados localmente al repositorio remoto (por ejemplo, en GitHub), asegurando que el proyecto quede respaldado y accesible en línea.\n\n\n\nGit y reproducibilidad\nEl uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir:\n\nMantener un historial claro del desarrollo del proyecto.\nIdentificar versiones específicas del análisis.\nDocumentar la evolución de scripts y documentación.\nEvitar la pérdida de información durante el trabajo computacional.\n\n\n\nPráctica – Introducción a Git y GitHub\n\nActividad\n\nCrear una cuenta personal en GitHub (si aún no se cuenta con una).\nCrear un repositorio llamado exactamente:\n\ntareas_intro_bash_bioinfo\n\nNo es necesario agregar contenido adicional dentro de unidad_2 en esta práctica.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#ambientes-computacionales-y-reproducibilidad",
+    "href": "unidad_2.html#ambientes-computacionales-y-reproducibilidad",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Ambientes computacionales y reproducibilidad",
+    "text": "Ambientes computacionales y reproducibilidad\nLa reproducibilidad no depende únicamente del código, sino también del entorno computacional en el que se ejecuta. Diferentes versiones de programas o dependencias pueden producir resultados distintos.\nPara abordar este problema, se introducen estrategias como:\n\nUso de ambientes aislados (por ejemplo, conda).\nUso de contenedores (Docker o Apptainer).\nDocumentación explícita de versiones de software.\n\nEstas herramientas permiten encapsular los análisis y asegurar que puedan ejecutarse de manera consistente en diferentes sistemas, complementando el uso de Bash como lenguaje de automatización.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#tarea-unidad-2",
+    "href": "unidad_2.html#tarea-unidad-2",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Tarea – Unidad 2",
+    "text": "Tarea – Unidad 2\n\nDocumentación de un proyecto bioinformático (Markdown)\n\nObjetivo\nDocumentar un proyecto bioinformático —real o propuesto— mediante un archivo README.md, siguiendo buenas prácticas de organización y reproducibilidad.\n\n\nActividad\n\nCrear o adaptar la carpeta raíz de un proyecto bioinformático.\nCrear un archivo README.md en la raíz del proyecto.\nEl README.md debe incluir brevemente:\n\nTítulo del proyecto\nIntroducción\nObjetivos\nEstructura de carpetas\nProgramas y versiones\n\n\n\n\nEstructura mínima sugerida\nproject_root/\n├── README.md\n├── data/\n├── scripts/\n├── results/\n├── metadata/\n└── docs/",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#heading-2",
+    "href": "unidad_2.html#heading-2",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Heading 2",
+    "text": "Heading 2\n\nHeading 3\n\nListas con viñetas\nUtilizar - para enumerar información como objetivos, descripciones o contenidos del repositorio.\nEjemplos:\n- Unidad 1\n- Unidad 2\n- Unidad 3\n\nUnidad 1\nUnidad 2\nUnidad 3\n\n\n\nTexto en negritas\nUtilizar **texto** para resaltar conceptos importantes o secciones clave dentro del documento.\nEjemplos:\n**Alumno**\nAlumno\n\n\nTexto en cursivas\nUtilizar *texto* para enfatizar palabras o frases específicas.\n*Zea mays*\nZea mays\n\n\nCódigo en línea\nUtilizar acento invertido simple (`) para resaltar nombres de archivos, carpetas o términos técnicos dentro de una oración.\nEjemplos:\n`README.md`, `unidad_2`, `tareas_intro_bash_bioinfo` \nREADME.md, unidad_2, tareas_intro_bash_bioinfo\n\n\nBloques de código\nUtilizar triple acento invertido (``` ) para mostrar estructuras de carpetas, fragmentos de texto o ejemplos de formato, sin necesidad de incluir comandos.\nEjemplos:\n```\nAMAS.py convert \\\n  -i ../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy \\\n  -f phylip -d dna -u nexus\n```\nAMAS.py convert \\\n  -i ../../../../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy \\\n  -f phylip -d dna -u nexus\n\nNota: Se recomienda un editor de texto que facilite la escritura en Markdown, como Visual Studio Code, ya que permite visualizar la estructura del documento de manera clara y ofrece una vista previa del formato Markdown.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
     ]
   }
 ]

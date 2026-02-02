@@ -8,7 +8,7 @@ En las últimas décadas, la biología ha experimentado un crecimiento sin prece
 
 Ante este escenario surge la **bioinformática**, un campo que integra conocimientos de la biología, la informática, la estadística y las matemáticas, con el objetivo de **extraer información significativa a partir de datos biológicos complejos**.
 
-Debido a su amplitud, la bioinformática es un término difícil de definir de manera única y ha sido utilizado con distintos alcances. En este sentido, **Soberón y Peterson (2004)** proponen que el término *bioinformática* se aplique, de manera general, al **análisis computacional de datos provenientes principalmente de la genómica y la proteómica**, mientras que el manejo y análisis de grandes volúmenes de datos asociados a la biodiversidad a gran escala corresponde al ámbito de la **informática de la biodiversidad**.
+Debido a su amplitud, la bioinformática es un término difícil de definir de manera única y ha sido utilizado con distintos alcances. En este sentido, [Soberón y Peterson (2004)](https://pmc.ncbi.nlm.nih.gov/articles/PMC1693343/) proponen que el término *bioinformática* se aplique, de manera general, al **análisis computacional de datos provenientes principalmente de la genómica y la proteómica**, mientras que el manejo y análisis de grandes volúmenes de datos asociados a la biodiversidad a gran escala corresponde al ámbito de la **informática de la biodiversidad**.
 
 Desde esta perspectiva, la bioinformática puede considerarse una **aplicación de la ciencia de datos al estudio de sistemas biológicos**, enfocada en el análisis computacional de grandes volúmenes de información generados por las disciplinas ómicas.
 
