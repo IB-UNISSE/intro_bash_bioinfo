@@ -240,6 +240,16 @@
     ]
   },
   {
+    "objectID": "unidad_3.html#tarea-unidad-2",
+    "href": "unidad_3.html#tarea-unidad-2",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "Tarea – Unidad 2",
+    "text": "Tarea – Unidad 2\n\nInventario de hardware de tu computadora\n\n\nObjetivo\nDocumentar de forma clara las características de tu computadora y justificar decisiones básicas de cómputo.\n\n\nInstrucciones\n\nCrea un archivo Markdown (no tiene que llamarse README.md).\n\nEjemplos: componentes_pc.md, mi_equipo.md, inventario_laptop.md.\nLlena la información solicitada.\nAl final, escribe una reflexión corta: ¿qué limita más tu equipo para bioinformática: CPU, RAM, almacenamiento o GPU?\n\n\n\nContenido mínimo requerido (plantilla)\n\n1) Identificación del equipo\n\nMarca y modelo:\nTipo: laptop / desktop\n\n\n\n2) Sistema operativo\n\nSistema operativo: (Windows / macOS / Linux)\nVersión exacta: (por ejemplo: Windows 11 23H2, macOS Sequoia 15.x, Ubuntu 22.04.4, etc.)\nArquitectura del sistema: x86_64 / ARM64 (si aparece)\n\n\n\n3) CPU (procesador)\n\nModelo exacto:\nNúcleos / hilos:\nFrecuencia base / turbo (si aparece):\n\n\n\n4) Memoria RAM\n\nRAM instalada (GB):\nTipo y velocidad (si aparece): DDR3/DDR4/DDR5, MHz\nCapacidad máxima soportada de RAM (según fabricante o specs):\n\n\n\n5) Almacenamiento\n\nTipo: SSD / HDD / NVMe\nCapacidad total:\n¿Se puede agregar o cambiar por un SSD o NVMe?\n\n\n\n6) Gráficos (GPU)\n\n¿Integrados o dedicada?\nModelo (si aplica):\n\n\n\n7) Reflexión final (breve)\n\n¿qué limita más tu equipo para bioinformática: CPU, RAM, almacenamiento, tiempo de ejecucion de análisis (laptop), GPU, etc.?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Bibliografía complementaria",

@@ -199,6 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#cpu-vs-gpu-vs-tpu-vs-npu" id="toc-cpu-vs-gpu-vs-tpu-vs-npu" class="nav-link" data-scroll-target="#cpu-vs-gpu-vs-tpu-vs-npu"><strong>CPU vs GPU vs TPU vs NPU</strong></a></li>
   <li><a href="#acceso-y-autenticación-remota-ssh" id="toc-acceso-y-autenticación-remota-ssh" class="nav-link" data-scroll-target="#acceso-y-autenticación-remota-ssh">Acceso y autenticación remota (SSH)</a></li>
   <li><a href="#transferencia-de-archivos-scp" id="toc-transferencia-de-archivos-scp" class="nav-link" data-scroll-target="#transferencia-de-archivos-scp">Transferencia de archivos (SCP)</a></li>
+  <li><a href="#tarea-unidad-2" id="toc-tarea-unidad-2" class="nav-link" data-scroll-target="#tarea-unidad-2"><strong>Tarea – Unidad 2</strong></a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_3.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -421,8 +422,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>El tiempo depende de <strong>tamaño</strong>, <strong>cantidad de archivos</strong> y <strong>ancho de banda</strong>.</p></li>
 <li><p>Mejor transferir <strong>un archivo comprimido</strong> que muchos archivos pequeños.</p></li>
 </ul>
+</section>
+<section id="tarea-unidad-2" class="level2">
+<h2 class="anchored" data-anchor-id="tarea-unidad-2"><strong>Tarea – Unidad 2</strong></h2>
+<section id="inventario-de-hardware-de-tu-computadora" class="level3">
+<h3 class="anchored" data-anchor-id="inventario-de-hardware-de-tu-computadora">Inventario de hardware de tu computadora</h3>
+</section>
+<section id="objetivo" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo">Objetivo</h3>
+<p>Documentar de forma clara las características de tu computadora y justificar decisiones básicas de cómputo.</p>
+</section>
+<section id="instrucciones" class="level3">
+<h3 class="anchored" data-anchor-id="instrucciones">Instrucciones</h3>
+<ol type="1">
+<li><p>Crea un archivo <strong>Markdown</strong> (no tiene que llamarse <code>README.md</code>).<br>
+</p>
+<p>Ejemplos: <code>componentes_pc.md</code>, <code>mi_equipo.md</code>, <code>inventario_laptop.md</code>.</p></li>
+<li><p>Llena la información solicitada.</p></li>
+<li><p>Al final, escribe una reflexión corta: <strong>¿qué limita más tu equipo para bioinformática: CPU, RAM, almacenamiento o GPU?</strong></p></li>
+</ol>
+</section>
+<section id="contenido-mínimo-requerido-plantilla" class="level3">
+<h3 class="anchored" data-anchor-id="contenido-mínimo-requerido-plantilla">Contenido mínimo requerido (plantilla)</h3>
+<section id="identificación-del-equipo" class="level4">
+<h4 class="anchored" data-anchor-id="identificación-del-equipo">1) Identificación del equipo</h4>
+<ul>
+<li><p><strong>Marca y modelo:</strong></p></li>
+<li><p><strong>Tipo:</strong> laptop / desktop</p></li>
+</ul>
+</section>
+<section id="sistema-operativo" class="level4">
+<h4 class="anchored" data-anchor-id="sistema-operativo">2) Sistema operativo</h4>
+<ul>
+<li><p><strong>Sistema operativo:</strong> (Windows / macOS / Linux)</p></li>
+<li><p><strong>Versión exacta:</strong> (por ejemplo: Windows 11 23H2, macOS Sequoia 15.x, Ubuntu 22.04.4, etc.)</p></li>
+<li><p><strong>Arquitectura del sistema:</strong> x86_64 / ARM64 (si aparece)</p></li>
+</ul>
+</section>
+<section id="cpu-procesador" class="level4">
+<h4 class="anchored" data-anchor-id="cpu-procesador">3) CPU (procesador)</h4>
+<ul>
+<li><p><strong>Modelo exacto:</strong></p></li>
+<li><p><strong>Núcleos / hilos:</strong></p></li>
+<li><p><strong>Frecuencia base / turbo (si aparece):</strong></p></li>
+</ul>
+</section>
+<section id="memoria-ram" class="level4">
+<h4 class="anchored" data-anchor-id="memoria-ram">4) Memoria RAM</h4>
+<ul>
+<li><p><strong>RAM instalada (GB):</strong></p></li>
+<li><p><strong>Tipo y velocidad (si aparece):</strong> DDR3/DDR4/DDR5, MHz</p></li>
+<li><p><strong>Capacidad máxima soportada de RAM (según fabricante o specs):</strong></p></li>
+</ul>
+</section>
+<section id="almacenamiento" class="level4">
+<h4 class="anchored" data-anchor-id="almacenamiento">5) Almacenamiento</h4>
+<ul>
+<li><p><strong>Tipo:</strong> SSD / HDD / NVMe</p></li>
+<li><p><strong>Capacidad total:</strong></p></li>
+<li><p><strong>¿Se puede agregar o cambiar por un SSD o NVMe?</strong></p></li>
+</ul>
+</section>
+<section id="gráficos-gpu" class="level4">
+<h4 class="anchored" data-anchor-id="gráficos-gpu">6) Gráficos (GPU)</h4>
+<ul>
+<li><p><strong>¿Integrados o dedicada?</strong></p></li>
+<li><p><strong>Modelo (si aplica):</strong></p></li>
+</ul>
+</section>
+<section id="reflexión-final-breve" class="level4">
+<h4 class="anchored" data-anchor-id="reflexión-final-breve">7) Reflexión final (breve)</h4>
+<ul>
+<li>¿qué limita más tu equipo para bioinformática: CPU, RAM, almacenamiento, tiempo de ejecucion de análisis (laptop), GPU, etc.?</li>
+</ul>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
