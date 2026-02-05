@@ -22,6 +22,7 @@ book:
     - index.qmd
     - unidad_1.qmd
     - unidad_2.qmd
+    - unidad_3.qmd
     - references.qmd
 
 format:

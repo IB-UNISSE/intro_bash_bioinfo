@@ -44,7 +44,7 @@
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "Unidades",
-    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -100,16 +100,6 @@
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "Bibliografía complementaria",
-    "section": "",
-    "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
-    "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
-    ]
-  },
-  {
     "objectID": "unidad_2.html",
     "href": "unidad_2.html",
     "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
@@ -144,27 +134,7 @@
     "href": "unidad_2.html#nomenclatura-de-archivos-y-compatibilidad-con-bash",
     "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
     "section": "Nomenclatura de archivos y compatibilidad con Bash",
-    "text": "Nomenclatura de archivos y compatibilidad con Bash\nEl nombrado de archivos es un aspecto frecuentemente subestimado, pero tiene un impacto directo en la eficiencia y reproducibilidad de los análisis.\nUna nomenclatura adecuada debe:\n\nSer consistente a lo largo del proyecto.\nEvitar espacios, acentos y caracteres especiales.\nUtilizar guiones bajos (_) o guiones medios (-).\nIncluir información relevante como fecha, muestra, versión o etapa del análisis.\n\nEstos criterios son especialmente importantes al trabajar con Bash, ya que muchos comandos (ls, grep, sed, awk, bucles y scripts) dependen de patrones de nombres para automatizar procesos.\nUna buena nomenclatura permite que los archivos “hablen por sí mismos” y reduce la necesidad de explicaciones adicionales.",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2.html#documentación-técnica-con-markdown",
-    "href": "unidad_2.html#documentación-técnica-con-markdown",
-    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
-    "section": "Documentación técnica con Markdown",
-    "text": "Documentación técnica con Markdown\nMarkdown es un lenguaje de marcado ligero diseñado para facilitar la escritura de texto estructurado y legible en formato plano. En bioinformática, Markdown es ampliamente utilizado para documentar proyectos debido a su simplicidad y compatibilidad con múltiples plataformas.\nEl uso de Markdown permite:\n\nCrear archivos README.md claros y estructurados.\nDocumentar scripts y flujos de trabajo.\nGenerar reportes técnicos reproducibles.\nIntegrar documentación con repositorios de código.\n\nEn este curso, Markdown se utilizará como herramienta principal para documentar proyectos bioinformáticos, promoviendo una documentación clara, concisa y fácilmente actualizable.\n\nPráctica – Documentación con Markdown\n\nActividad\n\nUtilizar el repositorio creado en la práctica de Git y GitHub:\n\ntareas_intro_bash_bioinfo\n\nEn la raíz del repositorio, crear o editar el archivo:\n\nREADME.md\n\n\n\nContenido del README.md\nEl archivo README.md deberá incluir brevemente:\n\nNombre del estudiante\nNombre del curso\nDescripción general del repositorio\n(¿Para qué se utilizará este repositorio a lo largo del curso?)\n\n\n\nElementos de Markdown a utilizar\nPara esta práctica, el archivo README.md deberá utilizar algunos elementos básicos de la sintaxis Markdown:\n\nEncabezados\nUtilizar # para el título principal y ## para secciones secundarias, con el fin de estructurar el documento de manera clara y jerárquica.\nEjemplos:\n# Heading 1\n## Heading 2\n### Heading 3",
-    "crumbs": [
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
-    ]
-  },
-  {
-    "objectID": "unidad_2.html#control-de-versiones-y-trazabilidad",
-    "href": "unidad_2.html#control-de-versiones-y-trazabilidad",
-    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
-    "section": "Control de versiones y trazabilidad",
-    "text": "Control de versiones y trazabilidad\n\n¿Qué es Git?\nGit es un sistema de control de versiones diseñado para registrar y administrar los cambios realizados en un conjunto de archivos a lo largo del tiempo. Su objetivo principal es mantener un historial del desarrollo de un proyecto, permitiendo identificar qué cambios se realizaron, cuándo ocurrieron y, en caso necesario, regresar a versiones anteriores.\nGit trabaja de forma local, es decir, el historial del proyecto se guarda en la computadora del usuario, sin necesidad de conexión a internet. Esto lo convierte en una herramienta robusta para el manejo de proyectos computacionales en cualquier entorno.\n\n\n¿Qué es GitHub?\nGitHub es una plataforma en línea que permite alojar y compartir proyectos que utilizan Git. Funciona como un repositorio remoto que almacena una copia del proyecto y su historial de cambios, facilitando el acceso, la consulta y el respaldo del trabajo.\nGitHub no reemplaza a Git:\n\nGit gestiona los cambios.\nGitHub permite almacenar y visualizar esos cambios en línea.\n\n\n\n\n\n\n\n\nConceptos básicos de Git\nA lo largo del curso se utilizarán algunos conceptos fundamentales de Git. No se busca dominar la herramienta en profundidad, sino comprender su lógica y su papel dentro de un flujo de trabajo reproducible.\n\nRepositorio\nEs el espacio donde se almacena un proyecto gestionado con Git. Contiene los archivos del proyecto y el historial de cambios.\ninit\nAcción que convierte una carpeta común en un repositorio Git, permitiendo comenzar a registrar cambios.\ncommit\nEs un registro de cambios en el proyecto. Cada commit representa un punto en el tiempo que documenta el estado de los archivos y las modificaciones realizadas.\npush\nEs la acción de enviar los cambios registrados localmente al repositorio remoto (por ejemplo, en GitHub), asegurando que el proyecto quede respaldado y accesible en línea.\n\n\n\nGit y reproducibilidad\nEl uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir:\n\nMantener un historial claro del desarrollo del proyecto.\nIdentificar versiones específicas del análisis.\nDocumentar la evolución de scripts y documentación.\nEvitar la pérdida de información durante el trabajo computacional.\n\n\n\nPráctica – Introducción a Git y GitHub\n\nActividad\n\nCrear una cuenta personal en GitHub (si aún no se cuenta con una).\nCrear un repositorio llamado exactamente:\n\ntareas_intro_bash_bioinfo\n\nNo es necesario agregar contenido adicional dentro de unidad_2 en esta práctica.",
+    "text": "Nomenclatura de archivos y compatibilidad con Bash\nEl nombrado de archivos es un aspecto frecuentemente subestimado, pero tiene un impacto directo en la eficiencia y reproducibilidad de los análisis.\nUna nomenclatura adecuada debe cumplir:\n\nConsistencia: Usar un esquema de nombres consistente en todo el proyecto.\nDescriptividad: Incluir información clave como el tipo de datos, fecha, versión, etc.\nEvitar Espacios: Usar guiones bajos (_) o guiones (-) en lugar de espacios.\nFecha en Formato ISO: Usar el formato de fecha AAAA-MM-DD para asegurar un orden cronológico lógico.\nPrefijos y Sufijos: Usar prefijos y sufijos estandarizados para identificar el estado o versión del archivo.\nEvitar Acentos y Caracteres Especiales: No utilizar acentos, eñes ni caracteres especiales que puedan causar problemas de compatibilidad en diferentes sistemas operativos o herramientas de software. \n\nEjemplos:\n\n2024-08-01_sample1_raw_data.fastq\n2024-08-11_sample1_trimmed_data.fastq\n2024-08-20_sample1_aligned.bam\n\nEstos criterios son especialmente importantes al trabajar con Bash, ya que muchos comandos (ls, grep, sed, awk, bucles y scripts) dependen de patrones de nombres para automatizar procesos.\nUna buena nomenclatura permite que los archivos “hablen por sí mismos” y reduce la necesidad de explicaciones adicionales.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
     ]
@@ -180,11 +150,21 @@
     ]
   },
   {
-    "objectID": "unidad_2.html#tarea-unidad-2",
-    "href": "unidad_2.html#tarea-unidad-2",
+    "objectID": "unidad_2.html#control-de-versiones-y-trazabilidad",
+    "href": "unidad_2.html#control-de-versiones-y-trazabilidad",
     "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
-    "section": "Tarea – Unidad 2",
-    "text": "Tarea – Unidad 2\n\nDocumentación de un proyecto bioinformático (Markdown)\n\nObjetivo\nDocumentar un proyecto bioinformático —real o propuesto— mediante un archivo README.md, siguiendo buenas prácticas de organización y reproducibilidad.\n\n\nActividad\n\nCrear o adaptar la carpeta raíz de un proyecto bioinformático.\nCrear un archivo README.md en la raíz del proyecto.\nEl README.md debe incluir brevemente:\n\nTítulo del proyecto\nIntroducción\nObjetivos\nEstructura de carpetas\nProgramas y versiones\n\n\n\n\nEstructura mínima sugerida\nproject_root/\n├── README.md\n├── data/\n├── scripts/\n├── results/\n├── metadata/\n└── docs/",
+    "section": "Control de versiones y trazabilidad",
+    "text": "Control de versiones y trazabilidad\n\n¿Qué es Git?\nGit es un sistema de control de versiones diseñado para registrar y administrar los cambios realizados en un conjunto de archivos a lo largo del tiempo. Su objetivo principal es mantener un historial del desarrollo de un proyecto, permitiendo identificar qué cambios se realizaron, cuándo ocurrieron y, en caso necesario, regresar a versiones anteriores.\nGit trabaja de forma local, es decir, el historial del proyecto se guarda en la computadora del usuario, sin necesidad de conexión a internet. Esto lo convierte en una herramienta robusta para el manejo de proyectos computacionales en cualquier entorno.\n\n\n¿Qué es GitHub?\nGitHub es una plataforma en línea que permite alojar y compartir proyectos que utilizan Git. Funciona como un repositorio remoto que almacena una copia del proyecto y su historial de cambios, facilitando el acceso, la consulta y el respaldo del trabajo.\nGitHub no reemplaza a Git:\n\nGit gestiona los cambios.\nGitHub permite almacenar y visualizar esos cambios en línea.\n\n\n\n\n\n\n\n\nConceptos básicos de Git\nA lo largo del curso se utilizarán algunos conceptos fundamentales de Git. No se busca dominar la herramienta en profundidad, sino comprender su lógica y su papel dentro de un flujo de trabajo reproducible.\n\nRepositorio\nEs el espacio donde se almacena un proyecto gestionado con Git. Contiene los archivos del proyecto y el historial de cambios.\ninit\nAcción que convierte una carpeta común en un repositorio Git, permitiendo comenzar a registrar cambios.\n\ngit init\n\nadd\nAcción que marca archivos o cambios para incluirlos en el siguiente commit. En otras palabras, mueve cambios al “área de preparación” (staging area), indicando qué se va a registrar.\n\ngit add .\n\ncommit\nEs un registro de cambios en el proyecto. Cada commit representa un punto en el tiempo que documenta el estado de los archivos y las modificaciones realizadas.\n\ngit commit -m \"mensaje\"\n\npush\nEs la acción de enviar los cambios registrados localmente al repositorio remoto (por ejemplo, en GitHub), asegurando que el proyecto quede respaldado y accesible en línea.\n\ngit push -u origin main\n\n\nGit y reproducibilidad\nEl uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir:\n\nMantener un historial claro del desarrollo del proyecto.\nIdentificar versiones específicas del análisis.\nDocumentar la evolución de scripts y documentación.\nEvitar la pérdida de información durante el trabajo computacional.\n\n\n\nPráctica – Introducción a Git y GitHub\n\nActividad\n\nCrear una cuenta personal en GitHub (si aún no se cuenta con una).\nCrear un repositorio llamado exactamente:\n\ntareas_intro_bash_bioinfo",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#documentación-técnica-con-markdown",
+    "href": "unidad_2.html#documentación-técnica-con-markdown",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Documentación técnica con Markdown",
+    "text": "Documentación técnica con Markdown\nMarkdown es un lenguaje de marcado ligero diseñado para facilitar la escritura de texto estructurado y legible en formato plano. En bioinformática, Markdown es ampliamente utilizado para documentar proyectos debido a su simplicidad y compatibilidad con múltiples plataformas.\nEl uso de Markdown permite:\n\nCrear archivos README.md claros y estructurados.\nDocumentar scripts y flujos de trabajo.\nGenerar reportes técnicos reproducibles.\nIntegrar documentación con repositorios de código.\n\nEn este curso, Markdown se utilizará como herramienta principal para documentar proyectos bioinformáticos, promoviendo una documentación clara, concisa y fácilmente actualizable.\n\nPráctica – Documentación con Markdown\n\nActividad\n\nUtilizar el repositorio creado en la práctica de Git y GitHub:\n\ntareas_intro_bash_bioinfo\n\nEn la raíz del repositorio, crear o editar el archivo:\n\nREADME.md\n\n\n\nContenido del README.md\nEl archivo README.md deberá incluir brevemente:\n\nNombre del estudiante\nNombre del curso\nDescripción general del repositorio\n(¿Para qué se utilizará este repositorio a lo largo del curso?)\n\n\n\nElementos de Markdown a utilizar\nPara esta práctica, el archivo README.md deberá utilizar algunos elementos básicos de la sintaxis Markdown:\n\nEncabezados\nUtilizar # para el título principal y ## para secciones secundarias, con el fin de estructurar el documento de manera clara y jerárquica.\nEjemplos:\n# Heading 1\n## Heading 2\n### Heading 3",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
     ]
@@ -197,6 +177,86 @@
     "text": "Heading 2\n\nHeading 3\n\nListas con viñetas\nUtilizar - para enumerar información como objetivos, descripciones o contenidos del repositorio.\nEjemplos:\n- Unidad 1\n- Unidad 2\n- Unidad 3\n\nUnidad 1\nUnidad 2\nUnidad 3\n\n\n\nTexto en negritas\nUtilizar **texto** para resaltar conceptos importantes o secciones clave dentro del documento.\nEjemplos:\n**Alumno**\nAlumno\n\n\nTexto en cursivas\nUtilizar *texto* para enfatizar palabras o frases específicas.\n*Zea mays*\nZea mays\n\n\nCódigo en línea\nUtilizar acento invertido simple (`) para resaltar nombres de archivos, carpetas o términos técnicos dentro de una oración.\nEjemplos:\n`README.md`, `unidad_2`, `tareas_intro_bash_bioinfo` \nREADME.md, unidad_2, tareas_intro_bash_bioinfo\n\n\nBloques de código\nUtilizar triple acento invertido (``` ) para mostrar estructuras de carpetas, fragmentos de texto o ejemplos de formato, sin necesidad de incluir comandos.\nEjemplos:\n```\nAMAS.py convert \\\n  -i ../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy \\\n  -f phylip -d dna -u nexus\n```\nAMAS.py convert \\\n  -i ../../../../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy \\\n  -f phylip -d dna -u nexus\n\nNota: Se recomienda un editor de texto que facilite la escritura en Markdown, como Visual Studio Code, ya que permite visualizar la estructura del documento de manera clara y ofrece una vista previa del formato Markdown.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_2.html#tarea-unidad-2",
+    "href": "unidad_2.html#tarea-unidad-2",
+    "title": "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática",
+    "section": "Tarea – Unidad 2",
+    "text": "Tarea – Unidad 2\n\nDocumentación de un proyecto bioinformático (Markdown)\n\nObjetivo\nDocumentar un proyecto bioinformático —real o propuesto— mediante un archivo README.md, siguiendo buenas prácticas de organización y reproducibilidad.\n\n\nActividad\n\nUtilizar el repositorio creado previamente:\n\ntareas_intro_bash_bioinfo\n\nDentro del repositorio, crear una carpeta para las tareas de la Unidad 2 llamada:\n\nTareas_U2\n\nNota: En las unidades siguientes se crearán carpetas adicionales siguiendo el mismo formato:\nTareas_U3, Tareas_U4, etc.\n\n\nDentro de la carpeta Tareas_U2, crear una carpeta para esta tarea que represente el proyecto bioinformático del estudiante.\n\n\n\nEstructura mínima sugerida\nproject_root/\n├── README.md\n├── data/\n├── scripts/\n├── results/\n├── metadata/\n└── docs/\n\n\n\nContenido del README.md\nEl archivo README.md, ubicado en la raíz del proyecto, deberá incluir brevemente:\n\nTítulo del proyecto\nIntroducción\nObjetivos\nEstructura de carpetas\nProgramas a utilizar (con versiones)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_3.html",
+    "href": "unidad_3.html",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "",
+    "text": "Diferencia entre CPU y Servidor\nUso\nHardware\nControladores\nRendimiento y disponibilidad\nSistema operativo\nSeguridad",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_3.html#diferencia-entre-cpu-y-servidor",
+    "href": "unidad_3.html#diferencia-entre-cpu-y-servidor",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "",
+    "text": "Servidor: optimizado para alojar aplicaciones y datos, y proveer acceso a ellos desde otras computadoras clientes en una red.\nComputadora personal (PC): diseñada principalmente para uso individual (ofimática, navegación web, multimedia, etc.).\n\n\n\nServidor: componentes de alto rendimiento (procesadores más robustos, mayor RAM y mayor capacidad de almacenamiento).\nPC: hardware más modesto, enfocado a tareas livianas; diseñada para que en algún momento se apague. Unidad 4\n\n\n\nFirmware/controladores que permiten al sistema operativo controlar los dispositivos del equipo; cada proveedor genera controladores específicos para PC o para servidor. Unidad 4\n\n\n\nServidor: funcionamiento de alto rendimiento 24/7 con mínimo tiempo de inactividad; suelen incluir redundancia de energía y componentes.\nPC: no requiere el mismo énfasis en disponibilidad continua; se apaga y se mantiene de forma regular.\n\n\n\nServidor: sistemas optimizados (Windows Server o UNIX/Linux); se eliminan componentes gráficos y el uso es comúnmente por terminal.\nPC: Windows/Linux/macOS enfocados a usuarios finales con ambiente gráfico.\n\n\n\nServidor: mayor énfasis en seguridad de red y datos; herramientas y enfoques de protección suelen ser distintos por la criticidad de los servicios. Los antivirus son totalmente diferentes y se enfocan en diferentes tipos de ataques.\nPC: la seguridad es importante, pero la complejidad suele ser menor que en servidores organizacionales.\n\n\nCPU de una PC\n\n\n\n\n\n\n\nCPU de un servidor\n\n\n\n\n\n\n\nTarjeta madre de una PC\n\n\n\n\n\n\n\nTarjeta madre de un servidor",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_3.html#cpu-vs-gpu-vs-tpu-vs-npu",
+    "href": "unidad_3.html#cpu-vs-gpu-vs-tpu-vs-npu",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "CPU vs GPU vs TPU vs NPU",
+    "text": "CPU vs GPU vs TPU vs NPU\n\n\n\n\n\n\n\n\n\n\n\n¿Cúal es la diferencia?\n\n\n\n\n\n\n\n\n\n\nComponente\nCPU\nGPU\nTPU\nNPU\n\n\n\n\nUbicación típica\nPlaca base (PC/Laptop)\nTarjeta de video / Integrada\nCentros de datos (nube)\nProcesadores modernos (SoC)\n\n\nEspecialidad\nLógica y control general\nGráficos y datos paralelos\nEntrenamiento masivo de IA\nInferencia de IA local\n\n\nEficiencia energética\nBaja (consume mucho)\nMedia–baja\nAlta (por volumen)\nExcelente (muy alta)\n\n\nEjemplos\nRyzen 5 7520U\nAMD Radeon Graphics\nGoogle Cloud TPU\nApple Neural Engine / Intel AI Boost",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_3.html#acceso-y-autenticación-remota-ssh",
+    "href": "unidad_3.html#acceso-y-autenticación-remota-ssh",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "Acceso y autenticación remota (SSH)",
+    "text": "Acceso y autenticación remota (SSH)\nSSH (Secure Shell) es el mecanismo que permite iniciar sesión en un equipo de forma segura.\n\nCada servicio se comunica por un puerto; en SSH el puerto típico es el 22, y el servicio está disponible en el servidor.\n\nPara conectarte necesitas:\n\nUsuario\nContraseña o llave/certificado (SSH key)\nIP o DNS del servidor\nPuerto SSH (por defecto 22)\n\n\n\nClientes de conexión vía SSH (Bitvise, Windows, Mac)\nClientes comunes:\n\nMac / Linux: Terminal (cliente SSH integrado).\nWindows: CMD/PowerShell (cliente SSH integrado).\nClientes GUI opcionales: Termius, Bitvise, MobaXterm.\n\n\nNota de seguridad: si se excede el umbral de intentos fallidos, el sistema puede bloquear temporalmente tu IP.\n\nEjemplos de conexión:\nssh usuario@IP -p PUERTO\n\n# ejemplo:\nssh jmendez@10.1.1.23 -p 22\n\n# si es puerto 22, puede omitirse:\nssh jmendez@10.1.1.23",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_3.html#transferencia-de-archivos-scp",
+    "href": "unidad_3.html#transferencia-de-archivos-scp",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "Transferencia de archivos (SCP)",
+    "text": "Transferencia de archivos (SCP)\nSCP permite transferir archivos entre tu computadora y el servidor usando SSH.\nSubir (local → servidor):\nscp archivo.extension usuario@ip:/directorio/remoto/\n\n# ejemplo:\nscp constancias.zip jmendez@10.1.1.23:/home/jmendez/\nBajar (servidor → local):\nscp usuario@ip:/ruta/remota/archivo.zip /ruta/local/\n\n# ejemplo (Windows):\nscp jmendez@10.1.1.23:/home/jmendez/constancias.zip c:\\usuarios\\Mauricio\\MisDocumentos\\\nNotas importantes\n\nAsegura espacio suficiente en el destino.\nEl tiempo depende de tamaño, cantidad de archivos y ancho de banda.\nMejor transferir un archivo comprimido que muchos archivos pequeños.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_3.html#tarea-unidad-3",
+    "href": "unidad_3.html#tarea-unidad-3",
+    "title": "Unidad 3. Servidores de Alto Rendimiento (HPC)",
+    "section": "Tarea – Unidad 3",
+    "text": "Tarea – Unidad 3\n\nInventario de hardware de tu computadora\n\n\nObjetivo\nDocumentar de forma clara las características de tu computadora y justificar decisiones básicas de cómputo.\n\n\nInstrucciones\n\nCrea un archivo Markdown (no tiene que llamarse README.md).\n\nEjemplos: componentes_pc.md, mi_equipo.md, inventario_laptop.md.\nLlena la información solicitada.\nAl final, escribe una reflexión corta: ¿qué limita más tu equipo para bioinformática: CPU, RAM, almacenamiento o GPU?\n\n\n\nContenido mínimo requerido (plantilla)\n\n1) Identificación del equipo\n\nMarca y modelo:\nTipo: laptop / desktop\n\n\n\n2) Sistema operativo\n\nSistema operativo: (Windows / macOS / Linux)\nVersión exacta: (por ejemplo: Windows 11 23H2, macOS Sequoia 15.x, Ubuntu 22.04.4, etc.)\nArquitectura del sistema: x86_64 / ARM64 (si aparece)\n\n\n\n3) CPU (procesador)\n\nModelo exacto:\nNúcleos / hilos:\nFrecuencia base / turbo (si aparece):\n\n\n\n4) Memoria RAM\n\nRAM instalada (GB):\nTipo y velocidad (si aparece): DDR3/DDR4/DDR5, MHz\nCapacidad máxima soportada de RAM (según fabricante o specs):\n\n\n\n5) Almacenamiento\n\nTipo: SSD / HDD / NVMe\nCapacidad total:\n¿Se puede agregar o cambiar por un SSD o NVMe?\n\n\n\n6) Gráficos (GPU)\n\n¿Integrados o dedicada?\nModelo (si aplica):\n\n\n\n7) Reflexión final (breve)\n\n¿qué limita más tu equipo para bioinformática: CPU, RAM, almacenamiento, tiempo de ejecucion de análisis (laptop), GPU, etc.?",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Unidad 3. Servidores de Alto Rendimiento (HPC)</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Bibliografía complementaria",
+    "section": "",
+    "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
     ]
   }
 ]

@@ -2,7 +2,7 @@
 title: "Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática"
 ---
 
-## **Introducción**
+## Introducción
 
 La bioinformática es una disciplina altamente dependiente de procesos computacionales, scripts, versiones de software y decisiones técnicas que no siempre quedan reflejadas en los resultados finales o en los artículos científicos. A diferencia de otros enfoques experimentales, en los análisis bioinformáticos la reproducibilidad depende casi por completo de la **organización, documentación y trazabilidad** del proyecto.
 
@@ -10,7 +10,7 @@ En esta unidad se abordan los principios fundamentales de la **documentación de
 
 ![](images/unidad_2/pic1.png){fig-align="center" width="600"}
 
-## **Importancia de la documentación en proyectos bioinformáticos**
+## Importancia de la documentación en proyectos bioinformáticos
 
 La documentación es un componente esencial del trabajo científico. En biología experimental, los investigadores mantienen cuadernos de laboratorio detallados que permiten reconstruir los procedimientos, condiciones y decisiones tomadas durante un experimento. En bioinformática, la documentación cumple exactamente la misma función, pero aplicada a procesos computacionales.
 
@@ -26,7 +26,7 @@ Una documentación adecuada permite:
 
 En el contexto de este curso, la documentación no se considera un elemento adicional o decorativo, sino **una parte integral del análisis bioinformático**, tan importante como el propio código o los datos.
 
-## **Organización de proyectos bioinformáticos**
+## Organización de proyectos bioinformáticos
 
 La organización de archivos y directorios es el primer paso hacia la reproducibilidad. Un proyecto bioinformático debe contar con una estructura clara que separe los distintos componentes del análisis.
 
@@ -48,13 +48,13 @@ En esta unidad se promueve la separación explícita entre:
 
 -   Metadatos y documentación.
 
-### **Rutas absolutas y rutas relativas**
+### Rutas absolutas y rutas relativas
 
 En bioinformática, la correcta referencia a archivos y directorios es esencial para la ejecución de comandos y scripts en Bash. Para ello, es importante distinguir entre **rutas absolutas** y **rutas relativas**.
 
 ![](images/unidad_2/pic2.png){fig-align="center" width="550"}
 
-#### **Ruta absoluta**
+#### Ruta absoluta
 
 Una ruta absoluta especifica la ubicación completa de un archivo o directorio desde la raíz del sistema de archivos.
 
@@ -72,7 +72,7 @@ Este tipo de ruta:
 
 -   Puede perder portabilidad si el proyecto se mueve a otro sistema o usuario.
 
-#### **Ruta relativa**
+#### Ruta relativa
 
 Una ruta relativa describe la ubicación de un archivo **en relación con el directorio de trabajo actual**.
 
@@ -102,25 +102,37 @@ Este tipo de ruta:
 
 -   Es fundamental para flujos de trabajo reproducibles en Bash.
 
-## **Nomenclatura de archivos y compatibilidad con Bash**
+## Nomenclatura de archivos y compatibilidad con Bash
 
 El nombrado de archivos es un aspecto frecuentemente subestimado, pero tiene un impacto directo en la eficiencia y reproducibilidad de los análisis.
 
-Una nomenclatura adecuada debe:
+Una nomenclatura adecuada debe cumplir:
 
--   Ser consistente a lo largo del proyecto.
+-   **Consistencia**: Usar un esquema de nombres consistente en todo el proyecto.
 
--   Evitar espacios, acentos y caracteres especiales.
+-   **Descriptividad**: Incluir información clave como el tipo de datos, fecha, versión, etc.
 
--   Utilizar guiones bajos (`_`) o guiones medios (`-`).
+-   **Evitar Espacios**: Usar guiones bajos (\_) o guiones (-) en lugar de espacios.
 
--   Incluir información relevante como fecha, muestra, versión o etapa del análisis.
+-   **Fecha en Formato ISO**: Usar el formato de fecha AAAA-MM-DD para asegurar un orden cronológico lógico.
+
+-   **Prefijos y Sufijos**: Usar prefijos y sufijos estandarizados para identificar el estado o versión del archivo.
+
+-   **Evitar Acentos y Caracteres Especiales**: No utilizar acentos, eñes ni caracteres especiales que puedan causar problemas de compatibilidad en diferentes sistemas operativos o herramientas de software. 
+
+**Ejemplos:**
+
+-   2024-08-01_sample1_raw_data.fastq
+
+-   2024-08-11_sample1_trimmed_data.fastq
+
+-   2024-08-20_sample1_aligned.bam
 
 Estos criterios son especialmente importantes al trabajar con Bash, ya que muchos comandos (`ls`, `grep`, `sed`, `awk`, bucles y scripts) dependen de patrones de nombres para automatizar procesos.
 
 Una buena nomenclatura permite que los archivos “hablen por sí mismos” y reduce la necesidad de explicaciones adicionales.
 
-## **Ambientes computacionales y reproducibilidad**
+## Ambientes computacionales y reproducibilidad
 
 La reproducibilidad no depende únicamente del código, sino también del entorno computacional en el que se ejecuta. Diferentes versiones de programas o dependencias pueden producir resultados distintos.
 
@@ -136,15 +148,15 @@ Estas herramientas permiten encapsular los análisis y asegurar que puedan ejecu
 
 ![](images/unidad_2/pic4.png){fig-align="center"}
 
-## **Control de versiones y trazabilidad**
+## Control de versiones y trazabilidad
 
-### **¿Qué es Git?**
+### ¿Qué es Git?
 
 **Git** es un sistema de **control de versiones** diseñado para registrar y administrar los cambios realizados en un conjunto de archivos a lo largo del tiempo. Su objetivo principal es mantener un historial del desarrollo de un proyecto, permitiendo identificar qué cambios se realizaron, cuándo ocurrieron y, en caso necesario, regresar a versiones anteriores.
 
 Git trabaja de forma **local**, es decir, el historial del proyecto se guarda en la computadora del usuario, sin necesidad de conexión a internet. Esto lo convierte en una herramienta robusta para el manejo de proyectos computacionales en cualquier entorno.
 
-### **¿Qué es GitHub?**
+### ¿Qué es GitHub?
 
 [**GitHub**]{.underline} es una plataforma en línea que permite **alojar y compartir proyectos que utilizan Git**. Funciona como un repositorio remoto que almacena una copia del proyecto y su historial de cambios, facilitando el acceso, la consulta y el respaldo del trabajo.
 
@@ -156,7 +168,7 @@ GitHub no reemplaza a Git:
 
 ![](images/unidad_2/pic3.png){fig-align="center" width="550"}
 
-### **Conceptos básicos de Git**
+### Conceptos básicos de Git
 
 A lo largo del curso se utilizarán algunos conceptos fundamentales de Git. No se busca dominar la herramienta en profundidad, sino comprender su lógica y su papel dentro de un flujo de trabajo reproducible.
 
@@ -166,13 +178,32 @@ A lo largo del curso se utilizarán algunos conceptos fundamentales de Git. No s
 -   **init**\
     Acción que convierte una carpeta común en un repositorio Git, permitiendo comenzar a registrar cambios.
 
+``` bash
+git init
+```
+
+-   **add**\
+    Acción que **marca** archivos o cambios para incluirlos en el siguiente commit. En otras palabras, mueve cambios al “área de preparación” (*staging area*), indicando *qué* se va a registrar.
+
+``` bash
+git add .
+```
+
 -   **commit**\
     Es un registro de cambios en el proyecto. Cada commit representa un punto en el tiempo que documenta el estado de los archivos y las modificaciones realizadas.
+
+``` bash
+git commit -m "mensaje"
+```
 
 -   **push**\
     Es la acción de enviar los cambios registrados localmente al repositorio remoto (por ejemplo, en GitHub), asegurando que el proyecto quede respaldado y accesible en línea.
 
-### **Git y reproducibilidad**
+``` bash
+git push -u origin main
+```
+
+### Git y reproducibilidad
 
 El uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir:
 
@@ -184,9 +215,9 @@ El uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir
 
 -   Evitar la pérdida de información durante el trabajo computacional.
 
-### **Práctica – Introducción a Git y GitHub**
+### Práctica – Introducción a Git y GitHub
 
-#### **Actividad**
+#### Actividad
 
 1.  Crear una cuenta personal en GitHub (si aún no se cuenta con una).
 
@@ -196,9 +227,7 @@ El uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir
 tareas_intro_bash_bioinfo
 ```
 
-> No es necesario agregar contenido adicional dentro de `unidad_2` en esta práctica.
-
-## **Documentación técnica con Markdown**
+## Documentación técnica con Markdown
 
 Markdown es un lenguaje de marcado ligero diseñado para facilitar la escritura de texto estructurado y legible en formato plano. En bioinformática, Markdown es ampliamente utilizado para documentar proyectos debido a su simplicidad y compatibilidad con múltiples plataformas.
 
@@ -214,9 +243,9 @@ El uso de Markdown permite:
 
 En este curso, Markdown se utilizará como herramienta principal para documentar proyectos bioinformáticos, promoviendo una documentación clara, concisa y fácilmente actualizable.
 
-### **Práctica – Documentación con Markdown**
+### Práctica – Documentación con Markdown
 
-#### **Actividad**
+#### Actividad
 
 1.  Utilizar el repositorio creado en la práctica de Git y GitHub:
 
@@ -230,7 +259,7 @@ tareas_intro_bash_bioinfo
 README.md
 ```
 
-### **Contenido del `README.md`**
+### Contenido del `README.md`
 
 El archivo `README.md` deberá incluir brevemente:
 
@@ -241,11 +270,11 @@ El archivo `README.md` deberá incluir brevemente:
 -   **Descripción general del repositorio**\
     (¿Para qué se utilizará este repositorio a lo largo del curso?)
 
-### **Elementos de Markdown a utilizar**
+### Elementos de Markdown a utilizar
 
 Para esta práctica, el archivo `README.md` deberá utilizar algunos elementos básicos de la sintaxis Markdown:
 
-#### **Encabezados**
+#### Encabezados
 
 Utilizar `#` para el título principal y `##` para secciones secundarias, con el fin de estructurar el documento de manera clara y jerárquica.
 
@@ -263,7 +292,7 @@ Utilizar `#` para el título principal y `##` para secciones secundarias, con el
 
 ### Heading 3
 
-#### **Listas con viñetas**
+#### Listas con viñetas
 
 Utilizar `-` para enumerar información como objetivos, descripciones o contenidos del repositorio.
 
@@ -281,7 +310,7 @@ Utilizar `-` para enumerar información como objetivos, descripciones o contenid
 
 -   Unidad 3
 
-#### **Texto en negritas**
+#### Texto en negritas
 
 Utilizar `**texto**` para resaltar conceptos importantes o secciones clave dentro del documento.
 
@@ -293,7 +322,7 @@ Utilizar `**texto**` para resaltar conceptos importantes o secciones clave dentr
 
 **Alumno**
 
-#### **Texto en cursivas**
+#### Texto en cursivas
 
 Utilizar `*texto*` para enfatizar palabras o frases específicas.
 
@@ -303,7 +332,7 @@ Utilizar `*texto*` para enfatizar palabras o frases específicas.
 
 *Zea mays*
 
-#### **Código en línea**
+#### Código en línea
 
 Utilizar acento invertido simple (**\`**) para resaltar nombres de archivos, carpetas o términos técnicos dentro de una oración.
 
@@ -315,7 +344,7 @@ Utilizar acento invertido simple (**\`**) para resaltar nombres de archivos, car
 
 `README.md`, `unidad_2`, `tareas_intro_bash_bioinfo`
 
-#### **Bloques de código**
+#### Bloques de código
 
 Utilizar triple acento invertido (\`\`\` ) para mostrar estructuras de carpetas, fragmentos de texto o ejemplos de formato, sin necesidad de incluir comandos.
 
@@ -337,33 +366,34 @@ AMAS.py convert \
 
 > Nota: Se recomienda un editor de texto que facilite la escritura en Markdown, como [**Visual Studio Code**](https://code.visualstudio.com/), ya que permite visualizar la estructura del documento de manera clara y ofrece una vista previa del formato Markdown.
 
-## **Tarea – Unidad 2**
+## Tarea – Unidad 2
 
-### **Documentación de un proyecto bioinformático (Markdown)**
+### Documentación de un proyecto bioinformático (Markdown)
 
-#### **Objetivo**
+#### Objetivo
 
 Documentar un proyecto bioinformático —real o propuesto— mediante un archivo `README.md`, siguiendo buenas prácticas de organización y reproducibilidad.
 
-#### **Actividad**
+#### Actividad
 
--   Crear o adaptar la carpeta raíz de un proyecto bioinformático.
+1.  Utilizar el repositorio creado previamente:
 
--   Crear un archivo `README.md` en la raíz del proyecto.
+``` bash
+tareas_intro_bash_bioinfo
+```
 
--   El `README.md` debe incluir brevemente:
+2.  Dentro del repositorio, crear una carpeta para las tareas de la Unidad 2 llamada:
 
-    -   Título del proyecto
+``` bash
+Tareas_U2
+```
 
-    -   Introducción
+> Nota: En las unidades siguientes se crearán carpetas adicionales siguiendo el mismo formato:\
+> `Tareas_U3`, `Tareas_U4`, etc.
 
-    -   Objetivos
+3.  Dentro de la carpeta `Tareas_U2`, crear una carpeta para esta tarea que represente el proyecto bioinformático del estudiante.
 
-    -   Estructura de carpetas
-
-    -   Programas y versiones
-
-#### **Estructura mínima sugerida**
+#### Estructura mínima sugerida
 
 ``` bash
 project_root/
@@ -374,3 +404,17 @@ project_root/
 ├── metadata/
 └── docs/
 ```
+
+### Contenido del README.md
+
+El archivo `README.md`, ubicado en la raíz del proyecto, deberá incluir brevemente:
+
+-   **Título del proyecto**
+
+-   **Introducción**
+
+-   **Objetivos**
+
+-   **Estructura de carpetas**
+
+-   **Programas a utilizar (con versiones)**

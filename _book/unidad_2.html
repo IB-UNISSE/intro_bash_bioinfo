@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.26">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,19 +65,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./unidad_3.html" rel="next">
 <link href="./unidad_1.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d6ea9a187498ee8b9044a0182b988d41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-382514e105201bb02b88eea0c3516187.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -142,7 +143,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la programación para bioinformática con bash</a> 
@@ -175,6 +177,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./unidad_3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 3. Servidores de Alto Rendimiento (HPC)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliografía complementaria</span></a>
   </div>
 </li>
@@ -188,17 +195,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción"><strong>Introducción</strong></a></li>
-  <li><a href="#importancia-de-la-documentación-en-proyectos-bioinformáticos" id="toc-importancia-de-la-documentación-en-proyectos-bioinformáticos" class="nav-link" data-scroll-target="#importancia-de-la-documentación-en-proyectos-bioinformáticos"><strong>Importancia de la documentación en proyectos bioinformáticos</strong></a></li>
-  <li><a href="#organización-de-proyectos-bioinformáticos" id="toc-organización-de-proyectos-bioinformáticos" class="nav-link" data-scroll-target="#organización-de-proyectos-bioinformáticos"><strong>Organización de proyectos bioinformáticos</strong></a></li>
-  <li><a href="#nomenclatura-de-archivos-y-compatibilidad-con-bash" id="toc-nomenclatura-de-archivos-y-compatibilidad-con-bash" class="nav-link" data-scroll-target="#nomenclatura-de-archivos-y-compatibilidad-con-bash"><strong>Nomenclatura de archivos y compatibilidad con Bash</strong></a></li>
-  <li><a href="#ambientes-computacionales-y-reproducibilidad" id="toc-ambientes-computacionales-y-reproducibilidad" class="nav-link" data-scroll-target="#ambientes-computacionales-y-reproducibilidad"><strong>Ambientes computacionales y reproducibilidad</strong></a></li>
-  <li><a href="#control-de-versiones-y-trazabilidad" id="toc-control-de-versiones-y-trazabilidad" class="nav-link" data-scroll-target="#control-de-versiones-y-trazabilidad"><strong>Control de versiones y trazabilidad</strong></a></li>
-  <li><a href="#documentación-técnica-con-markdown" id="toc-documentación-técnica-con-markdown" class="nav-link" data-scroll-target="#documentación-técnica-con-markdown"><strong>Documentación técnica con Markdown</strong></a></li>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
+  <li><a href="#importancia-de-la-documentación-en-proyectos-bioinformáticos" id="toc-importancia-de-la-documentación-en-proyectos-bioinformáticos" class="nav-link" data-scroll-target="#importancia-de-la-documentación-en-proyectos-bioinformáticos">Importancia de la documentación en proyectos bioinformáticos</a></li>
+  <li><a href="#organización-de-proyectos-bioinformáticos" id="toc-organización-de-proyectos-bioinformáticos" class="nav-link" data-scroll-target="#organización-de-proyectos-bioinformáticos">Organización de proyectos bioinformáticos</a></li>
+  <li><a href="#nomenclatura-de-archivos-y-compatibilidad-con-bash" id="toc-nomenclatura-de-archivos-y-compatibilidad-con-bash" class="nav-link" data-scroll-target="#nomenclatura-de-archivos-y-compatibilidad-con-bash">Nomenclatura de archivos y compatibilidad con Bash</a></li>
+  <li><a href="#ambientes-computacionales-y-reproducibilidad" id="toc-ambientes-computacionales-y-reproducibilidad" class="nav-link" data-scroll-target="#ambientes-computacionales-y-reproducibilidad">Ambientes computacionales y reproducibilidad</a></li>
+  <li><a href="#control-de-versiones-y-trazabilidad" id="toc-control-de-versiones-y-trazabilidad" class="nav-link" data-scroll-target="#control-de-versiones-y-trazabilidad">Control de versiones y trazabilidad</a></li>
+  <li><a href="#documentación-técnica-con-markdown" id="toc-documentación-técnica-con-markdown" class="nav-link" data-scroll-target="#documentación-técnica-con-markdown">Documentación técnica con Markdown</a></li>
   <li><a href="#heading-1" id="toc-heading-1" class="nav-link" data-scroll-target="#heading-1">Heading 1</a>
   <ul class="collapse">
   <li><a href="#heading-2" id="toc-heading-2" class="nav-link" data-scroll-target="#heading-2">Heading 2</a></li>
-  <li><a href="#tarea-unidad-2" id="toc-tarea-unidad-2" class="nav-link" data-scroll-target="#tarea-unidad-2"><strong>Tarea – Unidad 2</strong></a></li>
+  <li><a href="#tarea-unidad-2" id="toc-tarea-unidad-2" class="nav-link" data-scroll-target="#tarea-unidad-2">Tarea – Unidad 2</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -226,7 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <section id="introducción" class="level2">
-<h2 class="anchored" data-anchor-id="introducción"><strong>Introducción</strong></h2>
+<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
 <p>La bioinformática es una disciplina altamente dependiente de procesos computacionales, scripts, versiones de software y decisiones técnicas que no siempre quedan reflejadas en los resultados finales o en los artículos científicos. A diferencia de otros enfoques experimentales, en los análisis bioinformáticos la reproducibilidad depende casi por completo de la <strong>organización, documentación y trazabilidad</strong> del proyecto.</p>
 <p>En esta unidad se abordan los principios fundamentales de la <strong>documentación de proyectos bioinformáticos</strong> y las <strong>estrategias para garantizar la reproducibilidad</strong>, estableciendo las bases conceptuales y prácticas necesarias para el uso de <strong>Bash</strong> como herramienta central en flujos de trabajo reproducibles.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -236,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="importancia-de-la-documentación-en-proyectos-bioinformáticos" class="level2">
-<h2 class="anchored" data-anchor-id="importancia-de-la-documentación-en-proyectos-bioinformáticos"><strong>Importancia de la documentación en proyectos bioinformáticos</strong></h2>
+<h2 class="anchored" data-anchor-id="importancia-de-la-documentación-en-proyectos-bioinformáticos">Importancia de la documentación en proyectos bioinformáticos</h2>
 <p>La documentación es un componente esencial del trabajo científico. En biología experimental, los investigadores mantienen cuadernos de laboratorio detallados que permiten reconstruir los procedimientos, condiciones y decisiones tomadas durante un experimento. En bioinformática, la documentación cumple exactamente la misma función, pero aplicada a procesos computacionales.</p>
 <p>Una documentación adecuada permite:</p>
 <ul>
@@ -248,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En el contexto de este curso, la documentación no se considera un elemento adicional o decorativo, sino <strong>una parte integral del análisis bioinformático</strong>, tan importante como el propio código o los datos.</p>
 </section>
 <section id="organización-de-proyectos-bioinformáticos" class="level2">
-<h2 class="anchored" data-anchor-id="organización-de-proyectos-bioinformáticos"><strong>Organización de proyectos bioinformáticos</strong></h2>
+<h2 class="anchored" data-anchor-id="organización-de-proyectos-bioinformáticos">Organización de proyectos bioinformáticos</h2>
 <p>La organización de archivos y directorios es el primer paso hacia la reproducibilidad. Un proyecto bioinformático debe contar con una estructura clara que separe los distintos componentes del análisis.</p>
 <p>Una organización adecuada:</p>
 <ul>
@@ -264,7 +271,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Metadatos y documentación.</p></li>
 </ul>
 <section id="rutas-absolutas-y-rutas-relativas" class="level3">
-<h3 class="anchored" data-anchor-id="rutas-absolutas-y-rutas-relativas"><strong>Rutas absolutas y rutas relativas</strong></h3>
+<h3 class="anchored" data-anchor-id="rutas-absolutas-y-rutas-relativas">Rutas absolutas y rutas relativas</h3>
 <p>En bioinformática, la correcta referencia a archivos y directorios es esencial para la ejecución de comandos y scripts en Bash. Para ello, es importante distinguir entre <strong>rutas absolutas</strong> y <strong>rutas relativas</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -272,10 +279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <section id="ruta-absoluta" class="level4">
-<h4 class="anchored" data-anchor-id="ruta-absoluta"><strong>Ruta absoluta</strong></h4>
+<h4 class="anchored" data-anchor-id="ruta-absoluta">Ruta absoluta</h4>
 <p>Una ruta absoluta especifica la ubicación completa de un archivo o directorio desde la raíz del sistema de archivos.</p>
 <p>Usando la estructura mostrada en la figura, un ejemplo de ruta absoluta sería:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:/Usuarios/MI_NOMBRE/Documentos/PROYECTO/DATA/muestras.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:/Usuarios/MI_NOMBRE/Documentos/PROYECTO/DATA/muestras.xlsx</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Este tipo de ruta:</p>
 <ul>
 <li><p>No depende del directorio desde el cual se ejecute el comando.</p></li>
@@ -284,14 +291,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="ruta-relativa" class="level4">
-<h4 class="anchored" data-anchor-id="ruta-relativa"><strong>Ruta relativa</strong></h4>
+<h4 class="anchored" data-anchor-id="ruta-relativa">Ruta relativa</h4>
 <p>Una ruta relativa describe la ubicación de un archivo <strong>en relación con el directorio de trabajo actual</strong>.</p>
 <p>Por ejemplo, si el usuario se encuentra dentro del directorio:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:/Usuarios/MI_NOMBRE/Documentos/PROYECTO/</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:/Usuarios/MI_NOMBRE/Documentos/PROYECTO/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El mismo archivo puede referenciarse como:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">DATA/muestras.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">DATA/muestras.xlsx</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>O, si el comando se ejecuta desde <code>BIN/</code>:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">../DATA/muestras.xlsx</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">../DATA/muestras.xlsx</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Este tipo de ruta:</p>
 <ul>
 <li><p>Favorece la portabilidad del proyecto.</p></li>
@@ -302,20 +309,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 <section id="nomenclatura-de-archivos-y-compatibilidad-con-bash" class="level2">
-<h2 class="anchored" data-anchor-id="nomenclatura-de-archivos-y-compatibilidad-con-bash"><strong>Nomenclatura de archivos y compatibilidad con Bash</strong></h2>
+<h2 class="anchored" data-anchor-id="nomenclatura-de-archivos-y-compatibilidad-con-bash">Nomenclatura de archivos y compatibilidad con Bash</h2>
 <p>El nombrado de archivos es un aspecto frecuentemente subestimado, pero tiene un impacto directo en la eficiencia y reproducibilidad de los análisis.</p>
-<p>Una nomenclatura adecuada debe:</p>
+<p>Una nomenclatura adecuada debe cumplir:</p>
 <ul>
-<li><p>Ser consistente a lo largo del proyecto.</p></li>
-<li><p>Evitar espacios, acentos y caracteres especiales.</p></li>
-<li><p>Utilizar guiones bajos (<code>_</code>) o guiones medios (<code>-</code>).</p></li>
-<li><p>Incluir información relevante como fecha, muestra, versión o etapa del análisis.</p></li>
+<li><p><strong>Consistencia</strong>: Usar un esquema de nombres consistente en todo el proyecto.</p></li>
+<li><p><strong>Descriptividad</strong>: Incluir información clave como el tipo de datos, fecha, versión, etc.</p></li>
+<li><p><strong>Evitar Espacios</strong>: Usar guiones bajos (_) o guiones (-) en lugar de espacios.</p></li>
+<li><p><strong>Fecha en Formato ISO</strong>: Usar el formato de fecha AAAA-MM-DD para asegurar un orden cronológico lógico.</p></li>
+<li><p><strong>Prefijos y Sufijos</strong>: Usar prefijos y sufijos estandarizados para identificar el estado o versión del archivo.</p></li>
+<li><p><strong>Evitar Acentos y Caracteres Especiales</strong>: No utilizar acentos, eñes ni caracteres especiales que puedan causar problemas de compatibilidad en diferentes sistemas operativos o herramientas de software.&nbsp;</p></li>
+</ul>
+<p><strong>Ejemplos:</strong></p>
+<ul>
+<li><p>2024-08-01_sample1_raw_data.fastq</p></li>
+<li><p>2024-08-11_sample1_trimmed_data.fastq</p></li>
+<li><p>2024-08-20_sample1_aligned.bam</p></li>
 </ul>
 <p>Estos criterios son especialmente importantes al trabajar con Bash, ya que muchos comandos (<code>ls</code>, <code>grep</code>, <code>sed</code>, <code>awk</code>, bucles y scripts) dependen de patrones de nombres para automatizar procesos.</p>
 <p>Una buena nomenclatura permite que los archivos “hablen por sí mismos” y reduce la necesidad de explicaciones adicionales.</p>
 </section>
 <section id="ambientes-computacionales-y-reproducibilidad" class="level2">
-<h2 class="anchored" data-anchor-id="ambientes-computacionales-y-reproducibilidad"><strong>Ambientes computacionales y reproducibilidad</strong></h2>
+<h2 class="anchored" data-anchor-id="ambientes-computacionales-y-reproducibilidad">Ambientes computacionales y reproducibilidad</h2>
 <p>La reproducibilidad no depende únicamente del código, sino también del entorno computacional en el que se ejecuta. Diferentes versiones de programas o dependencias pueden producir resultados distintos.</p>
 <p>Para abordar este problema, se introducen estrategias como:</p>
 <ul>
@@ -331,14 +346,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="control-de-versiones-y-trazabilidad" class="level2">
-<h2 class="anchored" data-anchor-id="control-de-versiones-y-trazabilidad"><strong>Control de versiones y trazabilidad</strong></h2>
+<h2 class="anchored" data-anchor-id="control-de-versiones-y-trazabilidad">Control de versiones y trazabilidad</h2>
 <section id="qué-es-git" class="level3">
-<h3 class="anchored" data-anchor-id="qué-es-git"><strong>¿Qué es Git?</strong></h3>
+<h3 class="anchored" data-anchor-id="qué-es-git">¿Qué es Git?</h3>
 <p><strong>Git</strong> es un sistema de <strong>control de versiones</strong> diseñado para registrar y administrar los cambios realizados en un conjunto de archivos a lo largo del tiempo. Su objetivo principal es mantener un historial del desarrollo de un proyecto, permitiendo identificar qué cambios se realizaron, cuándo ocurrieron y, en caso necesario, regresar a versiones anteriores.</p>
 <p>Git trabaja de forma <strong>local</strong>, es decir, el historial del proyecto se guarda en la computadora del usuario, sin necesidad de conexión a internet. Esto lo convierte en una herramienta robusta para el manejo de proyectos computacionales en cualquier entorno.</p>
 </section>
 <section id="qué-es-github" class="level3">
-<h3 class="anchored" data-anchor-id="qué-es-github"><strong>¿Qué es GitHub?</strong></h3>
+<h3 class="anchored" data-anchor-id="qué-es-github">¿Qué es GitHub?</h3>
 <p><u><strong>GitHub</strong></u> es una plataforma en línea que permite <strong>alojar y compartir proyectos que utilizan Git</strong>. Funciona como un repositorio remoto que almacena una copia del proyecto y su historial de cambios, facilitando el acceso, la consulta y el respaldo del trabajo.</p>
 <p>GitHub no reemplaza a Git:</p>
 <ul>
@@ -352,21 +367,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="conceptos-básicos-de-git" class="level3">
-<h3 class="anchored" data-anchor-id="conceptos-básicos-de-git"><strong>Conceptos básicos de Git</strong></h3>
+<h3 class="anchored" data-anchor-id="conceptos-básicos-de-git">Conceptos básicos de Git</h3>
 <p>A lo largo del curso se utilizarán algunos conceptos fundamentales de Git. No se busca dominar la herramienta en profundidad, sino comprender su lógica y su papel dentro de un flujo de trabajo reproducible.</p>
 <ul>
 <li><p><strong>Repositorio</strong><br>
 Es el espacio donde se almacena un proyecto gestionado con Git. Contiene los archivos del proyecto y el historial de cambios.</p></li>
 <li><p><strong>init</strong><br>
 Acción que convierte una carpeta común en un repositorio Git, permitiendo comenzar a registrar cambios.</p></li>
-<li><p><strong>commit</strong><br>
-Es un registro de cambios en el proyecto. Cada commit representa un punto en el tiempo que documenta el estado de los archivos y las modificaciones realizadas.</p></li>
-<li><p><strong>push</strong><br>
-Es la acción de enviar los cambios registrados localmente al repositorio remoto (por ejemplo, en GitHub), asegurando que el proyecto quede respaldado y accesible en línea.</p></li>
 </ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>add</strong><br>
+Acción que <strong>marca</strong> archivos o cambios para incluirlos en el siguiente commit. En otras palabras, mueve cambios al “área de preparación” (<em>staging area</em>), indicando <em>qué</em> se va a registrar.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>commit</strong><br>
+Es un registro de cambios en el proyecto. Cada commit representa un punto en el tiempo que documenta el estado de los archivos y las modificaciones realizadas.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"mensaje"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>push</strong><br>
+Es la acción de enviar los cambios registrados localmente al repositorio remoto (por ejemplo, en GitHub), asegurando que el proyecto quede respaldado y accesible en línea.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="git-y-reproducibilidad" class="level3">
-<h3 class="anchored" data-anchor-id="git-y-reproducibilidad"><strong>Git y reproducibilidad</strong></h3>
+<h3 class="anchored" data-anchor-id="git-y-reproducibilidad">Git y reproducibilidad</h3>
 <p>El uso de Git y GitHub contribuye directamente a la reproducibilidad al permitir:</p>
 <ul>
 <li><p>Mantener un historial claro del desarrollo del proyecto.</p></li>
@@ -376,22 +403,19 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
 </ul>
 </section>
 <section id="práctica-introducción-a-git-y-github" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-introducción-a-git-y-github"><strong>Práctica – Introducción a Git y GitHub</strong></h3>
+<h3 class="anchored" data-anchor-id="práctica-introducción-a-git-y-github">Práctica – Introducción a Git y GitHub</h3>
 <section id="actividad" class="level4">
-<h4 class="anchored" data-anchor-id="actividad"><strong>Actividad</strong></h4>
+<h4 class="anchored" data-anchor-id="actividad">Actividad</h4>
 <ol type="1">
 <li><p>Crear una cuenta personal en GitHub (si aún no se cuenta con una).</p></li>
 <li><p>Crear un repositorio llamado exactamente:</p></li>
 </ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tareas_intro_bash_bioinfo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>No es necesario agregar contenido adicional dentro de <code>unidad_2</code> en esta práctica.</p>
-</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tareas_intro_bash_bioinfo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 </section>
 <section id="documentación-técnica-con-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="documentación-técnica-con-markdown"><strong>Documentación técnica con Markdown</strong></h2>
+<h2 class="anchored" data-anchor-id="documentación-técnica-con-markdown">Documentación técnica con Markdown</h2>
 <p>Markdown es un lenguaje de marcado ligero diseñado para facilitar la escritura de texto estructurado y legible en formato plano. En bioinformática, Markdown es ampliamente utilizado para documentar proyectos debido a su simplicidad y compatibilidad con múltiples plataformas.</p>
 <p>El uso de Markdown permite:</p>
 <ul>
@@ -402,21 +426,21 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
 </ul>
 <p>En este curso, Markdown se utilizará como herramienta principal para documentar proyectos bioinformáticos, promoviendo una documentación clara, concisa y fácilmente actualizable.</p>
 <section id="práctica-documentación-con-markdown" class="level3">
-<h3 class="anchored" data-anchor-id="práctica-documentación-con-markdown"><strong>Práctica – Documentación con Markdown</strong></h3>
+<h3 class="anchored" data-anchor-id="práctica-documentación-con-markdown">Práctica – Documentación con Markdown</h3>
 <section id="actividad-1" class="level4">
-<h4 class="anchored" data-anchor-id="actividad-1"><strong>Actividad</strong></h4>
+<h4 class="anchored" data-anchor-id="actividad-1">Actividad</h4>
 <ol type="1">
 <li>Utilizar el repositorio creado en la práctica de Git y GitHub:</li>
 </ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tareas_intro_bash_bioinfo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tareas_intro_bash_bioinfo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li>En la <strong>raíz del repositorio</strong>, crear o editar el archivo:</li>
 </ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">README.md</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">README.md</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="contenido-del-readme.md" class="level3">
-<h3 class="anchored" data-anchor-id="contenido-del-readme.md"><strong>Contenido del <code>README.md</code></strong></h3>
+<h3 class="anchored" data-anchor-id="contenido-del-readme.md">Contenido del <code>README.md</code></h3>
 <p>El archivo <code>README.md</code> deberá incluir brevemente:</p>
 <ul>
 <li><p><strong>Nombre del estudiante</strong></p></li>
@@ -426,15 +450,15 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
 </ul>
 </section>
 <section id="elementos-de-markdown-a-utilizar" class="level3">
-<h3 class="anchored" data-anchor-id="elementos-de-markdown-a-utilizar"><strong>Elementos de Markdown a utilizar</strong></h3>
+<h3 class="anchored" data-anchor-id="elementos-de-markdown-a-utilizar">Elementos de Markdown a utilizar</h3>
 <p>Para esta práctica, el archivo <code>README.md</code> deberá utilizar algunos elementos básicos de la sintaxis Markdown:</p>
 <section id="encabezados" class="level4">
-<h4 class="anchored" data-anchor-id="encabezados"><strong>Encabezados</strong></h4>
+<h4 class="anchored" data-anchor-id="encabezados">Encabezados</h4>
 <p>Utilizar <code>#</code> para el título principal y <code>##</code> para secciones secundarias, con el fin de estructurar el documento de manera clara y jerárquica.</p>
 <p><strong>Ejemplos:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heading 1</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Heading 2</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Heading 3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Heading 1</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">## Heading 2</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">### Heading 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 </section>
@@ -445,12 +469,12 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
 <section id="heading-3" class="level3">
 <h3 class="anchored" data-anchor-id="heading-3">Heading 3</h3>
 <section id="listas-con-viñetas" class="level4">
-<h4 class="anchored" data-anchor-id="listas-con-viñetas"><strong>Listas con viñetas</strong></h4>
+<h4 class="anchored" data-anchor-id="listas-con-viñetas">Listas con viñetas</h4>
 <p>Utilizar <code>-</code> para enumerar información como objetivos, descripciones o contenidos del repositorio.</p>
 <p><strong>Ejemplos:</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Unidad 1</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Unidad 2</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Unidad 3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Unidad 1</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Unidad 2</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">-</span> Unidad 3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><p>Unidad 1</p></li>
 <li><p>Unidad 2</p></li>
@@ -458,37 +482,37 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
 </ul>
 </section>
 <section id="texto-en-negritas" class="level4">
-<h4 class="anchored" data-anchor-id="texto-en-negritas"><strong>Texto en negritas</strong></h4>
+<h4 class="anchored" data-anchor-id="texto-en-negritas">Texto en negritas</h4>
 <p>Utilizar <code>**texto**</code> para resaltar conceptos importantes o secciones clave dentro del documento.</p>
 <p><strong>Ejemplos:</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">**Alumno**</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">**Alumno**</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Alumno</strong></p>
 </section>
 <section id="texto-en-cursivas" class="level4">
-<h4 class="anchored" data-anchor-id="texto-en-cursivas"><strong>Texto en cursivas</strong></h4>
+<h4 class="anchored" data-anchor-id="texto-en-cursivas">Texto en cursivas</h4>
 <p>Utilizar <code>*texto*</code> para enfatizar palabras o frases específicas.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*Zea</span> mays<span class="pp">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">*Zea</span> mays<span class="pp">*</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><em>Zea mays</em></p>
 </section>
 <section id="código-en-línea" class="level4">
-<h4 class="anchored" data-anchor-id="código-en-línea"><strong>Código en línea</strong></h4>
+<h4 class="anchored" data-anchor-id="código-en-línea">Código en línea</h4>
 <p>Utilizar acento invertido simple (<strong>`</strong>) para resaltar nombres de archivos, carpetas o términos técnicos dentro de una oración.</p>
 <p><strong>Ejemplos:</strong></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">README.md</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">unidad_2</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">tareas_intro_bash_bioinfo</span><span class="kw">`</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">`</span><span class="ex">README.md</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">unidad_2</span><span class="kw">`</span>, <span class="kw">`</span><span class="ex">tareas_intro_bash_bioinfo</span><span class="kw">`</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>README.md</code>, <code>unidad_2</code>, <code>tareas_intro_bash_bioinfo</code></p>
 </section>
 <section id="bloques-de-código" class="level4">
-<h4 class="anchored" data-anchor-id="bloques-de-código"><strong>Bloques de código</strong></h4>
+<h4 class="anchored" data-anchor-id="bloques-de-código">Bloques de código</h4>
 <p>Utilizar triple acento invertido (``` ) para mostrar estructuras de carpetas, fragmentos de texto o ejemplos de formato, sin necesidad de incluir comandos.</p>
 <p><strong>Ejemplos:</strong></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">AMAS.py</span> convert <span class="dt">\</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-i</span> ../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy <span class="dt">\</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-f</span> phylip <span class="at">-d</span> dna <span class="at">-u</span> nexus</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">AMAS.py</span> convert <span class="dt">\</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-i</span> ../../../../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy <span class="dt">\</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-f</span> phylip <span class="at">-d</span> dna <span class="at">-u</span> nexus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">AMAS.py</span> convert <span class="dt">\</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-i</span> ../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy <span class="dt">\</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">-f</span> phylip <span class="at">-d</span> dna <span class="at">-u</span> nexus</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="kw">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">AMAS.py</span> convert <span class="dt">\</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-i</span> ../../../../data/t57.g179.Cercocarpus_final_phylonet/FPA_b.trimm7.phy <span class="dt">\</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-f</span> phylip <span class="at">-d</span> dna <span class="at">-u</span> nexus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
 <p>Nota: Se recomienda un editor de texto que facilite la escritura en Markdown, como <a href="https://code.visualstudio.com/"><strong>Visual Studio Code</strong></a>, ya que permite visualizar la estructura del documento de manera clara y ofrece una vista previa del formato Markdown.</p>
 </blockquote>
@@ -496,40 +520,54 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
 </section>
 </section>
 <section id="tarea-unidad-2" class="level2">
-<h2 class="anchored" data-anchor-id="tarea-unidad-2"><strong>Tarea – Unidad 2</strong></h2>
+<h2 class="anchored" data-anchor-id="tarea-unidad-2">Tarea – Unidad 2</h2>
 <section id="documentación-de-un-proyecto-bioinformático-markdown" class="level3">
-<h3 class="anchored" data-anchor-id="documentación-de-un-proyecto-bioinformático-markdown"><strong>Documentación de un proyecto bioinformático (Markdown)</strong></h3>
+<h3 class="anchored" data-anchor-id="documentación-de-un-proyecto-bioinformático-markdown">Documentación de un proyecto bioinformático (Markdown)</h3>
 <section id="objetivo" class="level4">
-<h4 class="anchored" data-anchor-id="objetivo"><strong>Objetivo</strong></h4>
+<h4 class="anchored" data-anchor-id="objetivo">Objetivo</h4>
 <p>Documentar un proyecto bioinformático —real o propuesto— mediante un archivo <code>README.md</code>, siguiendo buenas prácticas de organización y reproducibilidad.</p>
 </section>
 <section id="actividad-2" class="level4">
-<h4 class="anchored" data-anchor-id="actividad-2"><strong>Actividad</strong></h4>
-<ul>
-<li><p>Crear o adaptar la carpeta raíz de un proyecto bioinformático.</p></li>
-<li><p>Crear un archivo <code>README.md</code> en la raíz del proyecto.</p></li>
-<li><p>El <code>README.md</code> debe incluir brevemente:</p>
-<ul>
-<li><p>Título del proyecto</p></li>
-<li><p>Introducción</p></li>
-<li><p>Objetivos</p></li>
-<li><p>Estructura de carpetas</p></li>
-<li><p>Programas y versiones</p></li>
-</ul></li>
-</ul>
+<h4 class="anchored" data-anchor-id="actividad-2">Actividad</h4>
+<ol type="1">
+<li>Utilizar el repositorio creado previamente:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tareas_intro_bash_bioinfo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Dentro del repositorio, crear una carpeta para las tareas de la Unidad 2 llamada:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Tareas_U2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Nota: En las unidades siguientes se crearán carpetas adicionales siguiendo el mismo formato:<br>
+<code>Tareas_U3</code>, <code>Tareas_U4</code>, etc.</p>
+</blockquote>
+<ol start="3" type="1">
+<li>Dentro de la carpeta <code>Tareas_U2</code>, crear una carpeta para esta tarea que represente el proyecto bioinformático del estudiante.</li>
+</ol>
 </section>
 <section id="estructura-mínima-sugerida" class="level4">
-<h4 class="anchored" data-anchor-id="estructura-mínima-sugerida"><strong>Estructura mínima sugerida</strong></h4>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">project_root/</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data/</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> results/</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> metadata/</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> docs/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-
+<h4 class="anchored" data-anchor-id="estructura-mínima-sugerida">Estructura mínima sugerida</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">project_root/</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> README.md</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> data/</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> results/</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> metadata/</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> docs/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
+</section>
+<section id="contenido-del-readme.md-1" class="level3">
+<h3 class="anchored" data-anchor-id="contenido-del-readme.md-1">Contenido del README.md</h3>
+<p>El archivo <code>README.md</code>, ubicado en la raíz del proyecto, deberá incluir brevemente:</p>
+<ul>
+<li><p><strong>Título del proyecto</strong></p></li>
+<li><p><strong>Introducción</strong></p></li>
+<li><p><strong>Objetivos</strong></p></li>
+<li><p><strong>Estructura de carpetas</strong></p></li>
+<li><p><strong>Programas a utilizar (con versiones)</strong></p></li>
+</ul>
+
+
 </section>
 </section>
 </section>
@@ -586,13 +624,14 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -941,8 +980,8 @@ Es la acción de enviar los cambios registrados localmente al repositorio remoto
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
-        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./unidad_3.html" class="pagination-link" aria-label="Unidad 3. Servidores de Alto Rendimiento (HPC)">
+        <span class="nav-page-text"><span class="chapter-title">Unidad 3. Servidores de Alto Rendimiento (HPC)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

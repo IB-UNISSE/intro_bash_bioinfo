@@ -26,5 +26,6 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 
 -   [Unidad 1. Introducción a la Bioinformática](unidad_1.qmd)
 -   [Unidad 2. Documentación de proyectos y reproducibilidad](unidad_2.qmd)
+-   [Unidad 3. Servidores de Alto Rendimiento (HPC)](unidad_3.qmd)
 
 *(Iremos agregando el resto de unidades conforme avancemos en el semestre.)*
