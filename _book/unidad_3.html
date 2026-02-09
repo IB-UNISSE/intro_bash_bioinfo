@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -70,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-382514e105201bb02b88eea0c3516187.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6ea9a187498ee8b9044a0182b988d41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,8 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la programación para bioinformática con bash</a> 
@@ -288,6 +286,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 </section>
+<section id="definición-y-diferencia-con-una-pc-un-servidor-y-un-servidor-de-alto-rendimiento-hpc" class="level3">
+<h3 class="anchored" data-anchor-id="definición-y-diferencia-con-una-pc-un-servidor-y-un-servidor-de-alto-rendimiento-hpc">Definición y diferencia con una PC, un servidor y un servidor de alto rendimiento (HPC)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>PC (computadora personal)</th>
+<th>Servidor</th>
+<th>Servidor de alto rendimiento (HPC)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Uso principal</strong></td>
+<td>Uso individual (ofimática, análisis ligeros)</td>
+<td>Proveer servicios/recursos a varios usuarios en red</td>
+<td>Cómputo intensivo: análisis demandantes y concurrentes</td>
+</tr>
+<tr class="even">
+<td><strong>CPU</strong></td>
+<td>Enfocada a tareas generales</td>
+<td>Procesadores más robustos para cargas sostenidas</td>
+<td>Muchos núcleos/hilos y rendimiento sostenido alto</td>
+</tr>
+<tr class="odd">
+<td><strong>RAM</strong></td>
+<td>Capacidad moderada (típico 8–32 GB)</td>
+<td>Mayor capacidad (decenas a cientos de GB)</td>
+<td>Muy alta (cientos de GB o más, según infraestructura)</td>
+</tr>
+<tr class="even">
+<td><strong>Estabilidad de memoria</strong></td>
+<td>RAM estándar</td>
+<td>Frecuente uso de <strong>ECC</strong> (corrección de errores)</td>
+<td>Común uso de ECC para cargas largas y críticas</td>
+</tr>
+<tr class="odd">
+<td><strong>Almacenamiento</strong></td>
+<td>1–2 discos (SSD/HDD/NVMe)</td>
+<td>Mayor capacidad y opciones de arreglos</td>
+<td>Alto desempeño y/o almacenamiento compartido para muchos usuarios</td>
+</tr>
+<tr class="even">
+<td><strong>Arreglos de discos</strong></td>
+<td>Poco común</td>
+<td><strong>RAID</strong> frecuente (redundancia / rendimiento)</td>
+<td>RAID y soluciones de alto I/O (según necesidad)</td>
+</tr>
+<tr class="odd">
+<td><strong>Disponibilidad</strong></td>
+<td>Se apaga con frecuencia</td>
+<td>Diseñado para operar <strong>24/7</strong></td>
+<td>Operación <strong>24/7</strong> con carga sostenida y múltiples usuarios</td>
+</tr>
+<tr class="even">
+<td><strong>Redundancia</strong></td>
+<td>Mínima</td>
+<td>Puede tener fuentes redundantes, ventilación robusta</td>
+<td>Más redundancia y monitoreo por criticidad del servicio</td>
+</tr>
+<tr class="odd">
+<td><strong>Administración</strong></td>
+<td>Local, GUI</td>
+<td>Remota (SSH), control de usuarios</td>
+<td>Remota, control de usuarios y ejecución concurrente</td>
+</tr>
+<tr class="even">
+<td><strong>Seguridad</strong></td>
+<td>Básica para uso personal</td>
+<td>Alta: acceso restringido, políticas, logs</td>
+<td>Alta: accesos, políticas, monitoreo, buenas prácticas</td>
+</tr>
+</tbody>
+</table>
+</section>
 </section>
 <section id="cpu-vs-gpu-vs-tpu-vs-npu" class="level2">
 <h2 class="anchored" data-anchor-id="cpu-vs-gpu-vs-tpu-vs-npu"><strong>CPU vs GPU vs TPU vs NPU</strong></h2>
@@ -389,13 +468,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Nota de seguridad:</strong> si se excede el umbral de intentos fallidos, el sistema puede <strong>bloquear temporalmente tu IP</strong>.</p>
 </blockquote>
 <p>Ejemplos de conexión:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> usuario@IP <span class="at">-p</span> PUERTO</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> usuario@IP <span class="at">-p</span> PUERTO</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ejemplo:</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> jmendez@10.1.1.23 <span class="at">-p</span> 22</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># si es puerto 22, puede omitirse:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> jmendez@10.1.1.23</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> jmendez@10.1.1.23</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/unidad_3/pic9.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
@@ -407,15 +486,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="transferencia-de-archivos-scp">Transferencia de archivos (SCP)</h2>
 <p><strong>SCP</strong> permite transferir archivos entre tu computadora y el servidor <strong>usando SSH</strong>.</p>
 <p><strong>Subir (local → servidor):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> archivo.extension usuario@ip:/directorio/remoto/</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> archivo.extension usuario@ip:/directorio/remoto/</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ejemplo:</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> constancias.zip jmendez@10.1.1.23:/home/jmendez/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> constancias.zip jmendez@10.1.1.23:/home/jmendez/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Bajar (servidor → local):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> usuario@ip:/ruta/remota/archivo.zip /ruta/local/</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> usuario@ip:/ruta/remota/archivo.zip /ruta/local/</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ejemplo (Windows):</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> jmendez@10.1.1.23:/home/jmendez/constancias.zip c:<span class="dt">\u</span>suarios<span class="dt">\M</span>auricio<span class="dt">\M</span>isDocumentos<span class="dt">\</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scp</span> jmendez@10.1.1.23:/home/jmendez/constancias.zip c:<span class="dt">\u</span>suarios<span class="dt">\M</span>auricio<span class="dt">\M</span>isDocumentos<span class="dt">\</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Notas importantes</strong></p>
 <ul>
 <li><p>Asegura <strong>espacio suficiente</strong> en el destino.</p></li>
@@ -553,14 +632,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

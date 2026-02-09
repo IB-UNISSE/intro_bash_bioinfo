@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Unidad 4: Fundamentos de Linux – Introducción a la programación para bioinformática con bash</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./unidad_3.html" rel="prev">
+<link href="./images/baner_2.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d6ea9a187498ee8b9044a0182b988d41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="description" content="Introducción a la programación para bioinformática con bash">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Unidad 4: Fundamentos de Linux – Introducción a la programación para bioinformática con bash">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ib-unisse.github.io/intro_bash_bioinfo/">
+
+
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unidad_4.html"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introducción a la programación para bioinformática con bash</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/IB-UNISSE/intro_bash_bioinfo" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a la programación para bioinformática con bash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 1. Introducción a la Bioinformática</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 3. Servidores de Alto Rendimiento (HPC)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_4.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliografía complementaria</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#linux-y-sus-distribuciones-deb-y-rpm" id="toc-linux-y-sus-distribuciones-deb-y-rpm" class="nav-link active" data-scroll-target="#linux-y-sus-distribuciones-deb-y-rpm">Linux y sus distribuciones (DEB y RPM)</a></li>
+  <li><a href="#variables-de-entorno" id="toc-variables-de-entorno" class="nav-link" data-scroll-target="#variables-de-entorno">Variables de entorno</a></li>
+  <li><a href="#sistema-de-archivos-y-estructura-de-directorios-en-linux" id="toc-sistema-de-archivos-y-estructura-de-directorios-en-linux" class="nav-link" data-scroll-target="#sistema-de-archivos-y-estructura-de-directorios-en-linux">Sistema de archivos y estructura de directorios en Linux</a></li>
+  <li><a href="#uso-de-dispositivos-usb-detección-montaje-expulsión" id="toc-uso-de-dispositivos-usb-detección-montaje-expulsión" class="nav-link" data-scroll-target="#uso-de-dispositivos-usb-detección-montaje-expulsión">Uso de dispositivos USB (detección → montaje → expulsión)</a></li>
+  <li><a href="#permisos-y-grupos" id="toc-permisos-y-grupos" class="nav-link" data-scroll-target="#permisos-y-grupos">Permisos y grupos</a></li>
+  <li><a href="#navegación-y-creación-de-archivos" id="toc-navegación-y-creación-de-archivos" class="nav-link" data-scroll-target="#navegación-y-creación-de-archivos">Navegación y creación de archivos</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="linux-y-sus-distribuciones-deb-y-rpm" class="level2">
+<h2 class="anchored" data-anchor-id="linux-y-sus-distribuciones-deb-y-rpm">Linux y sus distribuciones (DEB y RPM)</h2>
+<p>Linux no es un solo programa, sino un <strong>núcleo (kernel)</strong> sobre el que se construyen distintos “sabores” llamados <strong>distribuciones</strong>.<br>
+Una forma práctica de agrupar distribuciones es por <strong>cómo instalan software</strong> (paquetes):</p>
+<ul>
+<li><strong>Familia DEB (Debian/Ubuntu)</strong>: usa paquetes <code>.deb</code>. Suele ser la más “amigable” y es muy común en bioinformática.</li>
+<li><strong>Familia RPM (Red Hat/Fedora/CentOS/Rocky)</strong>: usa paquetes <code>.rpm</code>. Es común en servidores, clusters y ambientes institucionales.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/unidad_4/pic1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="700"></p>
+</figure>
+</div>
+<section id="distribuciones-base-debian-.deb" class="level3">
+<h3 class="anchored" data-anchor-id="distribuciones-base-debian-.deb">Distribuciones base Debian (.deb)</h3>
+<ul>
+<li><a href="https://www.debian.org"><strong>Debian</strong></a>: base original; muy estable y comunitaria.<br>
+</li>
+<li><a href="https://ubuntu.com"><strong>Ubuntu</strong></a>: muy popular; ideal para principiantes y con gran soporte de software.<br>
+</li>
+<li><a href="https://www.linuxmint.com"><strong>Linux Mint</strong></a>: escritorio clásico; familiar si vienes de Windows.<br>
+</li>
+<li><a href="https://pop.system76.com"><strong>Pop!_OS</strong></a>: orientada a flujos de trabajo científicos/desarrollo y NVIDIA.<br>
+</li>
+<li><a href="https://www.kali.org"><strong>Kali Linux</strong></a>: enfocada en seguridad informática.<br>
+</li>
+<li><a href="https://mxlinux.org"><strong>MX Linux</strong></a>: ligera; útil en equipos con pocos recursos.<br>
+</li>
+<li><a href="https://tails.net"><strong>Tails</strong></a>: privacidad y anonimato como prioridad.</li>
+</ul>
+</section>
+<section id="distribuciones-base-red-hat-.rpm" class="level3">
+<h3 class="anchored" data-anchor-id="distribuciones-base-red-hat-.rpm">Distribuciones base Red Hat (.rpm)</h3>
+<ul>
+<li><a href="https://fedoraproject.org"><strong>Fedora</strong></a>: vanguardista; suele incluir versiones recientes de software.<br>
+</li>
+<li><a href="https://www.redhat.com"><strong>RHEL (Red Hat)</strong></a>: estándar empresarial; robusta con soporte corporativo.<br>
+</li>
+<li><a href="https://rockylinux.org"><strong>Rocky Linux</strong></a>: sucesor comunitario de CentOS; enfocada en servidores/clusters.<br>
+</li>
+<li><a href="https://almalinux.org"><strong>AlmaLinux</strong></a>: clon comunitario de RHEL; estable.<br>
+</li>
+<li><a href="https://www.opensuse.org"><strong>openSUSE</strong></a>: destaca por YaST (panel de control).<br>
+</li>
+<li><a href="https://www.oracle.com/linux/"><strong>Oracle Linux</strong></a>: orientada a centros de datos y bases de datos.<br>
+</li>
+<li><a href="https://www.mageia.org"><strong>Mageia</strong></a>: opción independiente enfocada en usuario general.</li>
+</ul>
+</section>
+</section>
+<section id="variables-de-entorno" class="level2">
+<h2 class="anchored" data-anchor-id="variables-de-entorno">Variables de entorno</h2>
+<p>Las <strong>variables de entorno</strong> son valores dinámicos que informan al sistema operativo y a los programas sobre cómo deben comportarse. Imagínalas como una pequeña libreta de direcciones o configuraciones que Linux consulta constantemente para saber dónde están las cosas.</p>
+<section id="para-qué-sirven" class="level3">
+<h3 class="anchored" data-anchor-id="para-qué-sirven">1. ¿Para qué sirven?</h3>
+<p>En lugar de que cada programa tenga que adivinar dónde están tus archivos o qué idioma usas, el sistema define variables globales. Por ejemplo:</p>
+</section>
+<section id="variables-de-identificación-y-usuario" class="level3">
+<h3 class="anchored" data-anchor-id="variables-de-identificación-y-usuario">Variables de Identificación y Usuario</h3>
+<ul>
+<li><p><strong><code>$USER</code></strong>: Muestra el nombre del usuario que ha iniciado la sesión actual.</p></li>
+<li><p><strong><code>$UID</code></strong>: El número de identificación único del usuario (el del usuario raíz o root siempre es 0).</p></li>
+<li><p><strong><code>$HOME</code></strong>: La ruta completa al directorio personal del usuario (donde guardas tus documentos y descargas).</p></li>
+<li><p><strong><code>$SHELL</code></strong>: Indica qué intérprete de comandos estás usando (usualmente <code>/bin/bash</code> o <code>/bin/zsh</code>).</p></li>
+<li><p><strong><code>$LOGNAME</code></strong>: Similar a <code>$USER</code>, es el nombre utilizado durante el proceso de login.</p></li>
+</ul>
+</section>
+<section id="variables-de-navegación-y-ubicación" class="level3">
+<h3 class="anchored" data-anchor-id="variables-de-navegación-y-ubicación">Variables de Navegación y Ubicación</h3>
+<ul>
+<li><p><strong><code>$PATH</code></strong>: La variable más crítica. Contiene una lista de carpetas separadas por dos puntos (<code>:</code>) donde el sistema busca los programas cuando escribes un comando.</p></li>
+<li><p><strong><code>$PWD</code></strong>: Guarda la ruta del directorio donde te encuentras parado en este momento (Print Working Directory).</p></li>
+<li><p><strong><code>$OLDPWD</code></strong>: Guarda la ruta del directorio en el que estabas justo antes del actual (permite regresar con <code>cd -</code>).</p></li>
+<li><p><strong><code>$HOSTNAME</code></strong>: El nombre de la computadora en la red.</p></li>
+</ul>
+</section>
+<section id="variables-de-configuración-del-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="variables-de-configuración-del-sistema">Variables de Configuración del Sistema</h3>
+<ul>
+<li><p><strong><code>LANG</code></strong>: Define el idioma, la región y la codificación de caracteres del sistema (ej. <code>es_ES.UTF-8</code>).</p></li>
+<li><p><strong><code>$EDITOR</code></strong>: Define qué programa se abre por defecto cuando el sistema necesita que edites un texto (ej. <code>nano</code> o <code>vim</code>).</p></li>
+<li><p><strong><code>$TERM</code></strong>: Informa a los programas qué tipo de terminal estás emulando para saber cómo mostrar colores y caracteres.</p></li>
+<li><p><strong><code>$DISPLAY</code></strong>: Se utiliza en entornos gráficos para saber en qué pantalla deben aparecer las ventanas de las aplicaciones.</p></li>
+</ul>
+</section>
+<section id="variables-de-sesión-y-temporalidad" class="level3">
+<h3 class="anchored" data-anchor-id="variables-de-sesión-y-temporalidad">Variables de Sesión y Temporalidad</h3>
+<ul>
+<li><p><strong><code>$TMPDIR</code></strong>: Indica la carpeta donde las aplicaciones deben guardar sus archivos temporales (normalmente <code>/tmp</code>).</p></li>
+<li><p><strong><code>$MAIL</code></strong>: La ubicación donde el sistema guarda los correos electrónicos internos del usuario.</p></li>
+<li><p><strong><code>$HISTSIZE</code></strong>: Define cuántos comandos puede recordar tu terminal en el historial (los que ves al presionar la flecha arriba)</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>TIP1:</strong> Si instalas programas de bioinformática manualmente (descargando archivos binarios), casi siempre tendrás que modificar la variable <strong><code>$PATH</code></strong> para que el sistema “encuentre” el programa sin que tengas que escribir la ruta completa cada vez.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>TIP2:</strong> Las variables de ambiente también se utilizan para Windows y Mac OS, sólo cambia la sintaxis.</p>
+</blockquote>
+</section>
+<section id="comandos-de-bash-para-gestionar-variables" class="level3">
+<h3 class="anchored" data-anchor-id="comandos-de-bash-para-gestionar-variables">Comandos de Bash para gestionar variables</h3>
+<ul>
+<li><strong>Listar todas las variables:</strong> el comando lista las variables que el sistema tiene configuradas en este momento.</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printenv</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Mostrar el valor de una variable:</strong> Usa <code>echo $NOMBRE_VARIABLE</code>. Es fundamental incluir el símbolo $ para que Bash entienda que quieres ver el contenido y no solo imprimir la palabra.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HOME</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Asignar un valor (Variable Local):</strong> Esta variable solo funcionará en la terminal actual.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">NOMBRE</span><span class="op">=</span>valor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong>Asignar un valor (Variable de Entorno):</strong> Al usar <strong><code>export</code></strong>, la variable estará disponible para cualquier programa o script que lances desde esa terminal.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">NOMBRE</span><span class="op">=</span>valor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo">Ejemplo:</h3>
+<ol type="1">
+<li><strong>Crear un atajo para tu carpeta de datos:</strong> En lugar de escribir toda la ruta cada vez, puedes guardarla en una variable:</li>
+</ol>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">RAW_DATA</span><span class="op">=</span>/home/mauricio/investigacion/proyectos/2026/muestras_suelo/fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Usar la variable para entrar a esa carpeta rápidamente</strong>:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RAW_DATA</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><strong>Automatizar con un comando de análisis:</strong> Si estás usando una herramienta para contar lecturas, puedes usar la variable en el comando:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">count_reads.sh</span> <span class="va">$RAW_DATA</span>/muestra01.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="sistema-de-archivos-y-estructura-de-directorios-en-linux" class="level2">
+<h2 class="anchored" data-anchor-id="sistema-de-archivos-y-estructura-de-directorios-en-linux">Sistema de archivos y estructura de directorios en Linux</h2>
+<p>En Linux no existen letras de unidad (C:, D:). Todo cuelga de una raíz única:</p>
+<ul>
+<li><code>/</code> (<strong>raíz</strong>): el origen de todo el árbol</li>
+</ul>
+<section id="jerarquía-estándar-de-directorios" class="level3">
+<h3 class="anchored" data-anchor-id="jerarquía-estándar-de-directorios">Jerarquía estándar de directorios</h3>
+<ul>
+<li><p><code>/bin</code>: comandos básicos del sistema (ls, cp, mkdir…)</p></li>
+<li><p><code>/boot</code>: archivos de arranque (kernel, bootloader)</p></li>
+<li><p><code>/dev</code>: “archivos” que representan dispositivos (discos, USB)</p></li>
+<li><p><code>/etc</code>: configuraciones del sistema y programas</p></li>
+<li><p><code>/home</code>: carpetas personales de usuarios</p></li>
+<li><p><code>/lib</code>: librerías esenciales del sistema</p></li>
+<li><p><code>/media</code> y <code>/mnt</code>: puntos típicos de montaje (USB/discos externos)</p></li>
+<li><p><code>/opt</code>: software de terceros “grande” (común en cómputo científico)</p></li>
+<li><p><code>/root</code>: carpeta personal del superusuario (no confundir con <code>/</code>)</p></li>
+<li><p><code>/tmp</code>: temporales (a menudo se limpian al reiniciar)</p></li>
+<li><p><code>/usr</code>: programas/librerías/documentación de usuario</p></li>
+<li><p><code>/var</code>: archivos variables (logs, colas, BD, etc.)</p></li>
+</ul>
+</section>
+<section id="conceptos-clave" class="level3">
+<h3 class="anchored" data-anchor-id="conceptos-clave">Conceptos clave</h3>
+<ul>
+<li><p><strong>Ruta absoluta</strong>: inicia con <code>/</code></p>
+<p>Ejemplo: <code>/home/mauricio/tesis/secuencias.fasta</code></p></li>
+<li><p><strong>Ruta relativa</strong>: depende de dónde estás parado</p>
+<p>Ejemplo: <code>tesis/secuencias.fasta</code></p></li>
+<li><p><code>.</code> directorio actual</p></li>
+<li><p><code>..</code> directorio superior</p></li>
+<li><p><code>~</code> tu carpeta personal (ej. <code>/home/tu_usuario</code> o <code>$HOME</code>)</p></li>
+</ul>
+</section>
+<section id="ejemplo-práctico" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-práctico">Ejemplo práctico</h3>
+<p>Estás en tu terminal y quieres moverte a tu carpeta de trabajo:</p>
+<ol type="1">
+<li><p><strong>Saber dónde estás:</strong> <code>pwd</code> (te dirá algo como <code>/home/mauricio</code>).</p></li>
+<li><p><strong>Ver qué hay en la raíz:</strong> <code>ls /</code> (verás todas las carpetas que listamos arriba).</p></li>
+<li><p><strong>Ir a una carpeta de sistema:</strong> <code>cd /etc</code> (aquí podrías ver configuraciones).</p></li>
+<li><p><strong>Regresar a “casa” rápido:</strong> <code>cd ~</code> (vuelves a tu <code>$HOME</code>).</p></li>
+</ol>
+</section>
+</section>
+<section id="uso-de-dispositivos-usb-detección-montaje-expulsión" class="level2">
+<h2 class="anchored" data-anchor-id="uso-de-dispositivos-usb-detección-montaje-expulsión">Uso de dispositivos USB (detección → montaje → expulsión)</h2>
+<p>En Linux un USB se integra como parte del sistema de archivos mediante <strong>montaje</strong>.</p>
+<section id="detección" class="level4">
+<h4 class="anchored" data-anchor-id="detección">1) Detección</h4>
+<p>Este comando te muestra una lista de tus discos. Busca uno que coincida con el tamaño de tu USB (por ejemplo, 16G). Verás algo como sdb (el disco físico) y sdb1 (la partición de datos).</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lsblk</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="crear-punto-de-montaje" class="level4">
+<h4 class="anchored" data-anchor-id="crear-punto-de-montaje">2) Crear punto de montaje</h4>
+<p>Para poder ver los archivos del USB, necesitas una carpeta vacía donde “colgar” ese contenido.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /mnt/mi_usb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="montar" class="level4">
+<h4 class="anchored" data-anchor-id="montar">3) Montar</h4>
+<p>Ahora vinculamos el dispositivo físico con la carpeta que creamos. A partir de este momento, todo lo que guardes en <code>/mnt/mi_usb</code> se estará guardando realmente en el pendrive.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># montar</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mount /dev/sdb1 /mnt/mi_usb</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar a ver tus archivos</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /mnt/mi_usb</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar los archivos</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="desmontar-expulsión-segura" class="level4">
+<h4 class="anchored" data-anchor-id="desmontar-expulsión-segura">4) Desmontar (expulsión segura)</h4>
+<p>En Linux es <strong>crítico</strong> desmontar el dispositivo antes de desconectarlo físicamente. Si no lo haces, es muy probable que los datos se corrompan, ya que Linux a veces espera un momento antes de escribir los archivos pendientes.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> umount /mnt/mi_usb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="resumen" class="level4">
+<h4 class="anchored" data-anchor-id="resumen">Resumen</h4>
+<ul>
+<li><p>Identificar: <code>lsblk</code> o <code>fdisk -l</code></p></li>
+<li><p>Conectar: <code>mount [dispositivo] [carpeta]</code></p></li>
+<li><p>Desconectar: <code>umount [carpeta o dispositivo]</code></p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Tip:</strong> Si tu USB contiene archivos pesados de secuenciación, el comando umount puede tardar unos segundos en terminar. No retires el USB hasta que la terminal te devuelva el control (cuando aparezca de nuevo el cursor para escribir), eso significa que todos los datos se han terminado de copiar correctamente.</p>
+</blockquote>
+</section>
+</section>
+<section id="permisos-y-grupos" class="level2">
+<h2 class="anchored" data-anchor-id="permisos-y-grupos">Permisos y grupos</h2>
+<p>En Linux, la seguridad se basa en una regla simple: <strong>quién</strong> puede hacer <strong>qué</strong> con un archivo o carpeta. Como biólogo, esto es fundamental para proteger tus datos de secuenciación o scripts de análisis para que no sean modificados o borrados por error por otros usuarios.</p>
+<section id="las-tres-figuras-quién" class="level3">
+<h3 class="anchored" data-anchor-id="las-tres-figuras-quién">1. Las Tres Figuras (¿Quién?)</h3>
+<p>Cada archivo o directorio tiene tres niveles de propiedad:</p>
+<ul>
+<li><p><strong>Usuario (u):</strong> Es el dueño del archivo (normalmente quien lo creó).</p></li>
+<li><p><strong>Grupo (g):</strong> Un conjunto de usuarios (por ejemplo, el “Laboratorio_A”). Todos los miembros del grupo comparten los mismos permisos sobre ese archivo.</p></li>
+<li><p><strong>Otros (o):</strong> Cualquier otra persona que tenga acceso al sistema pero no sea el dueño ni pertenezca al grupo.</p></li>
+</ul>
+</section>
+<section id="los-tres-permisos-qué" class="level3">
+<h3 class="anchored" data-anchor-id="los-tres-permisos-qué">2. Los Tres Permisos (¿Qué?)</h3>
+<p>Existen tres acciones básicas que se pueden permitir o denegar:</p>
+<ul>
+<li><p><strong>Lectura (r - Read):</strong> Permite ver el contenido del archivo o listar los archivos de una carpeta.</p></li>
+<li><p><strong>Escritura (w - Write):</strong> Permite modificar el contenido del archivo o crear/borrar archivos dentro de una carpeta.</p></li>
+<li><p><strong>Ejecución (x - Execute):</strong> Permite correr un archivo como un programa o entrar en una carpeta (hacer cd).</p></li>
+</ul>
+</section>
+<section id="cómo-leer-los-permisos" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-leer-los-permisos">3. Cómo leer los permisos</h3>
+<p>Si ejecutas el comando <code>ls -l</code> en tu terminal, verás una cadena de 10 caracteres al principio de cada línea, como esta:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr-xr--</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se desglosa así:</p>
+<ul>
+<li><p><strong>El primer carácter:</strong> Indica el tipo ( - es un archivo, d es un directorio).</p></li>
+<li><p><strong>Los siguientes tres (rwx):</strong> Permisos del <strong>Dueño</strong> (puede leer, escribir y ejecutar).</p></li>
+<li><p><strong>Los tres del medio (r-x):</strong> Permisos del <strong>Grupo</strong> (puede leer y ejecutar, pero no modificar).</p></li>
+<li><p><strong>Los últimos tres (r–):</strong> Permisos de <strong>Otros</strong> (solo pueden leer).</p></li>
+</ul>
+</section>
+<section id="comandos-para-cambiar-permisos-y-dueños" class="level3">
+<h3 class="anchored" data-anchor-id="comandos-para-cambiar-permisos-y-dueños">4. Comandos para cambiar permisos y dueños</h3>
+<p>Para gestionar esto en tu laboratorio digital, usarás principalmente estos tres comandos:</p>
+<ul>
+<li><strong><code>chmod</code> (Change Mode):</strong> Cambia los permisos de un archivo.</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dar permiso de ejecución al dueño</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x script_analisis.sh</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># numérico similar al anterior</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 archivo</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (7=Dueño total, 5=Grupo lectura/ejecución, 5=Otros lectura/ejecución).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>chown</code> (Change Owner):</strong> Cambia quién es el dueño del archivo.</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown mauricio secuencia.fasta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>chgrp</code> (Change Group):</strong> Cambia el grupo al que pertenece el archivo.</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chgrp</span> bioinfo_team resultados/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-de-uso-real-en-el-laboratorio" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-de-uso-real-en-el-laboratorio">Ejemplo de uso real en el laboratorio</h3>
+<p>Imagina que tienes una carpeta con resultados de un experimento que quieres que tus colegas vean, pero que <strong>nadie</strong> pueda borrar o modificar excepto tú.</p>
+<ol type="1">
+<li>Te aseguras de ser el dueño:</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> mauricio resultados_pcr/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li>Asignas el grupo del laboratorio:</li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chgrp</span> investigadores resultados_pcr/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Ajusta los permisos:</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 750 resultados_pcr/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><strong>7 (rwx):</strong> Tú haces todo.</p></li>
+<li><p><strong>5 (r-x):</strong> Tu grupo puede entrar y ver los archivos.</p></li>
+<li><p><strong>0 (—):</strong> Nadie más en el servidor puede siquiera saber qué hay dentro.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Tip de seguridad :</strong>Si intentas usar un comando y recibes el error “Permission denied”, probablemente necesites usar sudo (para actuar como administrador) o pedirle al dueño del archivo que te dé permisos de lectura o ejecución.</p>
+</blockquote>
+</section>
+</section>
+<section id="navegación-y-creación-de-archivos" class="level2">
+<h2 class="anchored" data-anchor-id="navegación-y-creación-de-archivos">Navegación y creación de archivos</h2>
+<section id="navegación-moverte-por-el-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="navegación-moverte-por-el-sistema">1. Navegación (Moverte por el sistema)</h3>
+<ul>
+<li><strong><code>ls</code> (List):</strong> Sirve para ver qué hay dentro de una carpeta.</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># muestra detalles como tamaño y fecha</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> </span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># muestra archivos ocultos</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">la</span> <span class="at">-a</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>cd</code> (Change Directory):</strong> Es el comando para “entrar” a una carpeta.</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># entrar</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documentos/ADN </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subir un nivel (salir de la carpeta).</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="manipulación-crear-y-destruir" class="level3">
+<h3 class="anchored" data-anchor-id="manipulación-crear-y-destruir">2. Manipulación (Crear y destruir)</h3>
+<ul>
+<li><strong><code>mkdir</code> (Make Directory):</strong> Crea una carpeta nueva.</li>
+</ul>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Experimento_2026</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>rm</code> (Remove):</strong> Borra archivos o carpetas. <strong>¡Cuidado!</strong> En Linux no hay “Papelera de reciclaje”; lo que borras aquí desaparece para siempre.</li>
+</ul>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># eliminar archivo</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> archivo.txt</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># eliminar carpeta</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> carpeta/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inspección-y-edición" class="level3">
+<h3 class="anchored" data-anchor-id="inspección-y-edición">3. Inspección y Edición</h3>
+<ul>
+<li><strong><code>file</code>:</strong> Te dice qué tipo de archivo es uno realmente, sin importar su extensión. Muy útil si descargas datos y no sabes si son texto plano o una imagen.</li>
+</ul>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> muestra_desconocida</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><strong><code>nano</code>:</strong> Es un editor de texto muy sencillo que vive dentro de la terminal. Es ideal para escribir protocolos rápidos o editar scripts de Python/R.</li>
+</ul>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mis_notas.txt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Para salir: Ctrl+O para guardar y Ctrl+X para cerrar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="compresión-empaquetar-y-enviar" class="level3">
+<h3 class="anchored" data-anchor-id="compresión-empaquetar-y-enviar">4. Compresión (Empaquetar y enviar)</h3>
+<ul>
+<li><strong><code>zip</code>:</strong> Sirve para agrupar muchos archivos en uno solo y reducir su tamaño, facilitando enviarlos por correo o subirlos a la nube.</li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># la -r significa "recursivo", es decir, incluye todo lo que hay dentro de la carpeta</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">zip</span> <span class="at">-r</span> resultados_finales.zip carpeta_de_resultados/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-de-flujo-de-trabajo-real" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-de-flujo-de-trabajo-real">Ejemplo de flujo de trabajo real</h3>
+<p>Imagina que acabas de recibir resultados de una secuenciación:</p>
+<ol type="1">
+<li><strong>Revisas qué llegó:</strong></li>
+</ol>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="2" type="1">
+<li><strong>Identificar el archivo:</strong></li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> datos_crudos</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># te dirá si es un archivo comprimido o texto</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><strong>Creas una carpeta de trabajo:</strong></li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Analisis_01</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="4" type="1">
+<li><strong>Escribes una nota rápida del experimento:</strong></li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> notas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li><strong>Al terminar, empaquetas todo para enviarlo al investigador principal:</strong></li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> entrega_enero.zip Analisis_01/ notas.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p><strong>Tip:</strong> Si por error intentas borrar una carpeta con rm y te da error, recuerda que debes usar <code>rm -r</code> (la <code>r</code> es de recursivo). Pero antes de dar Enter, asegúrate dos veces de que estás en la carpeta correcta; la terminal no te preguntará “¿Estás seguro?”.</p>
+</blockquote>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./unidad_3.html" class="pagination-link" aria-label="Unidad 3. Servidores de Alto Rendimiento (HPC)">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 3. Servidores de Alto Rendimiento (HPC)</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
+        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

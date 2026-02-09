@@ -54,6 +54,21 @@ title: "Unidad 3. Servidores de Alto Rendimiento (HPC)"
 
 ![](images/unidad_3/pic4.png){fig-align="center" width="650"}
 
+### Definición y diferencia con una PC, un servidor y un servidor de alto rendimiento (HPC)
+
+| Característica | PC (computadora personal) | Servidor | Servidor de alto rendimiento (HPC) |
+|----|----|----|----|
+| **Uso principal** | Uso individual (ofimática, análisis ligeros) | Proveer servicios/recursos a varios usuarios en red | Cómputo intensivo: análisis demandantes y concurrentes |
+| **CPU** | Enfocada a tareas generales | Procesadores más robustos para cargas sostenidas | Muchos núcleos/hilos y rendimiento sostenido alto |
+| **RAM** | Capacidad moderada (típico 8–32 GB) | Mayor capacidad (decenas a cientos de GB) | Muy alta (cientos de GB o más, según infraestructura) |
+| **Estabilidad de memoria** | RAM estándar | Frecuente uso de **ECC** (corrección de errores) | Común uso de ECC para cargas largas y críticas |
+| **Almacenamiento** | 1–2 discos (SSD/HDD/NVMe) | Mayor capacidad y opciones de arreglos | Alto desempeño y/o almacenamiento compartido para muchos usuarios |
+| **Arreglos de discos** | Poco común | **RAID** frecuente (redundancia / rendimiento) | RAID y soluciones de alto I/O (según necesidad) |
+| **Disponibilidad** | Se apaga con frecuencia | Diseñado para operar **24/7** | Operación **24/7** con carga sostenida y múltiples usuarios |
+| **Redundancia** | Mínima | Puede tener fuentes redundantes, ventilación robusta | Más redundancia y monitoreo por criticidad del servicio |
+| **Administración** | Local, GUI | Remota (SSH), control de usuarios | Remota, control de usuarios y ejecución concurrente |
+| **Seguridad** | Básica para uso personal | Alta: acceso restringido, políticas, logs | Alta: accesos, políticas, monitoreo, buenas prácticas |
+
 ## **CPU vs GPU vs TPU vs NPU**
 
 ![](images/unidad_3/pic5.png){fig-align="center" width="600"}
