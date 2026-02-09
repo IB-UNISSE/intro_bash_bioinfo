@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./unidad_4.html" rel="next">
 <link href="./unidad_2.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -182,6 +182,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./unidad_4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliografía complementaria</span></a>
   </div>
 </li>
@@ -287,6 +292,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/unidad_3/pic4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
 </figure>
 </div>
+</section>
+<section id="definición-y-diferencia-con-una-pc-un-servidor-y-un-servidor-de-alto-rendimiento-hpc" class="level3">
+<h3 class="anchored" data-anchor-id="definición-y-diferencia-con-una-pc-un-servidor-y-un-servidor-de-alto-rendimiento-hpc">Definición y diferencia con una PC, un servidor y un servidor de alto rendimiento (HPC)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>PC (computadora personal)</th>
+<th>Servidor</th>
+<th>Servidor de alto rendimiento (HPC)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Uso principal</strong></td>
+<td>Uso individual (ofimática, análisis ligeros)</td>
+<td>Proveer servicios/recursos a varios usuarios en red</td>
+<td>Cómputo intensivo: análisis demandantes y concurrentes</td>
+</tr>
+<tr class="even">
+<td><strong>CPU</strong></td>
+<td>Enfocada a tareas generales</td>
+<td>Procesadores más robustos para cargas sostenidas</td>
+<td>Muchos núcleos/hilos y rendimiento sostenido alto</td>
+</tr>
+<tr class="odd">
+<td><strong>RAM</strong></td>
+<td>Capacidad moderada (típico 8–32 GB)</td>
+<td>Mayor capacidad (decenas a cientos de GB)</td>
+<td>Muy alta (cientos de GB o más, según infraestructura)</td>
+</tr>
+<tr class="even">
+<td><strong>Estabilidad de memoria</strong></td>
+<td>RAM estándar</td>
+<td>Frecuente uso de <strong>ECC</strong> (corrección de errores)</td>
+<td>Común uso de ECC para cargas largas y críticas</td>
+</tr>
+<tr class="odd">
+<td><strong>Almacenamiento</strong></td>
+<td>1–2 discos (SSD/HDD/NVMe)</td>
+<td>Mayor capacidad y opciones de arreglos</td>
+<td>Alto desempeño y/o almacenamiento compartido para muchos usuarios</td>
+</tr>
+<tr class="even">
+<td><strong>Arreglos de discos</strong></td>
+<td>Poco común</td>
+<td><strong>RAID</strong> frecuente (redundancia / rendimiento)</td>
+<td>RAID y soluciones de alto I/O (según necesidad)</td>
+</tr>
+<tr class="odd">
+<td><strong>Disponibilidad</strong></td>
+<td>Se apaga con frecuencia</td>
+<td>Diseñado para operar <strong>24/7</strong></td>
+<td>Operación <strong>24/7</strong> con carga sostenida y múltiples usuarios</td>
+</tr>
+<tr class="even">
+<td><strong>Redundancia</strong></td>
+<td>Mínima</td>
+<td>Puede tener fuentes redundantes, ventilación robusta</td>
+<td>Más redundancia y monitoreo por criticidad del servicio</td>
+</tr>
+<tr class="odd">
+<td><strong>Administración</strong></td>
+<td>Local, GUI</td>
+<td>Remota (SSH), control de usuarios</td>
+<td>Remota, control de usuarios y ejecución concurrente</td>
+</tr>
+<tr class="even">
+<td><strong>Seguridad</strong></td>
+<td>Básica para uso personal</td>
+<td>Alta: acceso restringido, políticas, logs</td>
+<td>Alta: accesos, políticas, monitoreo, buenas prácticas</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="cpu-vs-gpu-vs-tpu-vs-npu" class="level2">
@@ -909,8 +995,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
-        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./unidad_4.html" class="pagination-link" aria-label="Unidad 4: Fundamentos de Linux">
+        <span class="nav-page-text"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
