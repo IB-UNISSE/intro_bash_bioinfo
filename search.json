@@ -250,13 +250,73 @@
     ]
   },
   {
+    "objectID": "nota_vscode_git.html",
+    "href": "nota_vscode_git.html",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "",
+    "text": "Git en terminal (uso personal, sin subir a GitHub)\nEn esta sección usaremos Git solo de manera local para llevar control de versiones de un proyecto en un servidor. No es necesario crear un repositorio en GitHub ni compartirlo: puede quedarse solo para ti.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#git-en-terminal-uso-personal-sin-subir-a-github",
+    "href": "nota_vscode_git.html#git-en-terminal-uso-personal-sin-subir-a-github",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "",
+    "text": "1) Crear una carpeta de proyecto\nmkdir mi_proyecto\ncd mi_proyecto\n\n\n2) Inicializar Git en la carpeta\ngit init\n\n\n3) Revisar el estado\ngit status\n\n\n4) Crear un archivo README.md\ntouch README.md\n\n\n5) Revisar el estado\ngit status\n\n\n6) Agregar cambios (staging)\nAgregar todo lo nuevo/modificado:\ngit add .\nVerifica de nuevo:\ngit status\n\n\n7) Guardar un punto del historial (commit)\ngit commit -m \"Primer commit: inicio del proyecto\"\n\n\n8) Confirmar el historial\ngit log --oneline\n\nNota: Puedes repetir este ciclo tantas veces como quieras:\neditar → git add → git commit\nEsto te permite regresar a versiones anteriores y documentar tu avance, aunque el proyecto nunca se publique.\n\n\n\n9) Agregar contenido al README.md\necho \"# Hola Mundo\" &gt; README.md\n\n\n10) Revisar qué cambió (opcional)\ngit status\ngit diff\n\n\n11) Guardar el cambio en Git (segundo commit)\ngit add README.md\ngit commit -m \"Agrego título al README\"\n\n\n12) Ver el historial (dos commits)\ngit log --oneline\n\n\nRegresar al primer commit\nSolo ver cómo estaba (sin cambiar nada): checkout tempora\ngit checkout 3213551\nPara volver a tu rama (master):\ngit checkout master",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#configuración-de-git-y-acceso-seguro-a-github-ssh",
+    "href": "nota_vscode_git.html#configuración-de-git-y-acceso-seguro-a-github-ssh",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Configuración de Git y acceso seguro a GitHub (SSH)",
+    "text": "Configuración de Git y acceso seguro a GitHub (SSH)\n\n1) Configurar tu identidad de Git (una sola vez)\ngit config --global user.name \"nombre de usuario\"\ngit config --global user.email \"tu_correo@dominio.com\"\nVerifica:\ngit config --global --list\n\n\n2) Crear tu llave SSH para GitHub\nCrear llave (recomendado: ed25519):\nssh-keygen -t ed25519 -C \"tu_correo@dominio.com\"\n\nCuando pregunte ruta, puedes dejar la default: ~/.ssh/id_ed25519\nPassphrase: Enter\n\n\n\n3) Cargar la llave en el ssh-agent\neval \"$(ssh-agent -s)\"\nssh-add ~/.ssh/id_ed25519\nConfirmar:\nssh-add -l\n\n\n4) Copiar la llave pública y pegarla en GitHub\nImprime tu llave pública:\ncat ~/.ssh/id_ed25519.pub\nLuego en GitHub:\n\nSettings → SSH and GPG keys → New SSH key\nPega el contenido completo (una sola línea)\nPonle un título tipo: servidor_clase_intro_bioinfo\n\n\n\n5) Probar la conexión con GitHub\nssh -T git@github.com\n\nLa primera vez te pedirá confirmar el fingerprint → escribe yes.\nDebe responder algo como “successfully authenticated”.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#clonar-un-repositorio-de-github-propio-y-subir-cambios",
+    "href": "nota_vscode_git.html#clonar-un-repositorio-de-github-propio-y-subir-cambios",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Clonar un repositorio de GitHub (propio) y subir cambios",
+    "text": "Clonar un repositorio de GitHub (propio) y subir cambios\n\n1) Clonar el repositorio\ncd ~\ngit clone https://github.com/cristoichkov/tareas_intro_bash_bioinfo.git\ncd tareas_intro_bash_bioinfo\n\n\n2) Crear un archivo y agregar contenido\necho \"de mi serviodr a mi github\" &gt; prueba.txt\n\n\n3) Revisar cambios\ngit status\ngit diff\n\n\n4) Registrar el cambio (add + commit)\ngit add prueba.txt\ngit commit -m \"Agrego prueba.txt desde el servidor\"\n\n\n5) Subir a GitHub (push)\ngit push",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#actualizar-mi-repositorio-local-desde-github-pull",
+    "href": "nota_vscode_git.html#actualizar-mi-repositorio-local-desde-github-pull",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Actualizar mi repositorio local desde GitHub (pull)",
+    "text": "Actualizar mi repositorio local desde GitHub (pull)\nSi ya tienes el repositorio clonado en tu computadora y en GitHub hubo cambios, puedes actualizar tu copia local así:\n\n1) Entrar a la carpeta del repositorio\ncd tareas_intro_bash_bioinfo\n\n\n2) Descargar y aplicar los cambios desde GitHub\ngit pull",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
+    "href": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Conectarse a un servidor desde Visual Studio Code (Remote - SSH)",
+    "text": "Conectarse a un servidor desde Visual Studio Code (Remote - SSH)\nEn esta parte configuraremos VS Code para conectarnos a un servidor vía SSH usando la extensión Remote - SSH.\n\n1) Instalar la extensión\n\nAbre VS Code.\nVe a Extensions (ícono de cuadritos) o presiona Cmd + Shift + X.\nBusca e instala: Remote - SSH (Microsoft).\n\n\n\n2) Abrir la paleta de comandos\nEn macOS:\n\nPresiona Cmd + Shift + P\n\nEn Windows y Linux:\n\nPresiona Ctrl + Shift + P\n\n\n\n3) Conectar por primera vez y configurar el Host\n\nEn la paleta, escribe: Remote-SSH: Connect to Host..\nSelecciona: Configure SSH Hosts..\nElige el archivo de configuración:\n\n\n/Users/usuario/.ssh/config\n(equivalente a ~/.ssh/config)\n\n\nAgrega una entrada como esta (reemplaza IP/usuario):\n\nHost clase_bioinfo_IB \n  HostName IP_O_DOMINIO\n  User USUARIO\n  Port 22\n\nGuarda el archivo.\n\n\n\n4) Conectarse al servidor\n\nAbre de nuevo la paleta (Cmd + Shift + P o Ctrl + Shift + P)\nEjecuta: Remote-SSH: Connect to Host..\nSelecciona: clase_bioinfo_IB\nVS Code te preguntará el tipo de sistema remoto (si aparece): elige Linux\nSi es la primera vez, puede pedir confirmar la huella (fingerprint) del servidor: acepta (Continue).\nIgresa la contraseña de SSH cuando te la solicite.\n\nCuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá SSH: clase_bioinfo_IB).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
     "objectID": "unidad_4.html",
     "href": "unidad_4.html",
     "title": "Unidad 4: Fundamentos de Linux",
     "section": "",
     "text": "Linux y sus distribuciones (DEB y RPM)\nLinux no es un solo programa, sino un núcleo (kernel) sobre el que se construyen distintos “sabores” llamados distribuciones.\nUna forma práctica de agrupar distribuciones es por cómo instalan software (paquetes):",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -266,7 +326,7 @@
     "section": "",
     "text": "Familia DEB (Debian/Ubuntu): usa paquetes .deb. Suele ser la más “amigable” y es muy común en bioinformática.\nFamilia RPM (Red Hat/Fedora/CentOS/Rocky): usa paquetes .rpm. Es común en servidores, clusters y ambientes institucionales.\n\n\n\n\n\n\n\nDistribuciones base Debian (.deb)\n\nDebian: base original; muy estable y comunitaria.\n\nUbuntu: muy popular; ideal para principiantes y con gran soporte de software.\n\nLinux Mint: escritorio clásico; familiar si vienes de Windows.\n\nPop!_OS: orientada a flujos de trabajo científicos/desarrollo y NVIDIA.\n\nKali Linux: enfocada en seguridad informática.\n\nMX Linux: ligera; útil en equipos con pocos recursos.\n\nTails: privacidad y anonimato como prioridad.\n\n\n\nDistribuciones base Red Hat (.rpm)\n\nFedora: vanguardista; suele incluir versiones recientes de software.\n\nRHEL (Red Hat): estándar empresarial; robusta con soporte corporativo.\n\nRocky Linux: sucesor comunitario de CentOS; enfocada en servidores/clusters.\n\nAlmaLinux: clon comunitario de RHEL; estable.\n\nopenSUSE: destaca por YaST (panel de control).\n\nOracle Linux: orientada a centros de datos y bases de datos.\n\nMageia: opción independiente enfocada en usuario general.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -276,7 +336,7 @@
     "section": "Variables de entorno",
     "text": "Variables de entorno\nLas variables de entorno son valores dinámicos que informan al sistema operativo y a los programas sobre cómo deben comportarse. Imagínalas como una pequeña libreta de direcciones o configuraciones que Linux consulta constantemente para saber dónde están las cosas.\n\n1. ¿Para qué sirven?\nEn lugar de que cada programa tenga que adivinar dónde están tus archivos o qué idioma usas, el sistema define variables globales. Por ejemplo:\n\n\nVariables de Identificación y Usuario\n\n$USER: Muestra el nombre del usuario que ha iniciado la sesión actual.\n$UID: El número de identificación único del usuario (el del usuario raíz o root siempre es 0).\n$HOME: La ruta completa al directorio personal del usuario (donde guardas tus documentos y descargas).\n$SHELL: Indica qué intérprete de comandos estás usando (usualmente /bin/bash o /bin/zsh).\n$LOGNAME: Similar a $USER, es el nombre utilizado durante el proceso de login.\n\n\n\nVariables de Navegación y Ubicación\n\n$PATH: La variable más crítica. Contiene una lista de carpetas separadas por dos puntos (:) donde el sistema busca los programas cuando escribes un comando.\n$PWD: Guarda la ruta del directorio donde te encuentras parado en este momento (Print Working Directory).\n$OLDPWD: Guarda la ruta del directorio en el que estabas justo antes del actual (permite regresar con cd -).\n$HOSTNAME: El nombre de la computadora en la red.\n\n\n\nVariables de Configuración del Sistema\n\nLANG: Define el idioma, la región y la codificación de caracteres del sistema (ej. es_ES.UTF-8).\n$EDITOR: Define qué programa se abre por defecto cuando el sistema necesita que edites un texto (ej. nano o vim).\n$TERM: Informa a los programas qué tipo de terminal estás emulando para saber cómo mostrar colores y caracteres.\n$DISPLAY: Se utiliza en entornos gráficos para saber en qué pantalla deben aparecer las ventanas de las aplicaciones.\n\n\n\nVariables de Sesión y Temporalidad\n\n$TMPDIR: Indica la carpeta donde las aplicaciones deben guardar sus archivos temporales (normalmente /tmp).\n$MAIL: La ubicación donde el sistema guarda los correos electrónicos internos del usuario.\n$HISTSIZE: Define cuántos comandos puede recordar tu terminal en el historial (los que ves al presionar la flecha arriba)\n\n\nTIP1: Si instalas programas de bioinformática manualmente (descargando archivos binarios), casi siempre tendrás que modificar la variable $PATH para que el sistema “encuentre” el programa sin que tengas que escribir la ruta completa cada vez.\n\n\nTIP2: Las variables de ambiente también se utilizan para Windows y Mac OS, sólo cambia la sintaxis.\n\n\n\nComandos de Bash para gestionar variables\n\nListar todas las variables: el comando lista las variables que el sistema tiene configuradas en este momento.\n\nprintenv\nenv\n\nMostrar el valor de una variable: Usa echo $NOMBRE_VARIABLE. Es fundamental incluir el símbolo $ para que Bash entienda que quieres ver el contenido y no solo imprimir la palabra.\n\necho $HOME\necho $PATH\n\nAsignar un valor (Variable Local): Esta variable solo funcionará en la terminal actual.\n\nNOMBRE=valor\n\nAsignar un valor (Variable de Entorno): Al usar export, la variable estará disponible para cualquier programa o script que lances desde esa terminal.\n\nexport NOMBRE=valor\n\n\nEjemplo:\n\nCrear un atajo para tu carpeta de datos: En lugar de escribir toda la ruta cada vez, puedes guardarla en una variable:\n\nexport RAW_DATA=/home/mauricio/investigacion/proyectos/2026/muestras_suelo/fastq\n\nUsar la variable para entrar a esa carpeta rápidamente:\n\ncd $RAW_DATA\n\nAutomatizar con un comando de análisis: Si estás usando una herramienta para contar lecturas, puedes usar la variable en el comando:\n\ncount_reads.sh $RAW_DATA/muestra01.fastq",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -286,7 +346,7 @@
     "section": "Sistema de archivos y estructura de directorios en Linux",
     "text": "Sistema de archivos y estructura de directorios en Linux\nEn Linux no existen letras de unidad (C:, D:). Todo cuelga de una raíz única:\n\n/ (raíz): el origen de todo el árbol\n\n\nJerarquía estándar de directorios\n\n/bin: comandos básicos del sistema (ls, cp, mkdir…)\n/boot: archivos de arranque (kernel, bootloader)\n/dev: “archivos” que representan dispositivos (discos, USB)\n/etc: configuraciones del sistema y programas\n/home: carpetas personales de usuarios\n/lib: librerías esenciales del sistema\n/media y /mnt: puntos típicos de montaje (USB/discos externos)\n/opt: software de terceros “grande” (común en cómputo científico)\n/root: carpeta personal del superusuario (no confundir con /)\n/tmp: temporales (a menudo se limpian al reiniciar)\n/usr: programas/librerías/documentación de usuario\n/var: archivos variables (logs, colas, BD, etc.)\n\n\n\nConceptos clave\n\nRuta absoluta: inicia con /\nEjemplo: /home/mauricio/tesis/secuencias.fasta\nRuta relativa: depende de dónde estás parado\nEjemplo: tesis/secuencias.fasta\n. directorio actual\n.. directorio superior\n~ tu carpeta personal (ej. /home/tu_usuario o $HOME)\n\n\n\nEjemplo práctico\nEstás en tu terminal y quieres moverte a tu carpeta de trabajo:\n\nSaber dónde estás: pwd (te dirá algo como /home/mauricio).\nVer qué hay en la raíz: ls / (verás todas las carpetas que listamos arriba).\nIr a una carpeta de sistema: cd /etc (aquí podrías ver configuraciones).\nRegresar a “casa” rápido: cd ~ (vuelves a tu $HOME).",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -296,7 +356,7 @@
     "section": "Uso de dispositivos USB (detección → montaje → expulsión)",
     "text": "Uso de dispositivos USB (detección → montaje → expulsión)\nEn Linux un USB se integra como parte del sistema de archivos mediante montaje.\n\n1) Detección\nEste comando te muestra una lista de tus discos. Busca uno que coincida con el tamaño de tu USB (por ejemplo, 16G). Verás algo como sdb (el disco físico) y sdb1 (la partición de datos).\nlsblk\n\n\n2) Crear punto de montaje\nPara poder ver los archivos del USB, necesitas una carpeta vacía donde “colgar” ese contenido.\nsudo mkdir -p /mnt/mi_usb\n\n\n3) Montar\nAhora vinculamos el dispositivo físico con la carpeta que creamos. A partir de este momento, todo lo que guardes en /mnt/mi_usb se estará guardando realmente en el pendrive.\n# montar\nsudo mount /dev/sdb1 /mnt/mi_usb\n\n# Entrar a ver tus archivos\ncd /mnt/mi_usb\n\n# Listar los archivos\nls\n\n\n4) Desmontar (expulsión segura)\nEn Linux es crítico desmontar el dispositivo antes de desconectarlo físicamente. Si no lo haces, es muy probable que los datos se corrompan, ya que Linux a veces espera un momento antes de escribir los archivos pendientes.\nsudo umount /mnt/mi_usb\n\n\nResumen\n\nIdentificar: lsblk o fdisk -l\nConectar: mount [dispositivo] [carpeta]\nDesconectar: umount [carpeta o dispositivo]\n\n\nTip: Si tu USB contiene archivos pesados de secuenciación, el comando umount puede tardar unos segundos en terminar. No retires el USB hasta que la terminal te devuelva el control (cuando aparezca de nuevo el cursor para escribir), eso significa que todos los datos se han terminado de copiar correctamente.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -306,7 +366,7 @@
     "section": "Permisos y grupos",
     "text": "Permisos y grupos\nEn Linux, la seguridad se basa en una regla simple: quién puede hacer qué con un archivo o carpeta. Como biólogo, esto es fundamental para proteger tus datos de secuenciación o scripts de análisis para que no sean modificados o borrados por error por otros usuarios.\n\n1. Las Tres Figuras (¿Quién?)\nCada archivo o directorio tiene tres niveles de propiedad:\n\nUsuario (u): Es el dueño del archivo (normalmente quien lo creó).\nGrupo (g): Un conjunto de usuarios (por ejemplo, el “Laboratorio_A”). Todos los miembros del grupo comparten los mismos permisos sobre ese archivo.\nOtros (o): Cualquier otra persona que tenga acceso al sistema pero no sea el dueño ni pertenezca al grupo.\n\n\n\n2. Los Tres Permisos (¿Qué?)\nExisten tres acciones básicas que se pueden permitir o denegar:\n\nLectura (r - Read): Permite ver el contenido del archivo o listar los archivos de una carpeta.\nEscritura (w - Write): Permite modificar el contenido del archivo o crear/borrar archivos dentro de una carpeta.\nEjecución (x - Execute): Permite correr un archivo como un programa o entrar en una carpeta (hacer cd).\n\n\n\n3. Cómo leer los permisos\nSi ejecutas el comando ls -l en tu terminal, verás una cadena de 10 caracteres al principio de cada línea, como esta:\n-rwxr-xr--\nSe desglosa así:\n\nEl primer carácter: Indica el tipo ( - es un archivo, d es un directorio).\nLos siguientes tres (rwx): Permisos del Dueño (puede leer, escribir y ejecutar).\nLos tres del medio (r-x): Permisos del Grupo (puede leer y ejecutar, pero no modificar).\nLos últimos tres (r–): Permisos de Otros (solo pueden leer).\n\n\n\n4. Comandos para cambiar permisos y dueños\nPara gestionar esto en tu laboratorio digital, usarás principalmente estos tres comandos:\n\nchmod (Change Mode): Cambia los permisos de un archivo.\n\n# dar permiso de ejecución al dueño\nchmod u+x script_analisis.sh\n\n# numérico similar al anterior\nchmod 755 archivo\n\n# (7=Dueño total, 5=Grupo lectura/ejecución, 5=Otros lectura/ejecución).\n\nchown (Change Owner): Cambia quién es el dueño del archivo.\n\nsudo chown mauricio secuencia.fasta\n\nchgrp (Change Group): Cambia el grupo al que pertenece el archivo.\n\nchgrp bioinfo_team resultados/\n\n\nEjemplo de uso real en el laboratorio\nImagina que tienes una carpeta con resultados de un experimento que quieres que tus colegas vean, pero que nadie pueda borrar o modificar excepto tú.\n\nTe aseguras de ser el dueño:\n\nchown mauricio resultados_pcr/\n\nAsignas el grupo del laboratorio:\n\nchgrp investigadores resultados_pcr/\n\nAjusta los permisos:\n\nchmod 750 resultados_pcr/\n\n7 (rwx): Tú haces todo.\n5 (r-x): Tu grupo puede entrar y ver los archivos.\n0 (—): Nadie más en el servidor puede siquiera saber qué hay dentro.\n\n\nTip de seguridad :Si intentas usar un comando y recibes el error “Permission denied”, probablemente necesites usar sudo (para actuar como administrador) o pedirle al dueño del archivo que te dé permisos de lectura o ejecución.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -316,7 +376,7 @@
     "section": "Navegación y creación de archivos",
     "text": "Navegación y creación de archivos\n\n1. Navegación (Moverte por el sistema)\n\nls (List): Sirve para ver qué hay dentro de una carpeta.\n\n# muestra detalles como tamaño y fecha\nls -l \n\n# muestra archivos ocultos\nla -a\n\ncd (Change Directory): Es el comando para “entrar” a una carpeta.\n\n# entrar\ncd Documentos/ADN \n\n# subir un nivel (salir de la carpeta).\ncd ..\n\n\n2. Manipulación (Crear y destruir)\n\nmkdir (Make Directory): Crea una carpeta nueva.\n\nmkdir Experimento_2026\n\nrm (Remove): Borra archivos o carpetas. ¡Cuidado! En Linux no hay “Papelera de reciclaje”; lo que borras aquí desaparece para siempre.\n\n# eliminar archivo\nrm archivo.txt\n\n# eliminar carpeta\nrm -r carpeta/\n\n\n3. Inspección y Edición\n\nfile: Te dice qué tipo de archivo es uno realmente, sin importar su extensión. Muy útil si descargas datos y no sabes si son texto plano o una imagen.\n\nfile muestra_desconocida\n\nnano: Es un editor de texto muy sencillo que vive dentro de la terminal. Es ideal para escribir protocolos rápidos o editar scripts de Python/R.\n\nnano mis_notas.txt\n\n# Para salir: Ctrl+O para guardar y Ctrl+X para cerrar\n\n\n4. Compresión (Empaquetar y enviar)\n\nzip: Sirve para agrupar muchos archivos en uno solo y reducir su tamaño, facilitando enviarlos por correo o subirlos a la nube.\n\n# la -r significa \"recursivo\", es decir, incluye todo lo que hay dentro de la carpeta\n\n zip -r resultados_finales.zip carpeta_de_resultados/\n\n\nEjemplo de flujo de trabajo real\nImagina que acabas de recibir resultados de una secuenciación:\n\nRevisas qué llegó:\n\nls -lh\n\nIdentificar el archivo:\n\nfile datos_crudos\n\n# te dirá si es un archivo comprimido o texto\n\nCreas una carpeta de trabajo:\n\nmkdir Analisis_01\n\nEscribes una nota rápida del experimento:\n\nnano notas.txt\n\nAl terminar, empaquetas todo para enviarlo al investigador principal:\n\nzip -r entrega_enero.zip Analisis_01/ notas.txt\n\nTip: Si por error intentas borrar una carpeta con rm y te da error, recuerda que debes usar rm -r (la r es de recursivo). Pero antes de dar Enter, asegúrate dos veces de que estás en la carpeta correcta; la terminal no te preguntará “¿Estás seguro?”.",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
   },
   {
@@ -326,7 +386,7 @@
     "section": "",
     "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
     ]
   }
 ]
