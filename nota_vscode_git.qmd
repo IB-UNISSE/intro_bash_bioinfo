@@ -1,0 +1,284 @@
+---
+title: "Notas: Git/GitHub + VS Code en servidor"
+---
+
+## Git en terminal (uso personal, sin subir a GitHub)
+
+En esta sección usaremos Git **solo de manera local** para llevar control de versiones de un proyecto en un servidor. No es necesario crear un repositorio en GitHub ni compartirlo: puede quedarse **solo para ti**.
+
+### 1) Crear una carpeta de proyecto
+
+``` bash
+mkdir mi_proyecto
+cd mi_proyecto
+```
+
+### 2) Inicializar Git en la carpeta
+
+``` bash
+git init
+```
+
+### 3) Revisar el estado
+
+``` bash
+git status
+```
+
+### 4) Crear un archivo `README.md`
+
+``` bash
+touch README.md
+```
+
+### 5) Revisar el estado
+
+``` bash
+git status
+```
+
+### 6) Agregar cambios (staging)
+
+Agregar todo lo nuevo/modificado:
+
+``` bash
+git add .
+```
+
+Verifica de nuevo:
+
+``` bash
+git status
+```
+
+### 7) Guardar un punto del historial (commit)
+
+``` bash
+git commit -m "Primer commit: inicio del proyecto"
+```
+
+### 8) Confirmar el historial
+
+``` bash
+git log --oneline
+```
+
+> Nota: Puedes repetir este ciclo tantas veces como quieras:
+>
+> `editar → git add → git commit`
+>
+> Esto te permite regresar a versiones anteriores y documentar tu avance, aunque el proyecto nunca se publique.
+
+### 9) Agregar contenido al `README.md`
+
+``` bash
+echo "# Hola Mundo" > README.md
+```
+
+### 10) Revisar qué cambió (opcional)
+
+``` bash
+git status
+git diff
+```
+
+### 11) Guardar el cambio en Git (segundo commit)
+
+``` bash
+git add README.md
+git commit -m "Agrego título al README"
+```
+
+### 12) Ver el historial (dos commits)
+
+``` bash
+git log --oneline
+```
+
+### Regresar al primer commit
+
+Solo ver cómo estaba (sin cambiar nada): *checkout* tempora
+
+``` bash
+git checkout 3213551
+```
+
+Para volver a tu rama (master):
+
+``` bash
+git checkout master
+```
+
+## Configuración de Git y acceso seguro a GitHub (SSH)
+
+### 1) Configurar tu identidad de Git (una sola vez)
+
+``` bash
+git config --global user.name "nombre de usuario"
+git config --global user.email "tu_correo@dominio.com"
+```
+
+Verifica:
+
+``` bash
+git config --global --list
+```
+
+### 2) Crear tu llave SSH para GitHub
+
+Crear llave (recomendado: ed25519):
+
+``` bash
+ssh-keygen -t ed25519 -C "tu_correo@dominio.com"
+```
+
+-   Cuando pregunte ruta, puedes dejar la default: `~/.ssh/id_ed25519`
+
+-   Passphrase: Enter
+
+### 3) Cargar la llave en el ssh-agent
+
+``` bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+Confirmar:
+
+``` bash
+ssh-add -l
+```
+
+### 4) Copiar la llave pública y pegarla en GitHub
+
+Imprime tu llave pública:
+
+``` bash
+cat ~/.ssh/id_ed25519.pub
+```
+
+Luego en GitHub:
+
+-   **Settings → SSH and GPG keys → New SSH key**
+
+-   Pega el contenido completo (una sola línea)
+
+-   Ponle un título tipo: `servidor_clase_intro_bioinfo`
+
+### 5) Probar la conexión con GitHub
+
+``` bash
+ssh -T git@github.com
+```
+
+-   La primera vez te pedirá confirmar el fingerprint → escribe `yes`.
+
+-   Debe responder algo como “successfully authenticated”.
+
+## Clonar un repositorio de GitHub (propio) y subir cambios
+
+### 1) Clonar el repositorio
+
+``` bash
+cd ~
+git clone https://github.com/cristoichkov/tareas_intro_bash_bioinfo.git
+cd tareas_intro_bash_bioinfo
+```
+
+### 2) Crear un archivo y agregar contenido
+
+``` bash
+echo "de mi serviodr a mi github" > prueba.txt
+```
+
+### 3) Revisar cambios
+
+``` bash
+git status
+git diff
+```
+
+### 4) Registrar el cambio (add + commit)
+
+``` bash
+git add prueba.txt
+git commit -m "Agrego prueba.txt desde el servidor"
+```
+
+### 5) Subir a GitHub (push)
+
+``` bash
+git push
+```
+
+## Actualizar mi repositorio local desde GitHub (pull)
+
+Si ya tienes el repositorio clonado en tu computadora y en GitHub hubo cambios, puedes actualizar tu copia local así:
+
+### 1) Entrar a la carpeta del repositorio
+
+``` bash
+cd tareas_intro_bash_bioinfo
+```
+
+### 2) Descargar y aplicar los cambios desde GitHub
+
+``` bash
+git pull
+```
+
+## Conectarse a un servidor desde Visual Studio Code (Remote - SSH)
+
+En esta parte configuraremos VS Code para conectarnos a un servidor vía **SSH** usando la extensión **Remote - SSH**.
+
+### 1) Instalar la extensión
+
+1.  Abre VS Code.
+2.  Ve a **Extensions** (ícono de cuadritos) o presiona `Cmd + Shift + X`.
+3.  Busca e instala: **Remote - SSH** (Microsoft).
+
+### 2) Abrir la paleta de comandos
+
+En macOS:
+
+-   Presiona `Cmd + Shift + P`
+
+En Windows y Linux:
+
+-   Presiona `Ctrl + Shift + P`
+
+### 3) Conectar por primera vez y configurar el Host
+
+1.  En la paleta, escribe: **Remote-SSH: Connect to Host..**
+2.  Selecciona: **Configure SSH Hosts..**
+3.  Elige el archivo de configuración:
+
+-   `/Users/usuario/.ssh/config`\
+    (equivalente a `~/.ssh/config`)
+
+4.  Agrega una entrada como esta (reemplaza IP/usuario):
+
+``` bash
+Host clase_bioinfo_IB 
+  HostName IP_O_DOMINIO
+  User USUARIO
+  Port 22
+```
+
+5.  Guarda el archivo.
+
+### 4) Conectarse al servidor
+
+1.  Abre de nuevo la paleta (`Cmd + Shift + P` o `Ctrl + Shift + P`)
+
+2.  Ejecuta: **Remote-SSH: Connect to Host..**
+
+3.  Selecciona: `clase_bioinfo_IB`
+
+4.  VS Code te preguntará el tipo de sistema remoto (si aparece): elige **Linux**
+
+5.  Si es la primera vez, puede pedir confirmar la **huella (fingerprint)** del servidor: acepta (**Continue**).
+
+6.  Igresa la contraseña de SSH cuando te la solicite.
+
+Cuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá `SSH: clase_bioinfo_IB`).

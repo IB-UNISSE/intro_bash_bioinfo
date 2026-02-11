@@ -250,16 +250,6 @@
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "Bibliografía complementaria",
-    "section": "",
-    "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
-    ]
-  },
-  {
     "objectID": "unidad_4.html",
     "href": "unidad_4.html",
     "title": "Unidad 4: Fundamentos de Linux",
@@ -327,6 +317,106 @@
     "text": "Navegación y creación de archivos\n\n1. Navegación (Moverte por el sistema)\n\nls (List): Sirve para ver qué hay dentro de una carpeta.\n\n# muestra detalles como tamaño y fecha\nls -l \n\n# muestra archivos ocultos\nla -a\n\ncd (Change Directory): Es el comando para “entrar” a una carpeta.\n\n# entrar\ncd Documentos/ADN \n\n# subir un nivel (salir de la carpeta).\ncd ..\n\n\n2. Manipulación (Crear y destruir)\n\nmkdir (Make Directory): Crea una carpeta nueva.\n\nmkdir Experimento_2026\n\nrm (Remove): Borra archivos o carpetas. ¡Cuidado! En Linux no hay “Papelera de reciclaje”; lo que borras aquí desaparece para siempre.\n\n# eliminar archivo\nrm archivo.txt\n\n# eliminar carpeta\nrm -r carpeta/\n\n\n3. Inspección y Edición\n\nfile: Te dice qué tipo de archivo es uno realmente, sin importar su extensión. Muy útil si descargas datos y no sabes si son texto plano o una imagen.\n\nfile muestra_desconocida\n\nnano: Es un editor de texto muy sencillo que vive dentro de la terminal. Es ideal para escribir protocolos rápidos o editar scripts de Python/R.\n\nnano mis_notas.txt\n\n# Para salir: Ctrl+O para guardar y Ctrl+X para cerrar\n\n\n4. Compresión (Empaquetar y enviar)\n\nzip: Sirve para agrupar muchos archivos en uno solo y reducir su tamaño, facilitando enviarlos por correo o subirlos a la nube.\n\n# la -r significa \"recursivo\", es decir, incluye todo lo que hay dentro de la carpeta\n\n zip -r resultados_finales.zip carpeta_de_resultados/\n\n\nEjemplo de flujo de trabajo real\nImagina que acabas de recibir resultados de una secuenciación:\n\nRevisas qué llegó:\n\nls -lh\n\nIdentificar el archivo:\n\nfile datos_crudos\n\n# te dirá si es un archivo comprimido o texto\n\nCreas una carpeta de trabajo:\n\nmkdir Analisis_01\n\nEscribes una nota rápida del experimento:\n\nnano notas.txt\n\nAl terminar, empaquetas todo para enviarlo al investigador principal:\n\nzip -r entrega_enero.zip Analisis_01/ notas.txt\n\nTip: Si por error intentas borrar una carpeta con rm y te da error, recuerda que debes usar rm -r (la r es de recursivo). Pero antes de dar Enter, asegúrate dos veces de que estás en la carpeta correcta; la terminal no te preguntará “¿Estás seguro?”.",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Bibliografía complementaria",
+    "section": "",
+    "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html",
+    "href": "nota_vscode_git.html",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "",
+    "text": "Git en terminal (uso personal, sin subir a GitHub)\nEn esta sección usaremos Git solo de manera local para llevar control de versiones de un proyecto en un servidor. No es necesario crear un repositorio en GitHub ni compartirlo: puede quedarse solo para ti.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#git-en-terminal-uso-personal-sin-subir-a-github",
+    "href": "nota_vscode_git.html#git-en-terminal-uso-personal-sin-subir-a-github",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "",
+    "text": "1) Crear una carpeta de proyecto\nmkdir mi_proyecto\ncd mi_proyecto\n\n\n2) Inicializar Git en la carpeta\ngit init\n\n\n3) Revisar el estado\ngit status\n\n\n4) Crear un archivo README.md\ntouch README.md\n\n\n5) Revisar el estado\ngit status\n\n\n6) Agregar cambios (staging)\nAgregar todo lo nuevo/modificado:\ngit add .\nVerifica de nuevo:\ngit status\n\n\n7) Guardar un punto del historial (commit)\ngit commit -m \"Primer commit: inicio del proyecto\"\n\n\n8) Confirmar el historial\ngit log --oneline\n\nNota: Puedes repetir este ciclo tantas veces como quieras:\neditar → git add → git commit\nEsto te permite regresar a versiones anteriores y documentar tu avance, aunque el proyecto nunca se publique.\n\n\n\n9) Agregar contenido al README.md\necho \"# Hola Mundo\" &gt; README.md\n\n\n10) Revisar qué cambió (opcional)\ngit status\ngit diff\n\n\n11) Guardar el cambio en Git (segundo commit)\ngit add README.md\ngit commit -m \"Agrego título al README\"\n\n\n12) Ver el historial (dos commits)\ngit log --oneline\n\n\nRegresar al primer commit\nSolo ver cómo estaba (sin cambiar nada): checkout tempora\ngit checkout 3213551\nPara volver a tu rama (master):\ngit checkout master",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
+    "href": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Conectarse a un servidor desde Visual Studio Code (Remote - SSH)",
+    "text": "Conectarse a un servidor desde Visual Studio Code (Remote - SSH)\nEn esta parte configuraremos VS Code para conectarnos a un servidor vía SSH usando la extensión Remote - SSH.\n\n1) Instalar la extensión\n\nAbre VS Code.\nVe a Extensions (ícono de cuadritos) o presiona Cmd + Shift + X.\nBusca e instala: Remote - SSH (Microsoft).\n\n\n\n2) Abrir la paleta de comandos\nEn macOS:\n\nPresiona Cmd + Shift + P\n\nEn Windows y Linux:\n\nPresiona Ctrl + Shift + P\n\n\n\n3) Conectar por primera vez y configurar el Host\n\nEn la paleta, escribe: Remote-SSH: Connect to Host..\nSelecciona: Configure SSH Hosts..\nElige el archivo de configuración:\n\n\n/Users/usuario/.ssh/config\n(equivalente a ~/.ssh/config)\n\n\nAgrega una entrada como esta (reemplaza IP/usuario):\n\nHost clase_bioinfo_IB \n  HostName IP_O_DOMINIO\n  User USUARIO\n  Port 22\n\nGuarda el archivo.\n\n\n\n4) Conectarse al servidor\n\nAbre de nuevo la paleta (Cmd + Shift + P o Ctrl + Shift + P)\nEjecuta: Remote-SSH: Connect to Host..\nSelecciona: clase_bioinfo_IB\nVS Code te preguntará el tipo de sistema remoto (si aparece): elige Linux\nSi es la primera vez, puede pedir confirmar la huella (fingerprint) del servidor: acepta (Continue).\nIgresa la contraseña de SSH cuando te la solicite.\n\nCuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá SSH: clase_bioinfo_IB).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#configuración-de-git-y-acceso-seguro-a-github-ssh",
+    "href": "nota_vscode_git.html#configuración-de-git-y-acceso-seguro-a-github-ssh",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Configuración de Git y acceso seguro a GitHub (SSH)",
+    "text": "Configuración de Git y acceso seguro a GitHub (SSH)\n\n1) Configurar tu identidad de Git (una sola vez)\ngit config --global user.name \"nombre de usuario\"\ngit config --global user.email \"tu_correo@dominio.com\"\nVerifica:\ngit config --global --list\n\n\n2) Crear tu llave SSH para GitHub\nCrear llave (recomendado: ed25519):\nssh-keygen -t ed25519 -C \"tu_correo@dominio.com\"\n\nCuando pregunte ruta, puedes dejar la default: ~/.ssh/id_ed25519\nPassphrase: Enter\n\n\n\n3) Cargar la llave en el ssh-agent\neval \"$(ssh-agent -s)\"\nssh-add ~/.ssh/id_ed25519\nConfirmar:\nssh-add -l\n\n\n4) Copiar la llave pública y pegarla en GitHub\nImprime tu llave pública:\ncat ~/.ssh/id_ed25519.pub\nLuego en GitHub:\n\nSettings → SSH and GPG keys → New SSH key\nPega el contenido completo (una sola línea)\nPonle un título tipo: servidor_clase_intro_bioinfo\n\n\n\n5) Probar la conexión con GitHub\nssh -T git@github.com\n\nLa primera vez te pedirá confirmar el fingerprint → escribe yes.\nDebe responder algo como “successfully authenticated”.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#cargar-la-llave-en-el-ssh-agent",
+    "href": "nota_vscode_git.html#cargar-la-llave-en-el-ssh-agent",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "3) Cargar la llave en el ssh-agent",
+    "text": "3) Cargar la llave en el ssh-agent\neval \"$(ssh-agent -s)\"\nssh-add ~/.ssh/id_ed25519\nConfirmar:\nssh-add -l",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#copiar-la-llave-pública-y-pegarla-en-github",
+    "href": "nota_vscode_git.html#copiar-la-llave-pública-y-pegarla-en-github",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "4) Copiar la llave pública y pegarla en GitHub",
+    "text": "4) Copiar la llave pública y pegarla en GitHub\nImprime tu llave pública:\ncat ~/.ssh/id_ed25519.pub\nLuego en GitHub:\n\nSettings → SSH and GPG keys → New SSH key\nPega el contenido completo (una sola línea)\nPonle un título tipo: servidor_clase_intro_bioinfo",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#probar-la-conexión-con-github",
+    "href": "nota_vscode_git.html#probar-la-conexión-con-github",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "5) Probar la conexión con GitHub",
+    "text": "5) Probar la conexión con GitHub\nssh -T git@github.com\n\nLa primera vez te pedirá confirmar el fingerprint → escribe yes.\nDebe responder algo como “successfully authenticated”.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#clonar-un-repositorio-de-github-propio-y-subir-cambios",
+    "href": "nota_vscode_git.html#clonar-un-repositorio-de-github-propio-y-subir-cambios",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Clonar un repositorio de GitHub (propio) y subir cambios",
+    "text": "Clonar un repositorio de GitHub (propio) y subir cambios\n\n1) Clonar el repositorio\ncd ~\ngit clone https://github.com/cristoichkov/tareas_intro_bash_bioinfo.git\ncd tareas_intro_bash_bioinfo\n\n\n2) Crear un archivo y agregar contenido\necho \"de mi serviodr a mi github\" &gt; prueba.txt\n\n\n3) Revisar cambios\ngit status\ngit diff\n\n\n4) Registrar el cambio (add + commit)\ngit add prueba.txt\ngit commit -m \"Agrego prueba.txt desde el servidor\"\n\n\n5) Subir a GitHub (push)\ngit push",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
+    ]
+  },
+  {
+    "objectID": "nota_vscode_git.html#actualizar-mi-repositorio-local-desde-github-pull",
+    "href": "nota_vscode_git.html#actualizar-mi-repositorio-local-desde-github-pull",
+    "title": "Notas: Git/GitHub + VS Code en servidor",
+    "section": "Actualizar mi repositorio local desde GitHub (pull)",
+    "text": "Actualizar mi repositorio local desde GitHub (pull)\nSi ya tienes el repositorio clonado en tu computadora y en GitHub hubo cambios, puedes actualizar tu copia local así:\n\n1) Entrar a la carpeta del repositorio\ncd tareas_intro_bash_bioinfo\n\n\n2) Descargar y aplicar los cambios desde GitHub\ngit pull",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: Git/GitHub + VS Code en servidor</span>"
     ]
   }
 ]
