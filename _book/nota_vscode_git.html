@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notas: Git/GitHub + VS Code en servidor – Introducción a la programación para bioinformática con bash</title>
+<title>Notas: VS Code + Git/GitHub en servidor – Introducción a la programación para bioinformática con bash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <meta name="description" content="Introducción a la programación para bioinformática con bash">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Notas: Git/GitHub + VS Code en servidor – Introducción a la programación para bioinformática con bash">
+<meta property="og:title" content="Notas: VS Code + Git/GitHub en servidor – Introducción a la programación para bioinformática con bash">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
 <meta property="og:type" content="website">
@@ -127,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nota_vscode_git.html"><span class="chapter-title">Notas: Git/GitHub + VS Code en servidor</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nota_vscode_git.html"><span class="chapter-title">Notas: VS Code + Git/GitHub en servidor</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -180,7 +180,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nota_vscode_git.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Notas: Git/GitHub + VS Code en servidor</span></a>
+  <a href="./nota_vscode_git.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Notas: VS Code + Git/GitHub en servidor</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -203,11 +203,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#git-en-terminal-uso-personal-sin-subir-a-github" id="toc-git-en-terminal-uso-personal-sin-subir-a-github" class="nav-link active" data-scroll-target="#git-en-terminal-uso-personal-sin-subir-a-github">Git en terminal (uso personal, sin subir a GitHub)</a></li>
+  <li><a href="#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh" id="toc-conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh" class="nav-link active" data-scroll-target="#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh">Conectarse a un servidor desde Visual Studio Code (Remote - SSH)</a></li>
+  <li><a href="#git-en-terminal-uso-personal-sin-subir-a-github" id="toc-git-en-terminal-uso-personal-sin-subir-a-github" class="nav-link" data-scroll-target="#git-en-terminal-uso-personal-sin-subir-a-github">Git en terminal (uso personal, sin subir a GitHub)</a></li>
   <li><a href="#configuración-de-git-y-acceso-seguro-a-github-ssh" id="toc-configuración-de-git-y-acceso-seguro-a-github-ssh" class="nav-link" data-scroll-target="#configuración-de-git-y-acceso-seguro-a-github-ssh">Configuración de Git y acceso seguro a GitHub (SSH)</a></li>
   <li><a href="#clonar-un-repositorio-de-github-propio-y-subir-cambios" id="toc-clonar-un-repositorio-de-github-propio-y-subir-cambios" class="nav-link" data-scroll-target="#clonar-un-repositorio-de-github-propio-y-subir-cambios">Clonar un repositorio de GitHub (propio) y subir cambios</a></li>
   <li><a href="#actualizar-mi-repositorio-local-desde-github-pull" id="toc-actualizar-mi-repositorio-local-desde-github-pull" class="nav-link" data-scroll-target="#actualizar-mi-repositorio-local-desde-github-pull">Actualizar mi repositorio local desde GitHub (pull)</a></li>
-  <li><a href="#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh" id="toc-conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh" class="nav-link" data-scroll-target="#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh">Conectarse a un servidor desde Visual Studio Code (Remote - SSH)</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/nota_vscode_git.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -216,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Notas: Git/GitHub + VS Code en servidor</span></h1>
+<h1 class="title"><span class="chapter-title">Notas: VS Code + Git/GitHub en servidor</span></h1>
 </div>
 
 
@@ -233,160 +233,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="git-en-terminal-uso-personal-sin-subir-a-github" class="level2">
-<h2 class="anchored" data-anchor-id="git-en-terminal-uso-personal-sin-subir-a-github">Git en terminal (uso personal, sin subir a GitHub)</h2>
-<p>En esta sección usaremos Git <strong>solo de manera local</strong> para llevar control de versiones de un proyecto en un servidor. No es necesario crear un repositorio en GitHub ni compartirlo: puede quedarse <strong>solo para ti</strong>.</p>
-<section id="crear-una-carpeta-de-proyecto" class="level3">
-<h3 class="anchored" data-anchor-id="crear-una-carpeta-de-proyecto">1) Crear una carpeta de proyecto</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mi_proyecto</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mi_proyecto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="inicializar-git-en-la-carpeta" class="level3">
-<h3 class="anchored" data-anchor-id="inicializar-git-en-la-carpeta">2) Inicializar Git en la carpeta</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="revisar-el-estado" class="level3">
-<h3 class="anchored" data-anchor-id="revisar-el-estado">3) Revisar el estado</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="crear-un-archivo-readme.md" class="level3">
-<h3 class="anchored" data-anchor-id="crear-un-archivo-readme.md">4) Crear un archivo <code>README.md</code></h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="revisar-el-estado-1" class="level3">
-<h3 class="anchored" data-anchor-id="revisar-el-estado-1">5) Revisar el estado</h3>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="agregar-cambios-staging" class="level3">
-<h3 class="anchored" data-anchor-id="agregar-cambios-staging">6) Agregar cambios (staging)</h3>
-<p>Agregar todo lo nuevo/modificado:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Verifica de nuevo:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="guardar-un-punto-del-historial-commit" class="level3">
-<h3 class="anchored" data-anchor-id="guardar-un-punto-del-historial-commit">7) Guardar un punto del historial (commit)</h3>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primer commit: inicio del proyecto"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="confirmar-el-historial" class="level3">
-<h3 class="anchored" data-anchor-id="confirmar-el-historial">8) Confirmar el historial</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>Nota: Puedes repetir este ciclo tantas veces como quieras:</p>
-<p><code>editar → git add → git commit</code></p>
-<p>Esto te permite regresar a versiones anteriores y documentar tu avance, aunque el proyecto nunca se publique.</p>
-</blockquote>
-</section>
-<section id="agregar-contenido-al-readme.md" class="level3">
-<h3 class="anchored" data-anchor-id="agregar-contenido-al-readme.md">9) Agregar contenido al <code>README.md</code></h3>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"# Hola Mundo"</span> <span class="op">&gt;</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="revisar-qué-cambió-opcional" class="level3">
-<h3 class="anchored" data-anchor-id="revisar-qué-cambió-opcional">10) Revisar qué cambió (opcional)</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="guardar-el-cambio-en-git-segundo-commit" class="level3">
-<h3 class="anchored" data-anchor-id="guardar-el-cambio-en-git-segundo-commit">11) Guardar el cambio en Git (segundo commit)</h3>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Agrego título al README"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="ver-el-historial-dos-commits" class="level3">
-<h3 class="anchored" data-anchor-id="ver-el-historial-dos-commits">12) Ver el historial (dos commits)</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="regresar-al-primer-commit" class="level3">
-<h3 class="anchored" data-anchor-id="regresar-al-primer-commit">Regresar al primer commit</h3>
-<p>Solo ver cómo estaba (sin cambiar nada): <em>checkout</em> tempora</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 3213551</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Para volver a tu rama (master):</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="configuración-de-git-y-acceso-seguro-a-github-ssh" class="level2">
-<h2 class="anchored" data-anchor-id="configuración-de-git-y-acceso-seguro-a-github-ssh">Configuración de Git y acceso seguro a GitHub (SSH)</h2>
-<section id="configurar-tu-identidad-de-git-una-sola-vez" class="level3">
-<h3 class="anchored" data-anchor-id="configurar-tu-identidad-de-git-una-sola-vez">1) Configurar tu identidad de Git (una sola vez)</h3>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"nombre de usuario"</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"tu_correo@dominio.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Verifica:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="crear-tu-llave-ssh-para-github" class="level3">
-<h3 class="anchored" data-anchor-id="crear-tu-llave-ssh-para-github">2) Crear tu llave SSH para GitHub</h3>
-<p>Crear llave (recomendado: ed25519):</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"tu_correo@dominio.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><p>Cuando pregunte ruta, puedes dejar la default: <code>~/.ssh/id_ed25519</code></p></li>
-<li><p>Passphrase: Enter</p></li>
-</ul>
-</section>
-<section id="cargar-la-llave-en-el-ssh-agent" class="level3">
-<h3 class="anchored" data-anchor-id="cargar-la-llave-en-el-ssh-agent">3) Cargar la llave en el ssh-agent</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span><span class="st">"</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Confirmar:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="copiar-la-llave-pública-y-pegarla-en-github" class="level3">
-<h3 class="anchored" data-anchor-id="copiar-la-llave-pública-y-pegarla-en-github">4) Copiar la llave pública y pegarla en GitHub</h3>
-<p>Imprime tu llave pública:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Luego en GitHub:</p>
-<ul>
-<li><p><strong>Settings → SSH and GPG keys → New SSH key</strong></p></li>
-<li><p>Pega el contenido completo (una sola línea)</p></li>
-<li><p>Ponle un título tipo: <code>servidor_clase_intro_bioinfo</code></p></li>
-</ul>
-</section>
-<section id="probar-la-conexión-con-github" class="level3">
-<h3 class="anchored" data-anchor-id="probar-la-conexión-con-github">5) Probar la conexión con GitHub</h3>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><p>La primera vez te pedirá confirmar el fingerprint → escribe <code>yes</code>.</p></li>
-<li><p>Debe responder algo como “successfully authenticated”.</p></li>
-</ul>
-</section>
-</section>
-<section id="clonar-un-repositorio-de-github-propio-y-subir-cambios" class="level2">
-<h2 class="anchored" data-anchor-id="clonar-un-repositorio-de-github-propio-y-subir-cambios">Clonar un repositorio de GitHub (propio) y subir cambios</h2>
-<section id="clonar-el-repositorio" class="level3">
-<h3 class="anchored" data-anchor-id="clonar-el-repositorio">1) Clonar el repositorio</h3>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/cristoichkov/tareas_intro_bash_bioinfo.git</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tareas_intro_bash_bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="crear-un-archivo-y-agregar-contenido" class="level3">
-<h3 class="anchored" data-anchor-id="crear-un-archivo-y-agregar-contenido">2) Crear un archivo y agregar contenido</h3>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"de mi serviodr a mi github"</span> <span class="op">&gt;</span> prueba.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="revisar-cambios" class="level3">
-<h3 class="anchored" data-anchor-id="revisar-cambios">3) Revisar cambios</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="registrar-el-cambio-add-commit" class="level3">
-<h3 class="anchored" data-anchor-id="registrar-el-cambio-add-commit">4) Registrar el cambio (add + commit)</h3>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add prueba.txt</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Agrego prueba.txt desde el servidor"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="subir-a-github-push" class="level3">
-<h3 class="anchored" data-anchor-id="subir-a-github-push">5) Subir a GitHub (push)</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="actualizar-mi-repositorio-local-desde-github-pull" class="level2">
-<h2 class="anchored" data-anchor-id="actualizar-mi-repositorio-local-desde-github-pull">Actualizar mi repositorio local desde GitHub (pull)</h2>
-<p>Si ya tienes el repositorio clonado en tu computadora y en GitHub hubo cambios, puedes actualizar tu copia local así:</p>
-<section id="entrar-a-la-carpeta-del-repositorio" class="level3">
-<h3 class="anchored" data-anchor-id="entrar-a-la-carpeta-del-repositorio">1) Entrar a la carpeta del repositorio</h3>
-<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tareas_intro_bash_bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="descargar-y-aplicar-los-cambios-desde-github" class="level3">
-<h3 class="anchored" data-anchor-id="descargar-y-aplicar-los-cambios-desde-github">2) Descargar y aplicar los cambios desde GitHub</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
 <section id="conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh" class="level2">
 <h2 class="anchored" data-anchor-id="conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh">Conectarse a un servidor desde Visual Studio Code (Remote - SSH)</h2>
 <p>En esta parte configuraremos VS Code para conectarnos a un servidor vía <strong>SSH</strong> usando la extensión <strong>Remote - SSH</strong>.</p>
@@ -423,10 +269,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol start="4" type="1">
 <li>Agrega una entrada como esta (reemplaza IP/usuario):</li>
 </ol>
-<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> clase_bioinfo_IB </span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> IP_O_DOMINIO</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> USUARIO</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Port</span> 22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Host</span> clase_bioinfo_IB </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="ex">HostName</span> IP_O_DOMINIO</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">User</span> USUARIO</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">Port</span> 22</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="5" type="1">
 <li>Guarda el archivo.</li>
 </ol>
@@ -442,6 +288,160 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Igresa la contraseña de SSH cuando te la solicite.</p></li>
 </ol>
 <p>Cuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá <code>SSH: clase_bioinfo_IB</code>).</p>
+</section>
+</section>
+<section id="git-en-terminal-uso-personal-sin-subir-a-github" class="level2">
+<h2 class="anchored" data-anchor-id="git-en-terminal-uso-personal-sin-subir-a-github">Git en terminal (uso personal, sin subir a GitHub)</h2>
+<p>En esta sección usaremos Git <strong>solo de manera local</strong> para llevar control de versiones de un proyecto en un servidor. No es necesario crear un repositorio en GitHub ni compartirlo: puede quedarse <strong>solo para ti</strong>.</p>
+<section id="crear-una-carpeta-de-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="crear-una-carpeta-de-proyecto">1) Crear una carpeta de proyecto</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> mi_proyecto</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> mi_proyecto</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="inicializar-git-en-la-carpeta" class="level3">
+<h3 class="anchored" data-anchor-id="inicializar-git-en-la-carpeta">2) Inicializar Git en la carpeta</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="revisar-el-estado" class="level3">
+<h3 class="anchored" data-anchor-id="revisar-el-estado">3) Revisar el estado</h3>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="crear-un-archivo-readme.md" class="level3">
+<h3 class="anchored" data-anchor-id="crear-un-archivo-readme.md">4) Crear un archivo <code>README.md</code></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="revisar-el-estado-1" class="level3">
+<h3 class="anchored" data-anchor-id="revisar-el-estado-1">5) Revisar el estado</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="agregar-cambios-staging" class="level3">
+<h3 class="anchored" data-anchor-id="agregar-cambios-staging">6) Agregar cambios (staging)</h3>
+<p>Agregar todo lo nuevo/modificado:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Verifica de nuevo:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="guardar-un-punto-del-historial-commit" class="level3">
+<h3 class="anchored" data-anchor-id="guardar-un-punto-del-historial-commit">7) Guardar un punto del historial (commit)</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Primer commit: inicio del proyecto"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="confirmar-el-historial" class="level3">
+<h3 class="anchored" data-anchor-id="confirmar-el-historial">8) Confirmar el historial</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Nota: Puedes repetir este ciclo tantas veces como quieras:</p>
+<p><code>editar → git add → git commit</code></p>
+<p>Esto te permite regresar a versiones anteriores y documentar tu avance, aunque el proyecto nunca se publique.</p>
+</blockquote>
+</section>
+<section id="agregar-contenido-al-readme.md" class="level3">
+<h3 class="anchored" data-anchor-id="agregar-contenido-al-readme.md">9) Agregar contenido al <code>README.md</code></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"# Hola Mundo"</span> <span class="op">&gt;</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="revisar-qué-cambió-opcional" class="level3">
+<h3 class="anchored" data-anchor-id="revisar-qué-cambió-opcional">10) Revisar qué cambió (opcional)</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="guardar-el-cambio-en-git-segundo-commit" class="level3">
+<h3 class="anchored" data-anchor-id="guardar-el-cambio-en-git-segundo-commit">11) Guardar el cambio en Git (segundo commit)</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add README.md</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Agrego título al README"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ver-el-historial-dos-commits" class="level3">
+<h3 class="anchored" data-anchor-id="ver-el-historial-dos-commits">12) Ver el historial (dos commits)</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="regresar-al-primer-commit" class="level3">
+<h3 class="anchored" data-anchor-id="regresar-al-primer-commit">Regresar al primer commit</h3>
+<p>Solo ver cómo estaba (sin cambiar nada): <em>checkout</em> tempora</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout 3213551</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para volver a tu rama (master):</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout master</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="configuración-de-git-y-acceso-seguro-a-github-ssh" class="level2">
+<h2 class="anchored" data-anchor-id="configuración-de-git-y-acceso-seguro-a-github-ssh">Configuración de Git y acceso seguro a GitHub (SSH)</h2>
+<section id="configurar-tu-identidad-de-git-una-sola-vez" class="level3">
+<h3 class="anchored" data-anchor-id="configurar-tu-identidad-de-git-una-sola-vez">1) Configurar tu identidad de Git (una sola vez)</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"nombre de usuario"</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"tu_correo@dominio.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Verifica:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> <span class="at">--list</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="crear-tu-llave-ssh-para-github" class="level3">
+<h3 class="anchored" data-anchor-id="crear-tu-llave-ssh-para-github">2) Crear tu llave SSH para GitHub</h3>
+<p>Crear llave (recomendado: ed25519):</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-keygen</span> <span class="at">-t</span> ed25519 <span class="at">-C</span> <span class="st">"tu_correo@dominio.com"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>Cuando pregunte ruta, puedes dejar la default: <code>~/.ssh/id_ed25519</code></p></li>
+<li><p>Passphrase: Enter</p></li>
+</ul>
+</section>
+<section id="cargar-la-llave-en-el-ssh-agent" class="level3">
+<h3 class="anchored" data-anchor-id="cargar-la-llave-en-el-ssh-agent">3) Cargar la llave en el ssh-agent</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="fu">ssh-agent</span> <span class="at">-s</span><span class="va">)</span><span class="st">"</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> ~/.ssh/id_ed25519</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Confirmar:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh-add</span> <span class="at">-l</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="copiar-la-llave-pública-y-pegarla-en-github" class="level3">
+<h3 class="anchored" data-anchor-id="copiar-la-llave-pública-y-pegarla-en-github">4) Copiar la llave pública y pegarla en GitHub</h3>
+<p>Imprime tu llave pública:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> ~/.ssh/id_ed25519.pub</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Luego en GitHub:</p>
+<ul>
+<li><p><strong>Settings → SSH and GPG keys → New SSH key</strong></p></li>
+<li><p>Pega el contenido completo (una sola línea)</p></li>
+<li><p>Ponle un título tipo: <code>servidor_clase_intro_bioinfo</code></p></li>
+</ul>
+</section>
+<section id="probar-la-conexión-con-github" class="level3">
+<h3 class="anchored" data-anchor-id="probar-la-conexión-con-github">5) Probar la conexión con GitHub</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-T</span> git@github.com</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>La primera vez te pedirá confirmar el fingerprint → escribe <code>yes</code>.</p></li>
+<li><p>Debe responder algo como “successfully authenticated”.</p></li>
+</ul>
+</section>
+</section>
+<section id="clonar-un-repositorio-de-github-propio-y-subir-cambios" class="level2">
+<h2 class="anchored" data-anchor-id="clonar-un-repositorio-de-github-propio-y-subir-cambios">Clonar un repositorio de GitHub (propio) y subir cambios</h2>
+<section id="clonar-el-repositorio" class="level3">
+<h3 class="anchored" data-anchor-id="clonar-el-repositorio">1) Clonar el repositorio</h3>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/cristoichkov/tareas_intro_bash_bioinfo.git</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tareas_intro_bash_bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="crear-un-archivo-y-agregar-contenido" class="level3">
+<h3 class="anchored" data-anchor-id="crear-un-archivo-y-agregar-contenido">2) Crear un archivo y agregar contenido</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"de mi serviodr a mi github"</span> <span class="op">&gt;</span> prueba.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="revisar-cambios" class="level3">
+<h3 class="anchored" data-anchor-id="revisar-cambios">3) Revisar cambios</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="registrar-el-cambio-add-commit" class="level3">
+<h3 class="anchored" data-anchor-id="registrar-el-cambio-add-commit">4) Registrar el cambio (add + commit)</h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add prueba.txt</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Agrego prueba.txt desde el servidor"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="subir-a-github-push" class="level3">
+<h3 class="anchored" data-anchor-id="subir-a-github-push">5) Subir a GitHub (push)</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="actualizar-mi-repositorio-local-desde-github-pull" class="level2">
+<h2 class="anchored" data-anchor-id="actualizar-mi-repositorio-local-desde-github-pull">Actualizar mi repositorio local desde GitHub (pull)</h2>
+<p>Si ya tienes el repositorio clonado en tu computadora y en GitHub hubo cambios, puedes actualizar tu copia local así:</p>
+<section id="entrar-a-la-carpeta-del-repositorio" class="level3">
+<h3 class="anchored" data-anchor-id="entrar-a-la-carpeta-del-repositorio">1) Entrar a la carpeta del repositorio</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> tareas_intro_bash_bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="descargar-y-aplicar-los-cambios-desde-github" class="level3">
+<h3 class="anchored" data-anchor-id="descargar-y-aplicar-los-cambios-desde-github">2) Descargar y aplicar los cambios desde GitHub</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>

@@ -1,6 +1,63 @@
 ---
-title: "Notas: Git/GitHub + VS Code en servidor"
+title: "Notas: VS Code + Git/GitHub en servidor"
 ---
+
+## Conectarse a un servidor desde Visual Studio Code (Remote - SSH)
+
+En esta parte configuraremos VS Code para conectarnos a un servidor vía **SSH** usando la extensión **Remote - SSH**.
+
+### 1) Instalar la extensión
+
+1.  Abre VS Code.
+2.  Ve a **Extensions** (ícono de cuadritos) o presiona `Cmd + Shift + X`.
+3.  Busca e instala: **Remote - SSH** (Microsoft).
+
+### 2) Abrir la paleta de comandos
+
+En macOS:
+
+-   Presiona `Cmd + Shift + P`
+
+En Windows y Linux:
+
+-   Presiona `Ctrl + Shift + P`
+
+### 3) Conectar por primera vez y configurar el Host
+
+1.  En la paleta, escribe: **Remote-SSH: Connect to Host..**
+2.  Selecciona: **Configure SSH Hosts..**
+3.  Elige el archivo de configuración:
+
+-   `/Users/usuario/.ssh/config`\
+    (equivalente a `~/.ssh/config`)
+
+4.  Agrega una entrada como esta (reemplaza IP/usuario):
+
+``` bash
+Host clase_bioinfo_IB 
+  HostName IP_O_DOMINIO
+  User USUARIO
+  Port 22
+```
+
+5.  Guarda el archivo.
+
+### 4) Conectarse al servidor
+
+1.  Abre de nuevo la paleta (`Cmd + Shift + P` o `Ctrl + Shift + P`)
+
+2.  Ejecuta: **Remote-SSH: Connect to Host..**
+
+3.  Selecciona: `clase_bioinfo_IB`
+
+4.  VS Code te preguntará el tipo de sistema remoto (si aparece): elige **Linux**
+
+5.  Si es la primera vez, puede pedir confirmar la **huella (fingerprint)** del servidor: acepta (**Continue**).
+
+6.  Igresa la contraseña de SSH cuando te la solicite.
+
+Cuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá `SSH: clase_bioinfo_IB`).
+
 
 ## Git en terminal (uso personal, sin subir a GitHub)
 
@@ -226,59 +283,3 @@ cd tareas_intro_bash_bioinfo
 ``` bash
 git pull
 ```
-
-## Conectarse a un servidor desde Visual Studio Code (Remote - SSH)
-
-En esta parte configuraremos VS Code para conectarnos a un servidor vía **SSH** usando la extensión **Remote - SSH**.
-
-### 1) Instalar la extensión
-
-1.  Abre VS Code.
-2.  Ve a **Extensions** (ícono de cuadritos) o presiona `Cmd + Shift + X`.
-3.  Busca e instala: **Remote - SSH** (Microsoft).
-
-### 2) Abrir la paleta de comandos
-
-En macOS:
-
--   Presiona `Cmd + Shift + P`
-
-En Windows y Linux:
-
--   Presiona `Ctrl + Shift + P`
-
-### 3) Conectar por primera vez y configurar el Host
-
-1.  En la paleta, escribe: **Remote-SSH: Connect to Host..**
-2.  Selecciona: **Configure SSH Hosts..**
-3.  Elige el archivo de configuración:
-
--   `/Users/usuario/.ssh/config`\
-    (equivalente a `~/.ssh/config`)
-
-4.  Agrega una entrada como esta (reemplaza IP/usuario):
-
-``` bash
-Host clase_bioinfo_IB 
-  HostName IP_O_DOMINIO
-  User USUARIO
-  Port 22
-```
-
-5.  Guarda el archivo.
-
-### 4) Conectarse al servidor
-
-1.  Abre de nuevo la paleta (`Cmd + Shift + P` o `Ctrl + Shift + P`)
-
-2.  Ejecuta: **Remote-SSH: Connect to Host..**
-
-3.  Selecciona: `clase_bioinfo_IB`
-
-4.  VS Code te preguntará el tipo de sistema remoto (si aparece): elige **Linux**
-
-5.  Si es la primera vez, puede pedir confirmar la **huella (fingerprint)** del servidor: acepta (**Continue**).
-
-6.  Igresa la contraseña de SSH cuando te la solicite.
-
-Cuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá `SSH: clase_bioinfo_IB`).
