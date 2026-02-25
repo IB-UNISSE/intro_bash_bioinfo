@@ -22,10 +22,12 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 
 [Introducción a la programación para bioinformática con bash](https://pcbiol.posgrado.unam.mx/programas_cursos/2026-2/introduccion_a_la_programacion_para_bioinformatica_con_bash.pdf)
 
-## Unidades
+## \[Unidades
 
 -   [Unidad 1. Introducción a la Bioinformática](unidad_1.qmd)
 -   [Unidad 2. Documentación de proyectos y reproducibilidad](unidad_2.qmd)
 -   [Unidad 3. Servidores de Alto Rendimiento (HPC)](unidad_3.qmd)
+-   [Notas: VS Code + Git/GitHub en servidor](nota_vscode_git.qmd)
+-   [Unidad 4: Fundamentos de Linux](unidad_4.qmd)
 
 *(Iremos agregando el resto de unidades conforme avancemos en el semestre.)*

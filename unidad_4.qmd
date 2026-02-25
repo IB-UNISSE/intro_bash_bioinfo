@@ -32,6 +32,72 @@ Una forma práctica de agrupar distribuciones es por **cómo instalan software**
 -   [**Oracle Linux**](https://www.oracle.com/linux/): orientada a centros de datos y bases de datos.\
 -   [**Mageia**](https://www.mageia.org): opción independiente enfocada en usuario general.
 
+## Ver componentes del sistema en Linux (CPU, RAM, discos y red)
+
+### CPU (procesador)
+
+Esta sección reúne comandos rápidos para identificar recursos y configuración básica del equipo (útil antes de correr análisis bioinformáticos).
+
+``` bash
+lscpu
+```
+
+Útil para ver:
+
+-   arquitectura (x86_64/arm64),
+
+-   núcleos/hilos,
+
+-   modelo de CPU,
+
+-   sockets.
+
+Si quieres solo lo más importante:
+
+```         
+lscpu | egrep 'Model name|Socket|Core|Thread|CPU\(s\)|MHz'
+```
+
+### Memoria RAM
+
+``` bash
+free -h
+```
+
+-   `total`: RAM total
+
+-   `used`: usada
+
+-   `available`: disponible “real” para procesos nuevos (muy útil)
+
+### Almacenamiento (uso de discos y particiones)
+
+Ver uso por partición montada:
+
+``` bash
+df -h
+```
+
+Ver el “árbol” de discos/particiones y puntos de montaje:
+
+``` bash
+lsblk
+```
+
+### Red (IP y estado de interfaces)
+
+Ver interfaces y direcciones IP:
+
+``` bash
+ip a
+```
+
+Solo direcciones (más limpio):
+
+``` bash
+ip -br a
+```
+
 ## Variables de entorno
 
 Las **variables de entorno** son valores dinámicos que informan al sistema operativo y a los programas sobre cómo deben comportarse. Imagínalas como una pequeña libreta de direcciones o configuraciones que Linux consulta constantemente para saber dónde están las cosas.
@@ -192,59 +258,6 @@ Estás en tu terminal y quieres moverte a tu carpeta de trabajo:
 
 4.  **Regresar a "casa" rápido:** `cd ~` (vuelves a tu `$HOME`).
 
-## Uso de dispositivos USB (detección → montaje → expulsión)
-
-En Linux un USB se integra como parte del sistema de archivos mediante **montaje**.
-
-#### 1) Detección
-
-Este comando te muestra una lista de tus discos. Busca uno que coincida con el tamaño de tu USB (por ejemplo, 16G). Verás algo como sdb (el disco físico) y sdb1 (la partición de datos).
-
-``` bash
-lsblk
-```
-
-#### 2) Crear punto de montaje
-
-Para poder ver los archivos del USB, necesitas una carpeta vacía donde "colgar" ese contenido.
-
-``` bash
-sudo mkdir -p /mnt/mi_usb
-```
-
-#### 3) Montar
-
-Ahora vinculamos el dispositivo físico con la carpeta que creamos. A partir de este momento, todo lo que guardes en `/mnt/mi_usb` se estará guardando realmente en el pendrive.
-
-``` bash
-# montar
-sudo mount /dev/sdb1 /mnt/mi_usb
-
-# Entrar a ver tus archivos
-cd /mnt/mi_usb
-
-# Listar los archivos
-ls
-```
-
-#### 4) Desmontar (expulsión segura)
-
-En Linux es **crítico** desmontar el dispositivo antes de desconectarlo físicamente. Si no lo haces, es muy probable que los datos se corrompan, ya que Linux a veces espera un momento antes de escribir los archivos pendientes.
-
-``` bash
-sudo umount /mnt/mi_usb
-```
-
-#### Resumen
-
--   Identificar: `lsblk` o `fdisk -l`
-
--   Conectar: `mount [dispositivo] [carpeta]`
-
--   Desconectar: `umount [carpeta o dispositivo]`
-
-> **Tip:** Si tu USB contiene archivos pesados de secuenciación, el comando umount puede tardar unos segundos en terminar. No retires el USB hasta que la terminal te devuelva el control (cuando aparezca de nuevo el cursor para escribir), eso significa que todos los datos se han terminado de copiar correctamente.
-
 ## Permisos y grupos
 
 En Linux, la seguridad se basa en una regla simple: **quién** puede hacer **qué** con un archivo o carpeta. Como biólogo, esto es fundamental para proteger tus datos de secuenciación o scripts de análisis para que no sean modificados o borrados por error por otros usuarios.
@@ -345,108 +358,157 @@ chmod 750 resultados_pcr/
 
 > **Tip de seguridad :**Si intentas usar un comando y recibes el error "Permission denied", probablemente necesites usar sudo (para actuar como administrador) o pedirle al dueño del archivo que te dé permisos de lectura o ejecución.
 
-## Navegación y creación de archivos
+## Navegación, manipulación y compresión de archivos
 
-### 1. Navegación (Moverte por el sistema)
+### Navegación (cd, ls, pwd)
 
--   **`ls` (List):** Sirve para ver qué hay dentro de una carpeta.
-
-``` bash
-# muestra detalles como tamaño y fecha
-ls -l 
-
-# muestra archivos ocultos
-la -a
-```
-
--   **`cd` (Change Directory):** Es el comando para "entrar" a una carpeta.
+1)  Ir al directorio personal:
 
 ``` bash
-# entrar
-cd Documentos/ADN 
-
-# subir un nivel (salir de la carpeta).
-cd ..
+cd
 ```
 
-### 2. Manipulación (Crear y destruir)
-
--   **`mkdir` (Make Directory):** Crea una carpeta nueva.
+2.  Listar contenido del directorio actual:
 
 ``` bash
-mkdir Experimento_2026
+ls
 ```
 
--   **`rm` (Remove):** Borra archivos o carpetas. **¡Cuidado!** En Linux no hay "Papelera de reciclaje"; lo que borras aquí desaparece para siempre.
+3.  Entrar a un directorio (ejemplo: `Documents`):
 
 ``` bash
-# eliminar archivo
-rm archivo.txt
-
-# eliminar carpeta
-rm -r carpeta/
+cd Documents
 ```
 
-### 3. Inspección y Edición
-
--   **`file`:** Te dice qué tipo de archivo es uno realmente, sin importar su extensión. Muy útil si descargas datos y no sabes si son texto plano o una imagen.
+4.  Volver al directorio personal:
 
 ``` bash
-file muestra_desconocida
+cd
 ```
 
--   **`nano`:** Es un editor de texto muy sencillo que vive dentro de la terminal. Es ideal para escribir protocolos rápidos o editar scripts de Python/R.
+5.  Ir al directorio `Images`:
 
 ``` bash
-nano mis_notas.txt
-
-# Para salir: Ctrl+O para guardar y Ctrl+X para cerrar
+cd Images
 ```
 
-### 4. Compresión (Empaquetar y enviar)
-
--   **`zip`:** Sirve para agrupar muchos archivos en uno solo y reducir su tamaño, facilitando enviarlos por correo o subirlos a la nube.
+6.  Mostrar en qué ruta estás (directorio actual):
 
 ``` bash
-# la -r significa "recursivo", es decir, incluye todo lo que hay dentro de la carpeta
-
- zip -r resultados_finales.zip carpeta_de_resultados/
+pwd
 ```
 
-### Ejemplo de flujo de trabajo real
+### Manipulación de archivos y directorios (mkdir, rmdir, rm, cp)
 
-Imagina que acabas de recibir resultados de una secuenciación:
+#### A) Crear directorios dentro de Documents
 
-1.  **Revisas qué llegó:**
+1.  r al home y luego a `Documents`:
 
 ``` bash
-ls -lh
+cd
+cd Documents
 ```
 
-2.  **Identificar el archivo:**
+2.  Crear dos directorios:
 
 ``` bash
-file datos_crudos
-
-# te dirá si es un archivo comprimido o texto
+mkdir Biology
+mkdir Informatics
 ```
 
-3.  **Creas una carpeta de trabajo:**
+3.  Verificar:
 
 ``` bash
-mkdir Analisis_01
+ls
 ```
 
-4.  **Escribes una nota rápida del experimento:**
+#### B) Entrar a un directorio (ruta con `~`)
+
+Ir a `Biology` usando ruta “completa” con `~`:
 
 ``` bash
-nano notas.txt
+cd ~/Documents/Biology
 ```
 
-5.  **Al terminar, empaquetas todo para enviarlo al investigador principal:**
+#### C) Crear y borrar un directorio vacío (rmdir)
+
+1.  Crear un directorio dentro de `Biology`:
 
 ``` bash
-zip -r entrega_enero.zip Analisis_01/ notas.txt
+mkdir relatividadGeneral
+ls
 ```
 
-> **Tip:** Si por error intentas borrar una carpeta con rm y te da error, recuerda que debes usar `rm -r` (la `r` es de recursivo). Pero antes de dar Enter, asegúrate dos veces de que estás en la carpeta correcta; la terminal no te preguntará "¿Estás seguro?".
+2.  Borrarlo con `rmdir`:
+
+``` bash
+rmdir relatividadGeneral
+ls
+```
+
+> Nota: `rmdir` **solo funciona** si el directorio está vacío.
+
+### Editar archivos de texto con nano (nano)
+
+1.  En `~/Documentos/Biology`, crear/abrir un archivo con nano:
+
+``` bash
+cd ~/Documents/Biology
+nano epilogoElOrigenDeLasEspecies.txt
+```
+
+2.  Pega texto dentro de nano (en muchas terminales puedes pegar con `Ctrl + Shift + V`).
+
+3.  Guardar:
+
+-   `Ctrl + O` (write out)
+
+-   Enter para confirmar nombre
+
+4.  Salir:
+
+-   `Ctrl + X`
+
+### Identificar tipo de archivo (file) y borrar (rm)
+
+1.  (Opcional) Copia una imagen desde `Images` a `Biology`\
+
+    (Ejemplo: `hummingbird.png`):
+
+``` bash
+cp /home/cristian/Images/hummingbird.png ~/Documents/Biology/
+ls ~/Documents/Biology
+```
+
+2.  Usar `file` para ver el tipo de archivo:
+
+``` bash
+cd ~/Documents/Biology
+file epilogoElOrigenDeLasEspecies.txt
+file hummingbird.png
+```
+
+3.  Borrar un archivo específico con `rm`:
+
+``` bash
+rm epilogoElOrigenDeLasEspecies.txt
+ls
+```
+
+> Nota: `rm` elimina de forma definitiva (no hay “papelera”).
+
+## Archivado y compresión con ZIP (zip)
+
+Comprimir varios archivos en un ZIP
+
+``` bash
+zip archivo.zip archivo1 archivo2
+```
+
+### Comprimir un directorio completo (recursivo)
+
+``` bash
+zip -r images.zip ~/Images
+```
+
+> Nota: `-r` significa *recursivo* (incluye subcarpetas).

@@ -260,6 +260,16 @@
     ]
   },
   {
+    "objectID": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
+    "href": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
+    "title": "Notas: VS Code + Git/GitHub en servidor",
+    "section": "",
+    "text": "1) Instalar la extensión\n\nAbre VS Code.\nVe a Extensions (ícono de cuadritos) o presiona Cmd + Shift + X.\nBusca e instala: Remote - SSH (Microsoft).\n\n\n\n2) Abrir la paleta de comandos\nEn macOS:\n\nPresiona Cmd + Shift + P\n\nEn Windows y Linux:\n\nPresiona Ctrl + Shift + P\n\n\n\n3) Conectar por primera vez y configurar el Host\n\nEn la paleta, escribe: Remote-SSH: Connect to Host..\nSelecciona: Configure SSH Hosts..\nElige el archivo de configuración:\n\n\n/Users/usuario/.ssh/config\n(equivalente a ~/.ssh/config)\n\n\nAgrega una entrada como esta (reemplaza IP/usuario):\n\nHost clase_bioinfo_IB \n  HostName IP_O_DOMINIO\n  User USUARIO\n  Port 22\n\nGuarda el archivo.\n\n\n\n4) Conectarse al servidor\n\nAbre de nuevo la paleta (Cmd + Shift + P o Ctrl + Shift + P)\nEjecuta: Remote-SSH: Connect to Host..\nSelecciona: clase_bioinfo_IB\nVS Code te preguntará el tipo de sistema remoto (si aparece): elige Linux\nSi es la primera vez, puede pedir confirmar la huella (fingerprint) del servidor: acepta (Continue).\nIgresa la contraseña de SSH cuando te la solicite.\n\nCuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá SSH: clase_bioinfo_IB).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: VS Code + Git/GitHub en servidor</span>"
+    ]
+  },
+  {
     "objectID": "nota_vscode_git.html#git-en-terminal-uso-personal-sin-subir-a-github",
     "href": "nota_vscode_git.html#git-en-terminal-uso-personal-sin-subir-a-github",
     "title": "Notas: VS Code + Git/GitHub en servidor",
@@ -295,16 +305,6 @@
     "title": "Notas: VS Code + Git/GitHub en servidor",
     "section": "Actualizar mi repositorio local desde GitHub (pull)",
     "text": "Actualizar mi repositorio local desde GitHub (pull)\nSi ya tienes el repositorio clonado en tu computadora y en GitHub hubo cambios, puedes actualizar tu copia local así:\n\n1) Entrar a la carpeta del repositorio\ncd tareas_intro_bash_bioinfo\n\n\n2) Descargar y aplicar los cambios desde GitHub\ngit pull",
-    "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: VS Code + Git/GitHub en servidor</span>"
-    ]
-  },
-  {
-    "objectID": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
-    "href": "nota_vscode_git.html#conectarse-a-un-servidor-desde-visual-studio-code-remote---ssh",
-    "title": "Notas: VS Code + Git/GitHub en servidor",
-    "section": "",
-    "text": "1) Instalar la extensión\n\nAbre VS Code.\nVe a Extensions (ícono de cuadritos) o presiona Cmd + Shift + X.\nBusca e instala: Remote - SSH (Microsoft).\n\n\n\n2) Abrir la paleta de comandos\nEn macOS:\n\nPresiona Cmd + Shift + P\n\nEn Windows y Linux:\n\nPresiona Ctrl + Shift + P\n\n\n\n3) Conectar por primera vez y configurar el Host\n\nEn la paleta, escribe: Remote-SSH: Connect to Host..\nSelecciona: Configure SSH Hosts..\nElige el archivo de configuración:\n\n\n/Users/usuario/.ssh/config\n(equivalente a ~/.ssh/config)\n\n\nAgrega una entrada como esta (reemplaza IP/usuario):\n\nHost clase_bioinfo_IB \n  HostName IP_O_DOMINIO\n  User USUARIO\n  Port 22\n\nGuarda el archivo.\n\n\n\n4) Conectarse al servidor\n\nAbre de nuevo la paleta (Cmd + Shift + P o Ctrl + Shift + P)\nEjecuta: Remote-SSH: Connect to Host..\nSelecciona: clase_bioinfo_IB\nVS Code te preguntará el tipo de sistema remoto (si aparece): elige Linux\nSi es la primera vez, puede pedir confirmar la huella (fingerprint) del servidor: acepta (Continue).\nIgresa la contraseña de SSH cuando te la solicite.\n\nCuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá SSH: clase_bioinfo_IB).",
     "crumbs": [
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Notas: VS Code + Git/GitHub en servidor</span>"
     ]

@@ -58,7 +58,6 @@ Host clase_bioinfo_IB
 
 Cuando conecte, VS Code abrirá una nueva ventana indicando que estás trabajando en el servidor (en la esquina inferior izquierda se verá `SSH: clase_bioinfo_IB`).
 
-
 ## Git en terminal (uso personal, sin subir a GitHub)
 
 En esta sección usaremos Git **solo de manera local** para llevar control de versiones de un proyecto en un servidor. No es necesario crear un repositorio en GitHub ni compartirlo: puede quedarse **solo para ti**.
