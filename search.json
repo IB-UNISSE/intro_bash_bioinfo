@@ -43,8 +43,8 @@
     "objectID": "index.html#unidades",
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
-    "section": "Unidades",
-    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "section": "[Unidades",
+    "text": "[Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -330,6 +330,16 @@
     ]
   },
   {
+    "objectID": "unidad_4.html#ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red",
+    "href": "unidad_4.html#ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red",
+    "title": "Unidad 4: Fundamentos de Linux",
+    "section": "Ver componentes del sistema en Linux (CPU, RAM, discos y red)",
+    "text": "Ver componentes del sistema en Linux (CPU, RAM, discos y red)\n\nCPU (procesador)\nEsta sección reúne comandos rápidos para identificar recursos y configuración básica del equipo (útil antes de correr análisis bioinformáticos).\nlscpu\nÚtil para ver:\n\narquitectura (x86_64/arm64),\nnúcleos/hilos,\nmodelo de CPU,\nsockets.\n\nSi quieres solo lo más importante:\nlscpu | egrep 'Model name|Socket|Core|Thread|CPU\\(s\\)|MHz'\n\n\nMemoria RAM\nfree -h\n\ntotal: RAM total\nused: usada\navailable: disponible “real” para procesos nuevos (muy útil)\n\n\n\nAlmacenamiento (uso de discos y particiones)\nVer uso por partición montada:\ndf -h\nVer el “árbol” de discos/particiones y puntos de montaje:\nlsblk\n\n\nRed (IP y estado de interfaces)\nVer interfaces y direcciones IP:\nip a\nSolo direcciones (más limpio):\nip -br a",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+    ]
+  },
+  {
     "objectID": "unidad_4.html#variables-de-entorno",
     "href": "unidad_4.html#variables-de-entorno",
     "title": "Unidad 4: Fundamentos de Linux",
@@ -350,16 +360,6 @@
     ]
   },
   {
-    "objectID": "unidad_4.html#uso-de-dispositivos-usb-detección-montaje-expulsión",
-    "href": "unidad_4.html#uso-de-dispositivos-usb-detección-montaje-expulsión",
-    "title": "Unidad 4: Fundamentos de Linux",
-    "section": "Uso de dispositivos USB (detección → montaje → expulsión)",
-    "text": "Uso de dispositivos USB (detección → montaje → expulsión)\nEn Linux un USB se integra como parte del sistema de archivos mediante montaje.\n\n1) Detección\nEste comando te muestra una lista de tus discos. Busca uno que coincida con el tamaño de tu USB (por ejemplo, 16G). Verás algo como sdb (el disco físico) y sdb1 (la partición de datos).\nlsblk\n\n\n2) Crear punto de montaje\nPara poder ver los archivos del USB, necesitas una carpeta vacía donde “colgar” ese contenido.\nsudo mkdir -p /mnt/mi_usb\n\n\n3) Montar\nAhora vinculamos el dispositivo físico con la carpeta que creamos. A partir de este momento, todo lo que guardes en /mnt/mi_usb se estará guardando realmente en el pendrive.\n# montar\nsudo mount /dev/sdb1 /mnt/mi_usb\n\n# Entrar a ver tus archivos\ncd /mnt/mi_usb\n\n# Listar los archivos\nls\n\n\n4) Desmontar (expulsión segura)\nEn Linux es crítico desmontar el dispositivo antes de desconectarlo físicamente. Si no lo haces, es muy probable que los datos se corrompan, ya que Linux a veces espera un momento antes de escribir los archivos pendientes.\nsudo umount /mnt/mi_usb\n\n\nResumen\n\nIdentificar: lsblk o fdisk -l\nConectar: mount [dispositivo] [carpeta]\nDesconectar: umount [carpeta o dispositivo]\n\n\nTip: Si tu USB contiene archivos pesados de secuenciación, el comando umount puede tardar unos segundos en terminar. No retires el USB hasta que la terminal te devuelva el control (cuando aparezca de nuevo el cursor para escribir), eso significa que todos los datos se han terminado de copiar correctamente.",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
-    ]
-  },
-  {
     "objectID": "unidad_4.html#permisos-y-grupos",
     "href": "unidad_4.html#permisos-y-grupos",
     "title": "Unidad 4: Fundamentos de Linux",
@@ -370,11 +370,21 @@
     ]
   },
   {
-    "objectID": "unidad_4.html#navegación-y-creación-de-archivos",
-    "href": "unidad_4.html#navegación-y-creación-de-archivos",
+    "objectID": "unidad_4.html#navegación-manipulación-y-compresión-de-archivos",
+    "href": "unidad_4.html#navegación-manipulación-y-compresión-de-archivos",
     "title": "Unidad 4: Fundamentos de Linux",
-    "section": "Navegación y creación de archivos",
-    "text": "Navegación y creación de archivos\n\n1. Navegación (Moverte por el sistema)\n\nls (List): Sirve para ver qué hay dentro de una carpeta.\n\n# muestra detalles como tamaño y fecha\nls -l \n\n# muestra archivos ocultos\nla -a\n\ncd (Change Directory): Es el comando para “entrar” a una carpeta.\n\n# entrar\ncd Documentos/ADN \n\n# subir un nivel (salir de la carpeta).\ncd ..\n\n\n2. Manipulación (Crear y destruir)\n\nmkdir (Make Directory): Crea una carpeta nueva.\n\nmkdir Experimento_2026\n\nrm (Remove): Borra archivos o carpetas. ¡Cuidado! En Linux no hay “Papelera de reciclaje”; lo que borras aquí desaparece para siempre.\n\n# eliminar archivo\nrm archivo.txt\n\n# eliminar carpeta\nrm -r carpeta/\n\n\n3. Inspección y Edición\n\nfile: Te dice qué tipo de archivo es uno realmente, sin importar su extensión. Muy útil si descargas datos y no sabes si son texto plano o una imagen.\n\nfile muestra_desconocida\n\nnano: Es un editor de texto muy sencillo que vive dentro de la terminal. Es ideal para escribir protocolos rápidos o editar scripts de Python/R.\n\nnano mis_notas.txt\n\n# Para salir: Ctrl+O para guardar y Ctrl+X para cerrar\n\n\n4. Compresión (Empaquetar y enviar)\n\nzip: Sirve para agrupar muchos archivos en uno solo y reducir su tamaño, facilitando enviarlos por correo o subirlos a la nube.\n\n# la -r significa \"recursivo\", es decir, incluye todo lo que hay dentro de la carpeta\n\n zip -r resultados_finales.zip carpeta_de_resultados/\n\n\nEjemplo de flujo de trabajo real\nImagina que acabas de recibir resultados de una secuenciación:\n\nRevisas qué llegó:\n\nls -lh\n\nIdentificar el archivo:\n\nfile datos_crudos\n\n# te dirá si es un archivo comprimido o texto\n\nCreas una carpeta de trabajo:\n\nmkdir Analisis_01\n\nEscribes una nota rápida del experimento:\n\nnano notas.txt\n\nAl terminar, empaquetas todo para enviarlo al investigador principal:\n\nzip -r entrega_enero.zip Analisis_01/ notas.txt\n\nTip: Si por error intentas borrar una carpeta con rm y te da error, recuerda que debes usar rm -r (la r es de recursivo). Pero antes de dar Enter, asegúrate dos veces de que estás en la carpeta correcta; la terminal no te preguntará “¿Estás seguro?”.",
+    "section": "Navegación, manipulación y compresión de archivos",
+    "text": "Navegación, manipulación y compresión de archivos\n\nNavegación (cd, ls, pwd)\n\nIr al directorio personal:\n\ncd\n\nListar contenido del directorio actual:\n\nls\n\nEntrar a un directorio (ejemplo: Documents):\n\ncd Documents\n\nVolver al directorio personal:\n\ncd\n\nIr al directorio Images:\n\ncd Images\n\nMostrar en qué ruta estás (directorio actual):\n\npwd\n\n\nManipulación de archivos y directorios (mkdir, rmdir, rm, cp)\n\nA) Crear directorios dentro de Documents\n\nr al home y luego a Documents:\n\ncd\ncd Documents\n\nCrear dos directorios:\n\nmkdir Biology\nmkdir Informatics\n\nVerificar:\n\nls\n\n\nB) Entrar a un directorio (ruta con ~)\nIr a Biology usando ruta “completa” con ~:\ncd ~/Documents/Biology\n\n\nC) Crear y borrar un directorio vacío (rmdir)\n\nCrear un directorio dentro de Biology:\n\nmkdir relatividadGeneral\nls\n\nBorrarlo con rmdir:\n\nrmdir relatividadGeneral\nls\n\nNota: rmdir solo funciona si el directorio está vacío.\n\n\n\n\nEditar archivos de texto con nano (nano)\n\nEn ~/Documentos/Biology, crear/abrir un archivo con nano:\n\ncd ~/Documents/Biology\nnano epilogoElOrigenDeLasEspecies.txt\n\nPega texto dentro de nano (en muchas terminales puedes pegar con Ctrl + Shift + V).\nGuardar:\n\n\nCtrl + O (write out)\nEnter para confirmar nombre\n\n\nSalir:\n\n\nCtrl + X\n\n\n\nIdentificar tipo de archivo (file) y borrar (rm)\n\n(Opcional) Copia una imagen desde Images a Biology\n\n(Ejemplo: hummingbird.png):\n\ncp /home/cristian/Images/hummingbird.png ~/Documents/Biology/\nls ~/Documents/Biology\n\nUsar file para ver el tipo de archivo:\n\ncd ~/Documents/Biology\nfile epilogoElOrigenDeLasEspecies.txt\nfile hummingbird.png\n\nBorrar un archivo específico con rm:\n\nrm epilogoElOrigenDeLasEspecies.txt\nls\n\nNota: rm elimina de forma definitiva (no hay “papelera”).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_4.html#archivado-y-compresión-con-zip-zip",
+    "href": "unidad_4.html#archivado-y-compresión-con-zip-zip",
+    "title": "Unidad 4: Fundamentos de Linux",
+    "section": "Archivado y compresión con ZIP (zip)",
+    "text": "Archivado y compresión con ZIP (zip)\nComprimir varios archivos en un ZIP\nzip archivo.zip archivo1 archivo2\n\nComprimir un directorio completo (recursivo)\nzip -r images.zip ~/Images\n\nNota: -r significa recursivo (incluye subcarpetas).",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]

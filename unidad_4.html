@@ -206,11 +206,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul class="collapse">
   <li><a href="#linux-y-sus-distribuciones-deb-y-rpm" id="toc-linux-y-sus-distribuciones-deb-y-rpm" class="nav-link active" data-scroll-target="#linux-y-sus-distribuciones-deb-y-rpm">Linux y sus distribuciones (DEB y RPM)</a></li>
+  <li><a href="#ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red" id="toc-ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red" class="nav-link" data-scroll-target="#ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red">Ver componentes del sistema en Linux (CPU, RAM, discos y red)</a></li>
   <li><a href="#variables-de-entorno" id="toc-variables-de-entorno" class="nav-link" data-scroll-target="#variables-de-entorno">Variables de entorno</a></li>
   <li><a href="#sistema-de-archivos-y-estructura-de-directorios-en-linux" id="toc-sistema-de-archivos-y-estructura-de-directorios-en-linux" class="nav-link" data-scroll-target="#sistema-de-archivos-y-estructura-de-directorios-en-linux">Sistema de archivos y estructura de directorios en Linux</a></li>
-  <li><a href="#uso-de-dispositivos-usb-detección-montaje-expulsión" id="toc-uso-de-dispositivos-usb-detección-montaje-expulsión" class="nav-link" data-scroll-target="#uso-de-dispositivos-usb-detección-montaje-expulsión">Uso de dispositivos USB (detección → montaje → expulsión)</a></li>
   <li><a href="#permisos-y-grupos" id="toc-permisos-y-grupos" class="nav-link" data-scroll-target="#permisos-y-grupos">Permisos y grupos</a></li>
-  <li><a href="#navegación-y-creación-de-archivos" id="toc-navegación-y-creación-de-archivos" class="nav-link" data-scroll-target="#navegación-y-creación-de-archivos">Navegación y creación de archivos</a></li>
+  <li><a href="#navegación-manipulación-y-compresión-de-archivos" id="toc-navegación-manipulación-y-compresión-de-archivos" class="nav-link" data-scroll-target="#navegación-manipulación-y-compresión-de-archivos">Navegación, manipulación y compresión de archivos</a></li>
+  <li><a href="#archivado-y-compresión-con-zip-zip" id="toc-archivado-y-compresión-con-zip-zip" class="nav-link" data-scroll-target="#archivado-y-compresión-con-zip-zip">Archivado y compresión con ZIP (zip)</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -286,6 +287,46 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 </ul>
 </section>
 </section>
+<section id="ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red" class="level2">
+<h2 class="anchored" data-anchor-id="ver-componentes-del-sistema-en-linux-cpu-ram-discos-y-red">Ver componentes del sistema en Linux (CPU, RAM, discos y red)</h2>
+<section id="cpu-procesador" class="level3">
+<h3 class="anchored" data-anchor-id="cpu-procesador">CPU (procesador)</h3>
+<p>Esta sección reúne comandos rápidos para identificar recursos y configuración básica del equipo (útil antes de correr análisis bioinformáticos).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lscpu</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Útil para ver:</p>
+<ul>
+<li><p>arquitectura (x86_64/arm64),</p></li>
+<li><p>núcleos/hilos,</p></li>
+<li><p>modelo de CPU,</p></li>
+<li><p>sockets.</p></li>
+</ul>
+<p>Si quieres solo lo más importante:</p>
+<pre><code>lscpu | egrep 'Model name|Socket|Core|Thread|CPU\(s\)|MHz'</code></pre>
+</section>
+<section id="memoria-ram" class="level3">
+<h3 class="anchored" data-anchor-id="memoria-ram">Memoria RAM</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">free</span> <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><p><code>total</code>: RAM total</p></li>
+<li><p><code>used</code>: usada</p></li>
+<li><p><code>available</code>: disponible “real” para procesos nuevos (muy útil)</p></li>
+</ul>
+</section>
+<section id="almacenamiento-uso-de-discos-y-particiones" class="level3">
+<h3 class="anchored" data-anchor-id="almacenamiento-uso-de-discos-y-particiones">Almacenamiento (uso de discos y particiones)</h3>
+<p>Ver uso por partición montada:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">df</span> <span class="at">-h</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ver el “árbol” de discos/particiones y puntos de montaje:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lsblk</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="red-ip-y-estado-de-interfaces" class="level3">
+<h3 class="anchored" data-anchor-id="red-ip-y-estado-de-interfaces">Red (IP y estado de interfaces)</h3>
+<p>Ver interfaces y direcciones IP:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Solo direcciones (más limpio):</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ip</span> <span class="at">-br</span> a</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
 <section id="variables-de-entorno" class="level2">
 <h2 class="anchored" data-anchor-id="variables-de-entorno">Variables de entorno</h2>
 <p>Las <strong>variables de entorno</strong> son valores dinámicos que informan al sistema operativo y a los programas sobre cómo deben comportarse. Imagínalas como una pequeña libreta de direcciones o configuraciones que Linux consulta constantemente para saber dónde están las cosas.</p>
@@ -340,36 +381,36 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 <ul>
 <li><strong>Listar todas las variables:</strong> el comando lista las variables que el sistema tiene configuradas en este momento.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printenv</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">printenv</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Mostrar el valor de una variable:</strong> Usa <code>echo $NOMBRE_VARIABLE</code>. Es fundamental incluir el símbolo $ para que Bash entienda que quieres ver el contenido y no solo imprimir la palabra.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HOME</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$HOME</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$PATH</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Asignar un valor (Variable Local):</strong> Esta variable solo funcionará en la terminal actual.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">NOMBRE</span><span class="op">=</span>valor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="va">NOMBRE</span><span class="op">=</span>valor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong>Asignar un valor (Variable de Entorno):</strong> Al usar <strong><code>export</code></strong>, la variable estará disponible para cualquier programa o script que lances desde esa terminal.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">NOMBRE</span><span class="op">=</span>valor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">NOMBRE</span><span class="op">=</span>valor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ejemplo" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo">Ejemplo:</h3>
 <ol type="1">
 <li><strong>Crear un atajo para tu carpeta de datos:</strong> En lugar de escribir toda la ruta cada vez, puedes guardarla en una variable:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">RAW_DATA</span><span class="op">=</span>/home/mauricio/investigacion/proyectos/2026/muestras_suelo/fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">RAW_DATA</span><span class="op">=</span>/home/mauricio/investigacion/proyectos/2026/muestras_suelo/fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li><strong>Usar la variable para entrar a esa carpeta rápidamente</strong>:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RAW_DATA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> <span class="va">$RAW_DATA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
 <li><strong>Automatizar con un comando de análisis:</strong> Si estás usando una herramienta para contar lecturas, puedes usar la variable en el comando:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">count_reads.sh</span> <span class="va">$RAW_DATA</span>/muestra01.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">count_reads.sh</span> <span class="va">$RAW_DATA</span>/muestra01.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="sistema-de-archivos-y-estructura-de-directorios-en-linux" class="level2">
@@ -418,48 +459,6 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 </ol>
 </section>
 </section>
-<section id="uso-de-dispositivos-usb-detección-montaje-expulsión" class="level2">
-<h2 class="anchored" data-anchor-id="uso-de-dispositivos-usb-detección-montaje-expulsión">Uso de dispositivos USB (detección → montaje → expulsión)</h2>
-<p>En Linux un USB se integra como parte del sistema de archivos mediante <strong>montaje</strong>.</p>
-<section id="detección" class="level4">
-<h4 class="anchored" data-anchor-id="detección">1) Detección</h4>
-<p>Este comando te muestra una lista de tus discos. Busca uno que coincida con el tamaño de tu USB (por ejemplo, 16G). Verás algo como sdb (el disco físico) y sdb1 (la partición de datos).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">lsblk</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="crear-punto-de-montaje" class="level4">
-<h4 class="anchored" data-anchor-id="crear-punto-de-montaje">2) Crear punto de montaje</h4>
-<p>Para poder ver los archivos del USB, necesitas una carpeta vacía donde “colgar” ese contenido.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mkdir <span class="at">-p</span> /mnt/mi_usb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="montar" class="level4">
-<h4 class="anchored" data-anchor-id="montar">3) Montar</h4>
-<p>Ahora vinculamos el dispositivo físico con la carpeta que creamos. A partir de este momento, todo lo que guardes en <code>/mnt/mi_usb</code> se estará guardando realmente en el pendrive.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># montar</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> mount /dev/sdb1 /mnt/mi_usb</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrar a ver tus archivos</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> /mnt/mi_usb</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Listar los archivos</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="desmontar-expulsión-segura" class="level4">
-<h4 class="anchored" data-anchor-id="desmontar-expulsión-segura">4) Desmontar (expulsión segura)</h4>
-<p>En Linux es <strong>crítico</strong> desmontar el dispositivo antes de desconectarlo físicamente. Si no lo haces, es muy probable que los datos se corrompan, ya que Linux a veces espera un momento antes de escribir los archivos pendientes.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> umount /mnt/mi_usb</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="resumen" class="level4">
-<h4 class="anchored" data-anchor-id="resumen">Resumen</h4>
-<ul>
-<li><p>Identificar: <code>lsblk</code> o <code>fdisk -l</code></p></li>
-<li><p>Conectar: <code>mount [dispositivo] [carpeta]</code></p></li>
-<li><p>Desconectar: <code>umount [carpeta o dispositivo]</code></p></li>
-</ul>
-<blockquote class="blockquote">
-<p><strong>Tip:</strong> Si tu USB contiene archivos pesados de secuenciación, el comando umount puede tardar unos segundos en terminar. No retires el USB hasta que la terminal te devuelva el control (cuando aparezca de nuevo el cursor para escribir), eso significa que todos los datos se han terminado de copiar correctamente.</p>
-</blockquote>
-</section>
-</section>
 <section id="permisos-y-grupos" class="level2">
 <h2 class="anchored" data-anchor-id="permisos-y-grupos">Permisos y grupos</h2>
 <p>En Linux, la seguridad se basa en una regla simple: <strong>quién</strong> puede hacer <strong>qué</strong> con un archivo o carpeta. Como biólogo, esto es fundamental para proteger tus datos de secuenciación o scripts de análisis para que no sean modificados o borrados por error por otros usuarios.</p>
@@ -484,7 +483,7 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 <section id="cómo-leer-los-permisos" class="level3">
 <h3 class="anchored" data-anchor-id="cómo-leer-los-permisos">3. Cómo leer los permisos</h3>
 <p>Si ejecutas el comando <code>ls -l</code> en tu terminal, verás una cadena de 10 caracteres al principio de cada línea, como esta:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr-xr--</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">-rwxr-xr--</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Se desglosa así:</p>
 <ul>
 <li><p><strong>El primer carácter:</strong> Indica el tipo ( - es un archivo, d es un directorio).</p></li>
@@ -499,21 +498,21 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 <ul>
 <li><strong><code>chmod</code> (Change Mode):</strong> Cambia los permisos de un archivo.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dar permiso de ejecución al dueño</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x script_analisis.sh</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># numérico similar al anterior</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 archivo</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (7=Dueño total, 5=Grupo lectura/ejecución, 5=Otros lectura/ejecución).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dar permiso de ejecución al dueño</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> u+x script_analisis.sh</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># numérico similar al anterior</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 755 archivo</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># (7=Dueño total, 5=Grupo lectura/ejecución, 5=Otros lectura/ejecución).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>chown</code> (Change Owner):</strong> Cambia quién es el dueño del archivo.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown mauricio secuencia.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> chown mauricio secuencia.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>chgrp</code> (Change Group):</strong> Cambia el grupo al que pertenece el archivo.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chgrp</span> bioinfo_team resultados/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chgrp</span> bioinfo_team resultados/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ejemplo-de-uso-real-en-el-laboratorio" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-de-uso-real-en-el-laboratorio">Ejemplo de uso real en el laboratorio</h3>
@@ -521,15 +520,15 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 <ol type="1">
 <li>Te aseguras de ser el dueño:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> mauricio resultados_pcr/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chown</span> mauricio resultados_pcr/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
 <li>Asignas el grupo del laboratorio:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chgrp</span> investigadores resultados_pcr/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chgrp</span> investigadores resultados_pcr/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
 <li>Ajusta los permisos:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 750 resultados_pcr/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 750 resultados_pcr/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><p><strong>7 (rwx):</strong> Tú haces todo.</p></li>
 <li><p><strong>5 (r-x):</strong> Tu grupo puede entrar y ver los archivos.</p></li>
@@ -540,91 +539,132 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 </blockquote>
 </section>
 </section>
-<section id="navegación-y-creación-de-archivos" class="level2">
-<h2 class="anchored" data-anchor-id="navegación-y-creación-de-archivos">Navegación y creación de archivos</h2>
-<section id="navegación-moverte-por-el-sistema" class="level3">
-<h3 class="anchored" data-anchor-id="navegación-moverte-por-el-sistema">1. Navegación (Moverte por el sistema)</h3>
-<ul>
-<li><strong><code>ls</code> (List):</strong> Sirve para ver qué hay dentro de una carpeta.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># muestra detalles como tamaño y fecha</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-l</span> </span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># muestra archivos ocultos</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">la</span> <span class="at">-a</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><strong><code>cd</code> (Change Directory):</strong> Es el comando para “entrar” a una carpeta.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># entrar</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documentos/ADN </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># subir un nivel (salir de la carpeta).</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ..</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="manipulación-crear-y-destruir" class="level3">
-<h3 class="anchored" data-anchor-id="manipulación-crear-y-destruir">2. Manipulación (Crear y destruir)</h3>
-<ul>
-<li><strong><code>mkdir</code> (Make Directory):</strong> Crea una carpeta nueva.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Experimento_2026</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><strong><code>rm</code> (Remove):</strong> Borra archivos o carpetas. <strong>¡Cuidado!</strong> En Linux no hay “Papelera de reciclaje”; lo que borras aquí desaparece para siempre.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># eliminar archivo</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> archivo.txt</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co"># eliminar carpeta</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-r</span> carpeta/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="inspección-y-edición" class="level3">
-<h3 class="anchored" data-anchor-id="inspección-y-edición">3. Inspección y Edición</h3>
-<ul>
-<li><strong><code>file</code>:</strong> Te dice qué tipo de archivo es uno realmente, sin importar su extensión. Muy útil si descargas datos y no sabes si son texto plano o una imagen.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> muestra_desconocida</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><strong><code>nano</code>:</strong> Es un editor de texto muy sencillo que vive dentro de la terminal. Es ideal para escribir protocolos rápidos o editar scripts de Python/R.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> mis_notas.txt</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Para salir: Ctrl+O para guardar y Ctrl+X para cerrar</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="compresión-empaquetar-y-enviar" class="level3">
-<h3 class="anchored" data-anchor-id="compresión-empaquetar-y-enviar">4. Compresión (Empaquetar y enviar)</h3>
-<ul>
-<li><strong><code>zip</code>:</strong> Sirve para agrupar muchos archivos en uno solo y reducir su tamaño, facilitando enviarlos por correo o subirlos a la nube.</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># la -r significa "recursivo", es decir, incluye todo lo que hay dentro de la carpeta</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">zip</span> <span class="at">-r</span> resultados_finales.zip carpeta_de_resultados/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="ejemplo-de-flujo-de-trabajo-real" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-de-flujo-de-trabajo-real">Ejemplo de flujo de trabajo real</h3>
-<p>Imagina que acabas de recibir resultados de una secuenciación:</p>
+<section id="navegación-manipulación-y-compresión-de-archivos" class="level2">
+<h2 class="anchored" data-anchor-id="navegación-manipulación-y-compresión-de-archivos">Navegación, manipulación y compresión de archivos</h2>
+<section id="navegación-cd-ls-pwd" class="level3">
+<h3 class="anchored" data-anchor-id="navegación-cd-ls-pwd">Navegación (cd, ls, pwd)</h3>
 <ol type="1">
-<li><strong>Revisas qué llegó:</strong></li>
+<li>Ir al directorio personal:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lh</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li><strong>Identificar el archivo:</strong></li>
+<li>Listar contenido del directorio actual:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> datos_crudos</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># te dirá si es un archivo comprimido o texto</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
-<li><strong>Creas una carpeta de trabajo:</strong></li>
+<li>Entrar a un directorio (ejemplo: <code>Documents</code>):</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Analisis_01</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
-<li><strong>Escribes una nota rápida del experimento:</strong></li>
+<li>Volver al directorio personal:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> notas.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="5" type="1">
-<li><strong>Al terminar, empaquetas todo para enviarlo al investigador principal:</strong></li>
+<li>Ir al directorio <code>Images</code>:</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> entrega_enero.zip Analisis_01/ notas.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Images</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="6" type="1">
+<li>Mostrar en qué ruta estás (directorio actual):</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="manipulación-de-archivos-y-directorios-mkdir-rmdir-rm-cp" class="level3">
+<h3 class="anchored" data-anchor-id="manipulación-de-archivos-y-directorios-mkdir-rmdir-rm-cp">Manipulación de archivos y directorios (mkdir, rmdir, rm, cp)</h3>
+<section id="a-crear-directorios-dentro-de-documents" class="level4">
+<h4 class="anchored" data-anchor-id="a-crear-directorios-dentro-de-documents">A) Crear directorios dentro de Documents</h4>
+<ol type="1">
+<li>r al home y luego a <code>Documents</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Documents</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Crear dos directorios:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Biology</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> Informatics</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li>Verificar:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="b-entrar-a-un-directorio-ruta-con" class="level4">
+<h4 class="anchored" data-anchor-id="b-entrar-a-un-directorio-ruta-con">B) Entrar a un directorio (ruta con <code>~</code>)</h4>
+<p>Ir a <code>Biology</code> usando ruta “completa” con <code>~</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/Biology</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="c-crear-y-borrar-un-directorio-vacío-rmdir" class="level4">
+<h4 class="anchored" data-anchor-id="c-crear-y-borrar-un-directorio-vacío-rmdir">C) Crear y borrar un directorio vacío (rmdir)</h4>
+<ol type="1">
+<li>Crear un directorio dentro de <code>Biology</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> relatividadGeneral</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Borrarlo con <code>rmdir</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rmdir</span> relatividadGeneral</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p><strong>Tip:</strong> Si por error intentas borrar una carpeta con rm y te da error, recuerda que debes usar <code>rm -r</code> (la <code>r</code> es de recursivo). Pero antes de dar Enter, asegúrate dos veces de que estás en la carpeta correcta; la terminal no te preguntará “¿Estás seguro?”.</p>
+<p>Nota: <code>rmdir</code> <strong>solo funciona</strong> si el directorio está vacío.</p>
+</blockquote>
+</section>
+</section>
+<section id="editar-archivos-de-texto-con-nano-nano" class="level3">
+<h3 class="anchored" data-anchor-id="editar-archivos-de-texto-con-nano-nano">Editar archivos de texto con nano (nano)</h3>
+<ol type="1">
+<li>En <code>~/Documentos/Biology</code>, crear/abrir un archivo con nano:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/Biology</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> epilogoElOrigenDeLasEspecies.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li><p>Pega texto dentro de nano (en muchas terminales puedes pegar con <code>Ctrl + Shift + V</code>).</p></li>
+<li><p>Guardar:</p></li>
+</ol>
+<ul>
+<li><p><code>Ctrl + O</code> (write out)</p></li>
+<li><p>Enter para confirmar nombre</p></li>
+</ul>
+<ol start="4" type="1">
+<li>Salir:</li>
+</ol>
+<ul>
+<li><code>Ctrl + X</code></li>
+</ul>
+</section>
+<section id="identificar-tipo-de-archivo-file-y-borrar-rm" class="level3">
+<h3 class="anchored" data-anchor-id="identificar-tipo-de-archivo-file-y-borrar-rm">Identificar tipo de archivo (file) y borrar (rm)</h3>
+<ol type="1">
+<li><p>(Opcional) Copia una imagen desde <code>Images</code> a <code>Biology</code><br>
+</p>
+<p>(Ejemplo: <code>hummingbird.png</code>):</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> /home/cristian/Images/hummingbird.png ~/Documents/Biology/</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/Documents/Biology</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="2" type="1">
+<li>Usar <code>file</code> para ver el tipo de archivo:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ~/Documents/Biology</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> epilogoElOrigenDeLasEspecies.txt</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">file</span> hummingbird.png</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li>Borrar un archivo específico con <code>rm</code>:</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> epilogoElOrigenDeLasEspecies.txt</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Nota: <code>rm</code> elimina de forma definitiva (no hay “papelera”).</p>
+</blockquote>
+</section>
+</section>
+<section id="archivado-y-compresión-con-zip-zip" class="level2">
+<h2 class="anchored" data-anchor-id="archivado-y-compresión-con-zip-zip">Archivado y compresión con ZIP (zip)</h2>
+<p>Comprimir varios archivos en un ZIP</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> archivo.zip archivo1 archivo2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="comprimir-un-directorio-completo-recursivo" class="level3">
+<h3 class="anchored" data-anchor-id="comprimir-un-directorio-completo-recursivo">Comprimir un directorio completo (recursivo)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> images.zip ~/Images</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Nota: <code>-r</code> significa <em>recursivo</em> (incluye subcarpetas).</p>
 </blockquote>
 
 
