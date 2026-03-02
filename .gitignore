@@ -9,3 +9,11 @@
 
 /.quarto/
 **/*.quarto_ipynb
+
+# ---- R / RStudio ----
+.Rhistory
+.Rhistory.*
+.RData
+.RData.*
+.Rproj.user/
+.Rproj.user.*

@@ -1,0 +1,205 @@
+---
+title: "Unidad 5. Comandos básicos de Bash y monitoreo de recursos"
+---
+
+## **Comandos básicos de Bash (Exploración de datos)**
+
+En bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.
+
+-   **`echo`**: Imprime texto en la terminal o redirige mensajes a archivos.
+
+``` bash
+echo "Inicio de ensamble" > bitacora.txt
+echo "Paso 2: alineamiento" >> bitacora.txt
+```
+
+> `>` sobrescribe y `>>` agrega al final
+
+-   **`cat`**: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.
+
+``` bash
+cat metadatos.csv
+```
+
+-   **\`tail\`**: Muestra las últimas líneas de un archivo (por defecto 10).
+
+``` bash
+tail error.log
+tail -n 20 error.log
+```
+
+> Ideal para logs: “¿qué fue lo último que pasó?”
+
+-   **`grep`**: El buscador de patrones más potente.
+
+El comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.
+
+Aquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:
+
+**Filtros Esenciales (Los más usados)**
+
+-   **Buscar un patrón exacto:**
+
+``` bash
+grep "Homo sapiens" anotaciones.txt
+```
+
+> Uso: Extraer solo las líneas que contienen una especie específica.
+
+-   **Búsqueda insensible a mayúsculas (-i):**
+
+``` bash
+grep -i "atp6" genes.fasta
+```
+
+-   **Contar coincidencias (-c):**
+
+``` bash
+grep -c "^@" lecturas.fastq
+```
+
+> Uso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo \@ al inicio de línea).
+
+-   **Invertir la búsqueda (-v):**
+
+``` bash
+grep -v "Unclassified" taxonomia.tsv
+```
+
+> Uso: Limpia tus datos eliminando todas las líneas que digan "Unclassified".
+
+-   **Buscar recursivamente e indicar en que línea esta (-rn):**
+
+``` bash
+grep -rn "texto_a_buscar" /home/mauricio
+```
+
+### **Búsquedas Avanzadas y Expresiones Regulares**
+
+-   **Buscar al inicio de la línea (\^):**
+
+``` bash
+grep "^>" genoma.fasta
+```
+
+Uso: Extraer únicamente los encabezados (headers) de un archivo FASTA.
+
+-   **Buscar al final de la línea (\$):**
+
+``` bash
+grep "STOP$" secuencias.txt
+```
+
+> Uso: Filtrar secuencias que terminan con un codón de paro específico.
+
+### **Contexto de la coincidencia (Visualización)**
+
+A veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):
+
+-   **Ver líneas posteriores (-A de After):**
+
+``` bash
+grep -A 3 "chr1" anotacion.gff 
+```
+
+> Muestra la línea y las 3 siguientes
+
+-   **Ver líneas anteriores (-B de Before):**
+
+``` bash
+grep -B 2 "ERROR" pipeline.log 
+```
+
+> Muestra el error y las 2 líneas previas para saber qué causó el fallo
+
+-   **Ver ambos lados (-C de Context):**
+
+``` bash
+grep -C 1 "COX1" mitocondria.gbk
+```
+
+Muestra la línea de COX1 con una línea arriba y una abajo
+
+## **Monitoreo de recursos y rendimiento**
+
+Cuando corremos alineamientos o ensambles, es vital saber si el hardware está siendo utilizado correctamente o si nos estamos quedando sin recursos.
+
+### **Monitoreo de CPU y RAM**
+
+-   **`top` / `htop`**: Muestran los procesos en tiempo real. htop es la versión interactiva y visual recomendada.
+
+    -   Uso: Identificar si un proceso de BLAST está consumiendo el 100% del CPU.
+
+-   **`free`**: Muestra el estado de la memoria RAM (total, usada y libre).
+
+    -   Uso: free -h (formato legible para humanos).
+
+### **Monitoreo de Almacenamiento y Red**
+
+-   **`df` / `du`**:
+
+    -   `df -h`: Espacio disponible en los discos duros del servidor.
+
+    -   `du -sh carpeta/`: Tamaño total que ocupa una carpeta de datos específica.
+
+-   **`netstat` / `tcpdump`**: Para monitorear el tráfico de red y conexiones activas.
+
+``` bash
+sudo nestat -ntlp # nos dice que programas están usando que puertos
+```
+
+Para saber si realmente hay conexión durante una descarga
+
+``` bash
+sudo tcpdump -i any host 130.14.29.110
+sudo tcpdump -A -i any -c 10
+```
+
+-   **`iotop` / `iostat`**: Monitorean la velocidad de lectura/escritura en el disco (E/S). Esencial si el sistema se siente lento al leer archivos grandes.
+
+-   **`lsblk`** -e 7 nos lista los discos que tenemos de entrada salida que tenemos para monitorizar cada disco:
+
+### **Trabajar con procesos**
+
+Un proceso es un programa en ejecución. A veces necesitamos gestionarlos manualmente si se quedan "trabados".
+
+-   **`ps`**: Lista los procesos actuales del usuario.
+
+    -   Uso: `ps aux | grep "samtools"` para encontrar el ID (PID) de una tarea específica.
+
+-   **`kill`**: Detiene un proceso forzosamente usando su PID.
+
+    -   Uso: `kill -9 1234` (el -9 es una terminación inmediata y definitiva).
+
+-   **`nice` y `renice`**: Ajusta la prioridad de un proceso.
+
+    -   Uso: Si vas a correr un análisis pesado pero no quieres que el servidor se vuelva lento para los demás, usa `nice` para darle una prioridad baja.
+
+    -   `nice` es cuando se ejecuta, `renice` cuando ya se inició y requiere el `pid`
+
+``` bash
+nice -n 15 blastn -query seq.fa -db nt -out resultados.txt
+renice +10 -p 8420
+```
+
+| Valor Nice | Nivel de Prioridad | Uso Típico en Biocómputo |
+|-----------------------:|------------------------|------------------------|
+| -20 | Máxima | Procesos críticos del sistema operativo (Kernel). |
+| -10 a -1 | Alta | Tareas en tiempo real que no pueden tener lag. |
+| 0 | Normal | Ejecución estándar de comandos, navegadores, editores. |
+| 10 | Baja | Scripts de Python o R que tardan varias horas. |
+| 19 | Mínima | Procesos de fondo que no tienen prisa (ej. copias de seguridad). |
+
+### **Ejemplo de flujo de trabajo real: "El Servidor Lento"**
+
+Imagina que el servidor **BEAGLE** del Instituto de Biología responde muy lento mientras trabajas:
+
+1.  **Diagnóstico rápido:** Ejecutas `htop` y ves que un proceso llamado `bwa` está al 100%.
+
+2.  **Revisar RAM:** Ejecutas `free -h` y notas que casi no queda memoria `Swap`.
+
+3.  **Identificar culpable:** Usas `ps aux | grep bwa` para obtener el ID del proceso (ej. 5560).
+
+4.  **Acción:** Si el proceso es tuyo y se trabó, lo detienes con `kill 5560`. Si quieres que siga pero consuma menos, usas `renice`.
+
+\

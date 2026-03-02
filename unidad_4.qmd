@@ -300,6 +300,8 @@ Se desglosa así:
 
 -   **Los últimos tres (r--):** Permisos de **Otros** (solo pueden leer).
 
+![](images/unidad_4/pic2.png){fig-align="center" width="450"}
+
 ### 4. Comandos para cambiar permisos y dueños
 
 Para gestionar esto en tu laboratorio digital, usarás principalmente estos tres comandos:
@@ -314,6 +316,47 @@ chmod u+x script_analisis.sh
 chmod 755 archivo
 
 # (7=Dueño total, 5=Grupo lectura/ejecución, 5=Otros lectura/ejecución).
+```
+
+#### Permisos en Linux (Base 421)
+
+En sistemas GNU/Linux, los permisos se representan con:
+
+-   **Read (r)** = 4\
+-   **Write (w)** = 2\
+-   **Execute (x)** = 1
+
+La suma de estos valores define el permiso numérico.
+
+| Read (4) | Write (2) | Execute (1) | Total         |
+|----------|-----------|-------------|---------------|
+| 1        | 1         | 1           | 7 = 4 + 2 + 1 |
+| 1        | 1         | 0           | 6 = 4 + 2     |
+| 1        | 0         | 1           | 5 = 4 + 1     |
+| 1        | 0         | 0           | 4 = 4         |
+| 0        | 1         | 1           | 3 = 2 + 1     |
+| 0        | 1         | 0           | 2 = 2         |
+| 0        | 0         | 1           | 1 = 1         |
+| 0        | 0         | 0           | 0 = 0         |
+
+#### Ejemplo
+
+Si un archivo tiene permisos:
+
+```         
+rwxr-xr--
+```
+
+Se traduce a:
+
+-   **rwx** = 7\
+-   **r-x** = 5\
+-   **r--** = 4
+
+Resultado:
+
+```         
+754
 ```
 
 -   **`chown` (Change Owner):** Cambia quién es el dueño del archivo.
