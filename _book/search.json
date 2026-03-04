@@ -44,7 +44,7 @@
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "[Unidades",
-    "text": "[Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "text": "[Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -390,13 +390,43 @@
     ]
   },
   {
+    "objectID": "unidad_5.html",
+    "href": "unidad_5.html",
+    "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
+    "section": "",
+    "text": "Comandos básicos de Bash (Exploración de datos)\nEn bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.\nEl comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.\nAquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:\nFiltros Esenciales (Los más usados)",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_5.html#comandos-básicos-de-bash-exploración-de-datos",
+    "href": "unidad_5.html#comandos-básicos-de-bash-exploración-de-datos",
+    "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
+    "section": "",
+    "text": "echo: Imprime texto en la terminal o redirige mensajes a archivos.\n\necho \"Inicio de ensamble\" &gt; bitacora.txt\necho \"Paso 2: alineamiento\" &gt;&gt; bitacora.txt\n\n&gt; sobrescribe y &gt;&gt; agrega al final\n\n\ncat: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.\n\ncat metadatos.csv\n\n`tail`: Muestra las últimas líneas de un archivo (por defecto 10).\n\ntail error.log\ntail -n 20 error.log\n\nIdeal para logs: “¿qué fue lo último que pasó?”\n\n\ngrep: El buscador de patrones más potente.\n\n\n\n\n\nBuscar un patrón exacto:\n\ngrep \"Homo sapiens\" anotaciones.txt\n\nUso: Extraer solo las líneas que contienen una especie específica.\n\n\nBúsqueda insensible a mayúsculas (-i):\n\ngrep -i \"atp6\" genes.fasta\n\nContar coincidencias (-c):\n\ngrep -c \"^@\" lecturas.fastq\n\nUso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo @ al inicio de línea).\n\n\nInvertir la búsqueda (-v):\n\ngrep -v \"Unclassified\" taxonomia.tsv\n\nUso: Limpia tus datos eliminando todas las líneas que digan “Unclassified”.\n\n\nBuscar recursivamente e indicar en que línea esta (-rn):\n\ngrep -rn \"texto_a_buscar\" /home/mauricio\n\nBúsquedas Avanzadas y Expresiones Regulares\n\nBuscar al inicio de la línea (^):\n\ngrep \"^&gt;\" genoma.fasta\nUso: Extraer únicamente los encabezados (headers) de un archivo FASTA.\n\nBuscar al final de la línea ($):\n\ngrep \"STOP$\" secuencias.txt\n\nUso: Filtrar secuencias que terminan con un codón de paro específico.\n\n\n\nContexto de la coincidencia (Visualización)\nA veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):\n\nVer líneas posteriores (-A de After):\n\ngrep -A 3 \"chr1\" anotacion.gff \n\nMuestra la línea y las 3 siguientes\n\n\nVer líneas anteriores (-B de Before):\n\ngrep -B 2 \"ERROR\" pipeline.log \n\nMuestra el error y las 2 líneas previas para saber qué causó el fallo\n\n\nVer ambos lados (-C de Context):\n\ngrep -C 1 \"COX1\" mitocondria.gbk\nMuestra la línea de COX1 con una línea arriba y una abajo",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_5.html#monitoreo-de-recursos-y-rendimiento",
+    "href": "unidad_5.html#monitoreo-de-recursos-y-rendimiento",
+    "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
+    "section": "Monitoreo de recursos y rendimiento",
+    "text": "Monitoreo de recursos y rendimiento\nCuando corremos alineamientos o ensambles, es vital saber si el hardware está siendo utilizado correctamente o si nos estamos quedando sin recursos.\n\nMonitoreo de CPU y RAM\n\ntop / htop: Muestran los procesos en tiempo real. htop es la versión interactiva y visual recomendada.\n\nUso: Identificar si un proceso de BLAST está consumiendo el 100% del CPU.\n\nfree: Muestra el estado de la memoria RAM (total, usada y libre).\n\nUso: free -h (formato legible para humanos).\n\n\n\n\nMonitoreo de Almacenamiento y Red\n\ndf / du:\n\ndf -h: Espacio disponible en los discos duros del servidor.\ndu -sh carpeta/: Tamaño total que ocupa una carpeta de datos específica.\n\nnetstat / tcpdump: Para monitorear el tráfico de red y conexiones activas.\n\nsudo nestat -ntlp # nos dice que programas están usando que puertos\nPara saber si realmente hay conexión durante una descarga\nsudo tcpdump -i any host 130.14.29.110\nsudo tcpdump -A -i any -c 10\n\niotop / iostat: Monitorean la velocidad de lectura/escritura en el disco (E/S). Esencial si el sistema se siente lento al leer archivos grandes.\nlsblk -e 7 nos lista los discos que tenemos de entrada salida que tenemos para monitorizar cada disco:\n\n\n\nTrabajar con procesos\nUn proceso es un programa en ejecución. A veces necesitamos gestionarlos manualmente si se quedan “trabados”.\n\nps: Lista los procesos actuales del usuario.\n\nUso: ps aux | grep \"samtools\" para encontrar el ID (PID) de una tarea específica.\n\nkill: Detiene un proceso forzosamente usando su PID.\n\nUso: kill -9 1234 (el -9 es una terminación inmediata y definitiva).\n\nnice y renice: Ajusta la prioridad de un proceso.\n\nUso: Si vas a correr un análisis pesado pero no quieres que el servidor se vuelva lento para los demás, usa nice para darle una prioridad baja.\nnice es cuando se ejecuta, renice cuando ya se inició y requiere el pid\n\n\nnice -n 15 blastn -query seq.fa -db nt -out resultados.txt\nrenice +10 -p 8420\n\n\n\n\n\n\n\n\nValor Nice\nNivel de Prioridad\nUso Típico en Biocómputo\n\n\n\n\n-20\nMáxima\nProcesos críticos del sistema operativo (Kernel).\n\n\n-10 a -1\nAlta\nTareas en tiempo real que no pueden tener lag.\n\n\n0\nNormal\nEjecución estándar de comandos, navegadores, editores.\n\n\n10\nBaja\nScripts de Python o R que tardan varias horas.\n\n\n19\nMínima\nProcesos de fondo que no tienen prisa (ej. copias de seguridad).\n\n\n\n\n\nEjemplo de flujo de trabajo real: “El Servidor Lento”\nImagina que el servidor BEAGLE del Instituto de Biología responde muy lento mientras trabajas:\n\nDiagnóstico rápido: Ejecutas htop y ves que un proceso llamado bwa está al 100%.\nRevisar RAM: Ejecutas free -h y notas que casi no queda memoria Swap.\nIdentificar culpable: Usas ps aux | grep bwa para obtener el ID del proceso (ej. 5560).\nAcción: Si el proceso es tuyo y se trabó, lo detienes con kill 5560. Si quieres que siga pero consuma menos, usas renice.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Bibliografía complementaria",
     "section": "",
     "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
     ]
   }
 ]

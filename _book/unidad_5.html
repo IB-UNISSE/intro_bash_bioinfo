@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Unidad 1. Introducción a la Bioinformática – Introducción a la programación para bioinformática con bash</title>
+<title>Unidad 5. Comandos básicos de Bash y monitoreo de recursos – Introducción a la programación para bioinformática con bash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./unidad_2.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./unidad_4.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -73,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="description" content="Introducción a la programación para bioinformática con bash">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Unidad 1. Introducción a la Bioinformática – Introducción a la programación para bioinformática con bash">
+<meta property="og:title" content="Unidad 5. Comandos básicos de Bash y monitoreo de recursos – Introducción a la programación para bioinformática con bash">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
 <meta property="og:type" content="website">
@@ -93,7 +128,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unidad_1.html"><span class="chapter-title">Unidad 1. Introducción a la Bioinformática</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unidad_5.html"><span class="chapter-title">Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -132,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unidad_1.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Unidad 1. Introducción a la Bioinformática</span></a>
+  <a href="./unidad_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 1. Introducción a la Bioinformática</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,7 +192,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./unidad_5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span></a>
+  <a href="./unidad_5.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -175,20 +210,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a></li>
-  <li><a href="#breve-historia-de-la-bioinformática" id="toc-breve-historia-de-la-bioinformática" class="nav-link" data-scroll-target="#breve-historia-de-la-bioinformática">Breve historia de la bioinformática</a></li>
-  <li><a href="#áreas-de-aplicación-de-la-bioinformática" id="toc-áreas-de-aplicación-de-la-bioinformática" class="nav-link" data-scroll-target="#áreas-de-aplicación-de-la-bioinformática">Áreas de aplicación de la bioinformática</a></li>
-  <li><a href="#flujo-de-trabajo-bioinformático-y-ciencia-de-datos" id="toc-flujo-de-trabajo-bioinformático-y-ciencia-de-datos" class="nav-link" data-scroll-target="#flujo-de-trabajo-bioinformático-y-ciencia-de-datos">Flujo de trabajo bioinformático y ciencia de datos</a></li>
-  <li><a href="#herramientas-computacionales-y-enfoque-del-curso" id="toc-herramientas-computacionales-y-enfoque-del-curso" class="nav-link" data-scroll-target="#herramientas-computacionales-y-enfoque-del-curso">Herramientas computacionales y enfoque del curso</a></li>
+  <li><a href="#comandos-básicos-de-bash-exploración-de-datos" id="toc-comandos-básicos-de-bash-exploración-de-datos" class="nav-link active" data-scroll-target="#comandos-básicos-de-bash-exploración-de-datos"><strong>Comandos básicos de Bash (Exploración de datos)</strong></a></li>
+  <li><a href="#monitoreo-de-recursos-y-rendimiento" id="toc-monitoreo-de-recursos-y-rendimiento" class="nav-link" data-scroll-target="#monitoreo-de-recursos-y-rendimiento"><strong>Monitoreo de recursos y rendimiento</strong></a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Unidad 1. Introducción a la Bioinformática</span></h1>
+<h1 class="title"><span class="chapter-title">Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span></h1>
 </div>
 
 
@@ -205,87 +237,211 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introducción" class="level2">
-<h2 class="anchored" data-anchor-id="introducción">Introducción</h2>
-<p>En las últimas décadas, la biología ha experimentado un crecimiento sin precedentes en la generación de datos, impulsado principalmente por el desarrollo de tecnologías de secuenciación y por el avance de diversas disciplinas ómicas. Este incremento ha planteado nuevos desafíos relacionados con el <strong>almacenamiento, manejo, procesamiento, análisis y movimiento de grandes volúmenes de información biológica</strong>, lo que ha llevado a la incorporación de enfoques computacionales, técnicas de <strong>datos masivos (<em>big data</em>)</strong>, <strong>minería de datos (<em>data mining</em>)</strong> y <strong>ciencia de datos (<em>data science</em>)</strong> en la investigación biológica.</p>
-<p>Ante este escenario surge la <strong>bioinformática</strong>, un campo que integra conocimientos de la biología, la informática, la estadística y las matemáticas, con el objetivo de <strong>extraer información significativa a partir de datos biológicos complejos</strong>.</p>
-<p>Debido a su amplitud, la bioinformática es un término difícil de definir de manera única y ha sido utilizado con distintos alcances. En este sentido, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1693343/">Soberón y Peterson (2004)</a> proponen que el término <em>bioinformática</em> se aplique, de manera general, al <strong>análisis computacional de datos provenientes principalmente de la genómica y la proteómica</strong>, mientras que el manejo y análisis de grandes volúmenes de datos asociados a la biodiversidad a gran escala corresponde al ámbito de la <strong>informática de la biodiversidad</strong>.</p>
-<p>Desde esta perspectiva, la bioinformática puede considerarse una <strong>aplicación de la ciencia de datos al estudio de sistemas biológicos</strong>, enfocada en el análisis computacional de grandes volúmenes de información generados por las disciplinas ómicas.</p>
-</section>
-<section id="breve-historia-de-la-bioinformática" class="level2">
-<h2 class="anchored" data-anchor-id="breve-historia-de-la-bioinformática">Breve historia de la bioinformática</h2>
-<p>El desarrollo de la bioinformática está estrechamente vinculado a los avances en la biología molecular y a la necesidad de analizar datos cada vez más complejos. El reconocimiento del ADN como molécula portadora de la información genética, el descubrimiento de su estructura de doble hélice, la primera secuenciación completa de una proteína y la creación de las primeras bases de datos de secuencias marcaron hitos fundamentales que hicieron evidente la necesidad de herramientas computacionales.</p>
-<p>Posteriormente, el desarrollo de algoritmos para el alineamiento de secuencias y el análisis automatizado de datos sentó las bases de la bioinformática moderna. Estos avances muestran que la bioinformática no surge como una disciplina aislada, sino como una <strong>respuesta natural a la creciente complejidad de los datos biológicos</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/unidad_1/pic1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="650"></p>
-</figure>
-</div>
-</section>
-<section id="áreas-de-aplicación-de-la-bioinformática" class="level2">
-<h2 class="anchored" data-anchor-id="áreas-de-aplicación-de-la-bioinformática">Áreas de aplicación de la bioinformática</h2>
-<p>La bioinformática abarca una amplia variedad de campos, entre los que se incluyen:</p>
+<section id="comandos-básicos-de-bash-exploración-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="comandos-básicos-de-bash-exploración-de-datos"><strong>Comandos básicos de Bash (Exploración de datos)</strong></h2>
+<p>En bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.</p>
 <ul>
-<li><strong>Filogenómica y evolución molecular</strong>, orientadas a la inferencia de <strong>relaciones evolutivas entre especies</strong> y al estudio de la <strong>evolución de genes y proteínas</strong>.</li>
+<li><strong><code>echo</code></strong>: Imprime texto en la terminal o redirige mensajes a archivos.</li>
 </ul>
-<!-- -->
-<ul>
-<li><p><strong>Transcriptómica y proteómica</strong>, enfocadas en el análisis de la <strong>expresión génica</strong>, la <strong>cuantificación de transcritos y proteínas</strong> y la <strong>predicción de su función</strong>.</p></li>
-<li><p><strong>Metagenómica y estudios de microbiomas</strong>, dedicados al análisis de <strong>comunidades microbianas en distintos ambientes</strong>.</p></li>
-<li><p><strong>Biología de sistemas</strong>, centrada en el <strong>modelado de redes biológicas</strong> y la <strong>simulación de procesos complejos</strong>.</p></li>
-<li><p><strong>Bioinformática estructural</strong>, que incluye el <strong>modelado tridimensional de proteínas</strong>, el <strong>docking molecular</strong> y la <strong>dinámica molecular</strong>.</p></li>
-</ul>
-<p>Aunque estas áreas difieren en sus objetivos biológicos, todas comparten principios comunes relacionados con el manejo de datos, la automatización de análisis y la interpretación de resultados computacionales.</p>
-</section>
-<section id="flujo-de-trabajo-bioinformático-y-ciencia-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="flujo-de-trabajo-bioinformático-y-ciencia-de-datos">Flujo de trabajo bioinformático y ciencia de datos</h2>
-<p>La bioinformática se desarrolla dentro de un <strong>flujo de trabajo típico de ciencia de datos</strong>, el cual es <strong>iterativo</strong> y comienza con una pregunta biológica para culminar con la interpretación y comunicación de resultados.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/unidad_1/pic2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="750"></p>
-</figure>
-</div>
-<p><strong>Etapas del flujo de trabajo:</strong></p>
-<ol type="1">
-<li><p><strong>Problema o pregunta biológica</strong><br>
-Definición clara de la pregunta que guiará el análisis.</p></li>
-<li><p><strong>Preparación de los datos</strong><br>
-Obtención, limpieza y formateo de los datos para su análisis computacional.</p></li>
-<li><p><strong>Análisis computacional</strong><br>
-Escritura y ejecución de scripts, depuración de errores y exploración de alternativas.</p></li>
-<li><p><strong>Salida e interpretación de resultados</strong><br>
-Organización, visualización e interpretación de los resultados obtenidos.</p></li>
-<li><p><strong>Reflexión y difusión</strong><br>
-Documentación del análisis, discusión de resultados y preparación de reportes o publicaciones.</p></li>
-</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio de ensamble"</span> <span class="op">&gt;</span> bitacora.txt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Paso 2: alineamiento"</span> <span class="op">&gt;&gt;</span> bitacora.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p>La documentación y organización del análisis son esenciales para garantizar la <strong>reproducibilidad</strong> en bioinformática.</p>
+<p><code>&gt;</code> sobrescribe y <code>&gt;&gt;</code> agrega al final</p>
+</blockquote>
+<ul>
+<li><strong><code>cat</code></strong>: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> metadatos.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>`tail`</strong>: Muestra las últimas líneas de un archivo (por defecto 10).</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> error.log</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span> <span class="at">-n</span> 20 error.log</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Ideal para logs: “¿qué fue lo último que pasó?”</p>
+</blockquote>
+<ul>
+<li><strong><code>grep</code></strong>: El buscador de patrones más potente.</li>
+</ul>
+<p>El comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.</p>
+<p>Aquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:</p>
+<p><strong>Filtros Esenciales (Los más usados)</strong></p>
+<ul>
+<li><strong>Buscar un patrón exacto:</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"Homo sapiens"</span> anotaciones.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Uso: Extraer solo las líneas que contienen una especie específica.</p>
+</blockquote>
+<ul>
+<li><strong>Búsqueda insensible a mayúsculas (-i):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-i</span> <span class="st">"atp6"</span> genes.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Contar coincidencias (-c):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-c</span> <span class="st">"^@"</span> lecturas.fastq</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Uso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo @ al inicio de línea).</p>
+</blockquote>
+<ul>
+<li><strong>Invertir la búsqueda (-v):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-v</span> <span class="st">"Unclassified"</span> taxonomia.tsv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Uso: Limpia tus datos eliminando todas las líneas que digan “Unclassified”.</p>
+</blockquote>
+<ul>
+<li><strong>Buscar recursivamente e indicar en que línea esta (-rn):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-rn</span> <span class="st">"texto_a_buscar"</span> /home/mauricio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="búsquedas-avanzadas-y-expresiones-regulares" class="level3">
+<h3 class="anchored" data-anchor-id="búsquedas-avanzadas-y-expresiones-regulares"><strong>Búsquedas Avanzadas y Expresiones Regulares</strong></h3>
+<ul>
+<li><strong>Buscar al inicio de la línea (^):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"^&gt;"</span> genoma.fasta</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Uso: Extraer únicamente los encabezados (headers) de un archivo FASTA.</p>
+<ul>
+<li><strong>Buscar al final de la línea ($):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="st">"STOP$"</span> secuencias.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Uso: Filtrar secuencias que terminan con un codón de paro específico.</p>
 </blockquote>
 </section>
-<section id="herramientas-computacionales-y-enfoque-del-curso" class="level2">
-<h2 class="anchored" data-anchor-id="herramientas-computacionales-y-enfoque-del-curso">Herramientas computacionales y enfoque del curso</h2>
-<p>En la actualidad existe una <strong>gran diversidad de software bioinformático</strong>, y su número continúa creciendo rápidamente. Existen incluso recopilaciones extensas de programas bioinformáticos disponibles en línea, como la mantenida por la <a href="https://gwdu100.gwdg.de/proglist.html">Universidad de Göttingen</a>, que ilustran la magnitud y variedad de herramientas desarrolladas para el análisis de datos biológicos. Ante este panorama, <strong>aprender a utilizar cada herramienta de manera individual resultaría imposible</strong>.</p>
-<p>Por esta razón, el objetivo de este curso <strong>no es la especialización en herramientas específicas</strong>, sino el desarrollo de <strong>habilidades fundamentales</strong> que permitan comprender, ejecutar y evaluar <strong>cualquier herramienta bioinformática</strong>, independientemente de su área de aplicación.</p>
-<p>A lo largo del curso se trabajará principalmente con herramientas que se ejecutan desde la <strong>línea de comandos</strong>, poniendo énfasis en:</p>
+<section id="contexto-de-la-coincidencia-visualización" class="level3">
+<h3 class="anchored" data-anchor-id="contexto-de-la-coincidencia-visualización"><strong>Contexto de la coincidencia (Visualización)</strong></h3>
+<p>A veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):</p>
 <ul>
-<li><p>la <strong>organización de archivos y proyectos</strong>,</p></li>
-<li><p>la <strong>ejecución y automatización de análisis</strong>,</p></li>
-<li><p>la <strong>comprensión de flujos de trabajo reproducibles</strong>, y</p></li>
-<li><p>el <strong>monitoreo del uso de recursos computacionales</strong>.</p></li>
+<li><strong>Ver líneas posteriores (-A de After):</strong></li>
 </ul>
-<p>Estas bases <strong>nos permitirán</strong> adaptarnos con facilidad a nuevas herramientas, entender su documentación y evaluar críticamente sus resultados, sin depender de un software o plataforma específicos.</p>
-<section id="nota" class="level3">
-<h3 class="anchored" data-anchor-id="nota">Nota</h3>
-<p>Existen programas bioinformáticos con <strong>interfaces gráficas muy bonitas</strong> que hacen casi todo con un clic… pero <strong>suelen ser de paga y bastante caros</strong> (por ejemplo, <em>Geneious</em>).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/unidad_1/pic3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="450"></p>
-</figure>
-</div>
-<p>En cambio, la mayoría de las herramientas que se ejecutan desde la <strong>línea de comandos</strong> son <strong>gratuitas, flexibles y reproducibles</strong>.<br>
-Así que, si tu laboratorio <strong>tiene presupuesto</strong>, pedir <em>Geneious</em> es opción.<br>
-Si no (lo más común), <strong>aprender Bash te permitirá hacer lo mismo —y muchas veces más— sin pagar licencias</strong>.</p>
-<p>Y sí: <strong>Bash nunca pasa de moda</strong> 😉</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-A</span> 3 <span class="st">"chr1"</span> anotacion.gff </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Muestra la línea y las 3 siguientes</p>
+</blockquote>
+<ul>
+<li><strong>Ver líneas anteriores (-B de Before):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-B</span> 2 <span class="st">"ERROR"</span> pipeline.log </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Muestra el error y las 2 líneas previas para saber qué causó el fallo</p>
+</blockquote>
+<ul>
+<li><strong>Ver ambos lados (-C de Context):</strong></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span> <span class="at">-C</span> 1 <span class="st">"COX1"</span> mitocondria.gbk</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Muestra la línea de COX1 con una línea arriba y una abajo</p>
+</section>
+</section>
+<section id="monitoreo-de-recursos-y-rendimiento" class="level2">
+<h2 class="anchored" data-anchor-id="monitoreo-de-recursos-y-rendimiento"><strong>Monitoreo de recursos y rendimiento</strong></h2>
+<p>Cuando corremos alineamientos o ensambles, es vital saber si el hardware está siendo utilizado correctamente o si nos estamos quedando sin recursos.</p>
+<section id="monitoreo-de-cpu-y-ram" class="level3">
+<h3 class="anchored" data-anchor-id="monitoreo-de-cpu-y-ram"><strong>Monitoreo de CPU y RAM</strong></h3>
+<ul>
+<li><p><strong><code>top</code> / <code>htop</code></strong>: Muestran los procesos en tiempo real. htop es la versión interactiva y visual recomendada.</p>
+<ul>
+<li>Uso: Identificar si un proceso de BLAST está consumiendo el 100% del CPU.</li>
+</ul></li>
+<li><p><strong><code>free</code></strong>: Muestra el estado de la memoria RAM (total, usada y libre).</p>
+<ul>
+<li>Uso: free -h (formato legible para humanos).</li>
+</ul></li>
+</ul>
+</section>
+<section id="monitoreo-de-almacenamiento-y-red" class="level3">
+<h3 class="anchored" data-anchor-id="monitoreo-de-almacenamiento-y-red"><strong>Monitoreo de Almacenamiento y Red</strong></h3>
+<ul>
+<li><p><strong><code>df</code> / <code>du</code></strong>:</p>
+<ul>
+<li><p><code>df -h</code>: Espacio disponible en los discos duros del servidor.</p></li>
+<li><p><code>du -sh carpeta/</code>: Tamaño total que ocupa una carpeta de datos específica.</p></li>
+</ul></li>
+<li><p><strong><code>netstat</code> / <code>tcpdump</code></strong>: Para monitorear el tráfico de red y conexiones activas.</p></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> nestat <span class="at">-ntlp</span> <span class="co"># nos dice que programas están usando que puertos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Para saber si realmente hay conexión durante una descarga</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tcpdump <span class="at">-i</span> any host 130.14.29.110</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> tcpdump <span class="at">-A</span> <span class="at">-i</span> any <span class="at">-c</span> 10</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><p><strong><code>iotop</code> / <code>iostat</code></strong>: Monitorean la velocidad de lectura/escritura en el disco (E/S). Esencial si el sistema se siente lento al leer archivos grandes.</p></li>
+<li><p><strong><code>lsblk</code></strong> -e 7 nos lista los discos que tenemos de entrada salida que tenemos para monitorizar cada disco:</p></li>
+</ul>
+</section>
+<section id="trabajar-con-procesos" class="level3">
+<h3 class="anchored" data-anchor-id="trabajar-con-procesos"><strong>Trabajar con procesos</strong></h3>
+<p>Un proceso es un programa en ejecución. A veces necesitamos gestionarlos manualmente si se quedan “trabados”.</p>
+<ul>
+<li><p><strong><code>ps</code></strong>: Lista los procesos actuales del usuario.</p>
+<ul>
+<li>Uso: <code>ps aux | grep "samtools"</code> para encontrar el ID (PID) de una tarea específica.</li>
+</ul></li>
+<li><p><strong><code>kill</code></strong>: Detiene un proceso forzosamente usando su PID.</p>
+<ul>
+<li>Uso: <code>kill -9 1234</code> (el -9 es una terminación inmediata y definitiva).</li>
+</ul></li>
+<li><p><strong><code>nice</code> y <code>renice</code></strong>: Ajusta la prioridad de un proceso.</p>
+<ul>
+<li><p>Uso: Si vas a correr un análisis pesado pero no quieres que el servidor se vuelva lento para los demás, usa <code>nice</code> para darle una prioridad baja.</p></li>
+<li><p><code>nice</code> es cuando se ejecuta, <code>renice</code> cuando ya se inició y requiere el <code>pid</code></p></li>
+</ul></li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nice</span> <span class="at">-n</span> 15 blastn <span class="at">-query</span> seq.fa <span class="at">-db</span> nt <span class="at">-out</span> resultados.txt</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">renice</span> +10 <span class="at">-p</span> 8420</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Valor Nice</th>
+<th>Nivel de Prioridad</th>
+<th>Uso Típico en Biocómputo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">-20</td>
+<td>Máxima</td>
+<td>Procesos críticos del sistema operativo (Kernel).</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">-10 a -1</td>
+<td>Alta</td>
+<td>Tareas en tiempo real que no pueden tener lag.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td>Normal</td>
+<td>Ejecución estándar de comandos, navegadores, editores.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td>Baja</td>
+<td>Scripts de Python o R que tardan varias horas.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">19</td>
+<td>Mínima</td>
+<td>Procesos de fondo que no tienen prisa (ej. copias de seguridad).</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="ejemplo-de-flujo-de-trabajo-real-el-servidor-lento" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-de-flujo-de-trabajo-real-el-servidor-lento"><strong>Ejemplo de flujo de trabajo real: “El Servidor Lento”</strong></h3>
+<p>Imagina que el servidor <strong>BEAGLE</strong> del Instituto de Biología responde muy lento mientras trabajas:</p>
+<ol type="1">
+<li><p><strong>Diagnóstico rápido:</strong> Ejecutas <code>htop</code> y ves que un proceso llamado <code>bwa</code> está al 100%.</p></li>
+<li><p><strong>Revisar RAM:</strong> Ejecutas <code>free -h</code> y notas que casi no queda memoria <code>Swap</code>.</p></li>
+<li><p><strong>Identificar culpable:</strong> Usas <code>ps aux | grep bwa</code> para obtener el ID del proceso (ej. 5560).</p></li>
+<li><p><strong>Acción:</strong> Si el proceso es tuyo y se trabó, lo detienes con <code>kill 5560</code>. Si quieres que siga pero consuma menos, usas <code>renice</code>.</p></li>
+</ol>
+<p><br>
+</p>
 
 
 </section>
@@ -694,13 +850,13 @@ Si no (lo más común), <strong>aprender Bash te permitirá hacer lo mismo —y 
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Introducción a la programación para bioinformática con bash">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Introducción a la programación para bioinformática con bash</span></span>
+      <a href="./unidad_4.html" class="pagination-link" aria-label="Unidad 4: Fundamentos de Linux">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./unidad_2.html" class="pagination-link" aria-label="Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática">
-        <span class="nav-page-text"><span class="chapter-title">Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
+        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -709,4 +865,4 @@ Si no (lo más común), <strong>aprender Bash te permitirá hacer lo mismo —y 
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_5.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
