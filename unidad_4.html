@@ -221,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#sistema-de-archivos-y-estructura-de-directorios-en-linux" id="toc-sistema-de-archivos-y-estructura-de-directorios-en-linux" class="nav-link" data-scroll-target="#sistema-de-archivos-y-estructura-de-directorios-en-linux">Sistema de archivos y estructura de directorios en Linux</a></li>
   <li><a href="#permisos-y-grupos" id="toc-permisos-y-grupos" class="nav-link" data-scroll-target="#permisos-y-grupos">Permisos y grupos</a></li>
   <li><a href="#navegación-manipulación-y-compresión-de-archivos" id="toc-navegación-manipulación-y-compresión-de-archivos" class="nav-link" data-scroll-target="#navegación-manipulación-y-compresión-de-archivos">Navegación, manipulación y compresión de archivos</a></li>
-  <li><a href="#archivado-y-compresión-con-zip-zip" id="toc-archivado-y-compresión-con-zip-zip" class="nav-link" data-scroll-target="#archivado-y-compresión-con-zip-zip">Archivado y compresión con ZIP (zip)</a></li>
+  <li><a href="#archivado-vs-compresión-idea-rápida" id="toc-archivado-vs-compresión-idea-rápida" class="nav-link" data-scroll-target="#archivado-vs-compresión-idea-rápida">Archivado vs compresión (idea rápida)</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_4.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -758,16 +758,129 @@ Una forma práctica de agrupar distribuciones es por <strong>cómo instalan soft
 </blockquote>
 </section>
 </section>
-<section id="archivado-y-compresión-con-zip-zip" class="level2">
-<h2 class="anchored" data-anchor-id="archivado-y-compresión-con-zip-zip">Archivado y compresión con ZIP (zip)</h2>
+<section id="archivado-vs-compresión-idea-rápida" class="level2">
+<h2 class="anchored" data-anchor-id="archivado-vs-compresión-idea-rápida">Archivado vs compresión (idea rápida)</h2>
+<ul>
+<li><p><strong>Archivado</strong> = juntar muchos archivos en uno (ej. <code>tar</code>).</p></li>
+<li><p><strong>Compresión</strong> = reducir tamaño (ej. <code>gzip</code>, <code>7z</code>, <code>zip</code>).</p></li>
+<li><p>A veces van juntos: <code>tar.gz</code> = “tar + gzip”.</p></li>
+</ul>
+<section id="archivado-y-compresión-con-zip-zip-unzip" class="level3">
+<h3 class="anchored" data-anchor-id="archivado-y-compresión-con-zip-zip-unzip">Archivado y compresión con ZIP (<code>zip</code> / <code>unzip</code>)</h3>
 <p>Comprimir varios archivos en un ZIP</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> archivo.zip archivo1 archivo2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="comprimir-un-directorio-completo-recursivo" class="level3">
-<h3 class="anchored" data-anchor-id="comprimir-un-directorio-completo-recursivo">Comprimir un directorio completo (recursivo)</h3>
+<section id="comprimir-un-directorio-completo-recursivo" class="level4">
+<h4 class="anchored" data-anchor-id="comprimir-un-directorio-completo-recursivo">Comprimir un directorio completo (recursivo)</h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> images.zip ~/Images</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <blockquote class="blockquote">
-<p>Nota: <code>-r</code> significa <em>recursivo</em> (incluye subcarpetas).</p>
+<p><code>-r</code> = recursivo (incluye subcarpetas).</p>
 </blockquote>
+</section>
+<section id="ver-el-contenido-sin-extraer" class="level4">
+<h4 class="anchored" data-anchor-id="ver-el-contenido-sin-extraer">Ver el contenido sin extraer</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> <span class="at">-l</span> archivo.zip</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="extraer-descomprimir" class="level4">
+<h4 class="anchored" data-anchor-id="extraer-descomprimir">Extraer (descomprimir)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> archivo.zip</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="actualizar-un-zip-agregar-o-reemplazar-archivos" class="level4">
+<h4 class="anchored" data-anchor-id="actualizar-un-zip-agregar-o-reemplazar-archivos">Actualizar un ZIP (agregar o reemplazar archivos)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> archivo.zip nuevo_archivo.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="excluir-patrones-útil-para-no-meter-basura" class="level4">
+<h4 class="anchored" data-anchor-id="excluir-patrones-útil-para-no-meter-basura">Excluir patrones (útil para no meter basura)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zip</span> <span class="at">-r</span> proyecto.zip mi_proyecto/ <span class="at">-x</span> <span class="st">"*.tmp"</span> <span class="st">"*.log"</span> <span class="st">"*/.git/*"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>📌 <strong>Cuándo usar ZIP:</strong> común para compartir con gente en Windows/macOS y para “entregar tareas”.</p>
+</section>
+</section>
+<section id="compresión-con-gzip-gzip-gunzip" class="level3">
+<h3 class="anchored" data-anchor-id="compresión-con-gzip-gzip-gunzip">Compresión con GZIP (<code>gzip</code> / <code>gunzip</code>)</h3>
+<p><strong>gzip</strong> comprime <strong>un archivo</strong> (no empaqueta carpetas por sí solo).</p>
+<p>Comprimir un archivo (crea <code>.gz</code> y borra el original)</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> archivo.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="mantener-el-original--k" class="level4">
+<h4 class="anchored" data-anchor-id="mantener-el-original--k">Mantener el original (<code>-k</code>)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gzip</span> <span class="at">-k</span> archivo.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="descomprimir" class="level4">
+<h4 class="anchored" data-anchor-id="descomprimir">Descomprimir</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> archivo.txt.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ver-el-contenido-sin-descomprimir" class="level4">
+<h4 class="anchored" data-anchor-id="ver-el-contenido-sin-descomprimir">Ver el contenido sin descomprimir</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">zcat</span> archivo.txt.gz </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>📌 <strong>Cuándo usar gzip:</strong> súper común en bioinfo (<code>.fastq.gz</code>, <code>.fasta.gz</code>). Permite <em>pipes</em> sin descomprimir a disco.</p>
+</section>
+</section>
+<section id="tar-empaquetado-y-con-compresión-opcional" class="level3">
+<h3 class="anchored" data-anchor-id="tar-empaquetado-y-con-compresión-opcional">TAR: empaquetado (y con compresión opcional)</h3>
+<section id="crear-un-.tar-solo-archiva-no-comprime" class="level4">
+<h4 class="anchored" data-anchor-id="crear-un-.tar-solo-archiva-no-comprime">Crear un <code>.tar</code> (solo archiva, no comprime)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cvf</span> proyecto.tar mi_proyecto/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>-c</code> crear, <code>-v</code> verboso (muestra lo que hace), <code>-f</code> nombre del archivo.</li>
+</ul>
+</section>
+<section id="ver-contenido" class="level4">
+<h4 class="anchored" data-anchor-id="ver-contenido">Ver contenido</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-tvf</span> proyecto.tar</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="extraer" class="level4">
+<h4 class="anchored" data-anchor-id="extraer">Extraer</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xvf</span> proyecto.tar</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>-x</code> extraer</li>
+</ul>
+</section>
+</section>
+<section id="tar-gzip-.tar.gz-.tgz-lo-más-común-en-linux" class="level3">
+<h3 class="anchored" data-anchor-id="tar-gzip-.tar.gz-.tgz-lo-más-común-en-linux">TAR + GZIP (<code>.tar.gz</code> / <code>.tgz</code>) (lo más común en Linux)</h3>
+<p>Crear:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-czvf</span> proyecto.tar.gz mi_proyecto/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Extraer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb54"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xzvf</span> proyecto.tar.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="tar-bzip2-.tar.bz2-más-compresión-más-lento" class="level3">
+<h3 class="anchored" data-anchor-id="tar-bzip2-.tar.bz2-más-compresión-más-lento">TAR + bzip2 (<code>.tar.bz2</code>) (más compresión, más lento)</h3>
+<p>Crear:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb55"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-cjvf</span> proyecto.tar.bz2 mi_proyecto/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Extraer:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tar</span> <span class="at">-xjvf</span> proyecto.tar.bz2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>📌 <strong>Cuándo usar tar:</strong> ideal para Linux/HPC porque <strong>conserva permisos</strong> y estructura. Muy usado para “empaquetar un proyecto”.</p>
+</section>
+<section id="z-7-zip-7z" class="level3">
+<h3 class="anchored" data-anchor-id="z-7-zip-7z">7z (7-Zip) (<code>7z</code>)</h3>
+<p>Suele comprimir <strong>mejor</strong> que zip/gzip (a veces más lento).</p>
+<section id="crear-un-.7z" class="level4">
+<h4 class="anchored" data-anchor-id="crear-un-.7z">Crear un .7z</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="ex">7z</span> a archivo.7z carpeta/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="mayor-compresión-más-lento" class="level4">
+<h4 class="anchored" data-anchor-id="mayor-compresión-más-lento">Mayor compresión (más lento)</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb58"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="ex">7z</span> a <span class="at">-mx</span><span class="op">=</span>9 archivo.7z carpeta/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><code>-mx=9</code> = máxima compresión (0–9)</li>
+</ul>
+</section>
+<section id="listar-contenido" class="level4">
+<h4 class="anchored" data-anchor-id="listar-contenido">Listar contenido</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="ex">7z</span> l archivo.7z</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="extraer-a-una-carpeta" class="level4">
+<h4 class="anchored" data-anchor-id="extraer-a-una-carpeta">Extraer a una carpeta</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="ex">7z</span> x archivo.7z <span class="at">-osalid7z</span>/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>📌 <strong>Cuándo usar 7z:</strong> para empaquetar resultados grandes cuando quieres <strong>máxima compresión</strong> (por ejemplo, tablas, texto, logs).</p>
+</section>
+</section>
+<section id="tips-rápidos" class="level3">
+<h3 class="anchored" data-anchor-id="tips-rápidos">Tips rápidos</h3>
+<ul>
+<li><p><strong>FASTQ ya comprimido (<code>.fastq.gz</code>)</strong>: casi siempre conviene dejarlo así.</p></li>
+<li><p><strong>No esperes gran compresión</strong> en archivos ya comprimidos (JPEG, MP4, <code>.gz</code>).</p></li>
+<li><p>Para compartir un proyecto completo en Linux: <strong><code>tar.gz</code></strong> suele ser el estándar.</p></li>
+<li><p>Para compatibilidad con Windows: <strong>7z o ZIP</strong>.</p></li>
+</ul>
 
 
 </section>
