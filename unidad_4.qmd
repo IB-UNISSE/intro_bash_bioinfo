@@ -540,7 +540,15 @@ ls
 
 > Nota: `rm` elimina de forma definitiva (no hay “papelera”).
 
-## Archivado y compresión con ZIP (zip)
+## Archivado vs compresión (idea rápida)
+
+-   **Archivado** = juntar muchos archivos en uno (ej. `tar`).
+
+-   **Compresión** = reducir tamaño (ej. `gzip`, `7z`, `zip`).
+
+-   A veces van juntos: `tar.gz` = “tar + gzip”.
+
+### Archivado y compresión con ZIP (`zip` / `unzip`)
 
 Comprimir varios archivos en un ZIP
 
@@ -548,10 +556,162 @@ Comprimir varios archivos en un ZIP
 zip archivo.zip archivo1 archivo2
 ```
 
-### Comprimir un directorio completo (recursivo)
+#### Comprimir un directorio completo (recursivo)
 
 ``` bash
 zip -r images.zip ~/Images
 ```
 
-> Nota: `-r` significa *recursivo* (incluye subcarpetas).
+> `-r` = recursivo (incluye subcarpetas).
+
+#### Ver el contenido sin extraer
+
+``` bash
+unzip -l archivo.zip
+```
+
+#### Extraer (descomprimir)
+
+``` bash
+unzip archivo.zip
+```
+
+#### Actualizar un ZIP (agregar o reemplazar archivos)
+
+``` bash
+zip archivo.zip nuevo_archivo.txt
+```
+
+#### Excluir patrones (útil para no meter basura)
+
+``` bash
+zip -r proyecto.zip mi_proyecto/ -x "*.tmp" "*.log" "*/.git/*"
+```
+
+📌 **Cuándo usar ZIP:** común para compartir con gente en Windows/macOS y para “entregar tareas”.
+
+### Compresión con GZIP (`gzip` / `gunzip`)
+
+**gzip** comprime **un archivo** (no empaqueta carpetas por sí solo).
+
+Comprimir un archivo (crea `.gz` y borra el original)
+
+``` bash
+gzip archivo.txt
+```
+
+#### Mantener el original (`-k`)
+
+``` bash
+gzip -k archivo.txt
+```
+
+#### Descomprimir
+
+``` bash
+gunzip archivo.txt.gz
+```
+
+#### Ver el contenido sin descomprimir
+
+``` bash
+zcat archivo.txt.gz 
+```
+
+📌 **Cuándo usar gzip:** súper común en bioinfo (`.fastq.gz`, `.fasta.gz`). Permite *pipes* sin descomprimir a disco.
+
+### TAR: empaquetado (y con compresión opcional)
+
+#### Crear un `.tar` (solo archiva, no comprime)
+
+``` bash
+tar -cvf proyecto.tar mi_proyecto/
+```
+
+-   `-c` crear, `-v` verboso (muestra lo que hace), `-f` nombre del archivo.
+
+#### Ver contenido
+
+``` bash
+tar -tvf proyecto.tar
+```
+
+#### Extraer
+
+``` bash
+tar -xvf proyecto.tar
+```
+
+-   `-x` extraer
+
+### TAR + GZIP (`.tar.gz` / `.tgz`) (lo más común en Linux)
+
+Crear:
+
+``` bash
+tar -czvf proyecto.tar.gz mi_proyecto/
+```
+
+Extraer:
+
+``` bash
+tar -xzvf proyecto.tar.gz
+```
+
+### TAR + bzip2 (`.tar.bz2`) (más compresión, más lento)
+
+Crear:
+
+``` bash
+tar -cjvf proyecto.tar.bz2 mi_proyecto/
+```
+
+Extraer:
+
+``` bash
+tar -xjvf proyecto.tar.bz2
+```
+
+📌 **Cuándo usar tar:** ideal para Linux/HPC porque **conserva permisos** y estructura. Muy usado para “empaquetar un proyecto”.
+
+### 7z (7-Zip) (`7z`)
+
+Suele comprimir **mejor** que zip/gzip (a veces más lento).
+
+#### Crear un .7z
+
+``` bash
+7z a archivo.7z carpeta/
+```
+
+#### Mayor compresión (más lento)
+
+``` bash
+7z a -mx=9 archivo.7z carpeta/
+```
+
+-   `-mx=9` = máxima compresión (0–9)
+
+#### Listar contenido
+
+``` bash
+7z l archivo.7z
+```
+
+#### Extraer a una carpeta
+
+``` bash
+7z x archivo.7z -osalid7z/
+```
+
+📌 **Cuándo usar 7z:** para empaquetar resultados grandes cuando quieres **máxima compresión** (por ejemplo, tablas, texto, logs).
+
+### Tips rápidos 
+
+-   **FASTQ ya comprimido (`.fastq.gz`)**: casi siempre conviene dejarlo así.
+
+-   **No esperes gran compresión** en archivos ya comprimidos (JPEG, MP4, `.gz`).
+
+-   Para compartir un proyecto completo en Linux: **`tar.gz`** suele ser el estándar.
+
+-   Para compatibilidad con Windows: **7z o ZIP**.

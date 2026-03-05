@@ -43,8 +43,8 @@
     "objectID": "index.html#unidades",
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
-    "section": "[Unidades",
-    "text": "[Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "section": "Unidades",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nNotas: Crear un bot con BotFather en Telegr_am\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -394,7 +394,7 @@
     "href": "unidad_5.html",
     "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
     "section": "",
-    "text": "Comandos básicos de Bash (Exploración de datos)\nEn bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.\nEl comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.\nAquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:\nFiltros Esenciales (Los más usados)",
+    "text": "Comandos básicos de Bash (Exploración de datos)\nEn bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
     ]
@@ -404,7 +404,7 @@
     "href": "unidad_5.html#comandos-básicos-de-bash-exploración-de-datos",
     "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
     "section": "",
-    "text": "echo: Imprime texto en la terminal o redirige mensajes a archivos.\n\necho \"Inicio de ensamble\" &gt; bitacora.txt\necho \"Paso 2: alineamiento\" &gt;&gt; bitacora.txt\n\n&gt; sobrescribe y &gt;&gt; agrega al final\n\n\ncat: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.\n\ncat metadatos.csv\n\n`tail`: Muestra las últimas líneas de un archivo (por defecto 10).\n\ntail error.log\ntail -n 20 error.log\n\nIdeal para logs: “¿qué fue lo último que pasó?”\n\n\ngrep: El buscador de patrones más potente.\n\n\n\n\n\nBuscar un patrón exacto:\n\ngrep \"Homo sapiens\" anotaciones.txt\n\nUso: Extraer solo las líneas que contienen una especie específica.\n\n\nBúsqueda insensible a mayúsculas (-i):\n\ngrep -i \"atp6\" genes.fasta\n\nContar coincidencias (-c):\n\ngrep -c \"^@\" lecturas.fastq\n\nUso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo @ al inicio de línea).\n\n\nInvertir la búsqueda (-v):\n\ngrep -v \"Unclassified\" taxonomia.tsv\n\nUso: Limpia tus datos eliminando todas las líneas que digan “Unclassified”.\n\n\nBuscar recursivamente e indicar en que línea esta (-rn):\n\ngrep -rn \"texto_a_buscar\" /home/mauricio\n\nBúsquedas Avanzadas y Expresiones Regulares\n\nBuscar al inicio de la línea (^):\n\ngrep \"^&gt;\" genoma.fasta\nUso: Extraer únicamente los encabezados (headers) de un archivo FASTA.\n\nBuscar al final de la línea ($):\n\ngrep \"STOP$\" secuencias.txt\n\nUso: Filtrar secuencias que terminan con un codón de paro específico.\n\n\n\nContexto de la coincidencia (Visualización)\nA veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):\n\nVer líneas posteriores (-A de After):\n\ngrep -A 3 \"chr1\" anotacion.gff \n\nMuestra la línea y las 3 siguientes\n\n\nVer líneas anteriores (-B de Before):\n\ngrep -B 2 \"ERROR\" pipeline.log \n\nMuestra el error y las 2 líneas previas para saber qué causó el fallo\n\n\nVer ambos lados (-C de Context):\n\ngrep -C 1 \"COX1\" mitocondria.gbk\nMuestra la línea de COX1 con una línea arriba y una abajo",
+    "text": "echo: Imprime texto en la terminal o redirige mensajes a archivos.\n\necho \"Inicio de ensamble\" &gt; bitacora.txt\necho \"Paso 2: alineamiento\" &gt;&gt; bitacora.txt\n\n&gt; sobrescribe y &gt;&gt; agrega al final\n\n\nDel comando al script\nA veces no queremos ejecutar un comando una sola vez, sino repetir una serie de pasos (por ejemplo: revisar archivos, filtrar, contar, guardar salida). Para eso usamos scripts de Bash: archivos de texto con comandos, que se ejecutan en orden.\nEjemplo: tu primer script\nCrea un archivo:\nnano hola.sh\nEscribe dentro:\n#!/bin/bash\necho \"Hola Mundo\"\nGuarda y sal.\nDale permisos de ejecución:\nchmod +x hola.sh\nEjecútalo:\n./hola.sh\n\n\ncat: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.\n\ncat metadatos.csv\n\n`tail`: Muestra las últimas líneas de un archivo (por defecto 10).\n\ntail error.log\ntail -n 20 error.log\n\nIdeal para logs: “¿qué fue lo último que pasó?”\n\n\ngrep: El buscador de patrones más potente.\n\nEl comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.\nAquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:\nFiltros Esenciales (Los más usados)\n\nBuscar un patrón exacto:\n\ngrep \"Homo sapiens\" anotaciones.txt\n\nUso: Extraer solo las líneas que contienen una especie específica.\n\n\nBúsqueda insensible a mayúsculas (-i):\n\ngrep -i \"atp6\" genes.fasta\n\nContar coincidencias (-c):\n\ngrep -c \"^@\" lecturas.fastq\n\nUso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo @ al inicio de línea).\n\n\nInvertir la búsqueda (-v):\n\ngrep -v \"Unclassified\" taxonomia.tsv\n\nUso: Limpia tus datos eliminando todas las líneas que digan “Unclassified”.\n\n\nBuscar recursivamente e indicar en que línea esta (-rn):\n\ngrep -rn \"texto_a_buscar\" /home/mauricio\n\n\nBúsquedas Avanzadas y Expresiones Regulares\n\nBuscar al inicio de la línea (^):\n\ngrep \"^&gt;\" genoma.fasta\nUso: Extraer únicamente los encabezados (headers) de un archivo FASTA.\n\nBuscar al final de la línea ($):\n\ngrep \"STOP$\" secuencias.txt\n\nUso: Filtrar secuencias que terminan con un codón de paro específico.\n\n\n\nContexto de la coincidencia (Visualización)\nA veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):\n\nVer líneas posteriores (-A de After):\n\ngrep -A 3 \"chr1\" anotacion.gff \n\nMuestra la línea y las 3 siguientes\n\n\nVer líneas anteriores (-B de Before):\n\ngrep -B 2 \"ERROR\" pipeline.log \n\nMuestra el error y las 2 líneas previas para saber qué causó el fallo\n\n\nVer ambos lados (-C de Context):\n\ngrep -C 1 \"COX1\" mitocondria.gbk\nMuestra la línea de COX1 con una línea arriba y una abajo",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
     ]
@@ -420,13 +420,63 @@
     ]
   },
   {
+    "objectID": "nota_bot_telegram.html",
+    "href": "nota_bot_telegram.html",
+    "title": "Notas: Crear un bot con BotFather en Telegram",
+    "section": "",
+    "text": "En Telegram:\n✅ Ese token es tu “contraseña” del bot, No lo compartas!!!",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+    ]
+  },
+  {
+    "objectID": "nota_bot_telegram.html#en-telegram",
+    "href": "nota_bot_telegram.html#en-telegram",
+    "title": "Notas: Crear un bot con BotFather en Telegram",
+    "section": "",
+    "text": "Busca @BotFather y ABRIR\n\n\n\n\n\n\n\nCrear un nuevo Bot\n\n\n\n\n\n\n\nPonle un nombre al Bot y elige un nombre de usuario que termine en bot, el usarname tiene que estar disponible\n\n\n\n\n\n\n\nBotFather te dará un TOKEN\n\n\n\n\n\n\n\n\nAbre el chat con tu bot (búscalo por username).\n\n\n\n\n\n\n\nPresiona Iniciar",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+    ]
+  },
+  {
+    "objectID": "nota_bot_telegram.html#conseguir-tu-chat_id-para-mandarte-mensajes",
+    "href": "nota_bot_telegram.html#conseguir-tu-chat_id-para-mandarte-mensajes",
+    "title": "Notas: Crear un bot con BotFather en Telegram",
+    "section": "Conseguir tu chat_id (para mandarte mensajes)",
+    "text": "Conseguir tu chat_id (para mandarte mensajes)\nTOKEN=\"TU_TOKEN_AQUI\"\ncurl -s \"https://api.telegram.org/bot${TOKEN}/getUpdates\" \nBusca en la salida algo así:\n\"chat\":{\"id\":123456789,\"first_name\":\"Pedro\", ...}\n📌 “id”:123456789 ese número es tu CHAT_ID.\n\nEnviar un mensaje con curl (lo esencial)\nTOKEN=\"TU_TOKEN_AQUI\"\nCHAT_ID=\"TU_CHAT_ID_AQUI\"\n\ncurl -s -X POST \"https://api.telegram.org/bot${TOKEN}/sendMessage\" \\\n  -d \"chat_id=${CHAT_ID}\" \\\n  -d \"text=Hola 👋 Mensaje enviado desde Bash\"",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+    ]
+  },
+  {
+    "objectID": "nota_bot_telegram.html#buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git",
+    "href": "nota_bot_telegram.html#buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git",
+    "title": "Notas: Crear un bot con BotFather en Telegram",
+    "section": "Buenas prácticas: NO hardcodear el token (y no subirlo a git)",
+    "text": "Buenas prácticas: NO hardcodear el token (y no subirlo a git)\n\nArchivo .env (recomendado)\nCrea un archivo .env fuera de tu repo o ignóralo con .gitignore:\nnano .env\nPegar la info en el archivo .env\nTOKEN=\"TU_TOKEN_AQUI\"\nCHAT_ID=\"TU_CHAT_ID_AQUI\"\nEn tu script agrega estas lineas\nsource .env\nSI esta en tu proyecto git agrega el archivo a tu .gitignore:\nnano .gitignore\nY agrega el archivo\n.env\nAdemás agregar seguridad al archivo\nchmod 600 .env",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+    ]
+  },
+  {
+    "objectID": "nota_bot_telegram.html#función-reusable-tg_send-para-cualquier-script",
+    "href": "nota_bot_telegram.html#función-reusable-tg_send-para-cualquier-script",
+    "title": "Notas: Crear un bot con BotFather en Telegram",
+    "section": "Función reusable tg_send (para cualquier script)",
+    "text": "Función reusable tg_send (para cualquier script)\ntg_send () {\n  local msg=\"$1\"\n  curl -s -X POST \"https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage\" \\\n    -d \"chat_id=${TELEGRAM_CHAT_ID}\" \\\n    -d \"text=${msg}\" \\\n    -d \"disable_web_page_preview=true\" &gt; /dev/null\n}\nUso:\ntg_send \"✅ Pipeline terminó correctamente.\"",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Bibliografía complementaria",
     "section": "",
     "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
     ]
   }
 ]

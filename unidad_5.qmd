@@ -49,6 +49,7 @@ Ejecútalo:
 ```
 
 -   
+
 -   **`cat`**: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.
 
 ``` bash
@@ -217,7 +218,7 @@ renice +10 -p 8420
 ```
 
 | Valor Nice | Nivel de Prioridad | Uso Típico en Biocómputo |
-|-----------------------:|------------------------|------------------------|
+|---:|----|----|
 | -20 | Máxima | Procesos críticos del sistema operativo (Kernel). |
 | -10 a -1 | Alta | Tareas en tiempo real que no pueden tener lag. |
 | 0 | Normal | Ejecución estándar de comandos, navegadores, editores. |
