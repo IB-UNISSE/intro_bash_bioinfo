@@ -706,7 +706,7 @@ Suele comprimir **mejor** que zip/gzip (a veces más lento).
 
 📌 **Cuándo usar 7z:** para empaquetar resultados grandes cuando quieres **máxima compresión** (por ejemplo, tablas, texto, logs).
 
-### Tips rápidos 
+### Tips rápidos
 
 -   **FASTQ ya comprimido (`.fastq.gz`)**: casi siempre conviene dejarlo así.
 

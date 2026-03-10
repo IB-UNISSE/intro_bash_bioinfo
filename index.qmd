@@ -30,6 +30,7 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 -   [Notas: VS Code + Git/GitHub en servidor](nota_vscode_git.qmd)
 -   [Unidad 4: Fundamentos de Linux](unidad_4.qmd)
 -   [Unidad 5. Comandos básicos de Bash y monitoreo de recursos](unidad_5.qmd)
+-   [Unidad 6. Scripting y automatización de tareas en Bash](unidad_6.qmd)
 -   [Notas: Crear un bot con BotFather en Telegram](nota_bot_telegram.qmd)
 
 *(Iremos agregando el resto de unidades conforme avancemos en el semestre.)*

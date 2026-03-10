@@ -44,7 +44,7 @@
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "Unidades",
-    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nNotas: Crear un bot con BotFather en Telegr_am\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nNotas: Crear un bot con BotFather en Telegram\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -380,11 +380,11 @@
     ]
   },
   {
-    "objectID": "unidad_4.html#archivado-y-compresión-con-zip-zip",
-    "href": "unidad_4.html#archivado-y-compresión-con-zip-zip",
+    "objectID": "unidad_4.html#archivado-vs-compresión-idea-rápida",
+    "href": "unidad_4.html#archivado-vs-compresión-idea-rápida",
     "title": "Unidad 4: Fundamentos de Linux",
-    "section": "Archivado y compresión con ZIP (zip)",
-    "text": "Archivado y compresión con ZIP (zip)\nComprimir varios archivos en un ZIP\nzip archivo.zip archivo1 archivo2\n\nComprimir un directorio completo (recursivo)\nzip -r images.zip ~/Images\n\nNota: -r significa recursivo (incluye subcarpetas).",
+    "section": "Archivado vs compresión (idea rápida)",
+    "text": "Archivado vs compresión (idea rápida)\n\nArchivado = juntar muchos archivos en uno (ej. tar).\nCompresión = reducir tamaño (ej. gzip, 7z, zip).\nA veces van juntos: tar.gz = “tar + gzip”.\n\n\nArchivado y compresión con ZIP (zip / unzip)\nComprimir varios archivos en un ZIP\nzip archivo.zip archivo1 archivo2\n\nComprimir un directorio completo (recursivo)\nzip -r images.zip ~/Images\n\n-r = recursivo (incluye subcarpetas).\n\n\n\nVer el contenido sin extraer\nunzip -l archivo.zip\n\n\nExtraer (descomprimir)\nunzip archivo.zip\n\n\nActualizar un ZIP (agregar o reemplazar archivos)\nzip archivo.zip nuevo_archivo.txt\n\n\nExcluir patrones (útil para no meter basura)\nzip -r proyecto.zip mi_proyecto/ -x \"*.tmp\" \"*.log\" \"*/.git/*\"\n📌 Cuándo usar ZIP: común para compartir con gente en Windows/macOS y para “entregar tareas”.\n\n\n\nCompresión con GZIP (gzip / gunzip)\ngzip comprime un archivo (no empaqueta carpetas por sí solo).\nComprimir un archivo (crea .gz y borra el original)\ngzip archivo.txt\n\nMantener el original (-k)\ngzip -k archivo.txt\n\n\nDescomprimir\ngunzip archivo.txt.gz\n\n\nVer el contenido sin descomprimir\nzcat archivo.txt.gz \n📌 Cuándo usar gzip: súper común en bioinfo (.fastq.gz, .fasta.gz). Permite pipes sin descomprimir a disco.\n\n\n\nTAR: empaquetado (y con compresión opcional)\n\nCrear un .tar (solo archiva, no comprime)\ntar -cvf proyecto.tar mi_proyecto/\n\n-c crear, -v verboso (muestra lo que hace), -f nombre del archivo.\n\n\n\nVer contenido\ntar -tvf proyecto.tar\n\n\nExtraer\ntar -xvf proyecto.tar\n\n-x extraer\n\n\n\n\nTAR + GZIP (.tar.gz / .tgz) (lo más común en Linux)\nCrear:\ntar -czvf proyecto.tar.gz mi_proyecto/\nExtraer:\ntar -xzvf proyecto.tar.gz\n\n\nTAR + bzip2 (.tar.bz2) (más compresión, más lento)\nCrear:\ntar -cjvf proyecto.tar.bz2 mi_proyecto/\nExtraer:\ntar -xjvf proyecto.tar.bz2\n📌 Cuándo usar tar: ideal para Linux/HPC porque conserva permisos y estructura. Muy usado para “empaquetar un proyecto”.\n\n\n7z (7-Zip) (7z)\nSuele comprimir mejor que zip/gzip (a veces más lento).\n\nCrear un .7z\n7z a archivo.7z carpeta/\n\n\nMayor compresión (más lento)\n7z a -mx=9 archivo.7z carpeta/\n\n-mx=9 = máxima compresión (0–9)\n\n\n\nListar contenido\n7z l archivo.7z\n\n\nExtraer a una carpeta\n7z x archivo.7z -osalid7z/\n📌 Cuándo usar 7z: para empaquetar resultados grandes cuando quieres máxima compresión (por ejemplo, tablas, texto, logs).\n\n\n\nTips rápidos\n\nFASTQ ya comprimido (.fastq.gz): casi siempre conviene dejarlo así.\nNo esperes gran compresión en archivos ya comprimidos (JPEG, MP4, .gz).\nPara compartir un proyecto completo en Linux: tar.gz suele ser el estándar.\nPara compatibilidad con Windows: 7z o ZIP.",
     "crumbs": [
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Unidad 4: Fundamentos de Linux</span>"
     ]
