@@ -207,6 +207,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./fastq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliografía complementaria</span></a>
   </div>
 </li>
@@ -222,6 +227,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#introducción-a-la-programación-en-shell" id="toc-introducción-a-la-programación-en-shell" class="nav-link active" data-scroll-target="#introducción-a-la-programación-en-shell">Introducción a la programación en Shell</a></li>
   <li><a href="#estructuras-de-control" id="toc-estructuras-de-control" class="nav-link" data-scroll-target="#estructuras-de-control">Estructuras de control</a></li>
+  <li><a href="#bucle-for" id="toc-bucle-for" class="nav-link" data-scroll-target="#bucle-for">Bucle <code>for</code></a></li>
+  <li><a href="#explicación" id="toc-explicación" class="nav-link" data-scroll-target="#explicación">Explicación</a></li>
+  <li><a href="#bucle-while" id="toc-bucle-while" class="nav-link" data-scroll-target="#bucle-while">Bucle <code>while</code></a></li>
   <li><a href="#funciones-en-bash" id="toc-funciones-en-bash" class="nav-link" data-scroll-target="#funciones-en-bash">Funciones en Bash</a></li>
   <li><a href="#automatización-de-scripts-con-cron" id="toc-automatización-de-scripts-con-cron" class="nav-link" data-scroll-target="#automatización-de-scripts-con-cron">Automatización de scripts con cron</a></li>
   </ul>
@@ -428,30 +436,168 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><code>-gt</code> : mayor que</p></li>
 </ul>
 </section>
-<section id="bucles-y-repetición-de-tareas" class="level3">
-<h3 class="anchored" data-anchor-id="bucles-y-repetición-de-tareas">Bucles y repetición de tareas</h3>
-<p>Los <strong>bucles</strong> permiten repetir una acción varias veces, lo que resulta muy útil cuando se trabaja con múltiples archivos o muestras.</p>
-<section id="bucle-for" class="level4">
-<h4 class="anchored" data-anchor-id="bucle-for">Bucle <code>for</code></h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> archivo <span class="kw">in</span> <span class="pp">*</span>.fastq.gz<span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Procesando </span><span class="va">$archivo</span><span class="st">"</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Este tipo de bucle es muy útil cuando se quiere aplicar el mismo comando a muchos archivos.</p>
 </section>
-<section id="bucle-while" class="level4">
-<h4 class="anchored" data-anchor-id="bucle-while">Bucle <code>while</code></h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="va">contador</span><span class="op">=</span>1</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$contador</span> <span class="ot">-le</span> 5 <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Iteración </span><span class="va">$contador</span><span class="st">"</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">contador</span><span class="op">=</span><span class="va">$((contador</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Este bucle se ejecuta mientras una condición siga siendo verdadera.</p>
+<section id="bucle-for" class="level2">
+<h2 class="anchored" data-anchor-id="bucle-for">Bucle <code>for</code></h2>
+<p>En Bash, el bucle <code>for</code> se usa para <strong>repetir una acción varias veces</strong>.<br>
+Es muy útil cuando se quiere aplicar el mismo comando a:</p>
+<ul>
+<li><p>varios archivos,</p></li>
+<li><p>varias muestras,</p></li>
+<li><p>varias carpetas,</p></li>
+<li><p>una lista de nombres,</p></li>
+<li><p>una serie de números.</p></li>
+</ul>
+<section id="idea-central" class="level3">
+<h3 class="anchored" data-anchor-id="idea-central">Idea central</h3>
+<p>En lugar de escribir muchas veces el mismo comando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando muestra1.fastq.gz"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando muestra2.fastq.gz"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando muestra3.fastq.gz"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>podemos usar <code>for</code></p>
 </section>
+<section id="sintaxis-general" class="level3">
+<h3 class="anchored" data-anchor-id="sintaxis-general">Sintaxis general</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> lista<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">comandos</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="explicación" class="level2">
+<h2 class="anchored" data-anchor-id="explicación">Explicación</h2>
+<ul>
+<li><p><code>for</code> inicia el bucle</p></li>
+<li><p><code>variable</code> guarda temporalmente cada elemento</p></li>
+<li><p><code>in lista</code> indica qué elementos se van a recorrer</p></li>
+<li><p><code>do</code> marca el inicio de los comandos a repetir</p></li>
+<li><p><code>done</code> marca el final del bucle</p></li>
+</ul>
+<section id="primer-ejemplo-sencillo" class="level3">
+<h3 class="anchored" data-anchor-id="primer-ejemplo-sencillo">Primer ejemplo sencillo:</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre <span class="kw">in</span> Ana Luis Carmen<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hola, </span><span class="va">$nombre</span><span class="st">"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El bucle hace esto internamente:</p>
+<ul>
+<li><p>primero <code>nombre="Ana"</code></p></li>
+<li><p>luego <code>nombre="Luis"</code></p></li>
+<li><p>luego <code>nombre="Carmen"</code></p></li>
+</ul>
+<p>Y en cada vuelta ejecuta:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hola, </span><span class="va">$nombre</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ejemplo-con-números" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-con-números">Ejemplo con números</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> 1 2 3 4 5<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Número: </span><span class="va">$n</span><span class="st">"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p><strong>Ejercicio: uso de <code>for</code> en Bash</strong></p>
+<p>Escribe un script en <strong>Bash</strong> que realice lo siguiente:</p>
+<ol type="1">
+<li><p>Muestre en pantalla los números <strong>del 1 al 100</strong>.</p></li>
+<li><p>Después, muestre en pantalla los números <strong>del 2 al 100 avanzando de 2 en 2</strong>.</p></li>
+<li><p>Recorre las muestras de la carpeta <code>/home/cristian/mi_proyecto/data/raw</code> que terminan en <code>.fq.gz</code> y muestra para cada una el mensaje <code>Procesando &lt;nombre_de_la_muestra&gt;</code> usando la variable <code>muestra</code>.</p></li>
+</ol>
+</blockquote>
+</section>
+</section>
+<section id="bucle-while" class="level2">
+<h2 class="anchored" data-anchor-id="bucle-while">Bucle <code>while</code></h2>
+<p>El bucle <code>while</code> ejecuta un bloque de comandos <strong>mientras una condición sea verdadera</strong>.</p>
+<p>Su idea es:</p>
+<blockquote class="blockquote">
+<p>“repite esto mientras se cumpla esta condición”.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="ex">condicion</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">comandos</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cómo-funciona-while" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-funciona-while">Cómo funciona <code>while</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="va">contador</span><span class="op">=</span>1</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$contador</span> <span class="ot">-le</span> 3 <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Iteración </span><span class="va">$contador</span><span class="st">"</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">contador</span><span class="op">=</span><span class="va">$((contador</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="paso-a-paso" class="level4">
+<h4 class="anchored" data-anchor-id="paso-a-paso">Paso a paso</h4>
+<ol type="1">
+<li><p><code>contador=1</code></p></li>
+<li><p>Bash evalúa la condición:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="va">$contador</span> <span class="ot">-le</span> 3 <span class="bu">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li><p>Como <code>1 &lt;= 3</code>, entra al bucle.</p></li>
+<li><p>Ejecuta:</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Iteración 1"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="5" type="1">
+<li>Luego aumenta el contador:echo “Iteración 1”</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="va">contador</span><span class="op">=</span><span class="va">$((contador</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="6" type="1">
+<li><p>Vuelve a evaluar la condición.</p></li>
+<li><p>Cuando <code>contador</code> ya no cumple, el bucle termina.</p></li>
+</ol>
+</section>
+</section>
+<section id="comando-read" class="level3">
+<h3 class="anchored" data-anchor-id="comando-read">Comando <code>read</code></h3>
+<p><code>read</code> toma una línea y la guarda en <code>variable</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">variable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Ejemplo interactivo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Escribe tu nombre: "</span> <span class="va">nombre</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hola, </span><span class="va">$nombre</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Aquí:</p>
+<ul>
+<li><p><code>-p</code> muestra un mensaje,</p></li>
+<li><p>lo que el usuario escriba se guarda en <code>nombre</code>.</p></li>
+</ul>
+</section>
+<section id="leer-un-archivo-línea-por-línea-usando-read-y-while" class="level3">
+<h3 class="anchored" data-anchor-id="leer-un-archivo-línea-por-línea-usando-read-y-while">Leer un archivo línea por línea usando <code>read</code> y <code>while</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">linea</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"</span><span class="va">$linea</span><span class="st">"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> archivo.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><p><code>read linea</code> toma <strong>una línea</strong></p></li>
+<li><p><code>while</code> repite eso hasta llegar al final del archivo</p></li>
+<li><p><code>done &lt; archivo.txt</code> hace que la entrada venga del archivo y no del teclado</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>Ejercicio:</p>
+<h3 id="instrucciones" class="anchored">Instrucciones</h3>
+<ol type="1">
+<li><p>Crear un archivo llamado <code>nombres.txt</code>.</p></li>
+<li><p>Escribir dentro <strong>10 nombres</strong>, uno por línea.</p></li>
+<li><p>Crear un script en Bash que lea el archivo con <code>while</code>.</p></li>
+<li><p>El script debe contar cuántas líneas tiene el archivo.</p></li>
+<li><p>Al final debe imprimir el total de nombres leídos.</p></li>
+</ol>
+</blockquote>
+<p>Ejemplo de archivo <code>nombres.txt</code></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Ana</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Luis</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">María</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Carlos</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Elena</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="ex">José</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Fernanda</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Miguel</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Laura</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Diego</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<blockquote class="blockquote">
+<p>Tarea:</p>
+<ol type="1">
+<li><p>Crear un script llamado <code>contar_lecturas.sh</code>.</p></li>
+<li><p>El script debe recibir el nombre del archivo como argumento.</p></li>
+<li><p>Debe detectar si el archivo está comprimido (<code>.gz</code>) o no.</p></li>
+<li><p>Debe contar cuántas lecturas hay en el archivo.</p></li>
+<li><p>Debe imprimir el nombre del archivo y el número total de lecturas.</p></li>
+</ol>
+</blockquote>
 </section>
 </section>
 <section id="funciones-en-bash" class="level2">
@@ -459,23 +605,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Las <strong>funciones</strong> permiten agrupar comandos que se reutilizan dentro de un script. Ayudan a organizar mejor el código y facilitan su lectura.</p>
 <section id="ejemplo-de-función" class="level4">
 <h4 class="anchored" data-anchor-id="ejemplo-de-función">Ejemplo de función</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saludar()</span> <span class="kw">{</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hola, bienvenido al análisis bioinformático"</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="ex">saludar</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saludar()</span> <span class="kw">{</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hola, bienvenido al análisis bioinformático"</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="ex">saludar</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="función-con-argumento" class="level4">
 <h4 class="anchored" data-anchor-id="función-con-argumento">Función con argumento</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">procesar_muestra()</span> <span class="kw">{</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Procesando la muestra: </span><span class="va">$1</span><span class="st">"</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="ex">procesar_muestra</span> <span class="st">"sample_01"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">procesar_muestra()</span> <span class="kw">{</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Procesando la muestra: </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="ex">procesar_muestra</span> <span class="st">"sample_01"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="automatización-de-scripts-con-cron" class="level2">
@@ -500,7 +646,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="editar-tareas-programadas" class="level4">
 <h4 class="anchored" data-anchor-id="editar-tareas-programadas">Editar tareas programadas</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crontab</span> <span class="at">-e</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crontab</span> <span class="at">-e</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ver-tareas-programadas" class="level4">
 <h4 class="anchored" data-anchor-id="ver-tareas-programadas">Ver tareas programadas</h4>
