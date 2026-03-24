@@ -44,7 +44,7 @@
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "Unidades",
-    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nUnidad 6. Scripting y automatización de tareas en Bash\nNotas: Crear un bot con BotFather en Telegram\nNotas: ¿Qué es un archivo FASTQ?\nUnidad 7. Expresiones Regulares y Filtrado de Datos\nUnidad 8. Ambientes virtuales y contenedores\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nUnidad 6. Scripting y automatización de tareas en Bash\nNotas: Crear un bot con BotFather en Telegram\nNotas: ¿Qué es un archivo FASTQ?\nUnidad 7. Expresiones Regulares y Filtrado de Datos\nUnidad 8. Ambientes virtuales y contenedores\nProyecto Final del Curso\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -760,13 +760,103 @@
     ]
   },
   {
+    "objectID": "proyecto_final.html",
+    "href": "proyecto_final.html",
+    "title": "Proyecto Final del Curso",
+    "section": "",
+    "text": "Objetivo\nEl objetivo de este proyecto es que cada estudiante aplique los conocimientos adquiridos durante el curso para desarrollar un script o un flujo de trabajo en Bash que sea útil para su tema de estudio, su línea de investigación o alguna necesidad real de análisis de datos.\nNo se busca únicamente que el script funcione, sino que el trabajo esté planteado como un proyecto reproducible, bien organizado y suficientemente documentado para que cualquier persona pueda descargar el repositorio desde GitHub, entender qué hace y volver a ejecutarlo.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#entrega",
+    "href": "proyecto_final.html#entrega",
+    "title": "Proyecto Final del Curso",
+    "section": "Entrega",
+    "text": "Entrega\nEl proyecto final deberá entregarse como un repositorio en GitHub.\nLa idea es que el repositorio no sea solo un lugar donde se suben archivos, sino un proyecto completo con:\n\nestructura clara,\ndocumentación adecuada,\nscripts funcionales,\norganización lógica de datos y resultados,\ne instrucciones suficientes para su reproducción.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#qué-debe-hacer-el-proyecto",
+    "href": "proyecto_final.html#qué-debe-hacer-el-proyecto",
+    "title": "Proyecto Final del Curso",
+    "section": "¿Qué debe hacer el proyecto?",
+    "text": "¿Qué debe hacer el proyecto?\nCada estudiante deberá desarrollar un proyecto que resuelva un problema concreto o automatice una tarea útil para su investigación. Por ejemplo:\n\ndescarga de datos,\nrenombrado o organización de archivos,\nfiltrado o procesamiento de secuencias,\ncontrol de calidad,\nbúsquedas automatizadas,\nejecución de varios pasos de análisis en un solo flujo de trabajo,\no cualquier proceso que tenga aplicación real en su área.\n\nEl proyecto puede ser sencillo o más elaborado, pero debe reflejar la aplicación de varias herramientas y conceptos revisados en clase.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#requisitos-generales",
+    "href": "proyecto_final.html#requisitos-generales",
+    "title": "Proyecto Final del Curso",
+    "section": "Requisitos generales",
+    "text": "Requisitos generales\nEl proyecto debe incluir como mínimo:\n\nun script en Bash funcional;\nuna carpeta de proyecto bien estructurada;\nun archivo README.md claro y completo;\norganización separada de scripts, datos, resultados y metadatos;\nexplicación de programas utilizados y sus versiones;\ninformación sobre el equipo en el que fue probado;\ninstrucciones suficientes para que otra persona pueda reproducirlo.\n\nSi el proyecto usa ambientes o contenedores, también deberán incluirse o explicarse.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#estructura-sugerida-del-repositorio",
+    "href": "proyecto_final.html#estructura-sugerida-del-repositorio",
+    "title": "Proyecto Final del Curso",
+    "section": "Estructura sugerida del repositorio",
+    "text": "Estructura sugerida del repositorio\nproyecto_final/\n├── README.md\n├── scripts/\n├── datos/\n├── resultados/\n├── metadatos/\n├── programas_contenedores/\n├── config/\n└── logs/",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#descripción-de-carpetas",
+    "href": "proyecto_final.html#descripción-de-carpetas",
+    "title": "Proyecto Final del Curso",
+    "section": "Descripción de carpetas",
+    "text": "Descripción de carpetas\n\nREADME.md\nDocumento principal del proyecto. Aquí debe explicarse de manera clara qué hace el proyecto, para qué sirve, qué programas necesita, cómo se ejecuta y qué resultados produce.\n\n\nscripts/\nContendrá los scripts desarrollados por el estudiante.\nPor ejemplo:\n\ntelegram.sh\nvalidacion_fastq.sh\nfiltrado.sh\n\n\n\ndatos/\nContendrá los datos de entrada necesarios para probar el análisis.\nSi los datos reales son demasiado grandes, se puede incluir:\n\nun subconjunto pequeño de prueba,\nun archivo de ejemplo,\no un script que permita descargarlos.\n\n\n\nresultados/\nAquí deberán almacenarse las salidas generadas por el flujo de trabajo.\n\n\nmetadatos/\nIncluirá archivos auxiliares como:\n\ntablas de muestras,\nlistas de accesiones,\narchivos CSV,\narchivos de apoyo al análisis.\n\n\n\nprogramas_contenedores/\nCarpeta para incluir archivos relacionados con la reproducibilidad del ambiente, por ejemplo:\n\nenvironment.yml\nrequirements.txt\nDockerfile\narchivos .def\narchivos .sif\ninstrucciones para micromamba\ninstrucciones para apptainer\n\n\n\nconfig/\nArchivos de configuración o parámetros del análisis.\n\n\nlogs/\nArchivos de seguimiento de ejecución, en caso de que el pipeline los genere.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#contenido-mínimo-del-readme",
+    "href": "proyecto_final.html#contenido-mínimo-del-readme",
+    "title": "Proyecto Final del Curso",
+    "section": "Contenido mínimo del README",
+    "text": "Contenido mínimo del README\nEl archivo README.md es una parte central del proyecto. Debe incluir al menos las siguientes secciones:\n\n1. Título del proyecto\nNombre breve y descriptivo.\n\n\n2. Introducción\nDescripción breve del problema que resuelve el proyecto.\n\n\n3. Objetivo\nExplicar para qué sirve el script o flujo de trabajo.\n\n\n4. Descripción general del flujo de trabajo\nResumen de los pasos principales del análisis.\n\n\n5. Estructura del repositorio\nExplicación breve de las carpetas y archivos principales.\n\n\n6. Requisitos de software\nLista de programas utilizados con sus versiones.\nEjemplo:\nBash 5.1\nFastQC 0.12.1\nSeqKit 2.8.0\nawk\nsed\ngrep\n\n\n7. Reproducibilidad\nIndicar cómo preparar el ambiente para correr el análisis.\nPor ejemplo:\n\ninstalación manual,\nuso de micromamba,\nuso de apptainer,\no cualquier otra estrategia.\n\n\n\n8. Instrucciones de uso\nExplicar paso a paso cómo ejecutar el proyecto.\nEjemplo:\ngit clone https://github.com/usuario/proyecto_final.git\ncd proyecto_final\nbash scripts/pipeline.sh\n\n\n9. Entradas y salidas\nDescribir qué archivos recibe el análisis y qué archivos genera.\n\n\n10. Información del sistema\nDescribir el equipo en el que fue probado el proyecto.\n\n\n11. Autoría\nNombre del estudiante y, si se desea, tema general de investigación.",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#información-del-sistema-1",
+    "href": "proyecto_final.html#información-del-sistema-1",
+    "title": "Proyecto Final del Curso",
+    "section": "Información del sistema",
+    "text": "Información del sistema\nPara favorecer la reproducibilidad, cada proyecto deberá incluir en el README.md una sección donde se indique en qué equipo fue probado.\nEsto permitirá conocer el contexto de ejecución y estimar mejor los requerimientos computacionales del flujo de trabajo.\n\nInformación mínima requerida\n\ntipo de equipo:\n\nlaptop,\ncomputadora de escritorio,\nservidor,\nclúster;\n\nsistema operativo;\nCPU:\n\nmodelo,\nnúmero de núcleos e hilos\n\nmemoria RAM;\nGPU, si aplica;\nalmacenamiento, si se considera relevante;\ntiempo aproximado de ejecución, si es posible.\n\n\n\nEjemplo\n## Información del sistema\n\nEste proyecto fue probado en el siguiente equipo:\n\n- Tipo de equipo: servidor\n- Sistema operativo: Ubuntu 22.04 LTS\n- CPU: Intel Xeon E5-2695 v4\n- Núcleos / hilos: 36 / 72\n- RAM: 256 GB\n- GPU: NVIDIA RTX 3070 (no utilizada en este análisis)\n- Almacenamiento: SSD NVMe\n\nTiempo aproximado de ejecución: 10 minutos",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
+    "objectID": "proyecto_final.html#fecha-de-entrega",
+    "href": "proyecto_final.html#fecha-de-entrega",
+    "title": "Proyecto Final del Curso",
+    "section": "Fecha de entrega:",
+    "text": "Fecha de entrega:\n\nViernes 15 de Mayo de 2026",
+    "crumbs": [
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Proyecto Final del Curso</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Bibliografía complementaria",
     "section": "",
     "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
     ]
   }
 ]
