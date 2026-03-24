@@ -240,36 +240,222 @@ fi
 
 -   `-gt` : mayor que
 
-### Bucles y repetición de tareas
+## Bucle `for`
 
-Los **bucles** permiten repetir una acción varias veces, lo que resulta muy útil cuando se trabaja con múltiples archivos o muestras.
+En Bash, el bucle `for` se usa para **repetir una acción varias veces**.\
+Es muy útil cuando se quiere aplicar el mismo comando a:
 
-#### Bucle `for`
+-   varios archivos,
+
+-   varias muestras,
+
+-   varias carpetas,
+
+-   una lista de nombres,
+
+-   una serie de números.
+
+### Idea central
+
+En lugar de escribir muchas veces el mismo comando:
 
 ``` bash
-#!/bin/bash
+echo "Procesando muestra1.fastq.gz"
+echo "Procesando muestra2.fastq.gz"
+echo "Procesando muestra3.fastq.gz"
+```
 
-for archivo in *.fastq.gz; do
-    echo "Procesando $archivo"
+podemos usar `for`
+
+### Sintaxis general
+
+``` bash
+for variable in lista; do
+    comandos
 done
 ```
 
-Este tipo de bucle es muy útil cuando se quiere aplicar el mismo comando a muchos archivos.
+## Explicación
 
-#### Bucle `while`
+-   `for` inicia el bucle
+
+-   `variable` guarda temporalmente cada elemento
+
+-   `in lista` indica qué elementos se van a recorrer
+
+-   `do` marca el inicio de los comandos a repetir
+
+-   `done` marca el final del bucle
+
+### Primer ejemplo sencillo:
 
 ``` bash
-#!/bin/bash
+for nombre in Ana Luis Carmen; do
+    echo "Hola, $nombre"
+done
+```
 
+El bucle hace esto internamente:
+
+-   primero `nombre="Ana"`
+
+-   luego `nombre="Luis"`
+
+-   luego `nombre="Carmen"`
+
+Y en cada vuelta ejecuta:
+
+``` bash
+echo "Hola, $nombre"
+```
+
+### Ejemplo con números
+
+``` bash
+for n in 1 2 3 4 5; do
+    echo "Número: $n"
+done
+```
+
+> **Ejercicio: uso de `for` en Bash**
+>
+> Escribe un script en **Bash** que realice lo siguiente:
+>
+> 1.  Muestre en pantalla los números **del 1 al 100**.
+>
+> 2.  Después, muestre en pantalla los números **del 2 al 100 avanzando de 2 en 2**.
+>
+> 3.  Recorre las muestras de la carpeta `/home/cristian/mi_proyecto/data/raw` que terminan en `.fq.gz` y muestra para cada una el mensaje `Procesando <nombre_de_la_muestra>` usando la variable `muestra`.
+
+## Bucle `while`
+
+El bucle `while` ejecuta un bloque de comandos **mientras una condición sea verdadera**.
+
+Su idea es:
+
+> “repite esto mientras se cumpla esta condición”.
+
+``` bash
+while condicion; do
+    comandos
+done
+```
+
+### Cómo funciona `while`
+
+``` bash
 contador=1
 
-while [ $contador -le 5 ]; do
+while [ $contador -le 3 ]; do
     echo "Iteración $contador"
     contador=$((contador + 1))
 done
 ```
 
-Este bucle se ejecuta mientras una condición siga siendo verdadera.
+#### Paso a paso
+
+1.  `contador=1`
+
+2.  Bash evalúa la condición:
+
+``` bash
+[ $contador -le 3 ]
+```
+
+3.  Como `1 <= 3`, entra al bucle.
+
+4.  Ejecuta:
+
+``` bash
+echo "Iteración 1"
+```
+
+5.  Luego aumenta el contador:echo "Iteración 1"
+
+``` bash
+contador=$((contador + 1))
+```
+
+6.  Vuelve a evaluar la condición.
+
+7.  Cuando `contador` ya no cumple, el bucle termina.
+
+### Comando `read`
+
+`read` toma una línea y la guarda en `variable`.
+
+``` bash
+read variable
+```
+
+Ejemplo interactivo:
+
+``` bash
+#!/bin/bash
+read -p "Escribe tu nombre: " nombre
+echo "Hola, $nombre"
+```
+
+Aquí:
+
+-   `-p` muestra un mensaje,
+
+-   lo que el usuario escriba se guarda en `nombre`.
+
+### Leer un archivo línea por línea usando `read` y `while`
+
+``` bash
+while read linea; do
+    echo "$linea"
+done < archivo.txt
+```
+
+-   `read linea` toma **una línea**
+
+-   `while` repite eso hasta llegar al final del archivo
+
+-   `done < archivo.txt` hace que la entrada venga del archivo y no del teclado
+
+> Ejercicio:
+>
+> ### Instrucciones
+>
+> 1.  Crear un archivo llamado `nombres.txt`.
+>
+> 2.  Escribir dentro **10 nombres**, uno por línea.
+>
+> 3.  Crear un script en Bash que lea el archivo con `while`.
+>
+> 4.  El script debe contar cuántas líneas tiene el archivo.
+>
+> 5.  Al final debe imprimir el total de nombres leídos.
+
+Ejemplo de archivo `nombres.txt`
+
+``` bash
+Ana
+Luis
+María
+Carlos
+Elena
+José
+Fernanda
+Miguel
+Laura
+Diego
+```
+
+> Tarea:
+>
+> 1.  Crear un script llamado `contar_lecturas.sh`.
+>
+> 2.  El script debe recibir el nombre del archivo como argumento.
+>
+> 3.  Debe detectar si el archivo está comprimido (`.gz`) o no.
+>
+> 4.  Debe contar cuántas lecturas hay en el archivo.
+>
+> 5.  Debe imprimir el nombre del archivo y el número total de lecturas.
 
 ## Funciones en Bash
 

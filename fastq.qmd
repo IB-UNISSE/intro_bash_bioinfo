@@ -1,0 +1,160 @@
+---
+title: "Notas: ¿Qué es un archivo FASTQ?"
+---
+
+Un archivo **FASTQ** es un formato de texto plano usado en bioinformática para almacenar lecturas de secuenciación junto con sus valores de calidad. Es uno de los formatos más comunes en datos generados por plataformas de secuenciación masiva, como Illumina.
+
+A diferencia de un archivo **FASTA**, que solo guarda el identificador y la secuencia, un archivo **FASTQ** también incluye información sobre la **calidad de cada base** leída.
+
+## ¿De dónde sale un archivo FASTQ?
+
+Un archivo FASTQ se genera después de que una plataforma de secuenciación “lee” fragmentos de ADN o ARN. Durante ese proceso, el equipo produce:
+
+-   la secuencia de nucleótidos detectada,
+
+-   y una estimación de qué tan confiable fue la lectura de cada base.
+
+Por eso, el FASTQ contiene tanto la **secuencia** como la **calidad**.
+
+## ¿Cómo está constituido?
+
+Cada lectura en un archivo FASTQ ocupa **4 líneas**.
+
+### Estructura general
+
+```         
+@identificador
+SECUENCIA
++
+CALIDADES
+```
+
+## ¿Qué significa cada línea?
+
+### Línea 1: identificador
+
+Empieza con `@` y contiene el nombre o identificador de la lectura.
+
+Ejemplo:
+
+```         
+@SEQ_ID_001
+```
+
+Esta línea puede incluir información como:
+
+-   nombre de la corrida,
+
+-   número de lectura,
+
+-   posición en el flowcell,
+
+-   carril,
+
+-   índice o barcode,
+
+-   si pertenece a R1 o R2.
+
+### Línea 2: secuencia
+
+Contiene la secuencia de nucleótidos leída.
+
+Ejemplo:
+
+```         
+ATGCCGTAGCTAACGTA
+```
+
+Aquí aparecen las bases detectadas, generalmente:
+
+-   `A` adenina
+
+-   `T` timina
+
+-   `G` guanina
+
+-   `C` citosina
+
+-   `N` base no determinada
+
+### Línea 3: separador
+
+Empieza con `+`.
+
+Ejemplo:
+
+```         
++
+```
+
+A veces esta línea repite el identificador, pero muchas veces solo contiene el símbolo `+`.
+
+Su función es separar la secuencia de la línea de calidades.
+
+### Línea 4: calidad
+
+Contiene una cadena de caracteres donde **cada carácter representa la calidad de una base** en la secuencia.
+
+Ejemplo:
+
+```         
+IIIIIIHHHHHFFFFF
+```
+
+Es importante que esta línea tenga **el mismo número de caracteres que la secuencia tiene de bases**, porque cada símbolo corresponde a una base específica.
+
+## ¿Cómo se representa la calidad en un archivo FASTQ?
+
+La línea de calidad de un archivo FASTQ no muestra números directamente. En su lugar, la calidad de cada base se **codifica como un carácter ASCII**. Esto permite guardar la información de calidad en una sola línea de texto, usando un símbolo por cada nucleótido de la secuencia.
+
+#### La más usada hoy es **Phred+33**.
+
+Regla:
+
+-   carácter = Phred + 33
+
+-   Phred = ASCII - 33
+
+## Tabla básica de Phred+33
+
+| Phred | ASCII decimal | Carácter |
+|-------|---------------|----------|
+| 0     | 33            | `!`      |
+| 1     | 34            | `"`      |
+| 2     | 35            | `#`      |
+| 3     | 36            | `$`      |
+| 4     | 37            | `%`      |
+| 5     | 38            | `&`      |
+| 10    | 43            | `+`      |
+| 15    | 48            | `0`      |
+| 20    | 53            | `5`      |
+| 25    | 58            | `:`      |
+| 30    | 63            | `?`      |
+| 35    | 68            | `D`      |
+| 40    | 73            | `I`      |
+
+-   `!` = **Q0**
+
+-   `5` = **Q20**
+
+-   `?` = **Q30**
+
+-   `I` = **Q40**
+
+#### Ejemplo
+
+Si en la línea de calidad aparece:
+
+``` bash
+IIIII
+```
+
+cada `I` vale ASCII 73.
+
+Entonces:
+
+``` bash
+73 - 33 = 40
+```
+
+o sea que cada base tiene **Phred 40**.

@@ -32,5 +32,8 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 -   [Unidad 5. Comandos básicos de Bash y monitoreo de recursos](unidad_5.qmd)
 -   [Unidad 6. Scripting y automatización de tareas en Bash](unidad_6.qmd)
 -   [Notas: Crear un bot con BotFather en Telegram](nota_bot_telegram.qmd)
+-   [Notas: ¿Qué es un archivo FASTQ?](fastq.qmd)
+-   [Unidad 7. Expresiones Regulares y Filtrado de Datos](unidad_7.qmd)
+-   [Unidad 8. Ambientes virtuales y contenedores](unidad_8.qmd)
 
 *(Iremos agregando el resto de unidades conforme avancemos en el semestre.)*

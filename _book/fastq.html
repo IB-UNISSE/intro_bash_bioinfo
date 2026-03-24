@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notas: Crear un bot con BotFather en Telegram – Introducción a la programación para bioinformática con bash</title>
+<title>Notas: ¿Qué es un archivo FASTQ? – Introducción a la programación para bioinformática con bash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./fastq.html" rel="next">
-<link href="./unidad_6.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./nota_bot_telegram.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <meta name="description" content="Introducción a la programación para bioinformática con bash">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Notas: Crear un bot con BotFather en Telegram – Introducción a la programación para bioinformática con bash">
+<meta property="og:title" content="Notas: ¿Qué es un archivo FASTQ? – Introducción a la programación para bioinformática con bash">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
 <meta property="og:type" content="website">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nota_bot_telegram.html"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fastq.html"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -202,12 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nota_bot_telegram.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a>
+  <a href="./nota_bot_telegram.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fastq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
+  <a href="./fastq.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -225,19 +225,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#en-telegram" id="toc-en-telegram" class="nav-link active" data-scroll-target="#en-telegram">En Telegram:</a></li>
-  <li><a href="#conseguir-tu-chat_id-para-mandarte-mensajes" id="toc-conseguir-tu-chat_id-para-mandarte-mensajes" class="nav-link" data-scroll-target="#conseguir-tu-chat_id-para-mandarte-mensajes">Conseguir tu <code>chat_id</code> (para mandarte mensajes)</a></li>
-  <li><a href="#buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git" id="toc-buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git" class="nav-link" data-scroll-target="#buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git">Buenas prácticas: NO hardcodear el token (y no subirlo a git)</a></li>
-  <li><a href="#función-reusable-tg_send-para-cualquier-script" id="toc-función-reusable-tg_send-para-cualquier-script" class="nav-link" data-scroll-target="#función-reusable-tg_send-para-cualquier-script">Función reusable <code>tg_send</code> (para cualquier script)</a></li>
+  <li><a href="#de-dónde-sale-un-archivo-fastq" id="toc-de-dónde-sale-un-archivo-fastq" class="nav-link active" data-scroll-target="#de-dónde-sale-un-archivo-fastq">¿De dónde sale un archivo FASTQ?</a></li>
+  <li><a href="#cómo-está-constituido" id="toc-cómo-está-constituido" class="nav-link" data-scroll-target="#cómo-está-constituido">¿Cómo está constituido?</a></li>
+  <li><a href="#qué-significa-cada-línea" id="toc-qué-significa-cada-línea" class="nav-link" data-scroll-target="#qué-significa-cada-línea">¿Qué significa cada línea?</a></li>
+  <li><a href="#cómo-se-representa-la-calidad-en-un-archivo-fastq" id="toc-cómo-se-representa-la-calidad-en-un-archivo-fastq" class="nav-link" data-scroll-target="#cómo-se-representa-la-calidad-en-un-archivo-fastq">¿Cómo se representa la calidad en un archivo FASTQ?</a></li>
+  <li><a href="#tabla-básica-de-phred33" id="toc-tabla-básica-de-phred33" class="nav-link" data-scroll-target="#tabla-básica-de-phred33">Tabla básica de Phred+33</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/nota_bot_telegram.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/fastq.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></h1>
+<h1 class="title"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></h1>
 </div>
 
 
@@ -254,107 +255,182 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="en-telegram" class="level2">
-<h2 class="anchored" data-anchor-id="en-telegram">En Telegram:</h2>
-<ol type="1">
-<li>Busca <strong>@BotFather y ABRIR</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic1.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="2" type="1">
-<li>Crear un nuevo Bot</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic2.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="3" type="1">
-<li>Ponle un <strong>nombre al Bot</strong> y elige un <strong>nombre de usuario</strong> que termine en <code>bot</code>, el <code>usarname</code> tiene que estar disponible</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic3.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="4" type="1">
-<li>BotFather te dará un <strong>TOKEN</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic4.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<p>✅ Ese token es tu “contraseña” del bot, <strong>No lo compartas</strong>!!!</p>
-<ol start="5" type="1">
-<li>Abre el chat con tu bot (búscalo por <code>username</code>).</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="6" type="1">
-<li>Presiona <strong>Iniciar</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic6.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
+<p>Un archivo <strong>FASTQ</strong> es un formato de texto plano usado en bioinformática para almacenar lecturas de secuenciación junto con sus valores de calidad. Es uno de los formatos más comunes en datos generados por plataformas de secuenciación masiva, como Illumina.</p>
+<p>A diferencia de un archivo <strong>FASTA</strong>, que solo guarda el identificador y la secuencia, un archivo <strong>FASTQ</strong> también incluye información sobre la <strong>calidad de cada base</strong> leída.</p>
+<section id="de-dónde-sale-un-archivo-fastq" class="level2">
+<h2 class="anchored" data-anchor-id="de-dónde-sale-un-archivo-fastq">¿De dónde sale un archivo FASTQ?</h2>
+<p>Un archivo FASTQ se genera después de que una plataforma de secuenciación “lee” fragmentos de ADN o ARN. Durante ese proceso, el equipo produce:</p>
+<ul>
+<li><p>la secuencia de nucleótidos detectada,</p></li>
+<li><p>y una estimación de qué tan confiable fue la lectura de cada base.</p></li>
+</ul>
+<p>Por eso, el FASTQ contiene tanto la <strong>secuencia</strong> como la <strong>calidad</strong>.</p>
 </section>
-<section id="conseguir-tu-chat_id-para-mandarte-mensajes" class="level2">
-<h2 class="anchored" data-anchor-id="conseguir-tu-chat_id-para-mandarte-mensajes">Conseguir tu <code>chat_id</code> (para mandarte mensajes)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">TOKEN</span><span class="op">=</span><span class="st">"TU_TOKEN_AQUI"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://api.telegram.org/bot</span><span class="va">${TOKEN}</span><span class="st">/getUpdates"</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Busca en la salida algo así:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">"chat"</span><span class="ex">:{</span><span class="st">"id"</span><span class="ex">:123456789,</span><span class="st">"first_name"</span><span class="ex">:</span><span class="st">"Pedro"</span><span class="ex">,</span> ...}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>📌 <strong>“id”:123456789</strong> ese número es tu <code>CHAT_ID</code>.</p>
-<section id="enviar-un-mensaje-con-curl-lo-esencial" class="level3">
-<h3 class="anchored" data-anchor-id="enviar-un-mensaje-con-curl-lo-esencial">Enviar un mensaje con <code>curl</code> (lo esencial)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">TOKEN</span><span class="op">=</span><span class="st">"TU_TOKEN_AQUI"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">CHAT_ID</span><span class="op">=</span><span class="st">"TU_CHAT_ID_AQUI"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="at">-X</span> POST <span class="st">"https://api.telegram.org/bot</span><span class="va">${TOKEN}</span><span class="st">/sendMessage"</span> <span class="dt">\</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">"chat_id=</span><span class="va">${CHAT_ID}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">"text=Hola 👋 Mensaje enviado desde Bash"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cómo-está-constituido" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-está-constituido">¿Cómo está constituido?</h2>
+<p>Cada lectura en un archivo FASTQ ocupa <strong>4 líneas</strong>.</p>
+<section id="estructura-general" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-general">Estructura general</h3>
+<pre><code>@identificador
+SECUENCIA
++
+CALIDADES</code></pre>
 </section>
 </section>
-<section id="buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git" class="level2">
-<h2 class="anchored" data-anchor-id="buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git">Buenas prácticas: NO hardcodear el token (y no subirlo a git)</h2>
-<section id="archivo-.env-recomendado" class="level3">
-<h3 class="anchored" data-anchor-id="archivo-.env-recomendado">Archivo <code>.env</code> (recomendado)</h3>
-<p>Crea un archivo <code>.env</code> <strong>fuera de tu repo</strong> o ignóralo con <code>.gitignore</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Pegar la info en el archivo <code>.env</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">TOKEN</span><span class="op">=</span><span class="st">"TU_TOKEN_AQUI"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">CHAT_ID</span><span class="op">=</span><span class="st">"TU_CHAT_ID_AQUI"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>En tu script agrega estas lineas</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>SI esta en tu proyecto <code>git</code> agrega el archivo a tu <code>.gitignore</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .gitignore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Y agrega el archivo</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Además agregar seguridad al archivo</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 600 .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="qué-significa-cada-línea" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-cada-línea">¿Qué significa cada línea?</h2>
+<section id="línea-1-identificador" class="level3">
+<h3 class="anchored" data-anchor-id="línea-1-identificador">Línea 1: identificador</h3>
+<p>Empieza con <code>@</code> y contiene el nombre o identificador de la lectura.</p>
+<p>Ejemplo:</p>
+<pre><code>@SEQ_ID_001</code></pre>
+<p>Esta línea puede incluir información como:</p>
+<ul>
+<li><p>nombre de la corrida,</p></li>
+<li><p>número de lectura,</p></li>
+<li><p>posición en el flowcell,</p></li>
+<li><p>carril,</p></li>
+<li><p>índice o barcode,</p></li>
+<li><p>si pertenece a R1 o R2.</p></li>
+</ul>
+</section>
+<section id="línea-2-secuencia" class="level3">
+<h3 class="anchored" data-anchor-id="línea-2-secuencia">Línea 2: secuencia</h3>
+<p>Contiene la secuencia de nucleótidos leída.</p>
+<p>Ejemplo:</p>
+<pre><code>ATGCCGTAGCTAACGTA</code></pre>
+<p>Aquí aparecen las bases detectadas, generalmente:</p>
+<ul>
+<li><p><code>A</code> adenina</p></li>
+<li><p><code>T</code> timina</p></li>
+<li><p><code>G</code> guanina</p></li>
+<li><p><code>C</code> citosina</p></li>
+<li><p><code>N</code> base no determinada</p></li>
+</ul>
+</section>
+<section id="línea-3-separador" class="level3">
+<h3 class="anchored" data-anchor-id="línea-3-separador">Línea 3: separador</h3>
+<p>Empieza con <code>+</code>.</p>
+<p>Ejemplo:</p>
+<pre><code>+</code></pre>
+<p>A veces esta línea repite el identificador, pero muchas veces solo contiene el símbolo <code>+</code>.</p>
+<p>Su función es separar la secuencia de la línea de calidades.</p>
+</section>
+<section id="línea-4-calidad" class="level3">
+<h3 class="anchored" data-anchor-id="línea-4-calidad">Línea 4: calidad</h3>
+<p>Contiene una cadena de caracteres donde <strong>cada carácter representa la calidad de una base</strong> en la secuencia.</p>
+<p>Ejemplo:</p>
+<pre><code>IIIIIIHHHHHFFFFF</code></pre>
+<p>Es importante que esta línea tenga <strong>el mismo número de caracteres que la secuencia tiene de bases</strong>, porque cada símbolo corresponde a una base específica.</p>
 </section>
 </section>
-<section id="función-reusable-tg_send-para-cualquier-script" class="level2">
-<h2 class="anchored" data-anchor-id="función-reusable-tg_send-para-cualquier-script">Función reusable <code>tg_send</code> (para cualquier script)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tg_send ()</span> <span class="kw">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">msg</span><span class="op">=</span><span class="st">"</span><span class="va">$1</span><span class="st">"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">curl</span> <span class="at">-s</span> <span class="at">-X</span> POST <span class="st">"https://api.telegram.org/bot</span><span class="va">${TELEGRAM_BOT_TOKEN}</span><span class="st">/sendMessage"</span> <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"chat_id=</span><span class="va">${TELEGRAM_CHAT_ID}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"text=</span><span class="va">${msg}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"disable_web_page_preview=true"</span> <span class="op">&gt;</span> /dev/null</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Uso:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tg_send</span> <span class="st">"✅ Pipeline terminó correctamente."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="cómo-se-representa-la-calidad-en-un-archivo-fastq" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-se-representa-la-calidad-en-un-archivo-fastq">¿Cómo se representa la calidad en un archivo FASTQ?</h2>
+<p>La línea de calidad de un archivo FASTQ no muestra números directamente. En su lugar, la calidad de cada base se <strong>codifica como un carácter ASCII</strong>. Esto permite guardar la información de calidad en una sola línea de texto, usando un símbolo por cada nucleótido de la secuencia.</p>
+<section id="la-más-usada-hoy-es-phred33." class="level4">
+<h4 class="anchored" data-anchor-id="la-más-usada-hoy-es-phred33.">La más usada hoy es <strong>Phred+33</strong>.</h4>
+<p>Regla:</p>
+<ul>
+<li><p>carácter = Phred + 33</p></li>
+<li><p>Phred = ASCII - 33</p></li>
+</ul>
+</section>
+</section>
+<section id="tabla-básica-de-phred33" class="level2">
+<h2 class="anchored" data-anchor-id="tabla-básica-de-phred33">Tabla básica de Phred+33</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Phred</th>
+<th>ASCII decimal</th>
+<th>Carácter</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>33</td>
+<td><code>!</code></td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>34</td>
+<td><code>"</code></td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>35</td>
+<td><code>#</code></td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>36</td>
+<td><code>$</code></td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>37</td>
+<td><code>%</code></td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>38</td>
+<td><code>&amp;</code></td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>43</td>
+<td><code>+</code></td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>48</td>
+<td><code>0</code></td>
+</tr>
+<tr class="odd">
+<td>20</td>
+<td>53</td>
+<td><code>5</code></td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>58</td>
+<td><code>:</code></td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>63</td>
+<td><code>?</code></td>
+</tr>
+<tr class="even">
+<td>35</td>
+<td>68</td>
+<td><code>D</code></td>
+</tr>
+<tr class="odd">
+<td>40</td>
+<td>73</td>
+<td><code>I</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p><code>!</code> = <strong>Q0</strong></p></li>
+<li><p><code>5</code> = <strong>Q20</strong></p></li>
+<li><p><code>?</code> = <strong>Q30</strong></p></li>
+<li><p><code>I</code> = <strong>Q40</strong></p></li>
+</ul>
+<section id="ejemplo" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo">Ejemplo</h4>
+<p>Si en la línea de calidad aparece:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">IIIII</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>cada <code>I</code> vale ASCII 73.</p>
+<p>Entonces:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">73</span> <span class="at">-</span> 33 = 40</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>o sea que cada base tiene <strong>Phred 40</strong>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -760,13 +836,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./unidad_6.html" class="pagination-link" aria-label="Unidad 6: Scripting y automatización de tareas en Bash">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 6: Scripting y automatización de tareas en Bash</span></span>
+      <a href="./nota_bot_telegram.html" class="pagination-link" aria-label="Notas: Crear un bot con BotFather en Telegram">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./fastq.html" class="pagination-link" aria-label="Notas: ¿Qué es un archivo FASTQ?">
-        <span class="nav-page-text"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
+        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -775,4 +851,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/nota_bot_telegram.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/fastq.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

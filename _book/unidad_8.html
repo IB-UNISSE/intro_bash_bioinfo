@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notas: Crear un bot con BotFather en Telegram – Introducción a la programación para bioinformática con bash</title>
+<title>Unidad 8: Ambientes virtuales y contenedores – Introducción a la programación para bioinformática con bash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,20 +65,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./fastq.html" rel="next">
-<link href="./unidad_6.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./unidad_7.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-382514e105201bb02b88eea0c3516187.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6ea9a187498ee8b9044a0182b988d41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <meta name="description" content="Introducción a la programación para bioinformática con bash">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Notas: Crear un bot con BotFather en Telegram – Introducción a la programación para bioinformática con bash">
+<meta property="og:title" content="Unidad 8: Ambientes virtuales y contenedores – Introducción a la programación para bioinformática con bash">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
 <meta property="og:type" content="website">
@@ -128,7 +127,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nota_bot_telegram.html"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unidad_8.html"><span class="chapter-title">Unidad 8: Ambientes virtuales y contenedores</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -143,8 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la programación para bioinformática con bash</a> 
@@ -202,12 +200,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./nota_bot_telegram.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a>
+  <a href="./nota_bot_telegram.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./fastq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 7: Expresiones Regulares y Filtrado de Datos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_8.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Unidad 8: Ambientes virtuales y contenedores</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -225,19 +233,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#en-telegram" id="toc-en-telegram" class="nav-link active" data-scroll-target="#en-telegram">En Telegram:</a></li>
-  <li><a href="#conseguir-tu-chat_id-para-mandarte-mensajes" id="toc-conseguir-tu-chat_id-para-mandarte-mensajes" class="nav-link" data-scroll-target="#conseguir-tu-chat_id-para-mandarte-mensajes">Conseguir tu <code>chat_id</code> (para mandarte mensajes)</a></li>
-  <li><a href="#buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git" id="toc-buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git" class="nav-link" data-scroll-target="#buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git">Buenas prácticas: NO hardcodear el token (y no subirlo a git)</a></li>
-  <li><a href="#función-reusable-tg_send-para-cualquier-script" id="toc-función-reusable-tg_send-para-cualquier-script" class="nav-link" data-scroll-target="#función-reusable-tg_send-para-cualquier-script">Función reusable <code>tg_send</code> (para cualquier script)</a></li>
+  <li><a href="#por-qué-necesitamos-aislar-software" id="toc-por-qué-necesitamos-aislar-software" class="nav-link active" data-scroll-target="#por-qué-necesitamos-aislar-software">¿Por qué necesitamos aislar software?</a></li>
+  <li><a href="#qué-es-un-ambiente-virtual" id="toc-qué-es-un-ambiente-virtual" class="nav-link" data-scroll-target="#qué-es-un-ambiente-virtual">¿Qué es un ambiente virtual?</a></li>
+  <li><a href="#qué-es-un-contenedor" id="toc-qué-es-un-contenedor" class="nav-link" data-scroll-target="#qué-es-un-contenedor">¿Qué es un contenedor?</a></li>
+  <li><a href="#ambientes-virtuales-vs-contenedores" id="toc-ambientes-virtuales-vs-contenedores" class="nav-link" data-scroll-target="#ambientes-virtuales-vs-contenedores">Ambientes virtuales vs contenedores</a></li>
+  <li><a href="#micromamba" id="toc-micromamba" class="nav-link" data-scroll-target="#micromamba">Micromamba</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/nota_bot_telegram.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></h1>
+<h1 class="title"><span class="chapter-title">Unidad 8: Ambientes virtuales y contenedores</span></h1>
 </div>
 
 
@@ -254,107 +263,231 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="en-telegram" class="level2">
-<h2 class="anchored" data-anchor-id="en-telegram">En Telegram:</h2>
-<ol type="1">
-<li>Busca <strong>@BotFather y ABRIR</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic1.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="2" type="1">
-<li>Crear un nuevo Bot</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic2.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="3" type="1">
-<li>Ponle un <strong>nombre al Bot</strong> y elige un <strong>nombre de usuario</strong> que termine en <code>bot</code>, el <code>usarname</code> tiene que estar disponible</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic3.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="4" type="1">
-<li>BotFather te dará un <strong>TOKEN</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic4.JPG" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<p>✅ Ese token es tu “contraseña” del bot, <strong>No lo compartas</strong>!!!</p>
-<ol start="5" type="1">
-<li>Abre el chat con tu bot (búscalo por <code>username</code>).</li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
-<ol start="6" type="1">
-<li>Presiona <strong>Iniciar</strong></li>
-</ol>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/notas_bot/pic6.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="350"></p>
-</figure>
-</div>
+<section id="por-qué-necesitamos-aislar-software" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-necesitamos-aislar-software">¿Por qué necesitamos aislar software?</h2>
+<p>En bioinformática es común trabajar con programas que requieren versiones específicas de librerías, intérpretes y dependencias. Esto puede generar conflictos entre herramientas, dificultar la reproducibilidad y complicar la colaboración entre usuarios o laboratorios.</p>
+<p>Algunos problemas comunes son:</p>
+<ul>
+<li>Un programa funciona en una computadora, pero no en otra.</li>
+<li>Dos herramientas requieren versiones distintas de la misma librería.</li>
+<li>Un análisis no puede reproducirse meses después por cambios en el sistema.</li>
+<li>En un servidor multiusuario no es deseable instalar todo de forma global.</li>
+</ul>
+<p>Para resolver este tipo de problemas existen dos estrategias muy utilizadas:</p>
+<ul>
+<li><strong>Ambientes virtuales</strong></li>
+<li><strong>Contenedores</strong></li>
+</ul>
 </section>
-<section id="conseguir-tu-chat_id-para-mandarte-mensajes" class="level2">
-<h2 class="anchored" data-anchor-id="conseguir-tu-chat_id-para-mandarte-mensajes">Conseguir tu <code>chat_id</code> (para mandarte mensajes)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">TOKEN</span><span class="op">=</span><span class="st">"TU_TOKEN_AQUI"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="st">"https://api.telegram.org/bot</span><span class="va">${TOKEN}</span><span class="st">/getUpdates"</span> </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Busca en la salida algo así:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="st">"chat"</span><span class="ex">:{</span><span class="st">"id"</span><span class="ex">:123456789,</span><span class="st">"first_name"</span><span class="ex">:</span><span class="st">"Pedro"</span><span class="ex">,</span> ...}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>📌 <strong>“id”:123456789</strong> ese número es tu <code>CHAT_ID</code>.</p>
-<section id="enviar-un-mensaje-con-curl-lo-esencial" class="level3">
-<h3 class="anchored" data-anchor-id="enviar-un-mensaje-con-curl-lo-esencial">Enviar un mensaje con <code>curl</code> (lo esencial)</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">TOKEN</span><span class="op">=</span><span class="st">"TU_TOKEN_AQUI"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">CHAT_ID</span><span class="op">=</span><span class="st">"TU_CHAT_ID_AQUI"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-s</span> <span class="at">-X</span> POST <span class="st">"https://api.telegram.org/bot</span><span class="va">${TOKEN}</span><span class="st">/sendMessage"</span> <span class="dt">\</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">"chat_id=</span><span class="va">${CHAT_ID}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">"text=Hola 👋 Mensaje enviado desde Bash"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="qué-es-un-ambiente-virtual" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-un-ambiente-virtual">¿Qué es un ambiente virtual?</h2>
+<p>Un ambiente virtual es un espacio aislado dentro del sistema operativo donde se instalan versiones específicas de programas, librerías y dependencias sin afectar al resto del sistema.</p>
+<p>Esto permite que distintos proyectos utilicen configuraciones diferentes en la misma máquina.</p>
+<section id="ventajas-de-los-ambientes-virtuales" class="level3">
+<h3 class="anchored" data-anchor-id="ventajas-de-los-ambientes-virtuales">Ventajas de los ambientes virtuales</h3>
+<ul>
+<li>Permiten instalar software sin modificar todo el sistema.</li>
+<li>Facilitan el manejo de dependencias por proyecto.</li>
+<li>Son relativamente sencillos de crear y usar.</li>
+<li>Son muy útiles para enseñanza, pruebas rápidas y desarrollo.</li>
+</ul>
+</section>
+<section id="desventajas-de-los-ambientes-virtuales" class="level3">
+<h3 class="anchored" data-anchor-id="desventajas-de-los-ambientes-virtuales">Desventajas de los ambientes virtuales</h3>
+<ul>
+<li>Dependen más del sistema anfitrión.</li>
+<li>No siempre garantizan reproducibilidad total entre distintas máquinas.</li>
+<li>Pueden surgir conflictos entre canales o paquetes.</li>
+<li>En proyectos complejos pueden volverse difíciles de mantener.</li>
+</ul>
+</section>
+<section id="herramientas-para-manejar-ambientes" class="level3">
+<h3 class="anchored" data-anchor-id="herramientas-para-manejar-ambientes">Herramientas para manejar ambientes</h3>
+<section id="conda" class="level4">
+<h4 class="anchored" data-anchor-id="conda"><a href="https://docs.conda.io/projects/conda/en/latest/index.html">Conda</a></h4>
+<p>Conda es un sistema de gestión de paquetes y ambientes muy usado en bioinformática. Permite instalar herramientas y dependencias en ambientes separados.</p>
+</section>
+<section id="mamba" class="level4">
+<h4 class="anchored" data-anchor-id="mamba"><a href="https://mamba.readthedocs.io/en/latest/index.html">Mamba</a></h4>
+<p>Mamba es una alternativa compatible con Conda, pero mucho más rápida al resolver dependencias. Es especialmente útil en servidores y proyectos con muchas instalaciones.</p>
+</section>
+<section id="pixi" class="level4">
+<h4 class="anchored" data-anchor-id="pixi"><a href="https://pixi.prefix.dev/v0.48.2/">Pixi</a></h4>
+<p>Pixi es una herramienta más reciente orientada al manejo reproducible de ambientes por proyecto. Utiliza archivos de configuración y bloqueo para facilitar la portabilidad y reproducibilidad.</p>
 </section>
 </section>
-<section id="buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git" class="level2">
-<h2 class="anchored" data-anchor-id="buenas-prácticas-no-hardcodear-el-token-y-no-subirlo-a-git">Buenas prácticas: NO hardcodear el token (y no subirlo a git)</h2>
-<section id="archivo-.env-recomendado" class="level3">
-<h3 class="anchored" data-anchor-id="archivo-.env-recomendado">Archivo <code>.env</code> (recomendado)</h3>
-<p>Crea un archivo <code>.env</code> <strong>fuera de tu repo</strong> o ignóralo con <code>.gitignore</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Pegar la info en el archivo <code>.env</code></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">TOKEN</span><span class="op">=</span><span class="st">"TU_TOKEN_AQUI"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="va">CHAT_ID</span><span class="op">=</span><span class="st">"TU_CHAT_ID_AQUI"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>En tu script agrega estas lineas</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>SI esta en tu proyecto <code>git</code> agrega el archivo a tu <code>.gitignore</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> .gitignore</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Y agrega el archivo</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">.env</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Además agregar seguridad al archivo</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> 600 .env</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="qué-es-un-contenedor" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-un-contenedor">¿Qué es un contenedor?</h2>
+<p>Un contenedor es una forma de empaquetar una aplicación junto con sus programas, librerías y dependencias, de modo que pueda ejecutarse de manera más consistente en diferentes entornos.</p>
+<p>A diferencia de un ambiente virtual, un contenedor ofrece un mayor nivel de aislamiento y portabilidad.</p>
+<section id="ventajas-de-los-contenedores" class="level3">
+<h3 class="anchored" data-anchor-id="ventajas-de-los-contenedores">Ventajas de los contenedores</h3>
+<ul>
+<li>Mejoran la reproducibilidad.</li>
+<li>Facilitan compartir software y pipelines completos.</li>
+<li>Permiten mover análisis entre computadoras con menos conflictos.</li>
+<li>Son muy útiles en flujos de trabajo científicos y de alto rendimiento.</li>
+</ul>
+</section>
+<section id="desventajas-de-los-contenedores" class="level3">
+<h3 class="anchored" data-anchor-id="desventajas-de-los-contenedores">Desventajas de los contenedores</h3>
+<ul>
+<li>Tienen una curva de aprendizaje mayor.</li>
+<li>Requieren entender conceptos adicionales como imágenes, volúmenes y montaje de directorios.</li>
+<li>Algunas herramientas no son igual de adecuadas para sistemas multiusuario compartidos.</li>
+</ul>
+</section>
+<section id="herramientas-de-contenedores" class="level3">
+<h3 class="anchored" data-anchor-id="herramientas-de-contenedores">Herramientas de contenedores</h3>
+<section id="docker" class="level4">
+<h4 class="anchored" data-anchor-id="docker"><a href="https://www.docker.com/">Docker</a></h4>
+<p>Docker es una de las plataformas de contenedores más conocidas. Es excelente para desarrollo local, distribución de software y construcción de imágenes.</p>
+</section>
+<section id="podman" class="level4">
+<h4 class="anchored" data-anchor-id="podman"><a href="https://podman.io/">Podman</a></h4>
+<p>Podman es similar a Docker, pero con una arquitectura sin daemon. Puede ser una buena alternativa en sistemas Linux y entornos institucionales.</p>
+</section>
+<section id="apptainer" class="level4">
+<h4 class="anchored" data-anchor-id="apptainer"><a href="https://apptainer.org/">Apptainer</a></h4>
+<p>Apptainer es una herramienta especialmente útil en ambientes HPC. Permite ejecutar contenedores de manera más compatible con clústeres y sistemas multiusuario.</p>
 </section>
 </section>
-<section id="función-reusable-tg_send-para-cualquier-script" class="level2">
-<h2 class="anchored" data-anchor-id="función-reusable-tg_send-para-cualquier-script">Función reusable <code>tg_send</code> (para cualquier script)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tg_send ()</span> <span class="kw">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">local</span> <span class="va">msg</span><span class="op">=</span><span class="st">"</span><span class="va">$1</span><span class="st">"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">curl</span> <span class="at">-s</span> <span class="at">-X</span> POST <span class="st">"https://api.telegram.org/bot</span><span class="va">${TELEGRAM_BOT_TOKEN}</span><span class="st">/sendMessage"</span> <span class="dt">\</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"chat_id=</span><span class="va">${TELEGRAM_CHAT_ID}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"text=</span><span class="va">${msg}</span><span class="st">"</span> <span class="dt">\</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">-d</span> <span class="st">"disable_web_page_preview=true"</span> <span class="op">&gt;</span> /dev/null</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Uso:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tg_send</span> <span class="st">"✅ Pipeline terminó correctamente."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ambientes-virtuales-vs-contenedores" class="level2">
+<h2 class="anchored" data-anchor-id="ambientes-virtuales-vs-contenedores">Ambientes virtuales vs contenedores</h2>
+<section id="ambientes-virtuales" class="level3">
+<h3 class="anchored" data-anchor-id="ambientes-virtuales">Ambientes virtuales</h3>
+<p>Convienen cuando:</p>
+<ul>
+<li>Se quiere instalar software rápidamente.</li>
+<li>Se trabaja en desarrollo o enseñanza.</li>
+<li>Se necesita flexibilidad para modificar paquetes.</li>
+<li>El proyecto no requiere encapsular todo el entorno.</li>
+</ul>
+</section>
+<section id="contenedores" class="level3">
+<h3 class="anchored" data-anchor-id="contenedores">Contenedores</h3>
+<p>Convienen cuando:</p>
+<ul>
+<li>Se necesita máxima reproducibilidad.</li>
+<li>Se quiere compartir un pipeline completo.</li>
+<li>El análisis se ejecutará en varias máquinas o servidores.</li>
+<li>Se trabaja en HPC o cómputo científico con flujos bien definidos.</li>
+</ul>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspecto</th>
+<th>Ambiente virtual</th>
+<th>Contenedor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aislamiento</td>
+<td>Paquetes y dependencias</td>
+<td>Aplicación, librerías y entorno de usuario</td>
+</tr>
+<tr class="even">
+<td>Reproducibilidad</td>
+<td>Media</td>
+<td>Alta</td>
+</tr>
+<tr class="odd">
+<td>Facilidad de uso</td>
+<td>Alta</td>
+<td>Media</td>
+</tr>
+<tr class="even">
+<td>Portabilidad</td>
+<td>Media</td>
+<td>Alta</td>
+</tr>
+<tr class="odd">
+<td>Ideal para</td>
+<td>Desarrollo, enseñanza, pruebas</td>
+<td>Pipelines, despliegue, HPC</td>
+</tr>
+<tr class="even">
+<td>Ejemplos</td>
+<td>Conda, Mamba, Pixi</td>
+<td>Docker, Podman, Apptainer</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="por-qué-veremos-micromamba-y-apptainer" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-veremos-micromamba-y-apptainer">¿Por qué veremos Micromamba y Apptainer?</h3>
+<p>Veremos <strong>Micromamba</strong> y <strong>Apptainer</strong> porque juntos cubren dos necesidades clave en bioinformática: <strong>instalar software fácilmente</strong> y <strong>ejecutarlo de forma reproducible en HPC</strong>.</p>
+</section>
+</section>
+<section id="micromamba" class="level2">
+<h2 class="anchored" data-anchor-id="micromamba">Micromamba</h2>
+<section id="instalación-de-micromamba-sin-permisos-de-administrador" class="level3">
+<h3 class="anchored" data-anchor-id="instalación-de-micromamba-sin-permisos-de-administrador">Instalación de Micromamba sin permisos de administrador</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${SHELL}</span><span class="st">"</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> micro.mamba.pm/install.sh<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Este comando instala <strong>Micromamba</strong> en la cuenta del usuario, por lo que resulta especialmente útil en servidores compartidos y ambientes de HPC donde no se cuenta con acceso <code>sudo</code>.</p>
+<p>Después de la instalación, conviene cerrar y abrir la terminal, o recargar el archivo de configuración del shell para que el comando <code>micromamba</code> quede disponible.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Para comprobar que la instalación funcionó, puedes ejecutar:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="comandos-básicos-de-micromamba" class="level3">
+<h3 class="anchored" data-anchor-id="comandos-básicos-de-micromamba">Comandos básicos de Micromamba</h3>
+<section id="crear-un-ambiente-vacío" class="level4">
+<h4 class="anchored" data-anchor-id="crear-un-ambiente-vacío">Crear un ambiente vacío</h4>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="crear-un-ambiente-e-instalar-paquetes-desde-el-inicio" class="level4">
+<h4 class="anchored" data-anchor-id="crear-un-ambiente-e-instalar-paquetes-desde-el-inicio">Crear un ambiente e instalar paquetes desde el inicio</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda fastqc seqkit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Aquí se crea el ambiente <code>bioinfo</code> e instala de una vez los paquetes <code>fastqc</code> y <code>seqkit</code>, usando los canales <code>conda-forge</code> y <code>bioconda</code>.</p>
+</blockquote>
+</section>
+<section id="activar-un-ambiente" class="level4">
+<h4 class="anchored" data-anchor-id="activar-un-ambiente">Activar un ambiente</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="instalar-un-paquete-en-un-ambiente-ya-creado" class="level4">
+<h4 class="anchored" data-anchor-id="instalar-un-paquete-en-un-ambiente-ya-creado">Instalar un paquete en un ambiente ya creado</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda mafft</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="listar-los-ambientes-instalados" class="level4">
+<h4 class="anchored" data-anchor-id="listar-los-ambientes-instalados">Listar los ambientes instalados</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="listar-los-paquetes-del-ambiente-activo" class="level4">
+<h4 class="anchored" data-anchor-id="listar-los-paquetes-del-ambiente-activo">Listar los paquetes del ambiente activo</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list <span class="at">-n</span> bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="desactivar-el-ambiente-actual" class="level4">
+<h4 class="anchored" data-anchor-id="desactivar-el-ambiente-actual">Desactivar el ambiente actual</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="borrar-un-ambiente" class="level4">
+<h4 class="anchored" data-anchor-id="borrar-un-ambiente">Borrar un ambiente</h4>
+<pre><code>micromamba remove -n bioinfo --all</code></pre>
+</section>
+</section>
+<section id="opción-recomendada-para-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="opción-recomendada-para-scripts">Opción recomendada para scripts</h3>
+<p>Ejecuta un comando dentro del ambiente sin depender de <code>activate</code>.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo fastqc datos/sample1.fastq.gz</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo seqkit stats datos/sample1.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -409,14 +542,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -760,13 +892,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./unidad_6.html" class="pagination-link" aria-label="Unidad 6: Scripting y automatización de tareas en Bash">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 6: Scripting y automatización de tareas en Bash</span></span>
+      <a href="./unidad_7.html" class="pagination-link" aria-label="Unidad 7: Expresiones Regulares y Filtrado de Datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 7: Expresiones Regulares y Filtrado de Datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./fastq.html" class="pagination-link" aria-label="Notas: ¿Qué es un archivo FASTQ?">
-        <span class="nav-page-text"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
+        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -775,4 +907,4 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/nota_bot_telegram.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

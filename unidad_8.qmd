@@ -1,0 +1,210 @@
+---
+  title: "Unidad 8: Ambientes virtuales y contenedores"
+---
+
+## ¿Por qué necesitamos aislar software?
+
+En bioinformática es común trabajar con programas que requieren versiones específicas de librerías, intérpretes y dependencias. Esto puede generar conflictos entre herramientas, dificultar la reproducibilidad y complicar la colaboración entre usuarios o laboratorios.
+
+Algunos problemas comunes son:
+
+-   Un programa funciona en una computadora, pero no en otra.
+-   Dos herramientas requieren versiones distintas de la misma librería.
+-   Un análisis no puede reproducirse meses después por cambios en el sistema.
+-   En un servidor multiusuario no es deseable instalar todo de forma global.
+
+Para resolver este tipo de problemas existen dos estrategias muy utilizadas:
+
+-   **Ambientes virtuales**
+-   **Contenedores**
+
+## ¿Qué es un ambiente virtual?
+
+Un ambiente virtual es un espacio aislado dentro del sistema operativo donde se instalan versiones específicas de programas, librerías y dependencias sin afectar al resto del sistema.
+
+Esto permite que distintos proyectos utilicen configuraciones diferentes en la misma máquina.
+
+### Ventajas de los ambientes virtuales
+
+-   Permiten instalar software sin modificar todo el sistema.
+-   Facilitan el manejo de dependencias por proyecto.
+-   Son relativamente sencillos de crear y usar.
+-   Son muy útiles para enseñanza, pruebas rápidas y desarrollo.
+
+### Desventajas de los ambientes virtuales
+
+-   Dependen más del sistema anfitrión.
+-   No siempre garantizan reproducibilidad total entre distintas máquinas.
+-   Pueden surgir conflictos entre canales o paquetes.
+-   En proyectos complejos pueden volverse difíciles de mantener.
+
+### Herramientas para manejar ambientes
+
+#### [Conda](https://docs.conda.io/projects/conda/en/latest/index.html)
+
+Conda es un sistema de gestión de paquetes y ambientes muy usado en bioinformática. Permite instalar herramientas y dependencias en ambientes separados.
+
+#### [Mamba](https://mamba.readthedocs.io/en/latest/index.html)
+
+Mamba es una alternativa compatible con Conda, pero mucho más rápida al resolver dependencias. Es especialmente útil en servidores y proyectos con muchas instalaciones.
+
+#### [Pixi](https://pixi.prefix.dev/v0.48.2/)
+
+Pixi es una herramienta más reciente orientada al manejo reproducible de ambientes por proyecto. Utiliza archivos de configuración y bloqueo para facilitar la portabilidad y reproducibilidad.
+
+## ¿Qué es un contenedor?
+
+Un contenedor es una forma de empaquetar una aplicación junto con sus programas, librerías y dependencias, de modo que pueda ejecutarse de manera más consistente en diferentes entornos.
+
+A diferencia de un ambiente virtual, un contenedor ofrece un mayor nivel de aislamiento y portabilidad.
+
+### Ventajas de los contenedores
+
+-   Mejoran la reproducibilidad.
+-   Facilitan compartir software y pipelines completos.
+-   Permiten mover análisis entre computadoras con menos conflictos.
+-   Son muy útiles en flujos de trabajo científicos y de alto rendimiento.
+
+### Desventajas de los contenedores
+
+-   Tienen una curva de aprendizaje mayor.
+-   Requieren entender conceptos adicionales como imágenes, volúmenes y montaje de directorios.
+-   Algunas herramientas no son igual de adecuadas para sistemas multiusuario compartidos.
+
+### Herramientas de contenedores
+
+#### [Docker](https://www.docker.com/)
+
+Docker es una de las plataformas de contenedores más conocidas. Es excelente para desarrollo local, distribución de software y construcción de imágenes.
+
+#### [Podman](https://podman.io/)
+
+Podman es similar a Docker, pero con una arquitectura sin daemon. Puede ser una buena alternativa en sistemas Linux y entornos institucionales.
+
+#### [Apptainer](https://apptainer.org/)
+
+Apptainer es una herramienta especialmente útil en ambientes HPC. Permite ejecutar contenedores de manera más compatible con clústeres y sistemas multiusuario.
+
+## Ambientes virtuales vs contenedores
+
+### Ambientes virtuales
+
+Convienen cuando:
+
+-   Se quiere instalar software rápidamente.
+-   Se trabaja en desarrollo o enseñanza.
+-   Se necesita flexibilidad para modificar paquetes.
+-   El proyecto no requiere encapsular todo el entorno.
+
+### Contenedores
+
+Convienen cuando:
+
+-   Se necesita máxima reproducibilidad.
+-   Se quiere compartir un pipeline completo.
+-   El análisis se ejecutará en varias máquinas o servidores.
+-   Se trabaja en HPC o cómputo científico con flujos bien definidos.
+
+| Aspecto | Ambiente virtual | Contenedor |
+|----|----|----|
+| Aislamiento | Paquetes y dependencias | Aplicación, librerías y entorno de usuario |
+| Reproducibilidad | Media | Alta |
+| Facilidad de uso | Alta | Media |
+| Portabilidad | Media | Alta |
+| Ideal para | Desarrollo, enseñanza, pruebas | Pipelines, despliegue, HPC |
+| Ejemplos | Conda, Mamba, Pixi | Docker, Podman, Apptainer |
+
+### ¿Por qué veremos Micromamba y Apptainer?
+
+Veremos **Micromamba** y **Apptainer** porque juntos cubren dos necesidades clave en bioinformática: **instalar software fácilmente** y **ejecutarlo de forma reproducible en HPC**.
+
+## Micromamba
+
+### Instalación de Micromamba sin permisos de administrador
+
+``` bash
+"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+```
+
+Este comando instala **Micromamba** en la cuenta del usuario, por lo que resulta especialmente útil en servidores compartidos y ambientes de HPC donde no se cuenta con acceso `sudo`.
+
+Después de la instalación, conviene cerrar y abrir la terminal, o recargar el archivo de configuración del shell para que el comando `micromamba` quede disponible.
+
+``` bash
+source ~/.bashrc
+```
+
+Para comprobar que la instalación funcionó, puedes ejecutar:
+
+``` bash
+micromamba --version
+```
+
+### Comandos básicos de Micromamba
+
+#### Crear un ambiente vacío
+
+``` bash
+micromamba create -n bioinfo
+```
+
+#### Crear un ambiente e instalar paquetes desde el inicio
+
+``` bash
+micromamba create -n bioinfo -c conda-forge -c bioconda fastqc seqkit
+```
+
+> Aquí se crea el ambiente `bioinfo` e instala de una vez los paquetes `fastqc` y `seqkit`, usando los canales `conda-forge` y `bioconda`.
+
+#### Activar un ambiente
+
+``` bash
+micromamba activate bioinfo
+```
+
+#### Instalar un paquete en un ambiente ya creado
+
+``` bash
+micromamba install -n bioinfo -c conda-forge -c bioconda mafft
+```
+
+#### Listar los ambientes instalados
+
+``` bash
+micromamba env list
+```
+
+#### Listar los paquetes del ambiente activo
+
+``` bash
+micromamba list
+```
+
+Si quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:
+
+``` bash
+micromamba list -n bioinfo
+```
+
+#### Desactivar el ambiente actual
+
+``` bash
+micromamba deactivate
+```
+
+#### Borrar un ambiente
+
+```         
+micromamba remove -n bioinfo --all
+```
+
+### Opción recomendada para scripts
+
+Ejecuta un comando dentro del ambiente sin depender de `activate`.
+
+``` bash
+#!/bin/bash
+
+micromamba run -n bioinfo fastqc datos/sample1.fastq.gz
+micromamba run -n bioinfo seqkit stats datos/sample1.fastq.gz
+```

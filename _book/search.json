@@ -44,7 +44,7 @@
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "Unidades",
-    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nNotas: Crear un bot con BotFather en Telegram\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nUnidad 6. Scripting y automatización de tareas en Bash\nNotas: Crear un bot con BotFather en Telegram\nNotas: ¿Qué es un archivo FASTQ?\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -394,7 +394,7 @@
     "href": "unidad_5.html",
     "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
     "section": "",
-    "text": "Comandos básicos de Bash (Exploración de datos)\nEn bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.",
+    "text": "Comandos básicos de Bash (Exploración de datos)\nEn bioinformática, gran parte del trabajo consiste en inspeccionar archivos de texto masivos (como archivos FASTQ o tablas de abundancia) sin abrirlos completamente para no saturar la memoria RAM.\nEl comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.\nAquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:\nFiltros Esenciales (Los más usados)",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
     ]
@@ -404,7 +404,7 @@
     "href": "unidad_5.html#comandos-básicos-de-bash-exploración-de-datos",
     "title": "Unidad 5. Comandos básicos de Bash y monitoreo de recursos",
     "section": "",
-    "text": "echo: Imprime texto en la terminal o redirige mensajes a archivos.\n\necho \"Inicio de ensamble\" &gt; bitacora.txt\necho \"Paso 2: alineamiento\" &gt;&gt; bitacora.txt\n\n&gt; sobrescribe y &gt;&gt; agrega al final\n\n\nDel comando al script\nA veces no queremos ejecutar un comando una sola vez, sino repetir una serie de pasos (por ejemplo: revisar archivos, filtrar, contar, guardar salida). Para eso usamos scripts de Bash: archivos de texto con comandos, que se ejecutan en orden.\nEjemplo: tu primer script\nCrea un archivo:\nnano hola.sh\nEscribe dentro:\n#!/bin/bash\necho \"Hola Mundo\"\nGuarda y sal.\nDale permisos de ejecución:\nchmod +x hola.sh\nEjecútalo:\n./hola.sh\n\n\ncat: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.\n\ncat metadatos.csv\n\n`tail`: Muestra las últimas líneas de un archivo (por defecto 10).\n\ntail error.log\ntail -n 20 error.log\n\nIdeal para logs: “¿qué fue lo último que pasó?”\n\n\ngrep: El buscador de patrones más potente.\n\nEl comando grep (Global Regular Expression Print) es, posiblemente, la herramienta de filtrado más importante para un bioinformático.\nAquí tienes los ejemplos más útiles, clasificados por su aplicación en el análisis de datos y administración de servidores:\nFiltros Esenciales (Los más usados)\n\nBuscar un patrón exacto:\n\ngrep \"Homo sapiens\" anotaciones.txt\n\nUso: Extraer solo las líneas que contienen una especie específica.\n\n\nBúsqueda insensible a mayúsculas (-i):\n\ngrep -i \"atp6\" genes.fasta\n\nContar coincidencias (-c):\n\ngrep -c \"^@\" lecturas.fastq\n\nUso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo @ al inicio de línea).\n\n\nInvertir la búsqueda (-v):\n\ngrep -v \"Unclassified\" taxonomia.tsv\n\nUso: Limpia tus datos eliminando todas las líneas que digan “Unclassified”.\n\n\nBuscar recursivamente e indicar en que línea esta (-rn):\n\ngrep -rn \"texto_a_buscar\" /home/mauricio\n\n\nBúsquedas Avanzadas y Expresiones Regulares\n\nBuscar al inicio de la línea (^):\n\ngrep \"^&gt;\" genoma.fasta\nUso: Extraer únicamente los encabezados (headers) de un archivo FASTA.\n\nBuscar al final de la línea ($):\n\ngrep \"STOP$\" secuencias.txt\n\nUso: Filtrar secuencias que terminan con un codón de paro específico.\n\n\n\nContexto de la coincidencia (Visualización)\nA veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):\n\nVer líneas posteriores (-A de After):\n\ngrep -A 3 \"chr1\" anotacion.gff \n\nMuestra la línea y las 3 siguientes\n\n\nVer líneas anteriores (-B de Before):\n\ngrep -B 2 \"ERROR\" pipeline.log \n\nMuestra el error y las 2 líneas previas para saber qué causó el fallo\n\n\nVer ambos lados (-C de Context):\n\ngrep -C 1 \"COX1\" mitocondria.gbk\nMuestra la línea de COX1 con una línea arriba y una abajo",
+    "text": "echo: Imprime texto en la terminal o redirige mensajes a archivos.\n\necho \"Inicio de ensamble\" &gt; bitacora.txt\necho \"Paso 2: alineamiento\" &gt;&gt; bitacora.txt\n\n&gt; sobrescribe y &gt;&gt; agrega al final\n\n\ncat: Muestra todo el contenido de un archivo. Cuidado: No usar con archivos de secuenciación gigantes.\n\ncat metadatos.csv\n\n`tail`: Muestra las últimas líneas de un archivo (por defecto 10).\n\ntail error.log\ntail -n 20 error.log\n\nIdeal para logs: “¿qué fue lo último que pasó?”\n\n\ngrep: El buscador de patrones más potente.\n\n\n\n\n\nBuscar un patrón exacto:\n\ngrep \"Homo sapiens\" anotaciones.txt\n\nUso: Extraer solo las líneas que contienen una especie específica.\n\n\nBúsqueda insensible a mayúsculas (-i):\n\ngrep -i \"atp6\" genes.fasta\n\nContar coincidencias (-c):\n\ngrep -c \"^@\" lecturas.fastq\n\nUso: Cuenta cuántas lecturas (reads) hay en un archivo FASTQ (buscando el símbolo @ al inicio de línea).\n\n\nInvertir la búsqueda (-v):\n\ngrep -v \"Unclassified\" taxonomia.tsv\n\nUso: Limpia tus datos eliminando todas las líneas que digan “Unclassified”.\n\n\nBuscar recursivamente e indicar en que línea esta (-rn):\n\ngrep -rn \"texto_a_buscar\" /home/mauricio\n\nBúsquedas Avanzadas y Expresiones Regulares\n\nBuscar al inicio de la línea (^):\n\ngrep \"^&gt;\" genoma.fasta\nUso: Extraer únicamente los encabezados (headers) de un archivo FASTA.\n\nBuscar al final de la línea ($):\n\ngrep \"STOP$\" secuencias.txt\n\nUso: Filtrar secuencias que terminan con un codón de paro específico.\n\n\n\nContexto de la coincidencia (Visualización)\nA veces no solo quieres la línea encontrada, sino lo que hay alrededor (muy útil para archivos GFF o de anotación):\n\nVer líneas posteriores (-A de After):\n\ngrep -A 3 \"chr1\" anotacion.gff \n\nMuestra la línea y las 3 siguientes\n\n\nVer líneas anteriores (-B de Before):\n\ngrep -B 2 \"ERROR\" pipeline.log \n\nMuestra el error y las 2 líneas previas para saber qué causó el fallo\n\n\nVer ambos lados (-C de Context):\n\ngrep -C 1 \"COX1\" mitocondria.gbk\nMuestra la línea de COX1 con una línea arriba y una abajo",
     "crumbs": [
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span>"
     ]
@@ -420,13 +420,93 @@
     ]
   },
   {
+    "objectID": "unidad_6.html",
+    "href": "unidad_6.html",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "",
+    "text": "Introducción a la programación en Shell\nUn script de Bash es un archivo de texto plano que contiene una secuencia de comandos que la terminal ejecuta de forma automática. En bioinformática, los scripts son esenciales para construir pipelines o flujos de trabajo reproducibles, permitiendo procesar múltiples archivos o muestras de forma ordenada, consistente y eficiente.\nAl utilizar scripts, es posible:",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#introducción-a-la-programación-en-shell",
+    "href": "unidad_6.html#introducción-a-la-programación-en-shell",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "",
+    "text": "evitar repetir manualmente los mismos comandos,\nreducir errores en el análisis,\ndocumentar mejor los pasos realizados,\nautomatizar tareas frecuentes.\n\n\nEl shebang\nTodo script de Bash debe iniciar con una línea llamada shebang. Esta línea le indica al sistema qué intérprete debe usar para ejecutar el archivo.\n#!/bin/bash\n\n\nMi primer script: Hola Mundo\nCrear el archivo:\nnano hola.sh\nEscribir el siguiente contenido:\n#!/bin/bash\necho \"Hola Mundo\"\nGuardar el archivo, otorgar permisos de ejecución y ejecutarlo:\nchmod +x hola.sh\n./hola.sh\n\n\nEstructura básica de un script\nUn script puede contener comandos, comentarios, variables y estructuras más complejas. Su estructura básica suele incluir:\n\nshebang al inicio,\ncomentarios con #\ncomandos en líneas separadas,\npermisos de ejecución.\n\n\nEjemplo básico\n#!/bin/bash\n\n# Este es un comentario\necho \"Iniciando análisis\"\ndate\necho \"Análisis terminado\"\n\n\nComentarios\nLos comentarios sirven para documentar qué hace cada parte del script.\n# Este script imprime la fecha actual\ndate\n\n\nPermisos y ejecución\nPara ejecutar un script directamente:\nchmod +x script.sh\n./script.sh\nTambién puede ejecutarse así:\nbash script.sh\n\n\n\nVariables y argumentos\nLas variables permiten guardar información que puede reutilizarse más adelante en el script.\n\nVariables\n#!/bin/bash\n\nmuestra=\"sample_01\"\necho \"Procesando la muestra: $muestra\"\n\n\nReglas básicas\n\nno debe haber espacios alrededor de =,\nse accede al valor con $nombre_variable.\n\n\n\nArgumentos posicionales\nLos scripts también pueden recibir información desde la línea de comandos.\n#!/bin/bash\necho \"El primer argumento es: $1\"\n\n\nEjecutar:\n./script.sh archivo1.fastq\n\n\nResultado esperado:\nEl primer argumento es: archivo1.fastq\n\n\nAlgunos argumentos útiles\n\n$1, $2, $3: primer, segundo y tercer argumento\n$#: número total de argumentos\n$@: todos los argumentos\n\n\n\nEjemplo:\n#!/bin/bash\necho \"Número de argumentos: $#\"\necho \"Lista completa: $@\"\n\n\n\nEntrada, salida y mensajes en scripts\nLos scripts pueden mostrar información en pantalla, guardar resultados en archivos o solicitar datos al usuario.\n\nMostrar mensajes con echo\necho \"Iniciando proceso...\"\n\n\nGuardar salida en un archivo\necho \"Resultado del análisis\" &gt; salida.txt\n\n\nAgregar contenido sin sobrescribir\necho \"Nueva línea\" &gt;&gt; salida.txt\n\n\nLeer datos del usuario\n#!/bin/bash\necho \"Escribe el nombre de la muestra:\"\nread muestra\necho \"La muestra ingresada es: $muestra\"\n\n\n\nGuardar un log sencillo\n#!/bin/bash\necho \"Inicio: $(date)\" &gt;&gt; log.txt\necho \"Ejecutando análisis...\" &gt;&gt; log.txt\necho \"Fin: $(date)\" &gt;&gt; log.txt",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#estructuras-de-control",
+    "href": "unidad_6.html#estructuras-de-control",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "Estructuras de control",
+    "text": "Estructuras de control\nLas estructuras de control permiten que un script tome decisiones según ciertas condiciones. Son útiles para verificar si un archivo existe, si un directorio ya fue creado o si un proceso terminó correctamente.\n\nif, elif y else\n#!/bin/bash\n\narchivo=\"datos.fastq\"\n\nif [ -f \"$archivo\" ]; then\n    echo \"El archivo existe\"\nelse\n    echo \"El archivo no existe\"\nfi\n\nEjemplo con varias condiciones\n#!/bin/bash\n\nnumero=10\n\nif [ \"$numero\" -gt 10 ]; then\n    echo \"El número es mayor que 10\"\nelif [ \"$numero\" -eq 10 ]; then\n    echo \"El número es igual a 10\"\nelse\n    echo \"El número es menor que 10\"\nfi\n\n\n\nAlgunas pruebas comunes\n\n-f : existe un archivo\n-d : existe un directorio\n-e : existe archivo o directorio\n-z : cadena vacía\n-n : cadena no vacía\n-eq : igual\n-ne : diferente\n-lt : menor que\n-gt : mayor que",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#bucle-for",
+    "href": "unidad_6.html#bucle-for",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "Bucle for",
+    "text": "Bucle for\nEn Bash, el bucle for se usa para repetir una acción varias veces.\nEs muy útil cuando se quiere aplicar el mismo comando a:\n\nvarios archivos,\nvarias muestras,\nvarias carpetas,\nuna lista de nombres,\nuna serie de números.\n\n\nIdea central\nEn lugar de escribir muchas veces el mismo comando:\necho \"Procesando muestra1.fastq.gz\"\necho \"Procesando muestra2.fastq.gz\"\necho \"Procesando muestra3.fastq.gz\"\npodemos usar for\n\n\nSintaxis general\nfor variable in lista; do\n    comandos\ndone",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#explicación",
+    "href": "unidad_6.html#explicación",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "Explicación",
+    "text": "Explicación\n\nfor inicia el bucle\nvariable guarda temporalmente cada elemento\nin lista indica qué elementos se van a recorrer\ndo marca el inicio de los comandos a repetir\ndone marca el final del bucle\n\n\nPrimer ejemplo sencillo:\nfor nombre in Ana Luis Carmen; do\n    echo \"Hola, $nombre\"\ndone\nEl bucle hace esto internamente:\n\nprimero nombre=\"Ana\"\nluego nombre=\"Luis\"\nluego nombre=\"Carmen\"\n\nY en cada vuelta ejecuta:\necho \"Hola, $nombre\"\n\n\nEjemplo con números\nfor n in 1 2 3 4 5; do\n    echo \"Número: $n\"\ndone\n\nEjercicio: uso de for en Bash\nEscribe un script en Bash que realice lo siguiente:\n\nMuestre en pantalla los números del 1 al 100.\nDespués, muestre en pantalla los números del 2 al 100 avanzando de 2 en 2.\nRecorre las muestras de la carpeta /home/cristian/mi_proyecto/data/raw que terminan en .fq.gz y muestra para cada una el mensaje Procesando &lt;nombre_de_la_muestra&gt; usando la variable muestra.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#bucle-while",
+    "href": "unidad_6.html#bucle-while",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "Bucle while",
+    "text": "Bucle while\nEl bucle while ejecuta un bloque de comandos mientras una condición sea verdadera.\nSu idea es:\n\n“repite esto mientras se cumpla esta condición”.\n\nwhile condicion; do\n    comandos\ndone\n\nCómo funciona while\ncontador=1\n\nwhile [ $contador -le 3 ]; do\n    echo \"Iteración $contador\"\n    contador=$((contador + 1))\ndone\n\nPaso a paso\n\ncontador=1\nBash evalúa la condición:\n\n[ $contador -le 3 ]\n\nComo 1 &lt;= 3, entra al bucle.\nEjecuta:\n\necho \"Iteración 1\"\n\nLuego aumenta el contador:echo “Iteración 1”\n\ncontador=$((contador + 1))\n\nVuelve a evaluar la condición.\nCuando contador ya no cumple, el bucle termina.\n\n\n\n\nComando read\nread toma una línea y la guarda en variable.\nread variable\nEjemplo interactivo:\n#!/bin/bash\nread -p \"Escribe tu nombre: \" nombre\necho \"Hola, $nombre\"\nAquí:\n\n-p muestra un mensaje,\nlo que el usuario escriba se guarda en nombre.\n\n\n\nLeer un archivo línea por línea usando read y while\nwhile read linea; do\n    echo \"$linea\"\ndone &lt; archivo.txt\n\nread linea toma una línea\nwhile repite eso hasta llegar al final del archivo\ndone &lt; archivo.txt hace que la entrada venga del archivo y no del teclado\n\n\nEjercicio:\nInstrucciones\n\nCrear un archivo llamado nombres.txt.\nEscribir dentro 10 nombres, uno por línea.\nCrear un script en Bash que lea el archivo con while.\nEl script debe contar cuántas líneas tiene el archivo.\nAl final debe imprimir el total de nombres leídos.\n\n\nEjemplo de archivo nombres.txt\nAna\nLuis\nMaría\nCarlos\nElena\nJosé\nFernanda\nMiguel\nLaura\nDiego\n\nTarea:\n\nCrear un script llamado contar_lecturas.sh.\nEl script debe recibir el nombre del archivo como argumento.\nDebe detectar si el archivo está comprimido (.gz) o no.\nDebe contar cuántas lecturas hay en el archivo.\nDebe imprimir el nombre del archivo y el número total de lecturas.",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#funciones-en-bash",
+    "href": "unidad_6.html#funciones-en-bash",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "Funciones en Bash",
+    "text": "Funciones en Bash\nLas funciones permiten agrupar comandos que se reutilizan dentro de un script. Ayudan a organizar mejor el código y facilitan su lectura.\n\nEjemplo de función\n#!/bin/bash\n\nsaludar() {\n    echo \"Hola, bienvenido al análisis bioinformático\"\n}\n\nsaludar\n\n\nFunción con argumento\n#!/bin/bash\n\nprocesar_muestra() {\n    echo \"Procesando la muestra: $1\"\n}\n\nprocesar_muestra \"sample_01\"",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_6.html#automatización-de-scripts-con-cron",
+    "href": "unidad_6.html#automatización-de-scripts-con-cron",
+    "title": "Unidad 6: Scripting y automatización de tareas en Bash",
+    "section": "Automatización de scripts con cron",
+    "text": "Automatización de scripts con cron\nAdemás de ejecutarse manualmente, los scripts pueden programarse para correr de manera automática con cron.\ncron es un sistema de Linux que permite ejecutar tareas en horarios definidos, por ejemplo:\n\ncada día,\ncada semana,\ncada cierto número de minutos,\nen fechas específicas.\n\n\n¿Para qué sirve en bioinformática?\nAlgunos usos comunes son:\n\nrespaldos automáticos,\nmonitoreo de recursos,\nlimpieza de archivos temporales,\nejecución periódica de scripts,\ngeneración de reportes.\n\n\nEditar tareas programadas\ncrontab -e\n\n\nVer tareas programadas\ncrontab -l\n\n\nEstructura de una tarea en cron\n* * * * * comando\n- - - - -\n| | | | |\n| | | | └── día de la semana (0-6)\n| | | └──── mes (1-12)\n| | └────── día del mes (1-31)\n| └──────── hora (0-23)\n└────────── minuto (0-59)\n\n\nEjemplos\nEjecutar un script todos los días a las 2:00 am:\n0 2 * * * /home/usuario/scripts/respaldo.sh\nEjecutarlo cada 30 minutos:\n*/30 * * * * /home/usuario/scripts/monitoreo.sh\nEjecutarlo todos los lunes a las 8:00 am:\n0 8 * * 1 /home/usuario/scripts/reporte.sh\n\n\nRecomendaciones\n\nusar rutas absolutas,\nverificar permisos de ejecución,\nguardar salida y errores en un archivo de log.\n\nEjemplo:\n0 2 * * * /home/usuario/scripts/respaldo.sh &gt;&gt; /home/usuario/logs/respaldo.log 2&gt;&1\n\n\nCron Guru\nUna herramienta muy útil para entender expresiones de cron es Crontab Guru, que ayuda a interpretar y construir estas expresiones de manera más sencilla.\nEjemplos:\n\n*/5 * * * * → cada 5 minutos\n0 9 * * 1 → todos los lunes a las 9:00\n30 22 * * * → todos los días a las 22:30",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Unidad 6: Scripting y automatización de tareas en Bash</span>"
+    ]
+  },
+  {
     "objectID": "nota_bot_telegram.html",
     "href": "nota_bot_telegram.html",
     "title": "Notas: Crear un bot con BotFather en Telegram",
     "section": "",
     "text": "En Telegram:\n✅ Ese token es tu “contraseña” del bot, No lo compartas!!!",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
     ]
   },
   {
@@ -436,7 +516,7 @@
     "section": "",
     "text": "Busca @BotFather y ABRIR\n\n\n\n\n\n\n\nCrear un nuevo Bot\n\n\n\n\n\n\n\nPonle un nombre al Bot y elige un nombre de usuario que termine en bot, el usarname tiene que estar disponible\n\n\n\n\n\n\n\nBotFather te dará un TOKEN\n\n\n\n\n\n\n\n\nAbre el chat con tu bot (búscalo por username).\n\n\n\n\n\n\n\nPresiona Iniciar",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
     ]
   },
   {
@@ -446,7 +526,7 @@
     "section": "Conseguir tu chat_id (para mandarte mensajes)",
     "text": "Conseguir tu chat_id (para mandarte mensajes)\nTOKEN=\"TU_TOKEN_AQUI\"\ncurl -s \"https://api.telegram.org/bot${TOKEN}/getUpdates\" \nBusca en la salida algo así:\n\"chat\":{\"id\":123456789,\"first_name\":\"Pedro\", ...}\n📌 “id”:123456789 ese número es tu CHAT_ID.\n\nEnviar un mensaje con curl (lo esencial)\nTOKEN=\"TU_TOKEN_AQUI\"\nCHAT_ID=\"TU_CHAT_ID_AQUI\"\n\ncurl -s -X POST \"https://api.telegram.org/bot${TOKEN}/sendMessage\" \\\n  -d \"chat_id=${CHAT_ID}\" \\\n  -d \"text=Hola 👋 Mensaje enviado desde Bash\"",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
     ]
   },
   {
@@ -456,7 +536,7 @@
     "section": "Buenas prácticas: NO hardcodear el token (y no subirlo a git)",
     "text": "Buenas prácticas: NO hardcodear el token (y no subirlo a git)\n\nArchivo .env (recomendado)\nCrea un archivo .env fuera de tu repo o ignóralo con .gitignore:\nnano .env\nPegar la info en el archivo .env\nTOKEN=\"TU_TOKEN_AQUI\"\nCHAT_ID=\"TU_CHAT_ID_AQUI\"\nEn tu script agrega estas lineas\nsource .env\nSI esta en tu proyecto git agrega el archivo a tu .gitignore:\nnano .gitignore\nY agrega el archivo\n.env\nAdemás agregar seguridad al archivo\nchmod 600 .env",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
     ]
   },
   {
@@ -466,7 +546,67 @@
     "section": "Función reusable tg_send (para cualquier script)",
     "text": "Función reusable tg_send (para cualquier script)\ntg_send () {\n  local msg=\"$1\"\n  curl -s -X POST \"https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage\" \\\n    -d \"chat_id=${TELEGRAM_CHAT_ID}\" \\\n    -d \"text=${msg}\" \\\n    -d \"disable_web_page_preview=true\" &gt; /dev/null\n}\nUso:\ntg_send \"✅ Pipeline terminó correctamente.\"",
     "crumbs": [
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Notas: Crear un bot con BotFather en Telegram</span>"
+    ]
+  },
+  {
+    "objectID": "fastq.html",
+    "href": "fastq.html",
+    "title": "Notas: ¿Qué es un archivo FASTQ?",
+    "section": "",
+    "text": "¿De dónde sale un archivo FASTQ?\nUn archivo FASTQ es un formato de texto plano usado en bioinformática para almacenar lecturas de secuenciación junto con sus valores de calidad. Es uno de los formatos más comunes en datos generados por plataformas de secuenciación masiva, como Illumina.\nA diferencia de un archivo FASTA, que solo guarda el identificador y la secuencia, un archivo FASTQ también incluye información sobre la calidad de cada base leída.\nUn archivo FASTQ se genera después de que una plataforma de secuenciación “lee” fragmentos de ADN o ARN. Durante ese proceso, el equipo produce:\nPor eso, el FASTQ contiene tanto la secuencia como la calidad.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Notas: ¿Qué es un archivo FASTQ?</span>"
+    ]
+  },
+  {
+    "objectID": "fastq.html#de-dónde-sale-un-archivo-fastq",
+    "href": "fastq.html#de-dónde-sale-un-archivo-fastq",
+    "title": "Notas: ¿Qué es un archivo FASTQ?",
+    "section": "",
+    "text": "la secuencia de nucleótidos detectada,\ny una estimación de qué tan confiable fue la lectura de cada base.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Notas: ¿Qué es un archivo FASTQ?</span>"
+    ]
+  },
+  {
+    "objectID": "fastq.html#cómo-está-constituido",
+    "href": "fastq.html#cómo-está-constituido",
+    "title": "Notas: ¿Qué es un archivo FASTQ?",
+    "section": "¿Cómo está constituido?",
+    "text": "¿Cómo está constituido?\nCada lectura en un archivo FASTQ ocupa 4 líneas.\n\nEstructura general\n@identificador\nSECUENCIA\n+\nCALIDADES",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Notas: ¿Qué es un archivo FASTQ?</span>"
+    ]
+  },
+  {
+    "objectID": "fastq.html#qué-significa-cada-línea",
+    "href": "fastq.html#qué-significa-cada-línea",
+    "title": "Notas: ¿Qué es un archivo FASTQ?",
+    "section": "¿Qué significa cada línea?",
+    "text": "¿Qué significa cada línea?\n\nLínea 1: identificador\nEmpieza con @ y contiene el nombre o identificador de la lectura.\nEjemplo:\n@SEQ_ID_001\nEsta línea puede incluir información como:\n\nnombre de la corrida,\nnúmero de lectura,\nposición en el flowcell,\ncarril,\níndice o barcode,\nsi pertenece a R1 o R2.\n\n\n\nLínea 2: secuencia\nContiene la secuencia de nucleótidos leída.\nEjemplo:\nATGCCGTAGCTAACGTA\nAquí aparecen las bases detectadas, generalmente:\n\nA adenina\nT timina\nG guanina\nC citosina\nN base no determinada\n\n\n\nLínea 3: separador\nEmpieza con +.\nEjemplo:\n+\nA veces esta línea repite el identificador, pero muchas veces solo contiene el símbolo +.\nSu función es separar la secuencia de la línea de calidades.\n\n\nLínea 4: calidad\nContiene una cadena de caracteres donde cada carácter representa la calidad de una base en la secuencia.\nEjemplo:\nIIIIIIHHHHHFFFFF\nEs importante que esta línea tenga el mismo número de caracteres que la secuencia tiene de bases, porque cada símbolo corresponde a una base específica.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Notas: ¿Qué es un archivo FASTQ?</span>"
+    ]
+  },
+  {
+    "objectID": "fastq.html#cómo-se-representa-la-calidad-en-un-archivo-fastq",
+    "href": "fastq.html#cómo-se-representa-la-calidad-en-un-archivo-fastq",
+    "title": "Notas: ¿Qué es un archivo FASTQ?",
+    "section": "¿Cómo se representa la calidad en un archivo FASTQ?",
+    "text": "¿Cómo se representa la calidad en un archivo FASTQ?\nLa línea de calidad de un archivo FASTQ no muestra números directamente. En su lugar, la calidad de cada base se codifica como un carácter ASCII. Esto permite guardar la información de calidad en una sola línea de texto, usando un símbolo por cada nucleótido de la secuencia.\n\nLa más usada hoy es Phred+33.\nRegla:\n\ncarácter = Phred + 33\nPhred = ASCII - 33",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Notas: ¿Qué es un archivo FASTQ?</span>"
+    ]
+  },
+  {
+    "objectID": "fastq.html#tabla-básica-de-phred33",
+    "href": "fastq.html#tabla-básica-de-phred33",
+    "title": "Notas: ¿Qué es un archivo FASTQ?",
+    "section": "Tabla básica de Phred+33",
+    "text": "Tabla básica de Phred+33\n\n\n\nPhred\nASCII decimal\nCarácter\n\n\n\n\n0\n33\n!\n\n\n1\n34\n\"\n\n\n2\n35\n#\n\n\n3\n36\n$\n\n\n4\n37\n%\n\n\n5\n38\n&\n\n\n10\n43\n+\n\n\n15\n48\n0\n\n\n20\n53\n5\n\n\n25\n58\n:\n\n\n30\n63\n?\n\n\n35\n68\nD\n\n\n40\n73\nI\n\n\n\n\n! = Q0\n5 = Q20\n? = Q30\nI = Q40\n\n\nEjemplo\nSi en la línea de calidad aparece:\nIIIII\ncada I vale ASCII 73.\nEntonces:\n73 - 33 = 40\no sea que cada base tiene Phred 40.",
+    "crumbs": [
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Notas: ¿Qué es un archivo FASTQ?</span>"
     ]
   },
   {
@@ -476,7 +616,187 @@
     "section": "",
     "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html",
+    "href": "unidad_8.html",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "",
+    "text": "¿Por qué necesitamos aislar software?\nEn bioinformática es común trabajar con programas que requieren versiones específicas de librerías, intérpretes y dependencias. Esto puede generar conflictos entre herramientas, dificultar la reproducibilidad y complicar la colaboración entre usuarios o laboratorios.\nAlgunos problemas comunes son:\nPara resolver este tipo de problemas existen dos estrategias muy utilizadas:",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#por-qué-necesitamos-aislar-software",
+    "href": "unidad_8.html#por-qué-necesitamos-aislar-software",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "",
+    "text": "Un programa funciona en una computadora, pero no en otra.\nDos herramientas requieren versiones distintas de la misma librería.\nUn análisis no puede reproducirse meses después por cambios en el sistema.\nEn un servidor multiusuario no es deseable instalar todo de forma global.\n\n\n\nAmbientes virtuales\nContenedores",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#qué-es-un-ambiente-virtual",
+    "href": "unidad_8.html#qué-es-un-ambiente-virtual",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "¿Qué es un ambiente virtual?",
+    "text": "¿Qué es un ambiente virtual?\nUn ambiente virtual es un espacio aislado dentro del sistema operativo donde se instalan versiones específicas de programas, librerías y dependencias sin afectar al resto del sistema.\nEsto permite que distintos proyectos utilicen configuraciones diferentes en la misma máquina.\n\nVentajas de los ambientes virtuales\n\nPermiten instalar software sin modificar todo el sistema.\nFacilitan el manejo de dependencias por proyecto.\nSon relativamente sencillos de crear y usar.\nSon muy útiles para enseñanza, pruebas rápidas y desarrollo.\n\n\n\nDesventajas de los ambientes virtuales\n\nDependen más del sistema anfitrión.\nNo siempre garantizan reproducibilidad total entre distintas máquinas.\nPueden surgir conflictos entre canales o paquetes.\nEn proyectos complejos pueden volverse difíciles de mantener.\n\n\n\nHerramientas para manejar ambientes\n\nConda\nConda es un sistema de gestión de paquetes y ambientes muy usado en bioinformática. Permite instalar herramientas y dependencias en ambientes separados.\n\n\nMamba\nMamba es una alternativa compatible con Conda, pero mucho más rápida al resolver dependencias. Es especialmente útil en servidores y proyectos con muchas instalaciones.\n\n\nPixi\nPixi es una herramienta más reciente orientada al manejo reproducible de ambientes por proyecto. Utiliza archivos de configuración y bloqueo para facilitar la portabilidad y reproducibilidad.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#qué-es-un-contenedor",
+    "href": "unidad_8.html#qué-es-un-contenedor",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "¿Qué es un contenedor?",
+    "text": "¿Qué es un contenedor?\nUn contenedor es una forma de empaquetar una aplicación junto con sus programas, librerías y dependencias, de modo que pueda ejecutarse de manera más consistente en diferentes entornos.\nA diferencia de un ambiente virtual, un contenedor ofrece un mayor nivel de aislamiento y portabilidad.\n\nVentajas de los contenedores\n\nMejoran la reproducibilidad.\nFacilitan compartir software y pipelines completos.\nPermiten mover análisis entre computadoras con menos conflictos.\nSon muy útiles en flujos de trabajo científicos y de alto rendimiento.\n\n\n\nDesventajas de los contenedores\n\nTienen una curva de aprendizaje mayor.\nRequieren entender conceptos adicionales como imágenes, volúmenes y montaje de directorios.\nAlgunas herramientas no son igual de adecuadas para sistemas multiusuario compartidos.\n\n\n\nHerramientas de contenedores\n\nDocker\nDocker es una de las plataformas de contenedores más conocidas. Es excelente para desarrollo local, distribución de software y construcción de imágenes.\n\n\nPodman\nPodman es similar a Docker, pero con una arquitectura sin daemon. Puede ser una buena alternativa en sistemas Linux y entornos institucionales.\n\n\nApptainer\nApptainer es una herramienta especialmente útil en ambientes HPC. Permite ejecutar contenedores de manera más compatible con clústeres y sistemas multiusuario.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#ambientes-virtuales-vs-contenedores",
+    "href": "unidad_8.html#ambientes-virtuales-vs-contenedores",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "Ambientes virtuales vs contenedores",
+    "text": "Ambientes virtuales vs contenedores\n\nAmbientes virtuales\nConvienen cuando:\n\nSe quiere instalar software rápidamente.\nSe trabaja en desarrollo o enseñanza.\nSe necesita flexibilidad para modificar paquetes.\nEl proyecto no requiere encapsular todo el entorno.\n\n\n\nContenedores\nConvienen cuando:\n\nSe necesita máxima reproducibilidad.\nSe quiere compartir un pipeline completo.\nEl análisis se ejecutará en varias máquinas o servidores.\nSe trabaja en HPC o cómputo científico con flujos bien definidos.\n\n\n\n\n\n\n\n\n\nAspecto\nAmbiente virtual\nContenedor\n\n\n\n\nAislamiento\nPaquetes y dependencias\nAplicación, librerías y entorno de usuario\n\n\nReproducibilidad\nMedia\nAlta\n\n\nFacilidad de uso\nAlta\nMedia\n\n\nPortabilidad\nMedia\nAlta\n\n\nIdeal para\nDesarrollo, enseñanza, pruebas\nPipelines, despliegue, HPC\n\n\nEjemplos\nConda, Mamba, Pixi\nDocker, Podman, Apptainer\n\n\n\n\n\n¿Por qué veremos Micromamba y Apptainer?\nVeremos Micromamba y Apptainer porque juntos cubren dos necesidades clave en bioinformática: instalar software fácilmente y ejecutarlo de forma reproducible en HPC.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#micromamba",
+    "href": "unidad_8.html#micromamba",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "Micromamba",
+    "text": "Micromamba\n\nInstalación de Micromamba sin permisos de administrador\n\"${SHELL}\" &lt;(curl -L micro.mamba.pm/install.sh)\nEste comando instala Micromamba en la cuenta del usuario, por lo que resulta especialmente útil en servidores compartidos y ambientes de HPC donde no se cuenta con acceso sudo.\nDespués de la instalación, conviene cerrar y abrir la terminal, o recargar el archivo de configuración del shell para que el comando micromamba quede disponible.\nsource ~/.bashrc\nPara comprobar que la instalación funcionó, puedes ejecutar:\nmicromamba --version\n\n\nComandos básicos de Micromamba\n\nCrear un ambiente vacío\nmicromamba create -n bioinfo\n\n\nCrear un ambiente e instalar paquetes desde el inicio\nmicromamba create -n bioinfo -c conda-forge -c bioconda fastqc seqkit\n\nAquí se crea el ambiente bioinfo e instala de una vez los paquetes fastqc y seqkit, usando los canales conda-forge y bioconda.\n\n\n\nActivar un ambiente\nmicromamba activate bioinfo\n\n\nInstalar un paquete en un ambiente ya creado\nmicromamba install -n bioinfo -c conda-forge -c bioconda mafft\n\n\nListar los ambientes instalados\nmicromamba env list\n\n\nListar los paquetes del ambiente activo\nmicromamba list\nSi quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:\nmicromamba list -n bioinfo\n\n\nDesactivar el ambiente actual\nmicromamba deactivate\n\n\nBorrar un ambiente\nmicromamba remove -n bioinfo --all\n\n\n\nOpción recomendada para scripts\nEjecuta un comando dentro del ambiente sin depender de activate.\n#!/bin/bash\n\nmicromamba run -n bioinfo fastqc datos/sample1.fastq.gz\nmicromamba run -n bioinfo seqkit stats datos/sample1.fastq.gz",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html",
+    "href": "unidad_7.html",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "",
+    "text": "Introducción a expresiones regulares\nUna expresión regular (regex) es una forma de describir un patrón dentro de un texto.\nEn lugar de buscar una palabra exacta, podemos buscar una estructura.\nPor ejemplo:",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#introducción-a-expresiones-regulares",
+    "href": "unidad_7.html#introducción-a-expresiones-regulares",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "",
+    "text": "encontrar cualquier número,\nbuscar palabras que empiecen con cierta letra,\nvalidar si un texto tiene un formato correcto (como una CURP, correo electrónico o nombre de archivo).\n\n\n🔍 Ejemplo simple\nSi queremos encontrar números en un texto:\n[0-9]\nEsto significa:\n“cualquier carácter entre 0 y 9”.\nSi queremos encontrar varios números seguidos:\n[0-9]+\nEl símbolo + significa “uno o más”.\n\n\n🧠 Idea clave\nLas expresiones regulares no buscan texto literal, buscan patrones.\n\n\n🔧 Uso de regex101\nPara aprender y probar expresiones regulares, vamos a usar:\n👉 https://regex101.com/\nEsta herramienta permite:\n\nprobar expresiones en tiempo real,\nver qué partes del texto coinciden,\nentender cómo funciona cada parte del patrón.\n\n\n\n🧪 Cómo usar regex101\nEjemplo práctico: Validar una CURP\nLa CURP es un excelente ejemplo porque tiene una estructura fija.\nEjemplo:\nPEGA850912HMCRRL09\n📌 Estructura simplificada de una CURP\n\n4 letras iniciales\n6 números (fecha: año, mes, día)\n1 letra (sexo: H o M)\n5 letras\n2 caracteres alfanuméricos\n\n🧩 Construcción paso a paso del patrón de la CURP\nPaso 1: cuatro letras al inicio\n^[A-Z]{4}\n\n^ → inicio de la línea\n[A-Z] → letras mayúsculas\n{4} → exactamente 4 letras\n\nPaso 2: agregar seis números (fecha)\n^[A-Z]{4}[0-9]{6}\nPaso 3: agregar el sexo\n^[A-Z]{4}[0-9]{6}[HM]\n\n[HM] → solo permite H o M\n\nPaso 4: agregar letras internas\n^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}\nPaso 5: agregar los últimos caracteres\n^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$\n\n[A-Z0-9]{2} → dos caracteres alfanuméricos\n$ → fin de la línea\n\n\n\n🚀 Conexión con bioinformática\nLas expresiones regulares se usan para:\n\nencontrar secuencias específicas en FASTA/FASTQ,\nidentificar patrones en nombres de archivos,\nfiltrar resultados de BLAST,\nvalidar formatos de datos.\netc.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#uso-de-expresiones-regulares-con-grep",
+    "href": "unidad_7.html#uso-de-expresiones-regulares-con-grep",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Uso de expresiones regulares con grep",
+    "text": "Uso de expresiones regulares con grep\ngrep permite buscar líneas que coincidan con un patrón dentro de un archivo de texto.\nEn otras palabras:\n\nregex101 nos ayuda a entender y probar la expresión regular,\ngrep nos ayuda a aplicarla en archivos reales desde Bash.\n\n\n¿Qué hace grep?\nLa forma más simple de grep es:\ngrep \"patron\" archivo.txt\nEsto busca en el archivo las líneas que coincidan con el patrón indicado.\n\n\nCrear un archivo de ejemplo\nPara trabajar con CURPs, primero podemos crear un archivo de texto:\nnano curps.txt\nY pega esto:\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\nPEGA850912HMCRRL099\nPEGA850912HMCRRLAA\nGuarda el archivo y sal de nano.\n\n\nBuscar texto literal con grep\nPrimero podemos usar grep sin expresión regular compleja, solo buscando texto literal.\nPor ejemplo, buscar las líneas que contengan PEGA:\ngrep \"PEGA\" curps.txt\nEsto devolverá las líneas donde aparezca esa cadena.\n\n\nBuscar líneas que empiecen con cierto patrón\nSi queremos que la línea empiece con PEGA, usamos ^:\ngrep \"^PEGA\" curps.txt\n\n\nExplicación\n\n^ indica inicio de línea.\nPEGA debe aparecer al comienzo.\n\n\n\nBuscar líneas que terminen con un patrón\nSi queremos líneas que terminen en 09:\ngrep \"09$\" curps.txt\n\n\nExplicación\n\n$ indica final de línea.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#usar-una-expresión-regular-con-grep",
+    "href": "unidad_7.html#usar-una-expresión-regular-con-grep",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Usar una expresión regular con grep",
+    "text": "Usar una expresión regular con grep\nEn regex101 probamos una expresión para validar una CURP con estructura general:\n^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$\nPara usar esa expresión en grep, conviene activar las expresiones regulares extendidas con -E:\ngrep -E '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt\n\nMostrar las líneas inválidas\nTambién podemos pedirle a grep que muestre las líneas que no cumplen el patrón, usando -v:\ngrep -Ev '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt\n\n\nExplicación\n\n-E usa expresiones regulares extendidas,\n-v invierte la búsqueda.\n\nEsto es muy útil para detectar errores en archivos de datos.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#extracción-de-datos-con-cut",
+    "href": "unidad_7.html#extracción-de-datos-con-cut",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Extracción de datos con cut",
+    "text": "Extracción de datos con cut\ncut es una herramienta de Bash que permite extraer partes específicas de un archivo de texto.\n\n🧠 ¿Cuándo usar cut?\ncut es ideal cuando:\n\nlos datos tienen una estructura fija (como la CURP),\no están organizados en columnas separadas por delimitadores (CSV, TSV).\n\n\n\n\n🔧 Sintaxis básica\nPor posiciones (caracteres)\ncut -c posiciones archivo.txt\nPor columnas (delimitadores)\ncut -d \"DELIMITADOR\" -f columnas archivo.txt\n\n\n📌 Parte 1: Uso de cut con posiciones\nArchivo de ejemplo\nnano curps.txt\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\nPEGA850912HMCRRL099\nPEGA850912HMCRRLAA\n\n\n🧬 Estructura de una CURP\n\n\n\nPosición\nContenido\n\n\n\n\n1–4\nLetras iniciales\n\n\n5–10\nFecha\n\n\n11\nSexo\n\n\n12–13\nEntidad\n\n\n14–16\nConsonantes\n\n\n17–18\nHomoclave\n\n\n\nExtraer la fecha\ncut -c5-10 curps.txt\nExtraer el sexo\ncut -c11 curps.txt\nExtraer entidad federativa\ncut -c12-13 curps.txt\nExtraer múltiples posiciones\ncut -c1-4,11 curps.txt\n\n\n📌 Parte 2: Uso de cut con delimitadores\nMuchos archivos tienen columnas separadas por:\n\nespacios\ncomas (CSV)\ntabuladores (TSV)\n\n\n\n🔧 Sintaxis\ncut -d \"DELIMITADOR\" -f columnas archivo.txt\n\n\nEjemplo 1: archivo con espacios\nnano personas_curp.txt\nAna PEGA850912HMCRRL09\nLuis GODE561231MDFABC08\nMarta XXXX000000HNEYYY00\nJuan PEGA850912HMCRRL0\nExtraer CURP\ncut -d \" \" -f2 personas_curp.txt\nExtraer nombres\ncut -d \" \" -f1 personas_curp.txt\n\n\nEjemplo 2: archivo CSV\nnano datos.csv\nnombre,curp,edad\nAna,PEGA850912HMCRRL09,38\nLuis,GODE561231MDFABC08,60\nMarta,XXXX000000HNEYYY00,25\nExtraer CURP\ncut -d \",\" -f2 datos.csv\nExtraer nombre y edad\ncut -d \",\" -f1,3 datos.csv\n\n\nEjemplo 3: archivo TSV\nnano datos.tsv\nnombre  curp  sexo\nAna PEGA850912HMCRRL09  H\nLuis  GODE561231MDFABC08  M\nExtraer CURP\ncut -d $'\\t' -f2 datos.tsv\nExtraer sexo\ncut -d $'\\t' -f3 datos.tsv\n\n\n🔬 Ejemplo bioinformático\nArchivo tipo BLAST:\nseq1    subject1    98.5    150\nseq2    subject2    87.2    120\nseq3    subject3    99.1    200\nExtraer identidad (%)\ncut -d $'\\t' -f3 archivo.txt\nExtraer ID y longitud\ncut -d $'\\t' -f1,4 archivo.txt\ncut -d \",\" -f2 datos.csv | cut -c11",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#transformación-de-datos-con-sed",
+    "href": "unidad_7.html#transformación-de-datos-con-sed",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Transformación de datos con sed",
+    "text": "Transformación de datos con sed\nsed (stream editor) procesa texto línea por línea y permite:\n\nreemplazar patrones\neliminar contenido\nformatear texto\neditar archivos de manera automática\n\n\n🔧 Sintaxis básica\nsed 's/patron/reemplazo/' archivo.txt\nExplicación\n\ns → significa substitute (sustituir)\npatron → lo que queremos buscar\nreemplazo → lo que queremos poner\n\n\n\nArchivo de trabajo\nSeguimos usando:\ncurps.txt\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\nPEGA850912HMCRRL099\nPEGA850912HMCRRLAA\n\n\n📌 Parte 1: Reemplazos básicos\nCambiar letras por minúsculas\nsed 's/.*/\\L&/' curps.txt\nExplicación\n\n.* → toda la línea\n& → representa la coincidencia completa\n\\L → convierte a minúsculas\n\nReemplazar texto específico\nsed 's/PEGA/XXXX/' curps.txt\nReemplazar todas las coincidencias en la línea\nsed 's/A/X/g' curps.txt\nExplicación\n\ng → reemplaza todas las coincidencias, no solo la primera\n\n\n\n📌 Parte 2: Uso de expresiones regulares en sed\nPara trabajar mejor con patrones complejos usamos -E:\nsed -E 's/patron/reemplazo/' archivo.txt\nSeparar la CURP en bloques\nsed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\\1-\\2-\\3-\\4-\\5-\\6/' curps.txt\nExplicación\nSe crean grupos:\n\n\n\nGrupo\nContenido\n\n\n\n\n\\1\nprimeras 4 letras\n\n\n\\2\nfecha\n\n\n\\3\nsexo\n\n\n\\4\nentidad\n\n\n\\5\nconsonantes\n\n\n\\6\nfinal\n\n\n\nY se reconstruye con guiones:\nPEGA-850912-H-MC-RRL-09\n\nMarcar CURPs válidas\nsed -E 's/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/& -&gt; VALIDA/' curps.txt\n\n\nMarcar CURPs inválidas\nsed -E '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/! s/.*/& -&gt; INVALIDA/' curps.txt\n\n\n\n📌 Parte 3: Filtrar con sed\nAunque grep es mejor para filtrar, sed también puede hacerlo.\n\n\nMostrar solo CURPs válidas\nsed -En '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/p' curps.txt\nExplicación\n\n-n → no imprime automáticamente\np → imprime solo las coincidencias\n\n\nEliminar líneas inválidas\nsed -E '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/!d' curps.txt\n\n\n\n📌 Parte 4: Eliminar o modificar partes de texto\n\nEliminar los primeros 4 caracteres\nsed 's/^....//' curps.txt\n\n\nEliminar números\nsed 's/[0-9]//g' curps.txt\n\n\nEliminar líneas vacías\nsed '/^$/d' archivo.txt\n\n\n\n📌 Parte 5: Edición de archivos (in-place)\nPara modificar directamente un archivo:\nsed -i 's/PEGA/TEST/' curps.txt\n⚠️ Esto modifica el archivo original\n\n\n🔗 Combinar sed con otras herramientas\n\nFormatear solo CURPs válidas\ngrep -E '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt | \\ sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\\1-\\2-\\3-\\4-\\5-\\6/'\n\n\nExtraer y formatear desde CSV\ncut -d \",\" -f2 datos.csv | \\ sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\\1-\\2-\\3-\\4-\\5-\\6/'\n\n\n\n⚠️ Errores comunes\n\nOlvidar -E\nSin -E, los {} y () no funcionan igual.\n\n\n\nNo usar comillas correctas\nSiempre usar:\n's/.../.../'\n\n\nModificar archivos sin querer\nsed -i\n👉 usar con cuidado",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#introducción-a-awk-nivel-básico",
+    "href": "unidad_7.html#introducción-a-awk-nivel-básico",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Introducción a awk (nivel básico)",
+    "text": "Introducción a awk (nivel básico)\nawk es una herramienta que permite:\n👉 analizar, filtrar y procesar datos línea por línea\nFunciona leyendo un archivo, separando cada línea en columnas y aplicando acciones sobre ellas.\n\n⚠️ Importante\nawk es muy potente, pero también:\n👉 tiene una sintaxis un poco más compleja que grep, cut o sed.\n💡 Por eso, en esta sección veremos solo lo básico, suficiente para:\n\nextraer información\nhacer filtros simples\ngenerar salidas útiles\n\n\n\n🔧 Sintaxis básica\nawk '{accion}' archivo.txt\n\n\n📌 Conceptos clave\nDentro de awk:\n\n$0 → toda la línea\n$1 → primera columna\n$2 → segunda columna",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#archivo-de-trabajo-1",
+    "href": "unidad_7.html#archivo-de-trabajo-1",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Archivo de trabajo",
+    "text": "Archivo de trabajo\ncurps.txt\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\n\n📌 Ejemplos simples\n\nMostrar todas las líneas\nawk '{print $0}' curps.txt\n\n\nExtraer sexo (posición 11)\nawk '{print substr($0,11,1)}' curps.txt\n\n\nMostrar CURP + sexo\nawk '{print $0, \"-&gt; sexo:\", substr($0,11,1)}' curps.txt\n\n\n\n📌 Filtrar con awk\n\nMostrar solo hombres\nawk 'substr($0,11,1)==\"H\"' curps.txt\n\n\nMostrar solo CURPs con longitud correcta\nawk 'length($0)==18' curps.txt\n\n\n\n📌 Un ejemplo con lógica (if)\nawk '{\n  if (length($0)==18)\n    print $0, \"-&gt; correcta\"\n  else\n    print $0, \"-&gt; incorrecta\"\n}' curps.txt\n\n\n🧠 Idea clave\nMientras que:\n\ngrep → filtra por patrones\ncut → corta columnas\nsed → modifica texto\n\n👉 awk permite hacer todo eso pero con lógica",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#búsqueda-de-archivos-con-find",
+    "href": "unidad_7.html#búsqueda-de-archivos-con-find",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Búsqueda de archivos con find",
+    "text": "Búsqueda de archivos con find\nfind permite localizar archivos o carpetas según:\n\nnombre\ntipo (archivo o carpeta)\ntamaño\nfecha\npermisos\n\n\n🔧 Sintaxis básica\nfind ruta opciones\n\n\n📌 Ejemplo básico\nBuscar todos los archivos en el directorio actual:\nfind .\n\n\n📌 Buscar por nombre\nBuscar archivos .txt\nfind . -name \"*.txt\"\n\n\nBuscar archivos FASTA\nfind . -name \"*.fasta\"\n\n\nBuscar archivos FASTQ comprimidos\nfind . -name \"*.fastq.gz\"\n\n\n⚠️ Importante\n\n-name usa comodines (glob), no regex completas:\n* → cualquier número de caracteres\n? → un solo carácter\n\n\nEjemplos\nfind . -name \"sample?.fq\"\nfind . -name \"A*\"\n\n\n\n\n📌 Buscar por tipo\nSolo archivos\nfind . -type f\nSolo directorios\nfind . -type d\n\nBuscar archivos FASTA únicamente\nfind . -type f -name \"*.fasta\"\n\n\n\n📌 Buscar con expresiones regulares\nAunque no es lo más común, find también puede usar regex:\nfind . -regex '.*\\.txt$'",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#buscar-archivos-fasta-únicamente",
+    "href": "unidad_7.html#buscar-archivos-fasta-únicamente",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Buscar archivos FASTA únicamente",
+    "text": "Buscar archivos FASTA únicamente\nfind . -type f -name \"*.fasta\"",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#ejemplo",
+    "href": "unidad_7.html#ejemplo",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nfind . -regex '.*sample[0-9]+\\.fq'",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#nota-importante",
+    "href": "unidad_7.html#nota-importante",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "⚠️ Nota importante",
+    "text": "⚠️ Nota importante\n\n\n-regex evalúa la ruta completa, no solo el nombre\n\npor eso se usa .* al inicio",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
     ]
   }
 ]

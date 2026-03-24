@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Unidad 6: Scripting y automatización de tareas en Bash – Introducción a la programación para bioinformática con bash</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./nota_bot_telegram.html" rel="next">
+<link href="./unidad_5.html" rel="prev">
+<link href="./images/baner_2.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-d6ea9a187498ee8b9044a0182b988d41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="description" content="Introducción a la programación para bioinformática con bash">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Unidad 6: Scripting y automatización de tareas en Bash – Introducción a la programación para bioinformática con bash">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://ib-unisse.github.io/intro_bash_bioinfo/">
+
+
+<link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./unidad_6.html"><span class="chapter-title">Unidad 6: Scripting y automatización de tareas en Bash</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introducción a la programación para bioinformática con bash</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/IB-UNISSE/intro_bash_bioinfo" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción a la programación para bioinformática con bash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_1.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 1. Introducción a la Bioinformática</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_2.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 2. Documentación de Proyectos y Reproducibilidad en Bioinformática</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_3.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 3. Servidores de Alto Rendimiento (HPC)</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nota_vscode_git.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: VS Code + Git/GitHub en servidor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_4.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 4: Fundamentos de Linux</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_5.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_6.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Unidad 6: Scripting y automatización de tareas en Bash</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nota_bot_telegram.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./fastq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_7.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 7: Expresiones Regulares y Filtrado de Datos</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./unidad_8.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 8: Ambientes virtuales y contenedores</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliografía complementaria</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introducción-a-la-programación-en-shell" id="toc-introducción-a-la-programación-en-shell" class="nav-link active" data-scroll-target="#introducción-a-la-programación-en-shell">Introducción a la programación en Shell</a></li>
+  <li><a href="#estructuras-de-control" id="toc-estructuras-de-control" class="nav-link" data-scroll-target="#estructuras-de-control">Estructuras de control</a></li>
+  <li><a href="#bucle-for" id="toc-bucle-for" class="nav-link" data-scroll-target="#bucle-for">Bucle <code>for</code></a></li>
+  <li><a href="#explicación" id="toc-explicación" class="nav-link" data-scroll-target="#explicación">Explicación</a></li>
+  <li><a href="#bucle-while" id="toc-bucle-while" class="nav-link" data-scroll-target="#bucle-while">Bucle <code>while</code></a></li>
+  <li><a href="#funciones-en-bash" id="toc-funciones-en-bash" class="nav-link" data-scroll-target="#funciones-en-bash">Funciones en Bash</a></li>
+  <li><a href="#automatización-de-scripts-con-cron" id="toc-automatización-de-scripts-con-cron" class="nav-link" data-scroll-target="#automatización-de-scripts-con-cron">Automatización de scripts con cron</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-title">Unidad 6: Scripting y automatización de tareas en Bash</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introducción-a-la-programación-en-shell" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-a-la-programación-en-shell">Introducción a la programación en Shell</h2>
+<p>Un <strong>script de Bash</strong> es un archivo de texto plano que contiene una secuencia de comandos que la terminal ejecuta de forma automática. En bioinformática, los scripts son esenciales para construir <strong>pipelines</strong> o flujos de trabajo reproducibles, permitiendo procesar múltiples archivos o muestras de forma ordenada, consistente y eficiente.</p>
+<p>Al utilizar scripts, es posible:</p>
+<ul>
+<li>evitar repetir manualmente los mismos comandos,</li>
+<li>reducir errores en el análisis,</li>
+<li>documentar mejor los pasos realizados,</li>
+<li>automatizar tareas frecuentes.</li>
+</ul>
+<section id="el-shebang" class="level4">
+<h4 class="anchored" data-anchor-id="el-shebang">El <em>shebang</em></h4>
+<p>Todo script de Bash debe iniciar con una línea llamada <strong>shebang</strong>. Esta línea le indica al sistema qué intérprete debe usar para ejecutar el archivo.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="mi-primer-script-hola-mundo" class="level4">
+<h4 class="anchored" data-anchor-id="mi-primer-script-hola-mundo">Mi primer script: Hola Mundo</h4>
+<p>Crear el archivo:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nano</span> hola.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Escribir el siguiente contenido:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hola Mundo"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Guardar el archivo, otorgar permisos de ejecución y ejecutarlo:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x hola.sh</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./hola.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="estructura-básica-de-un-script" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-básica-de-un-script">Estructura básica de un script</h3>
+<p>Un script puede contener comandos, comentarios, variables y estructuras más complejas. Su estructura básica suele incluir:</p>
+<ul>
+<li><p><strong>shebang</strong> al inicio,</p></li>
+<li><p>comentarios con <code>#</code></p></li>
+<li><p>comandos en líneas separadas,</p></li>
+<li><p>permisos de ejecución.</p></li>
+</ul>
+<section id="ejemplo-básico" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-básico">Ejemplo básico</h4>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Este es un comentario</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Iniciando análisis"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Análisis terminado"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="comentarios" class="level4">
+<h4 class="anchored" data-anchor-id="comentarios">Comentarios</h4>
+<p>Los comentarios sirven para documentar qué hace cada parte del script.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Este script imprime la fecha actual</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="permisos-y-ejecución" class="level4">
+<h4 class="anchored" data-anchor-id="permisos-y-ejecución">Permisos y ejecución</h4>
+<p>Para ejecutar un script directamente:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x script.sh</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">./script.sh</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>También puede ejecutarse así:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> script.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="variables-y-argumentos" class="level3">
+<h3 class="anchored" data-anchor-id="variables-y-argumentos">Variables y argumentos</h3>
+<p>Las <strong>variables</strong> permiten guardar información que puede reutilizarse más adelante en el script.</p>
+<section id="variables" class="level4">
+<h4 class="anchored" data-anchor-id="variables">Variables</h4>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="va">muestra</span><span class="op">=</span><span class="st">"sample_01"</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando la muestra: </span><span class="va">$muestra</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="reglas-básicas" class="level4">
+<h4 class="anchored" data-anchor-id="reglas-básicas">Reglas básicas</h4>
+<ul>
+<li><p>no debe haber espacios alrededor de <code>=</code>,</p></li>
+<li><p>se accede al valor con <code>$nombre_variable</code>.</p></li>
+</ul>
+</section>
+<section id="argumentos-posicionales" class="level4">
+<h4 class="anchored" data-anchor-id="argumentos-posicionales">Argumentos posicionales</h4>
+<p>Los scripts también pueden recibir información desde la línea de comandos.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"El primer argumento es: </span><span class="va">$1</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejecutar" class="level4">
+<h4 class="anchored" data-anchor-id="ejecutar">Ejecutar:</h4>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">./script.sh</span> archivo1.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="resultado-esperado" class="level4">
+<h4 class="anchored" data-anchor-id="resultado-esperado">Resultado esperado:</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">El</span> primer argumento es: archivo1.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="algunos-argumentos-útiles" class="level4">
+<h4 class="anchored" data-anchor-id="algunos-argumentos-útiles">Algunos argumentos útiles</h4>
+<ul>
+<li><p><code>$1</code>, <code>$2</code>, <code>$3</code>: primer, segundo y tercer argumento</p></li>
+<li><p><code>$#</code>: número total de argumentos</p></li>
+<li><p><code>$@</code>: todos los argumentos</p></li>
+</ul>
+</section>
+<section id="ejemplo" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo">Ejemplo:</h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Número de argumentos: </span><span class="va">$#</span><span class="st">"</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Lista completa: </span><span class="va">$@</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="entrada-salida-y-mensajes-en-scripts" class="level3">
+<h3 class="anchored" data-anchor-id="entrada-salida-y-mensajes-en-scripts">Entrada, salida y mensajes en scripts</h3>
+<p>Los scripts pueden mostrar información en pantalla, guardar resultados en archivos o solicitar datos al usuario.</p>
+<section id="mostrar-mensajes-con-echo" class="level4">
+<h4 class="anchored" data-anchor-id="mostrar-mensajes-con-echo">Mostrar mensajes con <code>echo</code></h4>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Iniciando proceso..."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="guardar-salida-en-un-archivo" class="level4">
+<h4 class="anchored" data-anchor-id="guardar-salida-en-un-archivo">Guardar salida en un archivo</h4>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Resultado del análisis"</span> <span class="op">&gt;</span> salida.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="agregar-contenido-sin-sobrescribir" class="level4">
+<h4 class="anchored" data-anchor-id="agregar-contenido-sin-sobrescribir">Agregar contenido sin sobrescribir</h4>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Nueva línea"</span> <span class="op">&gt;&gt;</span> salida.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="leer-datos-del-usuario" class="level4">
+<h4 class="anchored" data-anchor-id="leer-datos-del-usuario">Leer datos del usuario</h4>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Escribe el nombre de la muestra:"</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">muestra</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"La muestra ingresada es: </span><span class="va">$muestra</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="guardar-un-log-sencillo" class="level3">
+<h3 class="anchored" data-anchor-id="guardar-un-log-sencillo">Guardar un log sencillo</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Inicio: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span> <span class="op">&gt;&gt;</span> log.txt</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Ejecutando análisis..."</span> <span class="op">&gt;&gt;</span> log.txt</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Fin: </span><span class="va">$(</span><span class="fu">date</span><span class="va">)</span><span class="st">"</span> <span class="op">&gt;&gt;</span> log.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="estructuras-de-control" class="level2">
+<h2 class="anchored" data-anchor-id="estructuras-de-control">Estructuras de control</h2>
+<p>Las <strong>estructuras de control</strong> permiten que un script tome decisiones según ciertas condiciones. Son útiles para verificar si un archivo existe, si un directorio ya fue creado o si un proceso terminó correctamente.</p>
+<section id="if-elif-y-else" class="level3">
+<h3 class="anchored" data-anchor-id="if-elif-y-else"><code>if</code>, <code>elif</code> y <code>else</code></h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="va">archivo</span><span class="op">=</span><span class="st">"datos.fastq"</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> <span class="st">"</span><span class="va">$archivo</span><span class="st">"</span> <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"El archivo existe"</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"El archivo no existe"</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="ejemplo-con-varias-condiciones" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-con-varias-condiciones">Ejemplo con varias condiciones</h4>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="va">numero</span><span class="op">=</span>10</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$numero</span><span class="st">"</span> <span class="ot">-gt</span> 10 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"El número es mayor que 10"</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> <span class="bu">[</span> <span class="st">"</span><span class="va">$numero</span><span class="st">"</span> <span class="ot">-eq</span> 10 <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"El número es igual a 10"</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"El número es menor que 10"</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="cf">fi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="algunas-pruebas-comunes" class="level3">
+<h3 class="anchored" data-anchor-id="algunas-pruebas-comunes">Algunas pruebas comunes</h3>
+<ul>
+<li><p><code>-f</code> : existe un archivo</p></li>
+<li><p><code>-d</code> : existe un directorio</p></li>
+<li><p><code>-e</code> : existe archivo o directorio</p></li>
+<li><p><code>-z</code> : cadena vacía</p></li>
+<li><p><code>-n</code> : cadena no vacía</p></li>
+<li><p><code>-eq</code> : igual</p></li>
+<li><p><code>-ne</code> : diferente</p></li>
+<li><p><code>-lt</code> : menor que</p></li>
+<li><p><code>-gt</code> : mayor que</p></li>
+</ul>
+</section>
+</section>
+<section id="bucle-for" class="level2">
+<h2 class="anchored" data-anchor-id="bucle-for">Bucle <code>for</code></h2>
+<p>En Bash, el bucle <code>for</code> se usa para <strong>repetir una acción varias veces</strong>.<br>
+Es muy útil cuando se quiere aplicar el mismo comando a:</p>
+<ul>
+<li><p>varios archivos,</p></li>
+<li><p>varias muestras,</p></li>
+<li><p>varias carpetas,</p></li>
+<li><p>una lista de nombres,</p></li>
+<li><p>una serie de números.</p></li>
+</ul>
+<section id="idea-central" class="level3">
+<h3 class="anchored" data-anchor-id="idea-central">Idea central</h3>
+<p>En lugar de escribir muchas veces el mismo comando:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando muestra1.fastq.gz"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando muestra2.fastq.gz"</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Procesando muestra3.fastq.gz"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>podemos usar <code>for</code></p>
+</section>
+<section id="sintaxis-general" class="level3">
+<h3 class="anchored" data-anchor-id="sintaxis-general">Sintaxis general</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> lista<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">comandos</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="explicación" class="level2">
+<h2 class="anchored" data-anchor-id="explicación">Explicación</h2>
+<ul>
+<li><p><code>for</code> inicia el bucle</p></li>
+<li><p><code>variable</code> guarda temporalmente cada elemento</p></li>
+<li><p><code>in lista</code> indica qué elementos se van a recorrer</p></li>
+<li><p><code>do</code> marca el inicio de los comandos a repetir</p></li>
+<li><p><code>done</code> marca el final del bucle</p></li>
+</ul>
+<section id="primer-ejemplo-sencillo" class="level3">
+<h3 class="anchored" data-anchor-id="primer-ejemplo-sencillo">Primer ejemplo sencillo:</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre <span class="kw">in</span> Ana Luis Carmen<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hola, </span><span class="va">$nombre</span><span class="st">"</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El bucle hace esto internamente:</p>
+<ul>
+<li><p>primero <code>nombre="Ana"</code></p></li>
+<li><p>luego <code>nombre="Luis"</code></p></li>
+<li><p>luego <code>nombre="Carmen"</code></p></li>
+</ul>
+<p>Y en cada vuelta ejecuta:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hola, </span><span class="va">$nombre</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-con-números" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-con-números">Ejemplo con números</h3>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> 1 2 3 4 5<span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Número: </span><span class="va">$n</span><span class="st">"</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p><strong>Ejercicio: uso de <code>for</code> en Bash</strong></p>
+<p>Escribe un script en <strong>Bash</strong> que realice lo siguiente:</p>
+<ol type="1">
+<li><p>Muestre en pantalla los números <strong>del 1 al 100</strong>.</p></li>
+<li><p>Después, muestre en pantalla los números <strong>del 2 al 100 avanzando de 2 en 2</strong>.</p></li>
+<li><p>Recorre las muestras de la carpeta <code>/home/cristian/mi_proyecto/data/raw</code> que terminan en <code>.fq.gz</code> y muestra para cada una el mensaje <code>Procesando &lt;nombre_de_la_muestra&gt;</code> usando la variable <code>muestra</code>.</p></li>
+</ol>
+</blockquote>
+</section>
+</section>
+<section id="bucle-while" class="level2">
+<h2 class="anchored" data-anchor-id="bucle-while">Bucle <code>while</code></h2>
+<p>El bucle <code>while</code> ejecuta un bloque de comandos <strong>mientras una condición sea verdadera</strong>.</p>
+<p>Su idea es:</p>
+<blockquote class="blockquote">
+<p>“repite esto mientras se cumpla esta condición”.</p>
+</blockquote>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="ex">condicion</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="ex">comandos</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="cómo-funciona-while" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-funciona-while">Cómo funciona <code>while</code></h3>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="va">contador</span><span class="op">=</span>1</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">[</span> <span class="va">$contador</span> <span class="ot">-le</span> 3 <span class="bu">]</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Iteración </span><span class="va">$contador</span><span class="st">"</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">contador</span><span class="op">=</span><span class="va">$((contador</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="paso-a-paso" class="level4">
+<h4 class="anchored" data-anchor-id="paso-a-paso">Paso a paso</h4>
+<ol type="1">
+<li><p><code>contador=1</code></p></li>
+<li><p>Bash evalúa la condición:</p></li>
+</ol>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="va">$contador</span> <span class="ot">-le</span> 3 <span class="bu">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><p>Como <code>1 &lt;= 3</code>, entra al bucle.</p></li>
+<li><p>Ejecuta:</p></li>
+</ol>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Iteración 1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="5" type="1">
+<li>Luego aumenta el contador:echo “Iteración 1”</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="va">contador</span><span class="op">=</span><span class="va">$((contador</span> <span class="op">+</span> <span class="dv">1</span><span class="va">))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="6" type="1">
+<li><p>Vuelve a evaluar la condición.</p></li>
+<li><p>Cuando <code>contador</code> ya no cumple, el bucle termina.</p></li>
+</ol>
+</section>
+</section>
+<section id="comando-read" class="level3">
+<h3 class="anchored" data-anchor-id="comando-read">Comando <code>read</code></h3>
+<p><code>read</code> toma una línea y la guarda en <code>variable</code>.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="va">variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Ejemplo interactivo:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">read</span> <span class="at">-p</span> <span class="st">"Escribe tu nombre: "</span> <span class="va">nombre</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hola, </span><span class="va">$nombre</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Aquí:</p>
+<ul>
+<li><p><code>-p</code> muestra un mensaje,</p></li>
+<li><p>lo que el usuario escriba se guarda en <code>nombre</code>.</p></li>
+</ul>
+</section>
+<section id="leer-un-archivo-línea-por-línea-usando-read-y-while" class="level3">
+<h3 class="anchored" data-anchor-id="leer-un-archivo-línea-por-línea-usando-read-y-while">Leer un archivo línea por línea usando <code>read</code> y <code>while</code></h3>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">linea</span><span class="kw">;</span> <span class="cf">do</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"</span><span class="va">$linea</span><span class="st">"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> archivo.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p><code>read linea</code> toma <strong>una línea</strong></p></li>
+<li><p><code>while</code> repite eso hasta llegar al final del archivo</p></li>
+<li><p><code>done &lt; archivo.txt</code> hace que la entrada venga del archivo y no del teclado</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>Ejercicio:</p>
+<h3 id="instrucciones" class="anchored">Instrucciones</h3>
+<ol type="1">
+<li><p>Crear un archivo llamado <code>nombres.txt</code>.</p></li>
+<li><p>Escribir dentro <strong>10 nombres</strong>, uno por línea.</p></li>
+<li><p>Crear un script en Bash que lea el archivo con <code>while</code>.</p></li>
+<li><p>El script debe contar cuántas líneas tiene el archivo.</p></li>
+<li><p>Al final debe imprimir el total de nombres leídos.</p></li>
+</ol>
+</blockquote>
+<p>Ejemplo de archivo <code>nombres.txt</code></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Ana</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Luis</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="ex">María</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Carlos</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Elena</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="ex">José</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Fernanda</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Miguel</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Laura</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Diego</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Tarea:</p>
+<ol type="1">
+<li><p>Crear un script llamado <code>contar_lecturas.sh</code>.</p></li>
+<li><p>El script debe recibir el nombre del archivo como argumento.</p></li>
+<li><p>Debe detectar si el archivo está comprimido (<code>.gz</code>) o no.</p></li>
+<li><p>Debe contar cuántas lecturas hay en el archivo.</p></li>
+<li><p>Debe imprimir el nombre del archivo y el número total de lecturas.</p></li>
+</ol>
+</blockquote>
+</section>
+</section>
+<section id="funciones-en-bash" class="level2">
+<h2 class="anchored" data-anchor-id="funciones-en-bash">Funciones en Bash</h2>
+<p>Las <strong>funciones</strong> permiten agrupar comandos que se reutilizan dentro de un script. Ayudan a organizar mejor el código y facilitan su lectura.</p>
+<section id="ejemplo-de-función" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplo-de-función">Ejemplo de función</h4>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">saludar()</span> <span class="kw">{</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Hola, bienvenido al análisis bioinformático"</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="ex">saludar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="función-con-argumento" class="level4">
+<h4 class="anchored" data-anchor-id="función-con-argumento">Función con argumento</h4>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="fu">procesar_muestra()</span> <span class="kw">{</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"Procesando la muestra: </span><span class="va">$1</span><span class="st">"</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="kw">}</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="ex">procesar_muestra</span> <span class="st">"sample_01"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="automatización-de-scripts-con-cron" class="level2">
+<h2 class="anchored" data-anchor-id="automatización-de-scripts-con-cron">Automatización de scripts con cron</h2>
+<p>Además de ejecutarse manualmente, los scripts pueden programarse para correr de manera automática con <strong>cron</strong>.</p>
+<p><code>cron</code> es un sistema de Linux que permite ejecutar tareas en horarios definidos, por ejemplo:</p>
+<ul>
+<li><p>cada día,</p></li>
+<li><p>cada semana,</p></li>
+<li><p>cada cierto número de minutos,</p></li>
+<li><p>en fechas específicas.</p></li>
+</ul>
+<section id="para-qué-sirve-en-bioinformática" class="level3">
+<h3 class="anchored" data-anchor-id="para-qué-sirve-en-bioinformática">¿Para qué sirve en bioinformática?</h3>
+<p>Algunos usos comunes son:</p>
+<ul>
+<li><p>respaldos automáticos,</p></li>
+<li><p>monitoreo de recursos,</p></li>
+<li><p>limpieza de archivos temporales,</p></li>
+<li><p>ejecución periódica de scripts,</p></li>
+<li><p>generación de reportes.</p></li>
+</ul>
+<section id="editar-tareas-programadas" class="level4">
+<h4 class="anchored" data-anchor-id="editar-tareas-programadas">Editar tareas programadas</h4>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">crontab</span> <span class="at">-e</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ver-tareas-programadas" class="level4">
+<h4 class="anchored" data-anchor-id="ver-tareas-programadas">Ver tareas programadas</h4>
+<pre><code>crontab -l</code></pre>
+</section>
+<section id="estructura-de-una-tarea-en-cron" class="level4">
+<h4 class="anchored" data-anchor-id="estructura-de-una-tarea-en-cron">Estructura de una tarea en cron</h4>
+<pre><code>* * * * * comando
+- - - - -
+| | | | |
+| | | | └── día de la semana (0-6)
+| | | └──── mes (1-12)
+| | └────── día del mes (1-31)
+| └──────── hora (0-23)
+└────────── minuto (0-59)</code></pre>
+</section>
+<section id="ejemplos" class="level4">
+<h4 class="anchored" data-anchor-id="ejemplos">Ejemplos</h4>
+<p>Ejecutar un script todos los días a las 2:00 am:</p>
+<pre><code>0 2 * * * /home/usuario/scripts/respaldo.sh</code></pre>
+<p>Ejecutarlo cada 30 minutos:</p>
+<pre><code>*/30 * * * * /home/usuario/scripts/monitoreo.sh</code></pre>
+<p>Ejecutarlo todos los lunes a las 8:00 am:</p>
+<pre><code>0 8 * * 1 /home/usuario/scripts/reporte.sh</code></pre>
+</section>
+<section id="recomendaciones" class="level4">
+<h4 class="anchored" data-anchor-id="recomendaciones">Recomendaciones</h4>
+<ul>
+<li><p>usar rutas absolutas,</p></li>
+<li><p>verificar permisos de ejecución,</p></li>
+<li><p>guardar salida y errores en un archivo de log.</p></li>
+</ul>
+<p>Ejemplo:</p>
+<pre><code>0 2 * * * /home/usuario/scripts/respaldo.sh &gt;&gt; /home/usuario/logs/respaldo.log 2&gt;&amp;1</code></pre>
+</section>
+<section id="cron-guru" class="level4">
+<h4 class="anchored" data-anchor-id="cron-guru">Cron Guru</h4>
+<p>Una herramienta muy útil para entender expresiones de cron es <a href="https://crontab.guru/"><strong>Crontab Guru</strong>,</a> que ayuda a interpretar y construir estas expresiones de manera más sencilla.</p>
+<p>Ejemplos:</p>
+<ul>
+<li><p><code>*/5 * * * *</code> → cada 5 minutos</p></li>
+<li><p><code>0 9 * * 1</code> → todos los lunes a las 9:00</p></li>
+<li><p><code>30 22 * * *</code> → todos los días a las 22:30</p></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./unidad_5.html" class="pagination-link" aria-label="Unidad 5. Comandos básicos de Bash y monitoreo de recursos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 5. Comandos básicos de Bash y monitoreo de recursos</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./nota_bot_telegram.html" class="pagination-link" aria-label="Notas: Crear un bot con BotFather en Telegram">
+        <span class="nav-page-text"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_6.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

@@ -1,0 +1,945 @@
+---
+title: "Unidad 7: Expresiones Regulares y Filtrado de Datos"
+---
+
+## Introducción a expresiones regulares
+
+Una **expresión regular (regex)** es una forma de describir un patrón dentro de un texto.
+
+En lugar de buscar una palabra exacta, podemos buscar una **estructura**.
+
+Por ejemplo:
+
+-   encontrar cualquier número,
+
+-   buscar palabras que empiecen con cierta letra,
+
+-   validar si un texto tiene un formato correcto (como una CURP, correo electrónico o nombre de archivo).
+
+#### 🔍 Ejemplo simple
+
+Si queremos encontrar números en un texto:
+
+``` bash
+[0-9]
+```
+
+Esto significa:\
+“cualquier carácter entre 0 y 9”.
+
+Si queremos encontrar **varios números seguidos**:
+
+``` bash
+[0-9]+
+```
+
+El símbolo `+` significa “uno o más”.
+
+#### 🧠 Idea clave
+
+Las expresiones regulares **no buscan texto literal**, buscan **patrones**.
+
+#### 🔧 Uso de regex101
+
+Para aprender y probar expresiones regulares, vamos a usar:
+
+👉 <https://regex101.com/>
+
+Esta herramienta permite:
+
+-   probar expresiones en tiempo real,
+
+-   ver qué partes del texto coinciden,
+
+-   entender cómo funciona cada parte del patrón.
+
+#### 🧪 Cómo usar regex101
+
+Ejemplo práctico: Validar una CURP
+
+La **CURP** es un excelente ejemplo porque tiene una estructura fija.
+
+Ejemplo:
+
+``` bash
+PEGA850912HMCRRL09
+```
+
+📌 Estructura simplificada de una CURP
+
+-   4 letras iniciales
+
+-   6 números (fecha: año, mes, día)
+
+-   1 letra (sexo: H o M)
+
+-   5 letras
+
+-   2 caracteres alfanuméricos
+
+🧩 Construcción paso a paso del patrón de la CURP
+
+Paso 1: cuatro letras al inicio
+
+``` {.b .bash}
+^[A-Z]{4}
+```
+
+-   `^` → inicio de la línea
+
+-   `[A-Z]` → letras mayúsculas
+
+-   `{4}` → exactamente 4 letras
+
+Paso 2: agregar seis números (fecha)
+
+``` bash
+^[A-Z]{4}[0-9]{6}
+```
+
+Paso 3: agregar el sexo
+
+``` bash
+^[A-Z]{4}[0-9]{6}[HM]
+```
+
+-   `[HM]` → solo permite H o M
+
+Paso 4: agregar letras internas
+
+``` bash
+^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}
+```
+
+Paso 5: agregar los últimos caracteres
+
+``` bash
+^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$
+```
+
+-   `[A-Z0-9]{2}` → dos caracteres alfanuméricos
+
+-   `$` → fin de la línea
+
+### 🚀 Conexión con bioinformática
+
+Las expresiones regulares se usan para:
+
+-   encontrar secuencias específicas en FASTA/FASTQ,
+
+-   identificar patrones en nombres de archivos,
+
+-   filtrar resultados de BLAST,
+
+-   validar formatos de datos.
+
+-   etc.
+
+## Uso de expresiones regulares con `grep`
+
+`grep` permite **buscar líneas que coincidan con un patrón** dentro de un archivo de texto.
+
+En otras palabras:
+
+-   **regex101** nos ayuda a **entender y probar** la expresión regular,
+
+-   **grep** nos ayuda a **aplicarla en archivos reales** desde Bash.
+
+### ¿Qué hace `grep`?
+
+La forma más simple de `grep` es:
+
+``` bash
+grep "patron" archivo.txt
+```
+
+Esto busca en el archivo las líneas que coincidan con el patrón indicado.
+
+### Crear un archivo de ejemplo
+
+Para trabajar con CURPs, primero podemos crear un archivo de texto:
+
+``` bash
+nano curps.txt
+```
+
+Y pega esto:
+
+``` bash
+PEGA850912HMCRRL09
+GODE561231MDFABC08
+XXXX000000HNEYYY00
+PEGA850912HMCRRL0
+PEGA850912HMCRRL099
+PEGA850912HMCRRLAA
+```
+
+Guarda el archivo y sal de `nano`.
+
+### Buscar texto literal con `grep`
+
+Primero podemos usar `grep` sin expresión regular compleja, solo buscando texto literal.
+
+Por ejemplo, buscar las líneas que contengan `PEGA`:
+
+``` bash
+grep "PEGA" curps.txt
+```
+
+Esto devolverá las líneas donde aparezca esa cadena.
+
+### Buscar líneas que empiecen con cierto patrón
+
+Si queremos que la línea **empiece** con `PEGA`, usamos `^`:
+
+``` bash
+grep "^PEGA" curps.txt
+```
+
+### Explicación
+
+-   `^` indica inicio de línea.
+
+-   `PEGA` debe aparecer al comienzo.
+
+### Buscar líneas que terminen con un patrón
+
+Si queremos líneas que terminen en `09`:
+
+``` bash
+grep "09$" curps.txt
+```
+
+### Explicación
+
+-   `$` indica final de línea.
+
+## Usar una expresión regular con `grep`
+
+En regex101 probamos una expresión para validar una CURP con estructura general:
+
+``` bash
+^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$
+```
+
+Para usar esa expresión en `grep`, conviene activar las **expresiones regulares extendidas** con `-E`:
+
+``` bash
+grep -E '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt
+```
+
+### Mostrar las líneas inválidas
+
+También podemos pedirle a `grep` que muestre las líneas que **no** cumplen el patrón, usando `-v`:
+
+``` bash
+grep -Ev '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt
+```
+
+### Explicación
+
+-   `-E` usa expresiones regulares extendidas,
+
+-   `-v` invierte la búsqueda.
+
+Esto es muy útil para detectar errores en archivos de datos.
+
+## Extracción de datos con `cut`
+
+`cut` es una herramienta de Bash que permite **extraer partes específicas de un archivo de texto**.
+
+### 🧠 ¿Cuándo usar `cut`?
+
+`cut` es ideal cuando:
+
+-   los datos tienen una **estructura fija** (como la CURP),
+
+-   o están organizados en **columnas separadas por delimitadores** (CSV, TSV).
+
+-   
+
+### 🔧 Sintaxis básica
+
+Por posiciones (caracteres)
+
+``` bash
+cut -c posiciones archivo.txt
+```
+
+Por columnas (delimitadores)
+
+``` bash
+cut -d "DELIMITADOR" -f columnas archivo.txt
+```
+
+### 📌 Parte 1: Uso de `cut` con posiciones
+
+Archivo de ejemplo
+
+``` bash
+nano curps.txt
+```
+
+``` bash
+PEGA850912HMCRRL09
+GODE561231MDFABC08
+XXXX000000HNEYYY00
+PEGA850912HMCRRL0
+PEGA850912HMCRRL099
+PEGA850912HMCRRLAA
+```
+
+### 🧬 Estructura de una CURP
+
+| Posición | Contenido        |
+|----------|------------------|
+| 1–4      | Letras iniciales |
+| 5–10     | Fecha            |
+| 11       | Sexo             |
+| 12–13    | Entidad          |
+| 14–16    | Consonantes      |
+| 17–18    | Homoclave        |
+
+Extraer la fecha
+
+``` bash
+cut -c5-10 curps.txt
+```
+
+Extraer el sexo
+
+``` bash
+cut -c11 curps.txt
+```
+
+Extraer entidad federativa
+
+``` bash
+cut -c12-13 curps.txt
+```
+
+Extraer múltiples posiciones
+
+``` bash
+cut -c1-4,11 curps.txt
+```
+
+### 📌 Parte 2: Uso de `cut` con delimitadores
+
+Muchos archivos tienen columnas separadas por:
+
+-   espacios
+
+-   comas (CSV)
+
+-   tabuladores (TSV)
+
+### 🔧 Sintaxis
+
+``` bash
+cut -d "DELIMITADOR" -f columnas archivo.txt
+```
+
+### Ejemplo 1: archivo con espacios
+
+``` bash
+nano personas_curp.txt
+```
+
+``` bash
+Ana PEGA850912HMCRRL09
+Luis GODE561231MDFABC08
+Marta XXXX000000HNEYYY00
+Juan PEGA850912HMCRRL0
+```
+
+Extraer CURP
+
+``` bash
+cut -d " " -f2 personas_curp.txt
+```
+
+Extraer nombres
+
+``` bash
+cut -d " " -f1 personas_curp.txt
+```
+
+### Ejemplo 2: archivo CSV
+
+``` bash
+nano datos.csv
+```
+
+``` bash
+nombre,curp,edad
+Ana,PEGA850912HMCRRL09,38
+Luis,GODE561231MDFABC08,60
+Marta,XXXX000000HNEYYY00,25
+```
+
+Extraer CURP
+
+```         
+cut -d "," -f2 datos.csv
+```
+
+Extraer nombre y edad
+
+```         
+cut -d "," -f1,3 datos.csv
+```
+
+### Ejemplo 3: archivo TSV
+
+``` bash
+nano datos.tsv
+```
+
+``` bash
+nombre  curp  sexo
+Ana PEGA850912HMCRRL09  H
+Luis  GODE561231MDFABC08  M
+```
+
+Extraer CURP
+
+``` bash
+cut -d $'\t' -f2 datos.tsv
+```
+
+Extraer sexo
+
+``` bash
+cut -d $'\t' -f3 datos.tsv
+```
+
+### 🔬 Ejemplo bioinformático
+
+Archivo tipo BLAST:
+
+``` bash
+seq1    subject1    98.5    150
+seq2    subject2    87.2    120
+seq3    subject3    99.1    200
+```
+
+Extraer identidad (%)
+
+```         
+cut -d $'\t' -f3 archivo.txt
+```
+
+Extraer ID y longitud
+
+```         
+cut -d $'\t' -f1,4 archivo.txt
+```
+
+```         
+cut -d "," -f2 datos.csv | cut -c11
+```
+
+## Transformación de datos con `sed`
+
+`sed` (*stream editor*) procesa texto línea por línea y permite:
+
+-   reemplazar patrones
+
+-   eliminar contenido
+
+-   formatear texto
+
+-   editar archivos de manera automática
+
+### 🔧 Sintaxis básica
+
+``` bash
+sed 's/patron/reemplazo/' archivo.txt
+```
+
+Explicación
+
+-   `s` → significa *substitute* (sustituir)
+
+-   `patron` → lo que queremos buscar
+
+-   `reemplazo` → lo que queremos poner
+
+### Archivo de trabajo
+
+Seguimos usando:
+
+``` bash
+curps.txt
+```
+
+``` bash
+PEGA850912HMCRRL09
+GODE561231MDFABC08
+XXXX000000HNEYYY00
+PEGA850912HMCRRL0
+PEGA850912HMCRRL099
+PEGA850912HMCRRLAA
+```
+
+### 📌 Parte 1: Reemplazos básicos
+
+Cambiar letras por minúsculas
+
+```         
+sed 's/.*/\L&/' curps.txt
+```
+
+Explicación
+
+-   `.*` → toda la línea
+
+-   `&` → representa la coincidencia completa
+
+-   `\L` → convierte a minúsculas
+
+Reemplazar texto específico
+
+``` bash
+sed 's/PEGA/XXXX/' curps.txt
+```
+
+Reemplazar todas las coincidencias en la línea
+
+``` bash
+sed 's/A/X/g' curps.txt
+```
+
+Explicación
+
+-   `g` → reemplaza **todas** las coincidencias, no solo la primera
+
+### 📌 Parte 2: Uso de expresiones regulares en `sed`
+
+Para trabajar mejor con patrones complejos usamos `-E`:
+
+``` bash
+sed -E 's/patron/reemplazo/' archivo.txt
+```
+
+Separar la CURP en bloques
+
+``` bash
+sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\1-\2-\3-\4-\5-\6/' curps.txt
+```
+
+Explicación
+
+Se crean grupos:
+
+| Grupo | Contenido         |
+|-------|-------------------|
+| \\1   | primeras 4 letras |
+| \\2   | fecha             |
+| \\3   | sexo              |
+| \\4   | entidad           |
+| \\5   | consonantes       |
+| \\6   | final             |
+
+Y se reconstruye con guiones:
+
+``` bash
+PEGA-850912-H-MC-RRL-09
+```
+
+#### Marcar CURPs válidas
+
+``` bash
+sed -E 's/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/& -> VALIDA/' curps.txt
+```
+
+#### Marcar CURPs inválidas
+
+``` bash
+sed -E '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/! s/.*/& -> INVALIDA/' curps.txt
+```
+
+### 📌 Parte 3: Filtrar con `sed`
+
+Aunque `grep` es mejor para filtrar, `sed` también puede hacerlo.
+
+### Mostrar solo CURPs válidas
+
+``` bash
+sed -En '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/p' curps.txt
+```
+
+Explicación
+
+-   `-n` → no imprime automáticamente
+
+-   `p` → imprime solo las coincidencias
+
+#### Eliminar líneas inválidas
+
+``` bash
+sed -E '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/!d' curps.txt
+```
+
+### 📌 Parte 4: Eliminar o modificar partes de texto
+
+#### Eliminar los primeros 4 caracteres
+
+``` bash
+sed 's/^....//' curps.txt
+```
+
+#### Eliminar números
+
+``` bash
+sed 's/[0-9]//g' curps.txt
+```
+
+#### Eliminar líneas vacías
+
+``` bash
+sed '/^$/d' archivo.txt
+```
+
+### 📌 Parte 5: Edición de archivos (in-place)
+
+Para modificar directamente un archivo:
+
+``` bash
+sed -i 's/PEGA/TEST/' curps.txt
+```
+
+⚠️ Esto modifica el archivo original
+
+### 🔗 Combinar `sed` con otras herramientas
+
+#### Formatear solo CURPs válidas
+
+``` bash
+grep -E '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt | \ sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\1-\2-\3-\4-\5-\6/'
+```
+
+#### Extraer y formatear desde CSV
+
+``` bash
+cut -d "," -f2 datos.csv | \ sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\1-\2-\3-\4-\5-\6/'
+```
+
+### ⚠️ Errores comunes
+
+#### Olvidar `-E`
+
+Sin `-E`, los `{}` y `()` no funcionan igual.
+
+### No usar comillas correctas
+
+Siempre usar:
+
+``` bash
+'s/.../.../'
+```
+
+### Modificar archivos sin querer
+
+``` bash
+sed -i
+```
+
+👉 usar con cuidado
+
+## Introducción a `awk` (nivel básico)
+
+`awk` es una herramienta que permite:
+
+👉 **analizar, filtrar y procesar datos línea por línea**
+
+Funciona leyendo un archivo, separando cada línea en columnas y aplicando acciones sobre ellas.
+
+### ⚠️ Importante
+
+`awk` es **muy potente**, pero también:
+
+👉 tiene una **sintaxis un poco más compleja** que `grep`, `cut` o `sed`.
+
+💡 Por eso, en esta sección veremos solo lo básico, suficiente para:
+
+-   extraer información
+
+-   hacer filtros simples
+
+-   generar salidas útiles
+
+### 🔧 Sintaxis básica
+
+``` bash
+awk '{accion}' archivo.txt
+```
+
+### 📌 Conceptos clave
+
+Dentro de `awk`:
+
+-   `$0` → toda la línea
+
+-   `$1` → primera columna
+
+-   `$2` → segunda columna
+
+## Archivo de trabajo
+
+``` bash
+curps.txt
+```
+
+``` bash
+PEGA850912HMCRRL09
+GODE561231MDFABC08
+XXXX000000HNEYYY00
+PEGA850912HMCRRL0
+```
+
+### 📌 Ejemplos simples
+
+#### Mostrar todas las líneas
+
+``` bash
+awk '{print $0}' curps.txt
+```
+
+#### Extraer sexo (posición 11)
+
+``` bash
+awk '{print substr($0,11,1)}' curps.txt
+```
+
+#### Mostrar CURP + sexo
+
+``` bash
+awk '{print $0, "-> sexo:", substr($0,11,1)}' curps.txt
+```
+
+### 📌 Filtrar con `awk`
+
+#### Mostrar solo hombres
+
+``` bash
+awk 'substr($0,11,1)=="H"' curps.txt
+```
+
+#### Mostrar solo CURPs con longitud correcta
+
+``` bash
+awk 'length($0)==18' curps.txt
+```
+
+### 📌 Un ejemplo con lógica (if)
+
+``` bash
+awk '{
+  if (length($0)==18)
+    print $0, "-> correcta"
+  else
+    print $0, "-> incorrecta"
+}' curps.txt
+```
+
+### 🧠 Idea clave
+
+Mientras que:
+
+-   `grep` → filtra por patrones
+
+-   `cut` → corta columnas
+
+-   `sed` → modifica texto
+
+👉 `awk` permite hacer todo eso **pero con lógica**
+
+## Búsqueda de archivos con `find`
+
+`find` permite localizar archivos o carpetas según:
+
+-   nombre
+
+-   tipo (archivo o carpeta)
+
+-   tamaño
+
+-   fecha
+
+-   permisos
+
+### 🔧 Sintaxis básica
+
+``` bash
+find ruta opciones
+```
+
+Ejemplo básico
+
+Buscar todos los archivos en el directorio actual:
+
+``` bash
+find .
+```
+
+Buscar por nombre
+
+Buscar archivos `.txt`
+
+``` bash
+find . -name "*.txt"
+```
+
+Buscar archivos FASTA
+
+``` bash
+find . -name "*.fasta"
+```
+
+Buscar archivos FASTQ comprimidos
+
+``` bash
+find . -name "*.fastq.gz"
+```
+
+### ⚠️ Importante
+
+-   `-name` usa **comodines (glob)**, no regex completas:
+
+-   `*` → cualquier número de caracteres
+
+-   `?` → un solo carácter
+
+Ejemplos
+
+``` bash
+find . -name "sample?.fq"
+find . -name "A*"
+```
+
+------------------------------------------------------------------------
+
+### 📌 Buscar por tipo
+
+Solo archivos
+
+``` bash
+find . -type f
+```
+
+Solo directorios
+
+``` bash
+find . -type d
+```
+
+------------------------------------------------------------------------
+
+Buscar archivos FASTA únicamente
+
+``` bash
+find . -type f -name "*.fasta"
+```
+
+------------------------------------------------------------------------
+
+### 📌 Buscar con expresiones regulares
+
+Aunque no es lo más común, `find` también puede usar regex:
+
+``` bash
+find . -regex '.*\.txt$'
+```
+
+Ejemplo
+
+``` bash
+find . -regex '.*sample[0-9]+\.fq'
+```
+
+### ⚠️ Nota importante
+
+-   `-regex` evalúa la **ruta completa**, no solo el nombre
+
+-   por eso se usa `.*` al inicio
+
+### 📌 Diferencia clave
+
+| Opción   | Tipo de patrón        |
+|----------|-----------------------|
+| `-name`  | comodines (`*`, `?`)  |
+| `-regex` | expresiones regulares |
+
+👉 En la práctica, `-name` es el más usado.
+
+### 📌 Buscar por tamaño
+
+Archivos mayores a 1 MB
+
+``` bash
+find . -size +1M
+```
+
+Archivos menores a 100 KB
+
+``` bash
+find . -size -100k
+```
+
+### 📌 Buscar por tiempo
+
+Archivos modificados en los últimos 2 días
+
+``` bash
+find . -mtime -2
+```
+
+### 📌 Ejecutar acciones con `find`
+
+`find` se vuelve muy poderoso cuando se combina con acciones.
+
+#### Mostrar detalles con `ls`
+
+``` bash
+find . -name "*.txt" -exec ls -lh {} \;
+```
+
+### ⚠️ Eliminar archivos
+
+``` bash
+find . -name "*.tmp" -delete
+```
+
+### Ejecutar comandos en cada archivo
+
+``` bash
+find . -name "*.fastq.gz" -exec echo "Procesando {}" \;
+```
+
+### 🔗 Combinar `find` con otras herramientas
+
+Buscar archivos y aplicar `grep`
+
+``` bash
+find . -name "*.txt" -exec grep "PEGA" {} \;
+```
+
+Buscar FASTA y contar secuencias
+
+``` bash
+find . -name "*.fasta" -exec grep ">" {} \;
+```
+
+### ⚠️ Errores comunes
+
+*No usar comillas*
+
+```         
+find . -name *.txt   ❌
+```
+
+```         
+find . -name "*.txt" ✅
+```

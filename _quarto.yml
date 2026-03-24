@@ -28,6 +28,9 @@ book:
     - unidad_5.qmd
     - unidad_6.qmd
     - nota_bot_telegram.qmd
+    - fastq.qmd
+    - unidad_7.qmd
+    - unidad_8.qmd
     - references.qmd
 
 format:
