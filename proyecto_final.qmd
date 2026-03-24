@@ -1,0 +1,298 @@
+---
+title: "Proyecto Final del Curso"
+---
+
+## Objetivo
+
+El objetivo de este proyecto es que cada estudiante aplique los conocimientos adquiridos durante el curso para desarrollar un **script** o un **flujo de trabajo en Bash** que sea útil para su tema de estudio, su línea de investigación o alguna necesidad real de análisis de datos.
+
+No se busca únicamente que el script funcione, sino que el trabajo esté planteado como un **proyecto reproducible**, bien organizado y suficientemente documentado para que cualquier persona pueda descargar el repositorio desde GitHub, entender qué hace y volver a ejecutarlo.
+
+------------------------------------------------------------------------
+
+## Entrega
+
+El proyecto final deberá entregarse como un **repositorio en GitHub**.
+
+La idea es que el repositorio no sea solo un lugar donde se suben archivos, sino un proyecto completo con:
+
+-   estructura clara,
+
+-   documentación adecuada,
+
+-   scripts funcionales,
+
+-   organización lógica de datos y resultados,
+
+-   e instrucciones suficientes para su reproducción.
+
+------------------------------------------------------------------------
+
+## ¿Qué debe hacer el proyecto?
+
+Cada estudiante deberá desarrollar un proyecto que resuelva un problema concreto o automatice una tarea útil para su investigación. Por ejemplo:
+
+-   descarga de datos,
+
+-   renombrado o organización de archivos,
+
+-   filtrado o procesamiento de secuencias,
+
+-   control de calidad,
+
+-   búsquedas automatizadas,
+
+-   ejecución de varios pasos de análisis en un solo flujo de trabajo,
+
+-   o cualquier proceso que tenga aplicación real en su área.
+
+El proyecto puede ser sencillo o más elaborado, pero debe reflejar la aplicación de varias herramientas y conceptos revisados en clase.
+
+------------------------------------------------------------------------
+
+## Requisitos generales
+
+El proyecto debe incluir como mínimo:
+
+-   un **script en Bash** funcional;
+
+-   una **carpeta de proyecto bien estructurada**;
+
+-   un archivo **README.md** claro y completo;
+
+-   organización separada de scripts, datos, resultados y metadatos;
+
+-   explicación de **programas utilizados y sus versiones**;
+
+-   información sobre el **equipo en el que fue probado**;
+
+-   instrucciones suficientes para que otra persona pueda reproducirlo.
+
+Si el proyecto usa ambientes o contenedores, también deberán incluirse o explicarse.
+
+------------------------------------------------------------------------
+
+## Estructura sugerida del repositorio
+
+```         
+proyecto_final/
+├── README.md
+├── scripts/
+├── datos/
+├── resultados/
+├── metadatos/
+├── programas_contenedores/
+├── config/
+└── logs/
+```
+
+------------------------------------------------------------------------
+
+## Descripción de carpetas
+
+### `README.md`
+
+Documento principal del proyecto. Aquí debe explicarse de manera clara qué hace el proyecto, para qué sirve, qué programas necesita, cómo se ejecuta y qué resultados produce.
+
+### `scripts/`
+
+Contendrá los scripts desarrollados por el estudiante.
+
+Por ejemplo:
+
+-   `telegram.sh`
+
+-   `validacion_fastq.sh`
+
+-   `filtrado.sh`
+
+### `datos/`
+
+Contendrá los datos de entrada necesarios para probar el análisis.
+
+Si los datos reales son demasiado grandes, se puede incluir:
+
+-   un subconjunto pequeño de prueba,
+
+-   un archivo de ejemplo,
+
+-   o un script que permita descargarlos.
+
+### `resultados/`
+
+Aquí deberán almacenarse las salidas generadas por el flujo de trabajo.
+
+### `metadatos/`
+
+Incluirá archivos auxiliares como:
+
+-   tablas de muestras,
+
+-   listas de accesiones,
+
+-   archivos CSV,
+
+-   archivos de apoyo al análisis.
+
+### `programas_contenedores/`
+
+Carpeta para incluir archivos relacionados con la reproducibilidad del ambiente, por ejemplo:
+
+-   `environment.yml`
+
+-   `requirements.txt`
+
+-   `Dockerfile`
+
+-   archivos `.def`
+
+-   archivos `.sif`
+
+-   instrucciones para `micromamba`
+
+-   instrucciones para `apptainer`
+
+### `config/`
+
+Archivos de configuración o parámetros del análisis.
+
+### `logs/`
+
+Archivos de seguimiento de ejecución, en caso de que el pipeline los genere.
+
+------------------------------------------------------------------------
+
+## Contenido mínimo del README
+
+El archivo `README.md` es una parte central del proyecto. Debe incluir al menos las siguientes secciones:
+
+### 1. Título del proyecto
+
+Nombre breve y descriptivo.
+
+### 2. Introducción
+
+Descripción breve del problema que resuelve el proyecto.
+
+### 3. Objetivo
+
+Explicar para qué sirve el script o flujo de trabajo.
+
+### 4. Descripción general del flujo de trabajo
+
+Resumen de los pasos principales del análisis.
+
+### 5. Estructura del repositorio
+
+Explicación breve de las carpetas y archivos principales.
+
+### 6. Requisitos de software
+
+Lista de programas utilizados con sus versiones.
+
+Ejemplo:
+
+```         
+Bash 5.1
+FastQC 0.12.1
+SeqKit 2.8.0
+awk
+sed
+grep
+```
+
+### 7. Reproducibilidad
+
+Indicar cómo preparar el ambiente para correr el análisis.
+
+Por ejemplo:
+
+-   instalación manual,
+
+-   uso de `micromamba`,
+
+-   uso de `apptainer`,
+
+-   o cualquier otra estrategia.
+
+### 8. Instrucciones de uso
+
+Explicar paso a paso cómo ejecutar el proyecto.
+
+Ejemplo:
+
+```         
+git clone https://github.com/usuario/proyecto_final.git
+cd proyecto_final
+bash scripts/pipeline.sh
+```
+
+### 9. Entradas y salidas
+
+Describir qué archivos recibe el análisis y qué archivos genera.
+
+### 10. Información del sistema
+
+Describir el equipo en el que fue probado el proyecto.
+
+### 11. Autoría
+
+Nombre del estudiante y, si se desea, tema general de investigación.
+
+------------------------------------------------------------------------
+
+## Información del sistema
+
+Para favorecer la reproducibilidad, cada proyecto deberá incluir en el `README.md` una sección donde se indique **en qué equipo fue probado**.
+
+Esto permitirá conocer el contexto de ejecución y estimar mejor los requerimientos computacionales del flujo de trabajo.
+
+### Información mínima requerida
+
+-   tipo de equipo:
+
+    -   laptop,
+
+    -   computadora de escritorio,
+
+    -   servidor,
+
+    -   clúster;
+
+-   sistema operativo;
+
+-   CPU:
+
+    -   modelo,
+
+    -   número de núcleos e hilos
+
+-   memoria RAM;
+
+-   GPU, si aplica;
+
+-   almacenamiento, si se considera relevante;
+
+-   tiempo aproximado de ejecución, si es posible.
+
+### Ejemplo
+
+```         
+## Información del sistema
+
+Este proyecto fue probado en el siguiente equipo:
+
+- Tipo de equipo: servidor
+- Sistema operativo: Ubuntu 22.04 LTS
+- CPU: Intel Xeon E5-2695 v4
+- Núcleos / hilos: 36 / 72
+- RAM: 256 GB
+- GPU: NVIDIA RTX 3070 (no utilizada en este análisis)
+- Almacenamiento: SSD NVMe
+
+Tiempo aproximado de ejecución: 10 minutos
+```
+
+## Fecha de entrega:
+
+- *Viernes 15 de Mayo de 2026*

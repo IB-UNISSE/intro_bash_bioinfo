@@ -81,7 +81,7 @@ PEGA850912HMCRRL09
 
 Paso 1: cuatro letras al inicio
 
-``` {.b .bash}
+``` bash
 ^[A-Z]{4}
 ```
 
@@ -256,8 +256,6 @@ Esto es muy útil para detectar errores en archivos de datos.
 
 -   o están organizados en **columnas separadas por delimitadores** (CSV, TSV).
 
--   
-
 ### 🔧 Sintaxis básica
 
 Por posiciones (caracteres)
@@ -380,13 +378,13 @@ Marta,XXXX000000HNEYYY00,25
 
 Extraer CURP
 
-```         
+``` bash
 cut -d "," -f2 datos.csv
 ```
 
 Extraer nombre y edad
 
-```         
+``` bash
 cut -d "," -f1,3 datos.csv
 ```
 
@@ -426,17 +424,17 @@ seq3    subject3    99.1    200
 
 Extraer identidad (%)
 
-```         
+``` bash
 cut -d $'\t' -f3 archivo.txt
 ```
 
 Extraer ID y longitud
 
-```         
+``` bash
 cut -d $'\t' -f1,4 archivo.txt
 ```
 
-```         
+``` bash
 cut -d "," -f2 datos.csv | cut -c11
 ```
 
@@ -487,7 +485,7 @@ PEGA850912HMCRRLAA
 
 Cambiar letras por minúsculas
 
-```         
+``` bash
 sed 's/.*/\L&/' curps.txt
 ```
 
@@ -819,8 +817,6 @@ find . -name "sample?.fq"
 find . -name "A*"
 ```
 
-------------------------------------------------------------------------
-
 ### 📌 Buscar por tipo
 
 Solo archivos
@@ -835,15 +831,11 @@ Solo directorios
 find . -type d
 ```
 
-------------------------------------------------------------------------
-
 Buscar archivos FASTA únicamente
 
 ``` bash
 find . -type f -name "*.fasta"
 ```
-
-------------------------------------------------------------------------
 
 ### 📌 Buscar con expresiones regulares
 
@@ -943,3 +935,14 @@ find . -name *.txt   ❌
 ```         
 find . -name "*.txt" ✅
 ```
+
+### 🚀 Resumen `find`
+
+| Opción   | Uso               |
+|----------|-------------------|
+| `-name`  | buscar por nombre |
+| `-type`  | tipo de archivo   |
+| `-size`  | tamaño            |
+| `-mtime` | fecha             |
+| `-regex` | usar regex        |
+| `-exec`  | ejecutar comandos |
