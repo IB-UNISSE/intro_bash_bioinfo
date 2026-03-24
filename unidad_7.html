@@ -319,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>🧩 Construcción paso a paso del patrón de la CURP</p>
 <p>Paso 1: cuatro letras al inicio</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode b bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">^[A-Z]{4}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">^[A-Z]{4}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><p><code>^</code> → inicio de la línea</p></li>
 <li><p><code>[A-Z]</code> → letras mayúsculas</p></li>
@@ -440,7 +440,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><p>los datos tienen una <strong>estructura fija</strong> (como la CURP),</p></li>
 <li><p>o están organizados en <strong>columnas separadas por delimitadores</strong> (CSV, TSV).</p></li>
-<li></li>
 </ul>
 </section>
 <section id="sintaxis-básica" class="level3">
@@ -539,9 +538,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Luis,GODE561231MDFABC08,60</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Marta,XXXX000000HNEYYY00,25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Extraer CURP</p>
-<pre><code>cut -d "," -f2 datos.csv</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">","</span> <span class="at">-f2</span> datos.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Extraer nombre y edad</p>
-<pre><code>cut -d "," -f1,3 datos.csv</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">","</span> <span class="at">-f1,3</span> datos.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="ejemplo-3-archivo-tsv" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-3-archivo-tsv">Ejemplo 3: archivo TSV</h3>
@@ -561,10 +560,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ex">seq2</span>    subject2    87.2    120</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">seq3</span>    subject3    99.1    200</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Extraer identidad (%)</p>
-<pre><code>cut -d $'\t' -f3 archivo.txt</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">$'</span><span class="dt">\t</span><span class="st">'</span> <span class="at">-f3</span> archivo.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Extraer ID y longitud</p>
-<pre><code>cut -d $'\t' -f1,4 archivo.txt</code></pre>
-<pre><code>cut -d "," -f2 datos.csv | cut -c11</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">$'</span><span class="dt">\t</span><span class="st">'</span> <span class="at">-f1,4</span> archivo.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-d</span> <span class="st">","</span> <span class="at">-f2</span> datos.csv <span class="kw">|</span> <span class="fu">cut</span> <span class="at">-c11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="transformación-de-datos-con-sed" class="level2">
@@ -600,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="parte-1-reemplazos-básicos" class="level3">
 <h3 class="anchored" data-anchor-id="parte-1-reemplazos-básicos">📌 Parte 1: Reemplazos básicos</h3>
 <p>Cambiar letras por minúsculas</p>
-<pre><code>sed 's/.*/\L&amp;/' curps.txt</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sed</span> <span class="st">'s/.*/\L&amp;/'</span> curps.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Explicación</p>
 <ul>
 <li><p><code>.*</code> → toda la línea</p></li>
@@ -853,7 +852,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Ejemplos</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"sample?.fq"</span></span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-name</span> <span class="st">"A*"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
 </section>
 <section id="buscar-por-tipo" class="level3">
 <h3 class="anchored" data-anchor-id="buscar-por-tipo">📌 Buscar por tipo</h3>
@@ -861,10 +859,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb79"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Solo directorios</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb80"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> d</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
 <p>Buscar archivos FASTA únicamente</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb81"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">find</span> . <span class="at">-type</span> f <span class="at">-name</span> <span class="st">"*.fasta"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<hr>
 </section>
 <section id="buscar-con-expresiones-regulares" class="level3">
 <h3 class="anchored" data-anchor-id="buscar-con-expresiones-regulares">📌 Buscar con expresiones regulares</h3>
