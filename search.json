@@ -44,7 +44,7 @@
     "href": "index.html#unidades",
     "title": "Introducción a la programación para bioinformática con bash",
     "section": "Unidades",
-    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nUnidad 6. Scripting y automatización de tareas en Bash\nNotas: Crear un bot con BotFather en Telegram\nNotas: ¿Qué es un archivo FASTQ?\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
+    "text": "Unidades\n\nUnidad 1. Introducción a la Bioinformática\nUnidad 2. Documentación de proyectos y reproducibilidad\nUnidad 3. Servidores de Alto Rendimiento (HPC)\nNotas: VS Code + Git/GitHub en servidor\nUnidad 4: Fundamentos de Linux\nUnidad 5. Comandos básicos de Bash y monitoreo de recursos\nUnidad 6. Scripting y automatización de tareas en Bash\nNotas: Crear un bot con BotFather en Telegram\nNotas: ¿Qué es un archivo FASTQ?\nUnidad 7. Expresiones Regulares y Filtrado de Datos\nUnidad 8. Ambientes virtuales y contenedores\n\n(Iremos agregando el resto de unidades conforme avancemos en el semestre.)",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción a la programación para bioinformática con bash</span>"
     ]
@@ -610,13 +610,163 @@
     ]
   },
   {
+    "objectID": "unidad_7.html",
+    "href": "unidad_7.html",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "",
+    "text": "Introducción a expresiones regulares\nUna expresión regular (regex) es una forma de describir un patrón dentro de un texto.\nEn lugar de buscar una palabra exacta, podemos buscar una estructura.\nPor ejemplo:",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#introducción-a-expresiones-regulares",
+    "href": "unidad_7.html#introducción-a-expresiones-regulares",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "",
+    "text": "encontrar cualquier número,\nbuscar palabras que empiecen con cierta letra,\nvalidar si un texto tiene un formato correcto (como una CURP, correo electrónico o nombre de archivo).\n\n\n🔍 Ejemplo simple\nSi queremos encontrar números en un texto:\n[0-9]\nEsto significa:\n“cualquier carácter entre 0 y 9”.\nSi queremos encontrar varios números seguidos:\n[0-9]+\nEl símbolo + significa “uno o más”.\n\n\n🧠 Idea clave\nLas expresiones regulares no buscan texto literal, buscan patrones.\n\n\n🔧 Uso de regex101\nPara aprender y probar expresiones regulares, vamos a usar:\n👉 https://regex101.com/\nEsta herramienta permite:\n\nprobar expresiones en tiempo real,\nver qué partes del texto coinciden,\nentender cómo funciona cada parte del patrón.\n\n\n\n🧪 Cómo usar regex101\nEjemplo práctico: Validar una CURP\nLa CURP es un excelente ejemplo porque tiene una estructura fija.\nEjemplo:\nPEGA850912HMCRRL09\n📌 Estructura simplificada de una CURP\n\n4 letras iniciales\n6 números (fecha: año, mes, día)\n1 letra (sexo: H o M)\n5 letras\n2 caracteres alfanuméricos\n\n🧩 Construcción paso a paso del patrón de la CURP\nPaso 1: cuatro letras al inicio\n^[A-Z]{4}\n\n^ → inicio de la línea\n[A-Z] → letras mayúsculas\n{4} → exactamente 4 letras\n\nPaso 2: agregar seis números (fecha)\n^[A-Z]{4}[0-9]{6}\nPaso 3: agregar el sexo\n^[A-Z]{4}[0-9]{6}[HM]\n\n[HM] → solo permite H o M\n\nPaso 4: agregar letras internas\n^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}\nPaso 5: agregar los últimos caracteres\n^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$\n\n[A-Z0-9]{2} → dos caracteres alfanuméricos\n$ → fin de la línea\n\n\n\n🚀 Conexión con bioinformática\nLas expresiones regulares se usan para:\n\nencontrar secuencias específicas en FASTA/FASTQ,\nidentificar patrones en nombres de archivos,\nfiltrar resultados de BLAST,\nvalidar formatos de datos.\netc.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#uso-de-expresiones-regulares-con-grep",
+    "href": "unidad_7.html#uso-de-expresiones-regulares-con-grep",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Uso de expresiones regulares con grep",
+    "text": "Uso de expresiones regulares con grep\ngrep permite buscar líneas que coincidan con un patrón dentro de un archivo de texto.\nEn otras palabras:\n\nregex101 nos ayuda a entender y probar la expresión regular,\ngrep nos ayuda a aplicarla en archivos reales desde Bash.\n\n\n¿Qué hace grep?\nLa forma más simple de grep es:\ngrep \"patron\" archivo.txt\nEsto busca en el archivo las líneas que coincidan con el patrón indicado.\n\n\nCrear un archivo de ejemplo\nPara trabajar con CURPs, primero podemos crear un archivo de texto:\nnano curps.txt\nY pega esto:\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\nPEGA850912HMCRRL099\nPEGA850912HMCRRLAA\nGuarda el archivo y sal de nano.\n\n\nBuscar texto literal con grep\nPrimero podemos usar grep sin expresión regular compleja, solo buscando texto literal.\nPor ejemplo, buscar las líneas que contengan PEGA:\ngrep \"PEGA\" curps.txt\nEsto devolverá las líneas donde aparezca esa cadena.\n\n\nBuscar líneas que empiecen con cierto patrón\nSi queremos que la línea empiece con PEGA, usamos ^:\ngrep \"^PEGA\" curps.txt\n\n\nExplicación\n\n^ indica inicio de línea.\nPEGA debe aparecer al comienzo.\n\n\n\nBuscar líneas que terminen con un patrón\nSi queremos líneas que terminen en 09:\ngrep \"09$\" curps.txt\n\n\nExplicación\n\n$ indica final de línea.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#usar-una-expresión-regular-con-grep",
+    "href": "unidad_7.html#usar-una-expresión-regular-con-grep",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Usar una expresión regular con grep",
+    "text": "Usar una expresión regular con grep\nEn regex101 probamos una expresión para validar una CURP con estructura general:\n^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$\nPara usar esa expresión en grep, conviene activar las expresiones regulares extendidas con -E:\ngrep -E '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt\n\nMostrar las líneas inválidas\nTambién podemos pedirle a grep que muestre las líneas que no cumplen el patrón, usando -v:\ngrep -Ev '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt\n\n\nExplicación\n\n-E usa expresiones regulares extendidas,\n-v invierte la búsqueda.\n\nEsto es muy útil para detectar errores en archivos de datos.",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#extracción-de-datos-con-cut",
+    "href": "unidad_7.html#extracción-de-datos-con-cut",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Extracción de datos con cut",
+    "text": "Extracción de datos con cut\ncut es una herramienta de Bash que permite extraer partes específicas de un archivo de texto.\n\n🧠 ¿Cuándo usar cut?\ncut es ideal cuando:\n\nlos datos tienen una estructura fija (como la CURP),\no están organizados en columnas separadas por delimitadores (CSV, TSV).\n\n\n\n\n🔧 Sintaxis básica\nPor posiciones (caracteres)\ncut -c posiciones archivo.txt\nPor columnas (delimitadores)\ncut -d \"DELIMITADOR\" -f columnas archivo.txt\n\n\n📌 Parte 1: Uso de cut con posiciones\nArchivo de ejemplo\nnano curps.txt\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\nPEGA850912HMCRRL099\nPEGA850912HMCRRLAA\n\n\n🧬 Estructura de una CURP\n\n\n\nPosición\nContenido\n\n\n\n\n1–4\nLetras iniciales\n\n\n5–10\nFecha\n\n\n11\nSexo\n\n\n12–13\nEntidad\n\n\n14–16\nConsonantes\n\n\n17–18\nHomoclave\n\n\n\nExtraer la fecha\ncut -c5-10 curps.txt\nExtraer el sexo\ncut -c11 curps.txt\nExtraer entidad federativa\ncut -c12-13 curps.txt\nExtraer múltiples posiciones\ncut -c1-4,11 curps.txt\n\n\n📌 Parte 2: Uso de cut con delimitadores\nMuchos archivos tienen columnas separadas por:\n\nespacios\ncomas (CSV)\ntabuladores (TSV)\n\n\n\n🔧 Sintaxis\ncut -d \"DELIMITADOR\" -f columnas archivo.txt\n\n\nEjemplo 1: archivo con espacios\nnano personas_curp.txt\nAna PEGA850912HMCRRL09\nLuis GODE561231MDFABC08\nMarta XXXX000000HNEYYY00\nJuan PEGA850912HMCRRL0\nExtraer CURP\ncut -d \" \" -f2 personas_curp.txt\nExtraer nombres\ncut -d \" \" -f1 personas_curp.txt\n\n\nEjemplo 2: archivo CSV\nnano datos.csv\nnombre,curp,edad\nAna,PEGA850912HMCRRL09,38\nLuis,GODE561231MDFABC08,60\nMarta,XXXX000000HNEYYY00,25\nExtraer CURP\ncut -d \",\" -f2 datos.csv\nExtraer nombre y edad\ncut -d \",\" -f1,3 datos.csv\n\n\nEjemplo 3: archivo TSV\nnano datos.tsv\nnombre  curp  sexo\nAna PEGA850912HMCRRL09  H\nLuis  GODE561231MDFABC08  M\nExtraer CURP\ncut -d $'\\t' -f2 datos.tsv\nExtraer sexo\ncut -d $'\\t' -f3 datos.tsv\n\n\n🔬 Ejemplo bioinformático\nArchivo tipo BLAST:\nseq1    subject1    98.5    150\nseq2    subject2    87.2    120\nseq3    subject3    99.1    200\nExtraer identidad (%)\ncut -d $'\\t' -f3 archivo.txt\nExtraer ID y longitud\ncut -d $'\\t' -f1,4 archivo.txt\ncut -d \",\" -f2 datos.csv | cut -c11",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#transformación-de-datos-con-sed",
+    "href": "unidad_7.html#transformación-de-datos-con-sed",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Transformación de datos con sed",
+    "text": "Transformación de datos con sed\nsed (stream editor) procesa texto línea por línea y permite:\n\nreemplazar patrones\neliminar contenido\nformatear texto\neditar archivos de manera automática\n\n\n🔧 Sintaxis básica\nsed 's/patron/reemplazo/' archivo.txt\nExplicación\n\ns → significa substitute (sustituir)\npatron → lo que queremos buscar\nreemplazo → lo que queremos poner\n\n\n\nArchivo de trabajo\nSeguimos usando:\ncurps.txt\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\nPEGA850912HMCRRL099\nPEGA850912HMCRRLAA\n\n\n📌 Parte 1: Reemplazos básicos\nCambiar letras por minúsculas\nsed 's/.*/\\L&/' curps.txt\nExplicación\n\n.* → toda la línea\n& → representa la coincidencia completa\n\\L → convierte a minúsculas\n\nReemplazar texto específico\nsed 's/PEGA/XXXX/' curps.txt\nReemplazar todas las coincidencias en la línea\nsed 's/A/X/g' curps.txt\nExplicación\n\ng → reemplaza todas las coincidencias, no solo la primera\n\n\n\n📌 Parte 2: Uso de expresiones regulares en sed\nPara trabajar mejor con patrones complejos usamos -E:\nsed -E 's/patron/reemplazo/' archivo.txt\nSeparar la CURP en bloques\nsed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\\1-\\2-\\3-\\4-\\5-\\6/' curps.txt\nExplicación\nSe crean grupos:\n\n\n\nGrupo\nContenido\n\n\n\n\n\\1\nprimeras 4 letras\n\n\n\\2\nfecha\n\n\n\\3\nsexo\n\n\n\\4\nentidad\n\n\n\\5\nconsonantes\n\n\n\\6\nfinal\n\n\n\nY se reconstruye con guiones:\nPEGA-850912-H-MC-RRL-09\n\nMarcar CURPs válidas\nsed -E 's/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/& -&gt; VALIDA/' curps.txt\n\n\nMarcar CURPs inválidas\nsed -E '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/! s/.*/& -&gt; INVALIDA/' curps.txt\n\n\n\n📌 Parte 3: Filtrar con sed\nAunque grep es mejor para filtrar, sed también puede hacerlo.\n\n\nMostrar solo CURPs válidas\nsed -En '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/p' curps.txt\nExplicación\n\n-n → no imprime automáticamente\np → imprime solo las coincidencias\n\n\nEliminar líneas inválidas\nsed -E '/^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$/!d' curps.txt\n\n\n\n📌 Parte 4: Eliminar o modificar partes de texto\n\nEliminar los primeros 4 caracteres\nsed 's/^....//' curps.txt\n\n\nEliminar números\nsed 's/[0-9]//g' curps.txt\n\n\nEliminar líneas vacías\nsed '/^$/d' archivo.txt\n\n\n\n📌 Parte 5: Edición de archivos (in-place)\nPara modificar directamente un archivo:\nsed -i 's/PEGA/TEST/' curps.txt\n⚠️ Esto modifica el archivo original\n\n\n🔗 Combinar sed con otras herramientas\n\nFormatear solo CURPs válidas\ngrep -E '^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[A-Z0-9]{2}$' curps.txt | \\ sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\\1-\\2-\\3-\\4-\\5-\\6/'\n\n\nExtraer y formatear desde CSV\ncut -d \",\" -f2 datos.csv | \\ sed -E 's/^([A-Z]{4})([0-9]{6})([HM])([A-Z]{2})([A-Z]{3})([A-Z0-9]{2})$/\\1-\\2-\\3-\\4-\\5-\\6/'\n\n\n\n⚠️ Errores comunes\n\nOlvidar -E\nSin -E, los {} y () no funcionan igual.\n\n\n\nNo usar comillas correctas\nSiempre usar:\n's/.../.../'\n\n\nModificar archivos sin querer\nsed -i\n👉 usar con cuidado",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#introducción-a-awk-nivel-básico",
+    "href": "unidad_7.html#introducción-a-awk-nivel-básico",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Introducción a awk (nivel básico)",
+    "text": "Introducción a awk (nivel básico)\nawk es una herramienta que permite:\n👉 analizar, filtrar y procesar datos línea por línea\nFunciona leyendo un archivo, separando cada línea en columnas y aplicando acciones sobre ellas.\n\n⚠️ Importante\nawk es muy potente, pero también:\n👉 tiene una sintaxis un poco más compleja que grep, cut o sed.\n💡 Por eso, en esta sección veremos solo lo básico, suficiente para:\n\nextraer información\nhacer filtros simples\ngenerar salidas útiles\n\n\n\n🔧 Sintaxis básica\nawk '{accion}' archivo.txt\n\n\n📌 Conceptos clave\nDentro de awk:\n\n$0 → toda la línea\n$1 → primera columna\n$2 → segunda columna",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#archivo-de-trabajo-1",
+    "href": "unidad_7.html#archivo-de-trabajo-1",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Archivo de trabajo",
+    "text": "Archivo de trabajo\ncurps.txt\nPEGA850912HMCRRL09\nGODE561231MDFABC08\nXXXX000000HNEYYY00\nPEGA850912HMCRRL0\n\n📌 Ejemplos simples\n\nMostrar todas las líneas\nawk '{print $0}' curps.txt\n\n\nExtraer sexo (posición 11)\nawk '{print substr($0,11,1)}' curps.txt\n\n\nMostrar CURP + sexo\nawk '{print $0, \"-&gt; sexo:\", substr($0,11,1)}' curps.txt\n\n\n\n📌 Filtrar con awk\n\nMostrar solo hombres\nawk 'substr($0,11,1)==\"H\"' curps.txt\n\n\nMostrar solo CURPs con longitud correcta\nawk 'length($0)==18' curps.txt\n\n\n\n📌 Un ejemplo con lógica (if)\nawk '{\n  if (length($0)==18)\n    print $0, \"-&gt; correcta\"\n  else\n    print $0, \"-&gt; incorrecta\"\n}' curps.txt\n\n\n🧠 Idea clave\nMientras que:\n\ngrep → filtra por patrones\ncut → corta columnas\nsed → modifica texto\n\n👉 awk permite hacer todo eso pero con lógica",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_7.html#búsqueda-de-archivos-con-find",
+    "href": "unidad_7.html#búsqueda-de-archivos-con-find",
+    "title": "Unidad 7: Expresiones Regulares y Filtrado de Datos",
+    "section": "Búsqueda de archivos con find",
+    "text": "Búsqueda de archivos con find\nfind permite localizar archivos o carpetas según:\n\nnombre\ntipo (archivo o carpeta)\ntamaño\nfecha\npermisos\n\n\n🔧 Sintaxis básica\nfind ruta opciones\nEjemplo básico\nBuscar todos los archivos en el directorio actual:\nfind .\nBuscar por nombre\nBuscar archivos .txt\nfind . -name \"*.txt\"\nBuscar archivos FASTA\nfind . -name \"*.fasta\"\nBuscar archivos FASTQ comprimidos\nfind . -name \"*.fastq.gz\"\n\n\n⚠️ Importante\n\n-name usa comodines (glob), no regex completas:\n* → cualquier número de caracteres\n? → un solo carácter\n\nEjemplos\nfind . -name \"sample?.fq\"\nfind . -name \"A*\"\n\n\n\n📌 Buscar por tipo\nSolo archivos\nfind . -type f\nSolo directorios\nfind . -type d\n\nBuscar archivos FASTA únicamente\nfind . -type f -name \"*.fasta\"\n\n\n\n📌 Buscar con expresiones regulares\nAunque no es lo más común, find también puede usar regex:\nfind . -regex '.*\\.txt$'\nEjemplo\nfind . -regex '.*sample[0-9]+\\.fq'\n\n\n⚠️ Nota importante\n\n-regex evalúa la ruta completa, no solo el nombre\npor eso se usa .* al inicio\n\n\n\n📌 Diferencia clave\n\n\n\nOpción\nTipo de patrón\n\n\n\n\n-name\ncomodines (*, ?)\n\n\n-regex\nexpresiones regulares\n\n\n\n👉 En la práctica, -name es el más usado.\n\n\n📌 Buscar por tamaño\nArchivos mayores a 1 MB\nfind . -size +1M\nArchivos menores a 100 KB\nfind . -size -100k\n\n\n📌 Buscar por tiempo\nArchivos modificados en los últimos 2 días\nfind . -mtime -2\n\n\n📌 Ejecutar acciones con find\nfind se vuelve muy poderoso cuando se combina con acciones.\n\nMostrar detalles con ls\nfind . -name \"*.txt\" -exec ls -lh {} \\;\n\n\n\n⚠️ Eliminar archivos\nfind . -name \"*.tmp\" -delete\n\n\nEjecutar comandos en cada archivo\nfind . -name \"*.fastq.gz\" -exec echo \"Procesando {}\" \\;\n\n\n🔗 Combinar find con otras herramientas\nBuscar archivos y aplicar grep\nfind . -name \"*.txt\" -exec grep \"PEGA\" {} \\;\nBuscar FASTA y contar secuencias\nfind . -name \"*.fasta\" -exec grep \"&gt;\" {} \\;\n\n\n⚠️ Errores comunes\nNo usar comillas\nfind . -name *.txt   ❌\nfind . -name \"*.txt\" ✅",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Unidad 7: Expresiones Regulares y Filtrado de Datos</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html",
+    "href": "unidad_8.html",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "",
+    "text": "¿Por qué necesitamos aislar software?\nEn bioinformática es común trabajar con programas que requieren versiones específicas de librerías, intérpretes y dependencias. Esto puede generar conflictos entre herramientas, dificultar la reproducibilidad y complicar la colaboración entre usuarios o laboratorios.\nAlgunos problemas comunes son:\nPara resolver este tipo de problemas existen dos estrategias muy utilizadas:",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#por-qué-necesitamos-aislar-software",
+    "href": "unidad_8.html#por-qué-necesitamos-aislar-software",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "",
+    "text": "Un programa funciona en una computadora, pero no en otra.\nDos herramientas requieren versiones distintas de la misma librería.\nUn análisis no puede reproducirse meses después por cambios en el sistema.\nEn un servidor multiusuario no es deseable instalar todo de forma global.\n\n\n\nAmbientes virtuales\nContenedores",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#qué-es-un-ambiente-virtual",
+    "href": "unidad_8.html#qué-es-un-ambiente-virtual",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "¿Qué es un ambiente virtual?",
+    "text": "¿Qué es un ambiente virtual?\nUn ambiente virtual es un espacio aislado dentro del sistema operativo donde se instalan versiones específicas de programas, librerías y dependencias sin afectar al resto del sistema.\nEsto permite que distintos proyectos utilicen configuraciones diferentes en la misma máquina.\n\nVentajas de los ambientes virtuales\n\nPermiten instalar software sin modificar todo el sistema.\nFacilitan el manejo de dependencias por proyecto.\nSon relativamente sencillos de crear y usar.\nSon muy útiles para enseñanza, pruebas rápidas y desarrollo.\n\n\n\nDesventajas de los ambientes virtuales\n\nDependen más del sistema anfitrión.\nNo siempre garantizan reproducibilidad total entre distintas máquinas.\nPueden surgir conflictos entre canales o paquetes.\nEn proyectos complejos pueden volverse difíciles de mantener.\n\n\n\nHerramientas para manejar ambientes\n\nConda\nConda es un sistema de gestión de paquetes y ambientes muy usado en bioinformática. Permite instalar herramientas y dependencias en ambientes separados.\n\n\nMamba\nMamba es una alternativa compatible con Conda, pero mucho más rápida al resolver dependencias. Es especialmente útil en servidores y proyectos con muchas instalaciones.\n\n\nPixi\nPixi es una herramienta más reciente orientada al manejo reproducible de ambientes por proyecto. Utiliza archivos de configuración y bloqueo para facilitar la portabilidad y reproducibilidad.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#qué-es-un-contenedor",
+    "href": "unidad_8.html#qué-es-un-contenedor",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "¿Qué es un contenedor?",
+    "text": "¿Qué es un contenedor?\nUn contenedor es una forma de empaquetar una aplicación junto con sus programas, librerías y dependencias, de modo que pueda ejecutarse de manera más consistente en diferentes entornos.\nA diferencia de un ambiente virtual, un contenedor ofrece un mayor nivel de aislamiento y portabilidad.\n\nVentajas de los contenedores\n\nMejoran la reproducibilidad.\nFacilitan compartir software y pipelines completos.\nPermiten mover análisis entre computadoras con menos conflictos.\nSon muy útiles en flujos de trabajo científicos y de alto rendimiento.\n\n\n\nDesventajas de los contenedores\n\nTienen una curva de aprendizaje mayor.\nRequieren entender conceptos adicionales como imágenes, volúmenes y montaje de directorios.\nAlgunas herramientas no son igual de adecuadas para sistemas multiusuario compartidos.\n\n\n\nHerramientas de contenedores\n\nDocker\nDocker es una de las plataformas de contenedores más conocidas. Es excelente para desarrollo local, distribución de software y construcción de imágenes.\n\n\nPodman\nPodman es similar a Docker, pero con una arquitectura sin daemon. Puede ser una buena alternativa en sistemas Linux y entornos institucionales.\n\n\nApptainer\nApptainer es una herramienta especialmente útil en ambientes HPC. Permite ejecutar contenedores de manera más compatible con clústeres y sistemas multiusuario.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#ambientes-virtuales-vs-contenedores",
+    "href": "unidad_8.html#ambientes-virtuales-vs-contenedores",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "Ambientes virtuales vs contenedores",
+    "text": "Ambientes virtuales vs contenedores\n\nAmbientes virtuales\nConvienen cuando:\n\nSe quiere instalar software rápidamente.\nSe trabaja en desarrollo o enseñanza.\nSe necesita flexibilidad para modificar paquetes.\nEl proyecto no requiere encapsular todo el entorno.\n\n\n\nContenedores\nConvienen cuando:\n\nSe necesita máxima reproducibilidad.\nSe quiere compartir un pipeline completo.\nEl análisis se ejecutará en varias máquinas o servidores.\nSe trabaja en HPC o cómputo científico con flujos bien definidos.\n\n\n\n\n\n\n\n\n\nAspecto\nAmbiente virtual\nContenedor\n\n\n\n\nAislamiento\nPaquetes y dependencias\nAplicación, librerías y entorno de usuario\n\n\nReproducibilidad\nMedia\nAlta\n\n\nFacilidad de uso\nAlta\nMedia\n\n\nPortabilidad\nMedia\nAlta\n\n\nIdeal para\nDesarrollo, enseñanza, pruebas\nPipelines, despliegue, HPC\n\n\nEjemplos\nConda, Mamba, Pixi\nDocker, Podman, Apptainer\n\n\n\n\n\n¿Por qué veremos Micromamba y Apptainer?\nVeremos Micromamba y Apptainer porque juntos cubren dos necesidades clave en bioinformática: instalar software fácilmente y ejecutarlo de forma reproducible en HPC.",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
+    "objectID": "unidad_8.html#micromamba",
+    "href": "unidad_8.html#micromamba",
+    "title": "Unidad 8: Ambientes virtuales y contenedores",
+    "section": "Micromamba",
+    "text": "Micromamba\n\nInstalación de Micromamba sin permisos de administrador\n\"${SHELL}\" &lt;(curl -L micro.mamba.pm/install.sh)\nEste comando instala Micromamba en la cuenta del usuario, por lo que resulta especialmente útil en servidores compartidos y ambientes de HPC donde no se cuenta con acceso sudo.\nDespués de la instalación, conviene cerrar y abrir la terminal, o recargar el archivo de configuración del shell para que el comando micromamba quede disponible.\nsource ~/.bashrc\nPara comprobar que la instalación funcionó, puedes ejecutar:\nmicromamba --version\n\n\nComandos básicos de Micromamba\n\nCrear un ambiente vacío\nmicromamba create -n bioinfo\n\n\nCrear un ambiente e instalar paquetes desde el inicio\nmicromamba create -n bioinfo -c conda-forge -c bioconda fastqc seqkit\n\nAquí se crea el ambiente bioinfo e instala de una vez los paquetes fastqc y seqkit, usando los canales conda-forge y bioconda.\n\n\n\nActivar un ambiente\nmicromamba activate bioinfo\n\n\nInstalar un paquete en un ambiente ya creado\nmicromamba install -n bioinfo -c conda-forge -c bioconda mafft\n\n\nListar los ambientes instalados\nmicromamba env list\n\n\nListar los paquetes del ambiente activo\nmicromamba list\nSi quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:\nmicromamba list -n bioinfo\n\n\nDesactivar el ambiente actual\nmicromamba deactivate\n\n\nBorrar un ambiente\nmicromamba remove -n bioinfo --all\n\n\n\nOpción recomendada para scripts\nEjecuta un comando dentro del ambiente sin depender de activate.\n#!/bin/bash\n\nmicromamba run -n bioinfo fastqc datos/sample1.fastq.gz\nmicromamba run -n bioinfo seqkit stats datos/sample1.fastq.gz",
+    "crumbs": [
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Unidad 8: Ambientes virtuales y contenedores</span>"
+    ]
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Bibliografía complementaria",
     "section": "",
     "text": "Bagchi, A. (s. f.). Introduction to Bioinformatics. Alpha Science International, Limited.\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nBuffalo, V. (s. f.). Bioinformatics Data Skills. O’Reilly Media.\nvon Hagen, B., & Jones, B. K. (s. f.). Linux server: Los mejores trucos (D. Montero Gilarranz, Trad.). O’Reilly.\nGómez López, J., & Puga Sabio, G. (s. f.). Programación Shell: Aprende a programar con más de 200 ejercicios resueltos. RA-MA.\nMarkdown Guide. (n.d.). Markdown cheat sheet. Retrieved February 2, 2026, from `https://www.markdownguide.org/cheat-sheet/`\nNoble, W. S. (2009). A quick guide to organizing computational biology projects. PLOS Computational Biology, 5(7), e1000424. https://doi.org/10.1371/journal.pcbi.1000424\nUbuntu. (s. f.). Ubuntu Server documentation. Recuperado el 30 de enero de 2026, de https://ubuntu.com/server/docs\nDebian Project. (s. f.). Manuales de usuario de Debian. Recuperado el 30 de enero de 2026, de https://www.debian.org/doc/user-manuals.es.html\nShade, A., & Teal, T. K. (2015). Computing workflows for biologists: A roadmap. PLOS Biology, 13(11), e1002303. https://doi.org/10.1371/journal.pbio.1002303\nSoberón, J., & Peterson, A. T. (2004). Biodiversity informatics: Managing and applying primary biodiversity data. Philosophical Transactions of the Royal Society B: Biological Sciences, 359(1444), 689–698. https://doi.org/10.1098/rstb.2003.1439",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Bibliografía complementaria</span>"
     ]
   }
 ]
