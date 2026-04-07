@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./proyecto_final.html" rel="next">
+<link href="./unidad_9.html" rel="next">
 <link href="./unidad_7.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
@@ -222,6 +222,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./unidad_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 9: Contenedores y gestión de software con Apptainer</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./proyecto_final.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Proyecto Final del Curso</span></a>
   </div>
 </li>
@@ -245,6 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#qué-es-un-contenedor" id="toc-qué-es-un-contenedor" class="nav-link" data-scroll-target="#qué-es-un-contenedor">¿Qué es un contenedor?</a></li>
   <li><a href="#ambientes-virtuales-vs-contenedores" id="toc-ambientes-virtuales-vs-contenedores" class="nav-link" data-scroll-target="#ambientes-virtuales-vs-contenedores">Ambientes virtuales vs contenedores</a></li>
   <li><a href="#micromamba" id="toc-micromamba" class="nav-link" data-scroll-target="#micromamba">Micromamba</a></li>
+  <li><a href="#crear-un-ambiente-a-partir-de-un-archivo-yaml" id="toc-crear-un-ambiente-a-partir-de-un-archivo-yaml" class="nav-link" data-scroll-target="#crear-un-ambiente-a-partir-de-un-archivo-yaml">Crear un ambiente a partir de un archivo YAML</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -492,6 +498,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo fastqc datos/sample1.fastq.gz</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo seqkit stats datos/sample1.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+</section>
+<section id="crear-un-ambiente-a-partir-de-un-archivo-yaml" class="level2">
+<h2 class="anchored" data-anchor-id="crear-un-ambiente-a-partir-de-un-archivo-yaml">Crear un ambiente a partir de un archivo YAML</h2>
+<p>Una forma muy útil de trabajar con <strong>Micromamba</strong> es definir el ambiente en un archivo de configuración en formato <strong>YAML</strong>. Esto permite guardar el nombre del ambiente, los canales y los paquetes necesarios en un solo archivo, lo que facilita la reproducibilidad y evita tener que escribir comandos largos cada vez.</p>
+<p>Este archivo suele llamarse <code>environment.yml</code> o <code>env.yml</code>, porque son nombres muy comunes por convención. Sin embargo, <strong>no es obligatorio que se llame así</strong>. Puede tener otro nombre, siempre que se indique al crear el ambiente.</p>
+<section id="estructura-básica-de-un-archivo-yaml" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-básica-de-un-archivo-yaml">Estructura básica de un archivo YAML</h3>
+<p>Un archivo YAML para un ambiente de Micromamba puede verse así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> bioinfo</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> fastqc=0.12.1</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> seqkit=2.8.2</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> mafft=7.525</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>En este ejemplo:</p>
+<ul>
+<li><p><code>name</code> indica el nombre del ambiente</p></li>
+<li><p><code>channels</code> define los repositorios donde se buscarán los paquetes</p></li>
+<li><p><code>dependencies</code> contiene la lista de programas que se instalarán</p></li>
+</ul>
+</section>
+<section id="crear-el-ambiente-usando-el-archivo-yaml" class="level3">
+<h3 class="anchored" data-anchor-id="crear-el-ambiente-usando-el-archivo-yaml">Crear el ambiente usando el archivo YAML</h3>
+<p>Una vez guardado el archivo como bioinfo<code>.yml</code>, el ambiente puede crearse con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-f</span> bioinfo.yml</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto instalará todos los paquetes definidos en el archivo y creará el ambiente con el nombre indicado en <code>name</code>.</p>
+</section>
+<section id="activar-el-ambiente" class="level3">
+<h3 class="anchored" data-anchor-id="activar-el-ambiente">Activar el ambiente</h3>
+<p>Después de crearlo, puede activarse con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ejemplo-un-poco-más-completo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-un-poco-más-completo">Ejemplo un poco más completo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> qc_env</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> fastqc=0.12.1</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> seqkit=2.8.2</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> mafft=7.525</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> pigz=2.8</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Este archivo define un ambiente orientado a control de calidad de lecturas.</p>
+</section>
+<section id="buenas-prácticas" class="level3">
+<h3 class="anchored" data-anchor-id="buenas-prácticas">Buenas prácticas</h3>
+<ul>
+<li><p>Usar un nombre de ambiente claro y corto</p></li>
+<li><p>Poner primero <code>conda-forge</code> y después <code>bioconda</code></p></li>
+<li><p>Incluir solo los paquetes realmente necesarios</p></li>
+<li><p>Guardar el archivo YAML dentro del proyecto</p></li>
+</ul>
+</section>
+<section id="ejemplo-de-organización-en-un-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-de-organización-en-un-proyecto">Ejemplo de organización en un proyecto</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proyecto/</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> datos/</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> resultados/</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> envs/</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── environment.yml</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><br>
+</p>
 
 
 </section>
@@ -905,8 +979,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./proyecto_final.html" class="pagination-link" aria-label="Proyecto Final del Curso">
-        <span class="nav-page-text"><span class="chapter-title">Proyecto Final del Curso</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./unidad_9.html" class="pagination-link" aria-label="Unidad 9: Contenedores y gestión de software con Apptainer">
+        <span class="nav-page-text"><span class="chapter-title">Unidad 9: Contenedores y gestión de software con Apptainer</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
