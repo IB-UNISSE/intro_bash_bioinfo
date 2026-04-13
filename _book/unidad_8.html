@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,20 +65,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./unidad_9.html" rel="next">
 <link href="./unidad_7.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-382514e105201bb02b88eea0c3516187.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-d6ea9a187498ee8b9044a0182b988d41.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -143,8 +142,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
       <a href="./index.html" class="sidebar-logo-link">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./images/baner_2.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <img src="./images/baner_2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la programación para bioinformática con bash</a> 
@@ -222,6 +220,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./unidad_9.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Unidad 9: Contenedores y gestión de software con Apptainer</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./proyecto_final.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Proyecto Final del Curso</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Bibliografía complementaria</span></a>
   </div>
 </li>
@@ -240,6 +248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#qué-es-un-contenedor" id="toc-qué-es-un-contenedor" class="nav-link" data-scroll-target="#qué-es-un-contenedor">¿Qué es un contenedor?</a></li>
   <li><a href="#ambientes-virtuales-vs-contenedores" id="toc-ambientes-virtuales-vs-contenedores" class="nav-link" data-scroll-target="#ambientes-virtuales-vs-contenedores">Ambientes virtuales vs contenedores</a></li>
   <li><a href="#micromamba" id="toc-micromamba" class="nav-link" data-scroll-target="#micromamba">Micromamba</a></li>
+  <li><a href="#crear-un-ambiente-a-partir-de-un-archivo-yaml" id="toc-crear-un-ambiente-a-partir-de-un-archivo-yaml" class="nav-link" data-scroll-target="#crear-un-ambiente-a-partir-de-un-archivo-yaml">Crear un ambiente a partir de un archivo YAML</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -433,47 +442,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="micromamba">Micromamba</h2>
 <section id="instalación-de-micromamba-sin-permisos-de-administrador" class="level3">
 <h3 class="anchored" data-anchor-id="instalación-de-micromamba-sin-permisos-de-administrador">Instalación de Micromamba sin permisos de administrador</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${SHELL}</span><span class="st">"</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> micro.mamba.pm/install.sh<span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="st">"</span><span class="va">${SHELL}</span><span class="st">"</span> <span class="op">&lt;(</span><span class="ex">curl</span> <span class="at">-L</span> micro.mamba.pm/install.sh<span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Este comando instala <strong>Micromamba</strong> en la cuenta del usuario, por lo que resulta especialmente útil en servidores compartidos y ambientes de HPC donde no se cuenta con acceso <code>sudo</code>.</p>
 <p>Después de la instalación, conviene cerrar y abrir la terminal, o recargar el archivo de configuración del shell para que el comando <code>micromamba</code> quede disponible.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> ~/.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Para comprobar que la instalación funcionó, puedes ejecutar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> <span class="at">--version</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> <span class="at">--version</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="comandos-básicos-de-micromamba" class="level3">
 <h3 class="anchored" data-anchor-id="comandos-básicos-de-micromamba">Comandos básicos de Micromamba</h3>
 <section id="crear-un-ambiente-vacío" class="level4">
 <h4 class="anchored" data-anchor-id="crear-un-ambiente-vacío">Crear un ambiente vacío</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="crear-un-ambiente-e-instalar-paquetes-desde-el-inicio" class="level4">
 <h4 class="anchored" data-anchor-id="crear-un-ambiente-e-instalar-paquetes-desde-el-inicio">Crear un ambiente e instalar paquetes desde el inicio</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda fastqc seqkit</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<blockquote class="blockquote">
-<p>Aquí se crea el ambiente <code>bioinfo</code> e instala de una vez los paquetes <code>fastqc</code> y <code>seqkit</code>, usando los canales <code>conda-forge</code> y <code>bioconda</code>.</p>
-</blockquote>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda fastqc seqkit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>create</code><br>
+Le dice a micromamba que debe <strong>crear un ambiente nuevo</strong>.</p>
+<p><code>-n bioinfo</code><br>
+<code>-n</code> significa <strong>name</strong>. Le pone nombre al ambiente, en este caso <code>bioinfo</code>.</p>
+<p><code>-c conda-forge -c bioconda</code><br>
+<code>-c</code> significa <strong>channel</strong>. Un channel es el repositorio desde donde micromamba busca los paquetes.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://bioconda.github.io/_images/bioconda-dag.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550"></p>
+</figure>
+</div>
+<p><code>fastqc seqkit</code><br>
+Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como se instala <a href="https://anaconda.org/channels/bioconda/packages/fastqc/overview">fastqc</a> desde bioconda.</p>
 </section>
 <section id="activar-un-ambiente" class="level4">
 <h4 class="anchored" data-anchor-id="activar-un-ambiente">Activar un ambiente</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="instalar-un-paquete-en-un-ambiente-ya-creado" class="level4">
 <h4 class="anchored" data-anchor-id="instalar-un-paquete-en-un-ambiente-ya-creado">Instalar un paquete en un ambiente ya creado</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda mafft</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda mafft</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="listar-los-ambientes-instalados" class="level4">
 <h4 class="anchored" data-anchor-id="listar-los-ambientes-instalados">Listar los ambientes instalados</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> env list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="listar-los-paquetes-del-ambiente-activo" class="level4">
 <h4 class="anchored" data-anchor-id="listar-los-paquetes-del-ambiente-activo">Listar los paquetes del ambiente activo</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Si quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list <span class="at">-n</span> bioinfo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list <span class="at">-n</span> bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="desactivar-el-ambiente-actual" class="level4">
 <h4 class="anchored" data-anchor-id="desactivar-el-ambiente-actual">Desactivar el ambiente actual</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> deactivate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> deactivate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="borrar-un-ambiente" class="level4">
 <h4 class="anchored" data-anchor-id="borrar-un-ambiente">Borrar un ambiente</h4>
@@ -483,10 +502,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="opción-recomendada-para-scripts" class="level3">
 <h3 class="anchored" data-anchor-id="opción-recomendada-para-scripts">Opción recomendada para scripts</h3>
 <p>Ejecuta un comando dentro del ambiente sin depender de <code>activate</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo fastqc datos/sample1.fastq.gz</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo seqkit stats datos/sample1.fastq.gz</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo seqkit stats datos/sample1.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="crear-un-ambiente-a-partir-de-un-archivo-yaml" class="level2">
+<h2 class="anchored" data-anchor-id="crear-un-ambiente-a-partir-de-un-archivo-yaml">Crear un ambiente a partir de un archivo YAML</h2>
+<p>Una forma muy útil de trabajar con <strong>Micromamba</strong> es definir el ambiente en un archivo de configuración en formato <strong>YAML</strong>. Esto permite guardar el nombre del ambiente, los canales y los paquetes necesarios en un solo archivo, lo que facilita la reproducibilidad y evita tener que escribir comandos largos cada vez.</p>
+<p>Este archivo suele llamarse <code>environment.yml</code> o <code>env.yml</code>, porque son nombres muy comunes por convención. Sin embargo, <strong>no es obligatorio que se llame así</strong>. Puede tener otro nombre, siempre que se indique al crear el ambiente.</p>
+<section id="estructura-básica-de-un-archivo-yaml" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-básica-de-un-archivo-yaml">Estructura básica de un archivo YAML</h3>
+<p>Un archivo YAML para un ambiente de Micromamba puede verse así:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> bioinfo</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> fastqc=0.12.1</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> seqkit=2.8.2</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> mafft=7.525</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>En este ejemplo:</p>
+<ul>
+<li><p><code>name</code> indica el nombre del ambiente</p></li>
+<li><p><code>channels</code> define los repositorios donde se buscarán los paquetes</p></li>
+<li><p><code>dependencies</code> contiene la lista de programas que se instalarán</p></li>
+</ul>
+</section>
+<section id="crear-el-ambiente-usando-el-archivo-yaml" class="level3">
+<h3 class="anchored" data-anchor-id="crear-el-ambiente-usando-el-archivo-yaml">Crear el ambiente usando el archivo YAML</h3>
+<p>Una vez guardado el archivo como bioinfo<code>.yml</code>, el ambiente puede crearse con:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-f</span> bioinfo.yml</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Esto instalará todos los paquetes definidos en el archivo y creará el ambiente con el nombre indicado en <code>name</code>.</p>
+</section>
+<section id="activar-el-ambiente" class="level3">
+<h3 class="anchored" data-anchor-id="activar-el-ambiente">Activar el ambiente</h3>
+<p>Después de crearlo, puede activarse con:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="ejemplo-un-poco-más-completo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-un-poco-más-completo">Ejemplo un poco más completo</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> qc_env</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> fastqc=0.12.1</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> seqkit=2.8.2</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> mafft=7.525</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> pigz=2.8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Este archivo define un ambiente orientado a control de calidad de lecturas.</p>
+</section>
+<section id="buenas-prácticas" class="level3">
+<h3 class="anchored" data-anchor-id="buenas-prácticas">Buenas prácticas</h3>
+<ul>
+<li><p>Usar un nombre de ambiente claro y corto</p></li>
+<li><p>Poner primero <code>conda-forge</code> y después <code>bioconda</code></p></li>
+<li><p>Incluir solo los paquetes realmente necesarios</p></li>
+<li><p>Guardar el archivo YAML dentro del proyecto</p></li>
+</ul>
+</section>
+<section id="ejemplo-de-organización-en-un-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-de-organización-en-un-proyecto">Ejemplo de organización en un proyecto</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proyecto/</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> datos/</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> resultados/</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> envs/</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── environment.yml</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br>
+</p>
 
 
 </section>
@@ -544,14 +631,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -900,8 +986,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
-        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./unidad_9.html" class="pagination-link" aria-label="Unidad 9: Contenedores y gestión de software con Apptainer">
+        <span class="nav-page-text"><span class="chapter-title">Unidad 9: Contenedores y gestión de software con Apptainer</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

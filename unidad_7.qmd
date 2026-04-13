@@ -121,6 +121,223 @@ Paso 5: agregar los últimos caracteres
 
 -   `$` → fin de la línea
 
+## Elementos de regex usando fechas
+
+Trabajaremos con ejemplos como:
+
+``` bash
+23/03/2026
+23-03-2026
+23 03 2026
+23-03-26
+```
+
+### 🧠 Idea clave
+
+> Las expresiones regulares describen la **forma de un texto**, no su significado.
+
+### 🔤 Clases de caracteres
+
+`\d` → dígitos
+
+``` bash
+\d{2}/\d{2}/\d{4}
+```
+
+👉 coincide con:
+
+``` bash
+23/03/2026
+```
+
+`\s` → espacios
+
+``` bash
+\d{2}\s\d{2}\s\d{4}
+```
+
+👉 coincide con:
+
+``` bash
+23 03 2026
+```
+
+`\S` → no espacio
+
+``` bash
+\S+
+```
+
+👉 coincide con cualquier cosa que no tenga espacios
+
+`\w` → letras, números o `_`
+
+``` bash
+\w+
+```
+
+👉 en fechas no es ideal porque incluye letras también
+
+`\W` → no letras ni números
+
+``` bash
+\W
+```
+
+👉 coincide con separadores como:
+
+``` bash
+/  -
+```
+
+### 🔧 Metacaracteres importantes
+
+`^` → inicio
+
+``` bash
+^\d{2}/\d{2}/\d{4}
+```
+
+👉 la fecha debe empezar así
+
+`$` → final
+
+``` bash
+\d{2}/\d{2}/\d{4}$
+```
+
+👉 la fecha debe terminar así
+
+`+` → uno o más
+
+``` bash
+\d+
+```
+
+👉 uno o más números
+
+`*` → cero o más
+
+``` bash
+\d*
+```
+
+👉 puede haber números o no
+
+`{n}` → cantidad exacta
+
+``` bash
+\d{2}
+```
+
+👉 exactamente 2 dígitos
+
+### 🧩 Clases y opciones
+
+`[ ]` → opciones
+
+``` bash
+[/-]
+```
+
+👉 acepta:
+
+```         
+23/03/2026
+23-03-2026
+```
+
+`|` → o
+
+``` bash
+/|-
+```
+
+👉 igual que `[/-]` pero menos práctico
+
+### 🧩 Grupos `( )`
+
+Sirven para agrupar partes de la expresión.
+
+``` bash
+(\d{2})/(\d{2})/(\d{4})
+```
+
+👉 divide en:
+
+-   día
+
+-   mes
+
+-   año
+
+#### Reutilizar grupos
+
+``` bash
+^(\d{2})([/-])(\d{2})\2(\d{4})$
+```
+
+👉 asegura que el separador sea el mismo
+
+✔ acepta:
+
+``` bash
+23/03/2026
+23-03-2026
+```
+
+❌ rechaza:
+
+``` bash
+23/03-2026
+```
+
+### 🔐 Escapar caracteres
+
+Algunos símbolos tienen significado especial.
+
+Punto `.`
+
+``` bash
+.
+```
+
+👉 significa “cualquier carácter”
+
+#### Buscar un punto literal
+
+``` bash
+\.
+```
+
+Ejemplo con fechas
+
+``` bash
+\d{2}\.\d{2}\.\d{4}
+```
+
+👉 coincide con:
+
+``` bash
+23.03.2026
+```
+
+### 🧪 Ejemplo integrador
+
+``` bash
+^(0[1-9]|[12][0-9]|3[01])[/-](0[1-9]|1[0-2])[/-]\d{4}$
+```
+
+👉 valida:
+
+-   día entre 01 y 31
+
+-   mes entre 01 y 12
+
+-   año de 4 dígitos
+
+-   separador `/` o `-`
+
 ### 🚀 Conexión con bioinformática
 
 Las expresiones regulares se usan para:

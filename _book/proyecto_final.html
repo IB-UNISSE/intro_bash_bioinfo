@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notas: ¿Qué es un archivo FASTQ? – Introducción a la programación para bioinformática con bash</title>
+<title>Proyecto Final del Curso – Introducción a la programación para bioinformática con bash</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./unidad_7.html" rel="next">
-<link href="./nota_bot_telegram.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./unidad_9.html" rel="prev">
 <link href="./images/baner_2.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -108,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <meta name="description" content="Introducción a la programación para bioinformática con bash">
 <meta name="robots" content="index,follow">
-<meta property="og:title" content="Notas: ¿Qué es un archivo FASTQ? – Introducción a la programación para bioinformática con bash">
+<meta property="og:title" content="Proyecto Final del Curso – Introducción a la programación para bioinformática con bash">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://ib-unisse.github.io/intro_bash_bioinfo/images/baner_2.png">
 <meta property="og:type" content="website">
@@ -128,7 +93,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./fastq.html"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./proyecto_final.html"><span class="chapter-title">Proyecto Final del Curso</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -207,7 +172,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./fastq.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
+  <a href="./fastq.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -227,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./proyecto_final.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Proyecto Final del Curso</span></a>
+  <a href="./proyecto_final.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Proyecto Final del Curso</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -245,20 +210,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul class="collapse">
-  <li><a href="#de-dónde-sale-un-archivo-fastq" id="toc-de-dónde-sale-un-archivo-fastq" class="nav-link active" data-scroll-target="#de-dónde-sale-un-archivo-fastq">¿De dónde sale un archivo FASTQ?</a></li>
-  <li><a href="#cómo-está-constituido" id="toc-cómo-está-constituido" class="nav-link" data-scroll-target="#cómo-está-constituido">¿Cómo está constituido?</a></li>
-  <li><a href="#qué-significa-cada-línea" id="toc-qué-significa-cada-línea" class="nav-link" data-scroll-target="#qué-significa-cada-línea">¿Qué significa cada línea?</a></li>
-  <li><a href="#cómo-se-representa-la-calidad-en-un-archivo-fastq" id="toc-cómo-se-representa-la-calidad-en-un-archivo-fastq" class="nav-link" data-scroll-target="#cómo-se-representa-la-calidad-en-un-archivo-fastq">¿Cómo se representa la calidad en un archivo FASTQ?</a></li>
-  <li><a href="#tabla-básica-de-phred33" id="toc-tabla-básica-de-phred33" class="nav-link" data-scroll-target="#tabla-básica-de-phred33">Tabla básica de Phred+33</a></li>
+  <li><a href="#objetivo" id="toc-objetivo" class="nav-link active" data-scroll-target="#objetivo">Objetivo</a></li>
+  <li><a href="#entrega" id="toc-entrega" class="nav-link" data-scroll-target="#entrega">Entrega</a></li>
+  <li><a href="#qué-debe-hacer-el-proyecto" id="toc-qué-debe-hacer-el-proyecto" class="nav-link" data-scroll-target="#qué-debe-hacer-el-proyecto">¿Qué debe hacer el proyecto?</a></li>
+  <li><a href="#requisitos-generales" id="toc-requisitos-generales" class="nav-link" data-scroll-target="#requisitos-generales">Requisitos generales</a></li>
+  <li><a href="#estructura-sugerida-del-repositorio" id="toc-estructura-sugerida-del-repositorio" class="nav-link" data-scroll-target="#estructura-sugerida-del-repositorio">Estructura sugerida del repositorio</a></li>
+  <li><a href="#descripción-de-carpetas" id="toc-descripción-de-carpetas" class="nav-link" data-scroll-target="#descripción-de-carpetas">Descripción de carpetas</a></li>
+  <li><a href="#contenido-mínimo-del-readme" id="toc-contenido-mínimo-del-readme" class="nav-link" data-scroll-target="#contenido-mínimo-del-readme">Contenido mínimo del README</a></li>
+  <li><a href="#información-del-sistema-1" id="toc-información-del-sistema-1" class="nav-link" data-scroll-target="#información-del-sistema-1">Información del sistema</a></li>
+  <li><a href="#fecha-de-entrega" id="toc-fecha-de-entrega" class="nav-link" data-scroll-target="#fecha-de-entrega">Fecha de entrega:</a></li>
   </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/fastq.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/proyecto_final.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Notas: ¿Qué es un archivo FASTQ?</span></h1>
+<h1 class="title"><span class="chapter-title">Proyecto Final del Curso</span></h1>
 </div>
 
 
@@ -275,182 +244,248 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Un archivo <strong>FASTQ</strong> es un formato de texto plano usado en bioinformática para almacenar lecturas de secuenciación junto con sus valores de calidad. Es uno de los formatos más comunes en datos generados por plataformas de secuenciación masiva, como Illumina.</p>
-<p>A diferencia de un archivo <strong>FASTA</strong>, que solo guarda el identificador y la secuencia, un archivo <strong>FASTQ</strong> también incluye información sobre la <strong>calidad de cada base</strong> leída.</p>
-<section id="de-dónde-sale-un-archivo-fastq" class="level2">
-<h2 class="anchored" data-anchor-id="de-dónde-sale-un-archivo-fastq">¿De dónde sale un archivo FASTQ?</h2>
-<p>Un archivo FASTQ se genera después de que una plataforma de secuenciación “lee” fragmentos de ADN o ARN. Durante ese proceso, el equipo produce:</p>
+<section id="objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="objetivo">Objetivo</h2>
+<p>El objetivo de este proyecto es que cada estudiante aplique los conocimientos adquiridos durante el curso para desarrollar un <strong>script</strong> o un <strong>flujo de trabajo en Bash</strong> que sea útil para su tema de estudio, su línea de investigación o alguna necesidad real de análisis de datos.</p>
+<p>No se busca únicamente que el script funcione, sino que el trabajo esté planteado como un <strong>proyecto reproducible</strong>, bien organizado y suficientemente documentado para que cualquier persona pueda descargar el repositorio desde GitHub, entender qué hace y volver a ejecutarlo.</p>
+<hr>
+</section>
+<section id="entrega" class="level2">
+<h2 class="anchored" data-anchor-id="entrega">Entrega</h2>
+<p>El proyecto final deberá entregarse como un <strong>repositorio en GitHub</strong>.</p>
+<p>La idea es que el repositorio no sea solo un lugar donde se suben archivos, sino un proyecto completo con:</p>
 <ul>
-<li><p>la secuencia de nucleótidos detectada,</p></li>
-<li><p>y una estimación de qué tan confiable fue la lectura de cada base.</p></li>
+<li><p>estructura clara,</p></li>
+<li><p>documentación adecuada,</p></li>
+<li><p>scripts funcionales,</p></li>
+<li><p>organización lógica de datos y resultados,</p></li>
+<li><p>e instrucciones suficientes para su reproducción.</p></li>
 </ul>
-<p>Por eso, el FASTQ contiene tanto la <strong>secuencia</strong> como la <strong>calidad</strong>.</p>
+<hr>
 </section>
-<section id="cómo-está-constituido" class="level2">
-<h2 class="anchored" data-anchor-id="cómo-está-constituido">¿Cómo está constituido?</h2>
-<p>Cada lectura en un archivo FASTQ ocupa <strong>4 líneas</strong>.</p>
-<section id="estructura-general" class="level3">
-<h3 class="anchored" data-anchor-id="estructura-general">Estructura general</h3>
-<pre><code>@identificador
-SECUENCIA
-+
-CALIDADES</code></pre>
+<section id="qué-debe-hacer-el-proyecto" class="level2">
+<h2 class="anchored" data-anchor-id="qué-debe-hacer-el-proyecto">¿Qué debe hacer el proyecto?</h2>
+<p>Cada estudiante deberá desarrollar un proyecto que resuelva un problema concreto o automatice una tarea útil para su investigación. Por ejemplo:</p>
+<ul>
+<li><p>descarga de datos,</p></li>
+<li><p>renombrado o organización de archivos,</p></li>
+<li><p>filtrado o procesamiento de secuencias,</p></li>
+<li><p>control de calidad,</p></li>
+<li><p>búsquedas automatizadas,</p></li>
+<li><p>ejecución de varios pasos de análisis en un solo flujo de trabajo,</p></li>
+<li><p>o cualquier proceso que tenga aplicación real en su área.</p></li>
+</ul>
+<p>El proyecto puede ser sencillo o más elaborado, pero debe reflejar la aplicación de varias herramientas y conceptos revisados en clase.</p>
+<hr>
+</section>
+<section id="requisitos-generales" class="level2">
+<h2 class="anchored" data-anchor-id="requisitos-generales">Requisitos generales</h2>
+<p>El proyecto debe incluir como mínimo:</p>
+<ul>
+<li><p>un <strong>script en Bash</strong> funcional;</p></li>
+<li><p>una <strong>carpeta de proyecto bien estructurada</strong>;</p></li>
+<li><p>un archivo <strong>README.md</strong> claro y completo;</p></li>
+<li><p>organización separada de scripts, datos, resultados y metadatos;</p></li>
+<li><p>explicación de <strong>programas utilizados y sus versiones</strong>;</p></li>
+<li><p>información sobre el <strong>equipo en el que fue probado</strong>;</p></li>
+<li><p>instrucciones suficientes para que otra persona pueda reproducirlo.</p></li>
+</ul>
+<p>Si el proyecto usa ambientes o contenedores, también deberán incluirse o explicarse.</p>
+<hr>
+</section>
+<section id="estructura-sugerida-del-repositorio" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-sugerida-del-repositorio">Estructura sugerida del repositorio</h2>
+<pre><code>proyecto_final/
+├── README.md
+├── scripts/
+├── datos/
+├── resultados/
+├── metadatos/
+├── programas_contenedores/
+├── config/
+└── logs/</code></pre>
+<hr>
+</section>
+<section id="descripción-de-carpetas" class="level2">
+<h2 class="anchored" data-anchor-id="descripción-de-carpetas">Descripción de carpetas</h2>
+<section id="readme.md" class="level3">
+<h3 class="anchored" data-anchor-id="readme.md"><code>README.md</code></h3>
+<p>Documento principal del proyecto. Aquí debe explicarse de manera clara qué hace el proyecto, para qué sirve, qué programas necesita, cómo se ejecuta y qué resultados produce.</p>
+</section>
+<section id="scripts" class="level3">
+<h3 class="anchored" data-anchor-id="scripts"><code>scripts/</code></h3>
+<p>Contendrá los scripts desarrollados por el estudiante.</p>
+<p>Por ejemplo:</p>
+<ul>
+<li><p><code>telegram.sh</code></p></li>
+<li><p><code>validacion_fastq.sh</code></p></li>
+<li><p><code>filtrado.sh</code></p></li>
+</ul>
+</section>
+<section id="datos" class="level3">
+<h3 class="anchored" data-anchor-id="datos"><code>datos/</code></h3>
+<p>Contendrá los datos de entrada necesarios para probar el análisis.</p>
+<p>Si los datos reales son demasiado grandes, se puede incluir:</p>
+<ul>
+<li><p>un subconjunto pequeño de prueba,</p></li>
+<li><p>un archivo de ejemplo,</p></li>
+<li><p>o un script que permita descargarlos.</p></li>
+</ul>
+</section>
+<section id="resultados" class="level3">
+<h3 class="anchored" data-anchor-id="resultados"><code>resultados/</code></h3>
+<p>Aquí deberán almacenarse las salidas generadas por el flujo de trabajo.</p>
+</section>
+<section id="metadatos" class="level3">
+<h3 class="anchored" data-anchor-id="metadatos"><code>metadatos/</code></h3>
+<p>Incluirá archivos auxiliares como:</p>
+<ul>
+<li><p>tablas de muestras,</p></li>
+<li><p>listas de accesiones,</p></li>
+<li><p>archivos CSV,</p></li>
+<li><p>archivos de apoyo al análisis.</p></li>
+</ul>
+</section>
+<section id="programas_contenedores" class="level3">
+<h3 class="anchored" data-anchor-id="programas_contenedores"><code>programas_contenedores/</code></h3>
+<p>Carpeta para incluir archivos relacionados con la reproducibilidad del ambiente, por ejemplo:</p>
+<ul>
+<li><p><code>environment.yml</code></p></li>
+<li><p><code>requirements.txt</code></p></li>
+<li><p><code>Dockerfile</code></p></li>
+<li><p>archivos <code>.def</code></p></li>
+<li><p>archivos <code>.sif</code></p></li>
+<li><p>instrucciones para <code>micromamba</code></p></li>
+<li><p>instrucciones para <code>apptainer</code></p></li>
+</ul>
+</section>
+<section id="config" class="level3">
+<h3 class="anchored" data-anchor-id="config"><code>config/</code></h3>
+<p>Archivos de configuración o parámetros del análisis.</p>
+</section>
+<section id="logs" class="level3">
+<h3 class="anchored" data-anchor-id="logs"><code>logs/</code></h3>
+<p>Archivos de seguimiento de ejecución, en caso de que el pipeline los genere.</p>
+<hr>
 </section>
 </section>
-<section id="qué-significa-cada-línea" class="level2">
-<h2 class="anchored" data-anchor-id="qué-significa-cada-línea">¿Qué significa cada línea?</h2>
-<section id="línea-1-identificador" class="level3">
-<h3 class="anchored" data-anchor-id="línea-1-identificador">Línea 1: identificador</h3>
-<p>Empieza con <code>@</code> y contiene el nombre o identificador de la lectura.</p>
+<section id="contenido-mínimo-del-readme" class="level2">
+<h2 class="anchored" data-anchor-id="contenido-mínimo-del-readme">Contenido mínimo del README</h2>
+<p>El archivo <code>README.md</code> es una parte central del proyecto. Debe incluir al menos las siguientes secciones:</p>
+<section id="título-del-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="título-del-proyecto">1. Título del proyecto</h3>
+<p>Nombre breve y descriptivo.</p>
+</section>
+<section id="introducción" class="level3">
+<h3 class="anchored" data-anchor-id="introducción">2. Introducción</h3>
+<p>Descripción breve del problema que resuelve el proyecto.</p>
+</section>
+<section id="objetivo-1" class="level3">
+<h3 class="anchored" data-anchor-id="objetivo-1">3. Objetivo</h3>
+<p>Explicar para qué sirve el script o flujo de trabajo.</p>
+</section>
+<section id="descripción-general-del-flujo-de-trabajo" class="level3">
+<h3 class="anchored" data-anchor-id="descripción-general-del-flujo-de-trabajo">4. Descripción general del flujo de trabajo</h3>
+<p>Resumen de los pasos principales del análisis.</p>
+</section>
+<section id="estructura-del-repositorio" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-del-repositorio">5. Estructura del repositorio</h3>
+<p>Explicación breve de las carpetas y archivos principales.</p>
+</section>
+<section id="requisitos-de-software" class="level3">
+<h3 class="anchored" data-anchor-id="requisitos-de-software">6. Requisitos de software</h3>
+<p>Lista de programas utilizados con sus versiones.</p>
 <p>Ejemplo:</p>
-<pre><code>@SEQ_ID_001</code></pre>
-<p>Esta línea puede incluir información como:</p>
+<pre><code>Bash 5.1
+FastQC 0.12.1
+SeqKit 2.8.0
+awk
+sed
+grep</code></pre>
+</section>
+<section id="reproducibilidad" class="level3">
+<h3 class="anchored" data-anchor-id="reproducibilidad">7. Reproducibilidad</h3>
+<p>Indicar cómo preparar el ambiente para correr el análisis.</p>
+<p>Por ejemplo:</p>
 <ul>
-<li><p>nombre de la corrida,</p></li>
-<li><p>número de lectura,</p></li>
-<li><p>posición en el flowcell,</p></li>
-<li><p>carril,</p></li>
-<li><p>índice o barcode,</p></li>
-<li><p>si pertenece a R1 o R2.</p></li>
+<li><p>instalación manual,</p></li>
+<li><p>uso de <code>micromamba</code>,</p></li>
+<li><p>uso de <code>apptainer</code>,</p></li>
+<li><p>o cualquier otra estrategia.</p></li>
 </ul>
 </section>
-<section id="línea-2-secuencia" class="level3">
-<h3 class="anchored" data-anchor-id="línea-2-secuencia">Línea 2: secuencia</h3>
-<p>Contiene la secuencia de nucleótidos leída.</p>
+<section id="instrucciones-de-uso" class="level3">
+<h3 class="anchored" data-anchor-id="instrucciones-de-uso">8. Instrucciones de uso</h3>
+<p>Explicar paso a paso cómo ejecutar el proyecto.</p>
 <p>Ejemplo:</p>
-<pre><code>ATGCCGTAGCTAACGTA</code></pre>
-<p>Aquí aparecen las bases detectadas, generalmente:</p>
+<pre><code>git clone https://github.com/usuario/proyecto_final.git
+cd proyecto_final
+bash scripts/pipeline.sh</code></pre>
+</section>
+<section id="entradas-y-salidas" class="level3">
+<h3 class="anchored" data-anchor-id="entradas-y-salidas">9. Entradas y salidas</h3>
+<p>Describir qué archivos recibe el análisis y qué archivos genera.</p>
+</section>
+<section id="información-del-sistema" class="level3">
+<h3 class="anchored" data-anchor-id="información-del-sistema">10. Información del sistema</h3>
+<p>Describir el equipo en el que fue probado el proyecto.</p>
+</section>
+<section id="autoría" class="level3">
+<h3 class="anchored" data-anchor-id="autoría">11. Autoría</h3>
+<p>Nombre del estudiante y, si se desea, tema general de investigación.</p>
+<hr>
+</section>
+</section>
+<section id="información-del-sistema-1" class="level2">
+<h2 class="anchored" data-anchor-id="información-del-sistema-1">Información del sistema</h2>
+<p>Para favorecer la reproducibilidad, cada proyecto deberá incluir en el <code>README.md</code> una sección donde se indique <strong>en qué equipo fue probado</strong>.</p>
+<p>Esto permitirá conocer el contexto de ejecución y estimar mejor los requerimientos computacionales del flujo de trabajo.</p>
+<section id="información-mínima-requerida" class="level3">
+<h3 class="anchored" data-anchor-id="información-mínima-requerida">Información mínima requerida</h3>
 <ul>
-<li><p><code>A</code> adenina</p></li>
-<li><p><code>T</code> timina</p></li>
-<li><p><code>G</code> guanina</p></li>
-<li><p><code>C</code> citosina</p></li>
-<li><p><code>N</code> base no determinada</p></li>
+<li><p>tipo de equipo:</p>
+<ul>
+<li><p>laptop,</p></li>
+<li><p>computadora de escritorio,</p></li>
+<li><p>servidor,</p></li>
+<li><p>clúster;</p></li>
+</ul></li>
+<li><p>sistema operativo;</p></li>
+<li><p>CPU:</p>
+<ul>
+<li><p>modelo,</p></li>
+<li><p>número de núcleos e hilos</p></li>
+</ul></li>
+<li><p>memoria RAM;</p></li>
+<li><p>GPU, si aplica;</p></li>
+<li><p>almacenamiento, si se considera relevante;</p></li>
+<li><p>tiempo aproximado de ejecución, si es posible.</p></li>
 </ul>
 </section>
-<section id="línea-3-separador" class="level3">
-<h3 class="anchored" data-anchor-id="línea-3-separador">Línea 3: separador</h3>
-<p>Empieza con <code>+</code>.</p>
-<p>Ejemplo:</p>
-<pre><code>+</code></pre>
-<p>A veces esta línea repite el identificador, pero muchas veces solo contiene el símbolo <code>+</code>.</p>
-<p>Su función es separar la secuencia de la línea de calidades.</p>
+<section id="ejemplo" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo">Ejemplo</h3>
+<pre><code>## Información del sistema
+
+Este proyecto fue probado en el siguiente equipo:
+
+- Tipo de equipo: servidor
+- Sistema operativo: Ubuntu 22.04 LTS
+- CPU: Intel Xeon E5-2695 v4
+- Núcleos / hilos: 36 / 72
+- RAM: 256 GB
+- GPU: NVIDIA RTX 3070 (no utilizada en este análisis)
+- Almacenamiento: SSD NVMe
+
+Tiempo aproximado de ejecución: 10 minutos</code></pre>
 </section>
-<section id="línea-4-calidad" class="level3">
-<h3 class="anchored" data-anchor-id="línea-4-calidad">Línea 4: calidad</h3>
-<p>Contiene una cadena de caracteres donde <strong>cada carácter representa la calidad de una base</strong> en la secuencia.</p>
-<p>Ejemplo:</p>
-<pre><code>IIIIIIHHHHHFFFFF</code></pre>
-<p>Es importante que esta línea tenga <strong>el mismo número de caracteres que la secuencia tiene de bases</strong>, porque cada símbolo corresponde a una base específica.</p>
 </section>
-</section>
-<section id="cómo-se-representa-la-calidad-en-un-archivo-fastq" class="level2">
-<h2 class="anchored" data-anchor-id="cómo-se-representa-la-calidad-en-un-archivo-fastq">¿Cómo se representa la calidad en un archivo FASTQ?</h2>
-<p>La línea de calidad de un archivo FASTQ no muestra números directamente. En su lugar, la calidad de cada base se <strong>codifica como un carácter ASCII</strong>. Esto permite guardar la información de calidad en una sola línea de texto, usando un símbolo por cada nucleótido de la secuencia.</p>
-<section id="la-más-usada-hoy-es-phred33." class="level4">
-<h4 class="anchored" data-anchor-id="la-más-usada-hoy-es-phred33.">La más usada hoy es <strong>Phred+33</strong>.</h4>
-<p>Regla:</p>
+<section id="fecha-de-entrega" class="level2">
+<h2 class="anchored" data-anchor-id="fecha-de-entrega">Fecha de entrega:</h2>
 <ul>
-<li><p>carácter = Phred + 33</p></li>
-<li><p>Phred = ASCII - 33</p></li>
+<li><em>Viernes 15 de Mayo de 2026</em></li>
 </ul>
-</section>
-</section>
-<section id="tabla-básica-de-phred33" class="level2">
-<h2 class="anchored" data-anchor-id="tabla-básica-de-phred33">Tabla básica de Phred+33</h2>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Phred</th>
-<th>ASCII decimal</th>
-<th>Carácter</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>33</td>
-<td><code>!</code></td>
-</tr>
-<tr class="even">
-<td>1</td>
-<td>34</td>
-<td><code>"</code></td>
-</tr>
-<tr class="odd">
-<td>2</td>
-<td>35</td>
-<td><code>#</code></td>
-</tr>
-<tr class="even">
-<td>3</td>
-<td>36</td>
-<td><code>$</code></td>
-</tr>
-<tr class="odd">
-<td>4</td>
-<td>37</td>
-<td><code>%</code></td>
-</tr>
-<tr class="even">
-<td>5</td>
-<td>38</td>
-<td><code>&amp;</code></td>
-</tr>
-<tr class="odd">
-<td>10</td>
-<td>43</td>
-<td><code>+</code></td>
-</tr>
-<tr class="even">
-<td>15</td>
-<td>48</td>
-<td><code>0</code></td>
-</tr>
-<tr class="odd">
-<td>20</td>
-<td>53</td>
-<td><code>5</code></td>
-</tr>
-<tr class="even">
-<td>25</td>
-<td>58</td>
-<td><code>:</code></td>
-</tr>
-<tr class="odd">
-<td>30</td>
-<td>63</td>
-<td><code>?</code></td>
-</tr>
-<tr class="even">
-<td>35</td>
-<td>68</td>
-<td><code>D</code></td>
-</tr>
-<tr class="odd">
-<td>40</td>
-<td>73</td>
-<td><code>I</code></td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><p><code>!</code> = <strong>Q0</strong></p></li>
-<li><p><code>5</code> = <strong>Q20</strong></p></li>
-<li><p><code>?</code> = <strong>Q30</strong></p></li>
-<li><p><code>I</code> = <strong>Q40</strong></p></li>
-</ul>
-<section id="ejemplo" class="level4">
-<h4 class="anchored" data-anchor-id="ejemplo">Ejemplo</h4>
-<p>Si en la línea de calidad aparece:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">IIIII</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>cada <code>I</code> vale ASCII 73.</p>
-<p>Entonces:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">73</span> <span class="at">-</span> 33 = 40</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>o sea que cada base tiene <strong>Phred 40</strong>.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -856,13 +891,13 @@ CALIDADES</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./nota_bot_telegram.html" class="pagination-link" aria-label="Notas: Crear un bot con BotFather en Telegram">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Notas: Crear un bot con BotFather en Telegram</span></span>
+      <a href="./unidad_9.html" class="pagination-link" aria-label="Unidad 9: Contenedores y gestión de software con Apptainer">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Unidad 9: Contenedores y gestión de software con Apptainer</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./unidad_7.html" class="pagination-link" aria-label="Unidad 7: Expresiones Regulares y Filtrado de Datos">
-        <span class="nav-page-text"><span class="chapter-title">Unidad 7: Expresiones Regulares y Filtrado de Datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Bibliografía complementaria">
+        <span class="nav-page-text"><span class="chapter-title">Bibliografía complementaria</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -871,4 +906,4 @@ CALIDADES</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/fastq.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/proyecto_final.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

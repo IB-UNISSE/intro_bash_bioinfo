@@ -31,6 +31,8 @@ book:
     - fastq.qmd
     - unidad_7.qmd
     - unidad_8.qmd
+    - unidad_9.qmd
+    - proyecto_final.qmd
     - references.qmd
 
 format:

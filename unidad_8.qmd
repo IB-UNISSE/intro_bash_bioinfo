@@ -106,7 +106,7 @@ Convienen cuando:
 -   Se trabaja en HPC o cómputo científico con flujos bien definidos.
 
 | Aspecto | Ambiente virtual | Contenedor |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Aislamiento | Paquetes y dependencias | Aplicación, librerías y entorno de usuario |
 | Reproducibilidad | Media | Alta |
 | Facilidad de uso | Alta | Media |
@@ -151,21 +151,33 @@ micromamba create -n bioinfo
 #### Crear un ambiente e instalar paquetes desde el inicio
 
 ``` bash
-micromamba create -n bioinfo -c conda-forge -c bioconda fastqc seqkit
+micromamba create -n fastqc-0.12.1 -c conda-forge -c bioconda fastqc=0.12.1
 ```
 
-> Aquí se crea el ambiente `bioinfo` e instala de una vez los paquetes `fastqc` y `seqkit`, usando los canales `conda-forge` y `bioconda`.
+`create`\
+Le dice a micromamba que debe **crear un ambiente nuevo**.
+
+`-n fastqc-0.12.1`\
+`-n` significa **name**. Le pone nombre al ambiente, en este caso `fastqc-0.12.1`.
+
+`-c conda-forge -c bioconda`\
+`-c` significa **channel**. Un channel es el repositorio desde donde micromamba busca los paquetes.
+
+![](https://bioconda.github.io/_images/bioconda-dag.png){fig-align="center" width="550"}
+
+`fastqc`\
+Son los paquetes que quieres instalar dentro del ambiente nuevo, `=0.12.1` = versión específica que quieres instalar. Ejemplo de como se instala [fastqc](https://anaconda.org/channels/bioconda/packages/fastqc/overview) desde bioconda.
 
 #### Activar un ambiente
 
 ``` bash
-micromamba activate bioinfo
+micromamba activate fastqc-0.12.1
 ```
 
 #### Instalar un paquete en un ambiente ya creado
 
 ``` bash
-micromamba install -n bioinfo -c conda-forge -c bioconda mafft
+micromamba install -n fastqc-0.12.1 -c conda-forge -c bioconda trimmomatic=0.40
 ```
 
 #### Listar los ambientes instalados
@@ -183,7 +195,7 @@ micromamba list
 Si quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:
 
 ``` bash
-micromamba list -n bioinfo
+micromamba list -n fastqc-0.12.1
 ```
 
 #### Desactivar el ambiente actual
@@ -194,8 +206,8 @@ micromamba deactivate
 
 #### Borrar un ambiente
 
-```         
-micromamba remove -n bioinfo --all
+``` bash
+micromamba remove -n fastqc-0.12.1 --all
 ```
 
 ### Opción recomendada para scripts
@@ -205,6 +217,146 @@ Ejecuta un comando dentro del ambiente sin depender de `activate`.
 ``` bash
 #!/bin/bash
 
-micromamba run -n bioinfo fastqc datos/sample1.fastq.gz
-micromamba run -n bioinfo seqkit stats datos/sample1.fastq.gz
+micromamba run -n fastqc-0.12.1 fastqc datos/sample1.fastq.gz
 ```
+
+## Crear un ambiente a partir de un archivo YAML
+
+Una forma muy útil de trabajar con **Micromamba** es definir el ambiente en un archivo de configuración en formato **YAML**. Esto permite guardar el nombre del ambiente, los canales y los paquetes necesarios en un solo archivo, lo que facilita la reproducibilidad y evita tener que escribir comandos largos cada vez.
+
+Este archivo suele llamarse `environment.yml` o `env.yml`, porque son nombres muy comunes por convención. Sin embargo, **no es obligatorio que se llame así**. Puede tener otro nombre, siempre que se indique al crear el ambiente.
+
+### Estructura básica de un archivo YAML
+
+Un archivo YAML para un ambiente de Micromamba puede verse así:
+
+``` bash
+name: bioinfo
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - fastqc=0.12.1
+  - seqkit=2.8.2
+  - mafft=7.525
+```
+
+En este ejemplo:
+
+-   `name` indica el nombre del ambiente
+
+-   `channels` define los repositorios donde se buscarán los paquetes
+
+-   `dependencies` contiene la lista de programas que se instalarán
+
+### Crear el ambiente usando el archivo YAML
+
+Una vez guardado el archivo como bioinfo`.yml`, el ambiente puede crearse con:
+
+``` bash
+micromamba create -f bioinfo.yml
+```
+
+Esto instalará todos los paquetes definidos en el archivo y creará el ambiente con el nombre indicado en `name`.
+
+### Activar el ambiente
+
+Después de crearlo, puede activarse con:
+
+``` bash
+micromamba activate bioinfo
+```
+
+### Buenas prácticas
+
+-   Usar un nombre de ambiente claro y corto
+
+-   Poner primero `conda-forge` y después `bioconda`
+
+-   Incluir solo los paquetes realmente necesarios
+
+-   Guardar el archivo YAML dentro del proyecto
+
+### Ejemplo de organización en un proyecto
+
+``` bash
+proyecto/
+├── datos/
+├── resultados/
+├── scripts/
+├── envs/
+│   └── environment.yml
+└── README.md
+```
+
+## Ejercicio: 
+
+### Automatizar la instalación de un ambiente con Micromamba
+
+### Contexto
+
+Supongamos que deseas preparar un ambiente de trabajo para un pipeline rápido de inferencia filogenética por máxima verosimilitud. Para ello te interesa explorar la disponibilidad de los siguientes programas:
+
+-   `mafft`
+-   `iqtree`
+-   `jmodeltest`
+-   `modeltest-ng`
+
+### Instrucciones
+
+#### Parte 1. Verificar Micromamba
+
+Escribe un script en Bash que haga lo siguiente:
+
+1.  revise si el comando `micromamba` está disponible en el sistema;
+2.  si no está disponible, lo instale en el espacio personal del usuario, sin usar `sudo`.
+
+#### Parte 2. Revisar disponibilidad de paquetes
+
+Entra a [Anaconda.org](https://anaconda.org/) y busca los siguientes programas:
+
+-   `mafft`
+-   `iqtree`
+-   `jmodeltest`
+-   `modeltest-ng`
+
+Para cada uno, registra:
+
+-   si está disponible;
+-   en qué **canal** aparece;
+-   cuál es la **versión más reciente** que observas.
+
+> Nota: no todos los paquetes necesariamente estarán en el mismo canal.
+
+#### Parte 3. Crear un archivo YAML
+
+Con la información obtenida en Anaconda.org, crea un archivo YAML para un ambiente nuevo. El archivo debe incluir:
+
+-   nombre del ambiente;
+-   canales necesarios;
+-   los programas anteriores con su versión más reciente.
+
+Puedes nombrar el archivo como desees, por ejemplo:
+
+-   `phylo_env.yml`
+-   `ml_phylo.yml`
+-   `analisis_filogenia.yml`
+
+#### Parte 4. Crear el ambiente desde el YAML
+
+Tu script debe usar el archivo YAML para crear el ambiente con Micromamba.
+
+#### Parte 5. Verificar la instalación
+
+Al final, el script debe imprimir en pantalla una comprobación de que los programas fueron instalados correctamente. Para cada programa, debe mostrarse al menos:
+
+-   nombre del programa;
+-   versión instalada.
+
+### Sugerencia
+
+Antes de comenzar a escribir el script completo, prueba por separado:
+
+-   cómo verificar si existe `micromamba`;
+-   cómo crear un ambiente desde un archivo YAML;
+-   cómo consultar los paquetes instalados en un ambiente.

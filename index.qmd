@@ -35,5 +35,7 @@ Durante el semestre practicaremos desde lo básico (navegar por el sistema, perm
 -   [Notas: ¿Qué es un archivo FASTQ?](fastq.qmd)
 -   [Unidad 7. Expresiones Regulares y Filtrado de Datos](unidad_7.qmd)
 -   [Unidad 8. Ambientes virtuales y contenedores](unidad_8.qmd)
+-   [Unidad 9. Contenedores y gestión de software con Apptainer](unidad_9.qmd)
+-   [Proyecto Final del Curso](proyecto_final.qmd)
 
 *(Iremos agregando el resto de unidades conforme avancemos en el semestre.)*
