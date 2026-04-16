@@ -249,6 +249,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ambientes-virtuales-vs-contenedores" id="toc-ambientes-virtuales-vs-contenedores" class="nav-link" data-scroll-target="#ambientes-virtuales-vs-contenedores">Ambientes virtuales vs contenedores</a></li>
   <li><a href="#micromamba" id="toc-micromamba" class="nav-link" data-scroll-target="#micromamba">Micromamba</a></li>
   <li><a href="#crear-un-ambiente-a-partir-de-un-archivo-yaml" id="toc-crear-un-ambiente-a-partir-de-un-archivo-yaml" class="nav-link" data-scroll-target="#crear-un-ambiente-a-partir-de-un-archivo-yaml">Crear un ambiente a partir de un archivo YAML</a></li>
+  <li><a href="#ejercicio" id="toc-ejercicio" class="nav-link" data-scroll-target="#ejercicio">Ejercicio:</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_8.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -457,11 +458,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="crear-un-ambiente-e-instalar-paquetes-desde-el-inicio" class="level4">
 <h4 class="anchored" data-anchor-id="crear-un-ambiente-e-instalar-paquetes-desde-el-inicio">Crear un ambiente e instalar paquetes desde el inicio</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda fastqc seqkit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> create <span class="at">-n</span> fastqc-0.12.1 <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda fastqc=0.12.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>create</code><br>
 Le dice a micromamba que debe <strong>crear un ambiente nuevo</strong>.</p>
-<p><code>-n bioinfo</code><br>
-<code>-n</code> significa <strong>name</strong>. Le pone nombre al ambiente, en este caso <code>bioinfo</code>.</p>
+<p><code>-n fastqc-0.12.1</code><br>
+<code>-n</code> significa <strong>name</strong>. Le pone nombre al ambiente, en este caso <code>fastqc-0.12.1</code>.</p>
 <p><code>-c conda-forge -c bioconda</code><br>
 <code>-c</code> significa <strong>channel</strong>. Un channel es el repositorio desde donde micromamba busca los paquetes.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -469,16 +470,16 @@ Le dice a micromamba que debe <strong>crear un ambiente nuevo</strong>.</p>
 <p><img src="https://bioconda.github.io/_images/bioconda-dag.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="550"></p>
 </figure>
 </div>
-<p><code>fastqc seqkit</code><br>
-Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como se instala <a href="https://anaconda.org/channels/bioconda/packages/fastqc/overview">fastqc</a> desde bioconda.</p>
+<p><code>fastqc</code><br>
+Son los paquetes que quieres instalar dentro del ambiente nuevo, <code>=0.12.1</code> = versión específica que quieres instalar. Ejemplo de como se instala <a href="https://anaconda.org/channels/bioconda/packages/fastqc/overview">fastqc</a> desde bioconda.</p>
 </section>
 <section id="activar-un-ambiente" class="level4">
 <h4 class="anchored" data-anchor-id="activar-un-ambiente">Activar un ambiente</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate fastqc-0.12.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="instalar-un-paquete-en-un-ambiente-ya-creado" class="level4">
 <h4 class="anchored" data-anchor-id="instalar-un-paquete-en-un-ambiente-ya-creado">Instalar un paquete en un ambiente ya creado</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> bioinfo <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda mafft</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> install <span class="at">-n</span> fastqc-0.12.1 <span class="at">-c</span> conda-forge <span class="at">-c</span> bioconda trimmomatic=0.40</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="listar-los-ambientes-instalados" class="level4">
 <h4 class="anchored" data-anchor-id="listar-los-ambientes-instalados">Listar los ambientes instalados</h4>
@@ -488,7 +489,7 @@ Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como
 <h4 class="anchored" data-anchor-id="listar-los-paquetes-del-ambiente-activo">Listar los paquetes del ambiente activo</h4>
 <div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Si quieres ver los paquetes de un ambiente específico sin activarlo, puedes usar:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list <span class="at">-n</span> bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> list <span class="at">-n</span> fastqc-0.12.1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="desactivar-el-ambiente-actual" class="level4">
 <h4 class="anchored" data-anchor-id="desactivar-el-ambiente-actual">Desactivar el ambiente actual</h4>
@@ -496,7 +497,7 @@ Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como
 </section>
 <section id="borrar-un-ambiente" class="level4">
 <h4 class="anchored" data-anchor-id="borrar-un-ambiente">Borrar un ambiente</h4>
-<pre><code>micromamba remove -n bioinfo --all</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> remove <span class="at">-n</span> fastqc-0.12.1 <span class="at">--all</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="opción-recomendada-para-scripts" class="level3">
@@ -504,8 +505,7 @@ Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como
 <p>Ejecuta un comando dentro del ambiente sin depender de <code>activate</code>.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo fastqc datos/sample1.fastq.gz</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> bioinfo seqkit stats datos/sample1.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> run <span class="at">-n</span> fastqc-0.12.1 fastqc datos/sample1.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="crear-un-ambiente-a-partir-de-un-archivo-yaml" class="level2">
@@ -541,19 +541,6 @@ Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como
 <p>Después de crearlo, puede activarse con:</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">micromamba</span> activate bioinfo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="ejemplo-un-poco-más-completo" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-un-poco-más-completo">Ejemplo un poco más completo</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">name:</span> qc_env</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">channels:</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> conda-forge</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> bioconda</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dependencies:</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> fastqc=0.12.1</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> seqkit=2.8.2</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> mafft=7.525</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="ex">-</span> pigz=2.8</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Este archivo define un ambiente orientado a control de calidad de lecturas.</p>
-</section>
 <section id="buenas-prácticas" class="level3">
 <h3 class="anchored" data-anchor-id="buenas-prácticas">Buenas prácticas</h3>
 <ul>
@@ -565,15 +552,95 @@ Son los paquetes que quieres instalar dentro del ambiente nuevo. Ejemplo de como
 </section>
 <section id="ejemplo-de-organización-en-un-proyecto" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-de-organización-en-un-proyecto">Ejemplo de organización en un proyecto</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proyecto/</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> datos/</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> resultados/</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> envs/</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── environment.yml</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><br>
-</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">proyecto/</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> datos/</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> resultados/</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> scripts/</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> envs/</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="ex">│</span>   └── environment.yml</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> README.md</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="ejercicio" class="level2">
+<h2 class="anchored" data-anchor-id="ejercicio">Ejercicio:</h2>
+<section id="automatizar-la-instalación-de-un-ambiente-con-micromamba" class="level3">
+<h3 class="anchored" data-anchor-id="automatizar-la-instalación-de-un-ambiente-con-micromamba">Automatizar la instalación de un ambiente con Micromamba</h3>
+</section>
+<section id="contexto" class="level3">
+<h3 class="anchored" data-anchor-id="contexto">Contexto</h3>
+<p>Supongamos que deseas preparar un ambiente de trabajo para un pipeline rápido de inferencia filogenética por máxima verosimilitud. Para ello te interesa explorar la disponibilidad de los siguientes programas:</p>
+<ul>
+<li><code>mafft</code></li>
+<li><code>iqtree</code></li>
+<li><code>jmodeltest</code></li>
+<li><code>modeltest-ng</code></li>
+</ul>
+</section>
+<section id="instrucciones" class="level3">
+<h3 class="anchored" data-anchor-id="instrucciones">Instrucciones</h3>
+<section id="parte-1.-verificar-micromamba" class="level4">
+<h4 class="anchored" data-anchor-id="parte-1.-verificar-micromamba">Parte 1. Verificar Micromamba</h4>
+<p>Escribe un script en Bash que haga lo siguiente:</p>
+<ol type="1">
+<li>revise si el comando <code>micromamba</code> está disponible en el sistema;</li>
+<li>si no está disponible, lo instale en el espacio personal del usuario, sin usar <code>sudo</code>.</li>
+</ol>
+</section>
+<section id="parte-2.-revisar-disponibilidad-de-paquetes" class="level4">
+<h4 class="anchored" data-anchor-id="parte-2.-revisar-disponibilidad-de-paquetes">Parte 2. Revisar disponibilidad de paquetes</h4>
+<p>Entra a <a href="https://anaconda.org/">Anaconda.org</a> y busca los siguientes programas:</p>
+<ul>
+<li><code>mafft</code></li>
+<li><code>iqtree</code></li>
+<li><code>jmodeltest</code></li>
+<li><code>modeltest-ng</code></li>
+</ul>
+<p>Para cada uno, registra:</p>
+<ul>
+<li>si está disponible;</li>
+<li>en qué <strong>canal</strong> aparece;</li>
+<li>cuál es la <strong>versión más reciente</strong> que observas.</li>
+</ul>
+<blockquote class="blockquote">
+<p>Nota: no todos los paquetes necesariamente estarán en el mismo canal.</p>
+</blockquote>
+</section>
+<section id="parte-3.-crear-un-archivo-yaml" class="level4">
+<h4 class="anchored" data-anchor-id="parte-3.-crear-un-archivo-yaml">Parte 3. Crear un archivo YAML</h4>
+<p>Con la información obtenida en Anaconda.org, crea un archivo YAML para un ambiente nuevo. El archivo debe incluir:</p>
+<ul>
+<li>nombre del ambiente;</li>
+<li>canales necesarios;</li>
+<li>los programas anteriores con su versión más reciente.</li>
+</ul>
+<p>Puedes nombrar el archivo como desees, por ejemplo:</p>
+<ul>
+<li><code>phylo_env.yml</code></li>
+<li><code>ml_phylo.yml</code></li>
+<li><code>analisis_filogenia.yml</code></li>
+</ul>
+</section>
+<section id="parte-4.-crear-el-ambiente-desde-el-yaml" class="level4">
+<h4 class="anchored" data-anchor-id="parte-4.-crear-el-ambiente-desde-el-yaml">Parte 4. Crear el ambiente desde el YAML</h4>
+<p>Tu script debe usar el archivo YAML para crear el ambiente con Micromamba.</p>
+</section>
+<section id="parte-5.-verificar-la-instalación" class="level4">
+<h4 class="anchored" data-anchor-id="parte-5.-verificar-la-instalación">Parte 5. Verificar la instalación</h4>
+<p>Al final, el script debe imprimir en pantalla una comprobación de que los programas fueron instalados correctamente. Para cada programa, debe mostrarse al menos:</p>
+<ul>
+<li>nombre del programa;</li>
+<li>versión instalada.</li>
+</ul>
+</section>
+</section>
+<section id="sugerencia" class="level3">
+<h3 class="anchored" data-anchor-id="sugerencia">Sugerencia</h3>
+<p>Antes de comenzar a escribir el script completo, prueba por separado:</p>
+<ul>
+<li>cómo verificar si existe <code>micromamba</code>;</li>
+<li>cómo crear un ambiente desde un archivo YAML;</li>
+<li>cómo consultar los paquetes instalados en un ambiente.</li>
+</ul>
 
 
 </section>

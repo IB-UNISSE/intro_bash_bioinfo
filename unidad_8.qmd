@@ -106,7 +106,7 @@ Convienen cuando:
 -   Se trabaja en HPC o cómputo científico con flujos bien definidos.
 
 | Aspecto | Ambiente virtual | Contenedor |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | Aislamiento | Paquetes y dependencias | Aplicación, librerías y entorno de usuario |
 | Reproducibilidad | Media | Alta |
 | Facilidad de uso | Alta | Media |
@@ -289,7 +289,7 @@ proyecto/
 └── README.md
 ```
 
-## Ejercicio: 
+## Ejercicio:
 
 ### Automatizar la instalación de un ambiente con Micromamba
 
