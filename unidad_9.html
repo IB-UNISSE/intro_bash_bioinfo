@@ -248,11 +248,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#qué-es-un-contenedor" id="toc-qué-es-un-contenedor" class="nav-link active" data-scroll-target="#qué-es-un-contenedor">¿Qué es un contenedor?</a></li>
   <li><a href="#docker-vs-podman-vs-apptainer" id="toc-docker-vs-podman-vs-apptainer" class="nav-link" data-scroll-target="#docker-vs-podman-vs-apptainer">Docker vs Podman vs Apptainer</a></li>
   <li><a href="#apptainer" id="toc-apptainer" class="nav-link" data-scroll-target="#apptainer">Apptainer</a></li>
+  <li><a href="#descargar-imágenes" id="toc-descargar-imágenes" class="nav-link" data-scroll-target="#descargar-imágenes">📥 Descargar imágenes</a></li>
+  <li><a href="#uso-básico-de-contenedores" id="toc-uso-básico-de-contenedores" class="nav-link" data-scroll-target="#uso-básico-de-contenedores">Uso básico de contenedores</a></li>
   <li><a href="#qué-es-un-sandbox" id="toc-qué-es-un-sandbox" class="nav-link" data-scroll-target="#qué-es-un-sandbox">¿Qué es un sandbox?</a></li>
   <li><a href="#configuración-básica-del-sistema-dentro-del-contenedor" id="toc-configuración-básica-del-sistema-dentro-del-contenedor" class="nav-link" data-scroll-target="#configuración-básica-del-sistema-dentro-del-contenedor">⚙️ Configuración básica del sistema dentro del contenedor</a></li>
   <li><a href="#empaquetar-el-sandbox-como-imagen-.sif" id="toc-empaquetar-el-sandbox-como-imagen-.sif" class="nav-link" data-scroll-target="#empaquetar-el-sandbox-como-imagen-.sif">Empaquetar el sandbox como imagen <code>.sif</code></a></li>
-  <li><a href="#qué-es-un-archivo-.def" id="toc-qué-es-un-archivo-.def" class="nav-link" data-scroll-target="#qué-es-un-archivo-.def">¿Qué es un archivo <code>.def</code>?</a></li>
   <li><a href="#uso-de-volúmenes-montaje-de-carpetas" id="toc-uso-de-volúmenes-montaje-de-carpetas" class="nav-link" data-scroll-target="#uso-de-volúmenes-montaje-de-carpetas">📂 Uso de volúmenes (montaje de carpetas)</a></li>
+  <li><a href="#qué-es-un-archivo-.def" id="toc-qué-es-un-archivo-.def" class="nav-link" data-scroll-target="#qué-es-un-archivo-.def">¿Qué es un archivo <code>.def</code>?</a></li>
   <li><a href="#buscar-imágenes-existentes-antes-de-construir-un-contenedor" id="toc-buscar-imágenes-existentes-antes-de-construir-un-contenedor" class="nav-link" data-scroll-target="#buscar-imágenes-existentes-antes-de-construir-un-contenedor">🔎 Buscar imágenes existentes antes de construir un contenedor</a></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/edit/main/unidad_9.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/IB-UNISSE/intro_bash_bioinfo/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -357,35 +359,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="de-dónde-vienen-las-imágenes" class="level3">
 <h3 class="anchored" data-anchor-id="de-dónde-vienen-las-imágenes">¿De dónde vienen las imágenes?</h3>
-<p>Las imágenes provienen generalmente de:<br>
-<br>
-👉 <a href="https://hub.docker.com" class="uri">https://hub.docker.com</a><br>
-<br>
-Docker Hub es una plataforma donde se almacenan miles de imágenes listas para usar.<br>
-<br>
-Cada imagen tiene versiones llamadas **tags**:</p>
+<p>Las imágenes de contenedores provienen generalmente de repositorios en línea como:</p>
+<p>👉 <a href="https://hub.docker.com/"><u>Docker Hub</u></a><br>
+👉 <a href="https://quay.io/"><u>Quay.io</u></a></p>
+<section id="docker-hub" class="level4">
+<h4 class="anchored" data-anchor-id="docker-hub">📦 Docker Hub</h4>
+<p>Docker Hub es una plataforma donde se almacenan miles de imágenes listas para usar:</p>
+<ul>
+<li><p>sistemas operativos</p></li>
+<li><p>lenguajes de programación</p></li>
+<li><p>herramientas científicas</p></li>
+</ul>
+<p>Cada imagen tiene versiones llamadas <strong>tags</strong>, por ejemplo:</p>
 <ul>
 <li><p><code>ubuntu:22.04</code></p></li>
 <li><p><code>ubuntu:20.04</code></p></li>
 <li><p><code>ubuntu:latest</code></p></li>
 </ul>
 <p>💡 Esto permite elegir exactamente qué entorno queremos usar.</p>
-<section id="descargar-imágenes" class="level4">
-<h4 class="anchored" data-anchor-id="descargar-imágenes">📥 Descargar imágenes</h4>
+</section>
+<section id="qué-son-los-biocontainers" class="level4">
+<h4 class="anchored" data-anchor-id="qué-son-los-biocontainers">🧬 ¿Qué son los BioContainers?</h4>
+<p>Existen repositorios especializados llamados <strong>BioContainers</strong>, que contienen imágenes enfocadas en bioinformática.</p>
+<p>👉 Son contenedores que ya incluyen software científico instalado, como:</p>
+<ul>
+<li><p>MrBayes</p></li>
+<li><p>BLAST</p></li>
+<li><p>FastQC</p></li>
+<li><p>Bowtie2</p></li>
+</ul>
+<p>👉 Muchos de estos contenedores están disponibles en:</p>
+<ul>
+<li><p>Docker Hub</p></li>
+<li><p>Quay.io (más actualizado en muchos casos)</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="descargar-imágenes" class="level2">
+<h2 class="anchored" data-anchor-id="descargar-imágenes">📥 Descargar imágenes</h2>
 <p>El comando <code>pull</code> permite descargar una imagen y convertirla al formato de Apptainer (<code>.sif</code>), que es el formato estándar para ejecutar contenedores.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://ubuntu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>👉 Este comando descarga una imagen de Ubuntu desde Docker Hub y genera un archivo como:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">ubuntu_latest.sif</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Este archivo <code>.sif</code> contiene un sistema base listo para usarse con Apptainer.</p>
-</section>
 <section id="versiones-específicas" class="level4">
 <h4 class="anchored" data-anchor-id="versiones-específicas">📦 Versiones específicas</h4>
 <p>También es posible descargar una versión concreta de una imagen usando una etiqueta (<code>:versión</code>). Esto es útil cuando se necesita trabajar con una versión específica del sistema operativo o del software para mantener compatibilidad y reproducibilidad.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://centos:7</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="uso-básico-de-contenedores" class="level3">
-<h3 class="anchored" data-anchor-id="uso-básico-de-contenedores">Uso básico de contenedores</h3>
+<section id="uso-básico-de-contenedores" class="level2">
+<h2 class="anchored" data-anchor-id="uso-básico-de-contenedores">Uso básico de contenedores</h2>
 <p>UUna vez que hemos descargado una imagen con <code>pull</code>, podemos comenzar a interactuar con ella.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://ubuntu</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>👉 Esto genera un archivo <code>.sif</code>, que contiene un sistema Linux mínimo.</p>
@@ -397,7 +422,6 @@ Cada imagen tiene versiones llamadas **tags**:</p>
 <li><p>sin programas adicionales</p></li>
 <li><p>con solo lo esencial para funcionar</p></li>
 </ul>
-</section>
 <section id="entrar-a-un-contenedor-modo-interactivo" class="level3">
 <h3 class="anchored" data-anchor-id="entrar-a-un-contenedor-modo-interactivo">Entrar a un contenedor (modo interactivo)</h3>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell ubuntu_latest.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -473,15 +497,14 @@ En archivos <code>.sif</code>, puede no funcionar o ser limitado</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build <span class="at">--sandbox</span> NOMBRE_DEL_DIRECTORIO IMAGEN_BASE.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="ejemplo" class="level4">
 <h4 class="anchored" data-anchor-id="ejemplo">Ejemplo</h4>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build <span class="at">--sandbox</span> mi_contenedor ubuntu_latest.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>NBODY</code> <strong>es el nombre del directorio que se va a crear</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build <span class="at">--sandbox</span> mrbayes ubuntu_latest.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Puedes usar cualquier nombre:</p>
-<pre><code>mi_contenedor
+<pre><code>mrbayes
 ubuntu_editable
 test_container
 bioinfo_env</code></pre>
 <p>Esto creará una carpeta llamada:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mi_contenedor/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mrbayes/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Y dentro:</p>
 <ul>
 <li><p><code>/bin</code></p></li>
@@ -498,7 +521,7 @@ bioinfo_env</code></pre>
 <section id="explorar-el-contenedor-de-forma-interactiva" class="level3">
 <h3 class="anchored" data-anchor-id="explorar-el-contenedor-de-forma-interactiva">Explorar el contenedor de forma interactiva</h3>
 <p>Una vez creado el sandbox, puedes entrar a él con una shell interactiva y trabajar dentro del contenedor como si fuera otro sistema Linux.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell mi_contenedor/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell mrbayes/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>👉 Esto abre una terminal dentro del contenedor, desde donde puedes navegar, revisar archivos o ejecutar comandos.</p>
 </section>
 <section id="salir-del-contenedor" class="level3">
@@ -509,7 +532,7 @@ bioinfo_env</code></pre>
 <section id="entrar-en-modo-escritura-y-con-root-simulado" class="level3">
 <h3 class="anchored" data-anchor-id="entrar-en-modo-escritura-y-con-root-simulado">Entrar en modo escritura y con root simulado</h3>
 <p>Cuando quieres modificar un sandbox, por ejemplo para instalar paquetes o compilar programas, necesitas abrirlo con opciones adicionales.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell <span class="at">--writable</span> <span class="at">--fakeroot</span> <span class="at">--pwd</span> / mi_contenedor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> shell <span class="at">--writable</span> <span class="at">--fakeroot</span> <span class="at">--pwd</span> / mrbayes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>--writable</code></p>
 <p>Permite modificar el contenedor. Sin esta opción, el sistema se abre solo para lectura.</p>
 <p><code>--fakeroot</code></p>
@@ -642,7 +665,7 @@ y estos comandos sincronizan el sistema con esos repositorios</p>
 <section id="empaquetar-el-sandbox-como-imagen-.sif" class="level2">
 <h2 class="anchored" data-anchor-id="empaquetar-el-sandbox-como-imagen-.sif">Empaquetar el sandbox como imagen <code>.sif</code></h2>
 <p>Cuando ya terminaste de personalizar tu sandbox, puedes convertirlo en una imagen final para transportarlo y ejecutarlo fácilmente.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apptainer build mrbayes_mpi.sif mi_contenedor</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build <span class="at">--fakeroot</span> mrbayes_mpi.sif mrbayes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>👉 Esto crea un archivo <code>.sif</code> a partir del sandbox <code>mi_contenedor</code>.</p>
 <p>La imagen <code>.sif</code> ya no está pensada para editarse, sino para distribuirse y ejecutarse.</p>
 <section id="ejecutar-un-programa-dentro-del-contenedor" class="level3">
@@ -654,8 +677,75 @@ y estos comandos sincronizan el sistema con esos repositorios</p>
 <section id="ejecutar-con-mpi" class="level3">
 <h3 class="anchored" data-anchor-id="ejecutar-con-mpi">Ejecutar con MPI</h3>
 <p>Si el programa fue compilado con soporte para MPI, puede ejecutarse usando varios núcleos.</p>
-<pre><code>apptainer exec mrbayes_mpi.sif mpirun -np 8 mb analisis/data/analysis.nex</code></pre>
-<p>👉 En este caso, MrBayes se ejecuta usando 8 procesos paralelos.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec mrbayes_mpi.sif mpirun <span class="at">-np</span> 4 mb </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>👉 En este caso, MrBayes se ejecuta usando 4 procesos paralelos.</p>
+</section>
+</section>
+<section id="uso-de-volúmenes-montaje-de-carpetas" class="level2">
+<h2 class="anchored" data-anchor-id="uso-de-volúmenes-montaje-de-carpetas">📂 Uso de volúmenes (montaje de carpetas)</h2>
+<p>Cuando trabajas con contenedores, tus datos normalmente están <strong>fuera del contenedor</strong>, en tu sistema.</p>
+<p>👉 Para que el contenedor pueda verlos, es necesario <strong>montar (bind) directorios</strong>.</p>
+<section id="montar-una-carpeta" class="level3">
+<h3 class="anchored" data-anchor-id="montar-una-carpeta">Montar una carpeta</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /ruta/local:/ruta/contenedor contenedor.sif comando</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ejemplo-práctico" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-práctico">Ejemplo práctico</h3>
+<p>Supongamos que tienes tus datos en:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/usuario/proyecto/datos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Puedes montarlos dentro del contenedor así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /home/usuario/proyecto/datos:/data revbayes_mpi.sif ls /data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>👉 Dentro del contenedor, la carpeta aparecerá como:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="usar-tus-archivos-en-revbayes" class="level3">
+<h3 class="anchored" data-anchor-id="usar-tus-archivos-en-revbayes">📂 Usar tus archivos en RevBayes</h3>
+<p>Si tienes un archivo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">analysis.Rev</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>puedes ejecutarlo así:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /home/usuario/proyecto/datos:/data revbayes_mpi.sif rb-mpi /data/analysis.Rev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="uso-de-pwd-muy-importante" class="level3">
+<h3 class="anchored" data-anchor-id="uso-de-pwd-muy-importante">Uso de <code>pwd</code> (muy importante)</h3>
+<p>Para evitar escribir rutas largas, puedes usar:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>👉 Esto muestra tu directorio actual.</p>
+</section>
+<section id="ejemplo-práctico-con-pwd" class="level3">
+<h3 class="anchored" data-anchor-id="ejemplo-práctico-con-pwd">Ejemplo práctico con <code>pwd</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data revbayes_mpi.sif rb-mpi /data/analysis.Rev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>👉 Aquí:</p>
+<ul>
+<li><p><code>$(pwd)</code> → ruta actual en tu sistema</p></li>
+<li><p><code>/data</code> → ruta dentro del contenedor</p></li>
+</ul>
+</section>
+<section id="ventaja-de-usar-pwd" class="level3">
+<h3 class="anchored" data-anchor-id="ventaja-de-usar-pwd">Ventaja de usar <code>pwd</code></h3>
+<ul>
+<li><p>evita errores de ruta</p></li>
+<li><p>hace scripts más portables</p></li>
+<li><p>facilita reproducibilidad</p></li>
+</ul>
+</section>
+<section id="nota-importante" class="level3">
+<h3 class="anchored" data-anchor-id="nota-importante">⚠️ Nota importante</h3>
+<p>Apptainer ya monta automáticamente algunas rutas como:</p>
+<ul>
+<li><p><code>$HOME</code></p></li>
+<li><p>el directorio actual (en muchos casos)</p></li>
+</ul>
+<p>👉 Pero usar <code>--bind</code> explícito es más claro y reproducible.</p>
+</section>
+<section id="probar-que-el-volumen-funciona" class="level3">
+<h3 class="anchored" data-anchor-id="probar-que-el-volumen-funciona">🧪 Probar que el volumen funciona</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data revbayes_mpi.sif ls /data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>👉 Si ves tus archivos, el montaje funcionó correctamente.</p>
+</section>
+<section id="bonus-muy-útil" class="level3">
+<h3 class="anchored" data-anchor-id="bonus-muy-útil">🚀 Bonus (muy útil)</h3>
+<p>También puedes montar múltiples carpetas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data,/otra/ruta:/ref contenedor.sif comando</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="qué-es-un-archivo-.def" class="level2">
@@ -702,7 +792,7 @@ y estos comandos sincronizan el sistema con esos repositorios</p>
 <p>💡 Es la sección donde realmente “se arma” el contenedor.</p>
 <p>🔹 <code>%runscript</code></p>
 <p>Define qué ocurre cuando el contenedor se ejecuta con:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run archivo.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> run archivo.sif</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>👉 Permite establecer un comportamiento por defecto del contenedor.</p>
 <p>💡 Por ejemplo:</p>
 <ul>
@@ -710,116 +800,116 @@ y estos comandos sincronizan el sistema con esos repositorios</p>
 <li><p>ejecutar automáticamente un programa</p></li>
 </ul>
 <p>Archivo ejemplo <strong><code>revbayes_mpi.def</code></strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Archivo de definición de Apptainer para RevBayes con MPI</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrap</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Indica el tipo de origen de la imagen base.</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="co"># En este caso, se utilizará una imagen proveniente de Docker Hub.</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co"># From</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Especifica la imagen base sobre la cual se construirá el contenedor.</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Aquí se usa Ubuntu 22.04 como sistema operativo inicial.</span></span>
-<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:22.04</span>
-<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %environment</span></span>
-<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Esta sección define variables de entorno que estarán disponibles</span></span>
-<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="co"># cada vez que el contenedor se ejecute (shell, exec, run).</span></span>
-<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="co"># No se ejecuta durante el build, sino en tiempo de uso.</span></span>
-<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
-<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Configuración de idioma y codificación</span></span>
-<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LANG</span><span class="op">=</span>C.UTF-8</span>
-<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C.UTF-8</span>
-<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ruta donde se buscarán bibliotecas compartidas</span></span>
-<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH</span><span class="op">=</span>/usr/local/lib:<span class="va">$LD_LIBRARY_PATH</span></span>
-<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a><span class="co"># %post</span></span>
-<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Esta sección se ejecuta durante la construcción del contenedor.</span></span>
-<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Aquí se instala y configura el software.</span></span>
-<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
-<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Evita preguntas interactivas durante la instalación</span></span>
-<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">DEBIAN_FRONTEND</span><span class="op">=</span>noninteractive</span>
-<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Actualizar sistema</span></span>
-<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt</span> update</span>
-<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Instalar dependencias necesarias</span></span>
-<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt</span> install <span class="at">-y</span> <span class="dt">\</span></span>
-<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>        build-essential <span class="dt">\</span></span>
-<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>        cmake <span class="dt">\</span></span>
-<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>        git <span class="dt">\</span></span>
-<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>        wget <span class="dt">\</span></span>
-<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>        curl <span class="dt">\</span></span>
-<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>        ca-certificates <span class="dt">\</span></span>
-<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>        libopenmpi-dev <span class="dt">\</span></span>
-<span id="cb25-62"><a href="#cb25-62" aria-hidden="true" tabindex="-1"></a>        openmpi-bin <span class="dt">\</span></span>
-<span id="cb25-63"><a href="#cb25-63" aria-hidden="true" tabindex="-1"></a>        libboost-all-dev <span class="dt">\</span></span>
-<span id="cb25-64"><a href="#cb25-64" aria-hidden="true" tabindex="-1"></a>        bison <span class="dt">\</span></span>
-<span id="cb25-65"><a href="#cb25-65" aria-hidden="true" tabindex="-1"></a>        flex <span class="dt">\</span></span>
-<span id="cb25-66"><a href="#cb25-66" aria-hidden="true" tabindex="-1"></a>        zlib1g-dev</span>
-<span id="cb25-67"><a href="#cb25-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-68"><a href="#cb25-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-69"><a href="#cb25-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Descargar código fuente de RevBayes</span></span>
-<span id="cb25-70"><a href="#cb25-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-71"><a href="#cb25-71" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> /opt</span>
-<span id="cb25-72"><a href="#cb25-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> clone <span class="at">--branch</span> development https://github.com/revbayes/revbayes.git</span>
-<span id="cb25-73"><a href="#cb25-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-74"><a href="#cb25-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-75"><a href="#cb25-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compilar RevBayes con soporte MPI</span></span>
-<span id="cb25-76"><a href="#cb25-76" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-77"><a href="#cb25-77" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> /opt/revbayes/projects/cmake</span>
-<span id="cb25-78"><a href="#cb25-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">chmod</span> +x build.sh</span>
-<span id="cb25-79"><a href="#cb25-79" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./build.sh</span> <span class="at">-mpi</span> true</span>
-<span id="cb25-80"><a href="#cb25-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-81"><a href="#cb25-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-82"><a href="#cb25-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Copiar ejecutables a una ruta accesible</span></span>
-<span id="cb25-83"><a href="#cb25-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
-<span id="cb25-84"><a href="#cb25-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> rb-mpi <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb25-85"><a href="#cb25-85" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cp</span> rb-mpi /usr/local/bin/rb-mpi</span>
-<span id="cb25-86"><a href="#cb25-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">chmod</span> 755 /usr/local/bin/rb-mpi</span>
-<span id="cb25-87"><a href="#cb25-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
-<span id="cb25-88"><a href="#cb25-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-89"><a href="#cb25-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> rb <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
-<span id="cb25-90"><a href="#cb25-90" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cp</span> rb /usr/local/bin/rb</span>
-<span id="cb25-91"><a href="#cb25-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">chmod</span> 755 /usr/local/bin/rb</span>
-<span id="cb25-92"><a href="#cb25-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
-<span id="cb25-93"><a href="#cb25-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-94"><a href="#cb25-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-95"><a href="#cb25-95" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-96"><a href="#cb25-96" aria-hidden="true" tabindex="-1"></a><span class="co"># %runscript</span></span>
-<span id="cb25-97"><a href="#cb25-97" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
-<span id="cb25-98"><a href="#cb25-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Define qué ocurre cuando se ejecuta el contenedor con:</span></span>
-<span id="cb25-99"><a href="#cb25-99" aria-hidden="true" tabindex="-1"></a><span class="co"># apptainer run archivo.sif</span></span>
-<span id="cb25-100"><a href="#cb25-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-101"><a href="#cb25-101" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
-<span id="cb25-102"><a href="#cb25-102" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"RevBayes con MPI listo para usarse"</span></span>
-<span id="cb25-103"><a href="#cb25-103" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">"</span><span class="va">$@</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Archivo de definición de Apptainer para RevBayes con MPI</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Bootstrap</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Indica el tipo de origen de la imagen base.</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># En este caso, se utilizará una imagen proveniente de Docker Hub.</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Bootstrap:</span> docker</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="co"># From</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co"># ------------------------------------------------------------</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Especifica la imagen base sobre la cual se construirá el contenedor.</span></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Aquí se usa Ubuntu 22.04 como sistema operativo inicial.</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="ex">From:</span> ubuntu:22.04</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a><span class="co"># %environment</span></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Esta sección define variables de entorno que estarán disponibles</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a><span class="co"># cada vez que el contenedor se ejecute (shell, exec, run).</span></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="co"># No se ejecuta durante el build, sino en tiempo de uso.</span></span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="ex">%environment</span></span>
+<span id="cb35-28"><a href="#cb35-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Configuración de idioma y codificación</span></span>
+<span id="cb35-29"><a href="#cb35-29" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LANG</span><span class="op">=</span>C.UTF-8</span>
+<span id="cb35-30"><a href="#cb35-30" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LC_ALL</span><span class="op">=</span>C.UTF-8</span>
+<span id="cb35-31"><a href="#cb35-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-32"><a href="#cb35-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ruta donde se buscarán bibliotecas compartidas</span></span>
+<span id="cb35-33"><a href="#cb35-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">LD_LIBRARY_PATH</span><span class="op">=</span>/usr/local/lib:<span class="va">$LD_LIBRARY_PATH</span></span>
+<span id="cb35-34"><a href="#cb35-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-35"><a href="#cb35-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-36"><a href="#cb35-36" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-37"><a href="#cb35-37" aria-hidden="true" tabindex="-1"></a><span class="co"># %post</span></span>
+<span id="cb35-38"><a href="#cb35-38" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-39"><a href="#cb35-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Esta sección se ejecuta durante la construcción del contenedor.</span></span>
+<span id="cb35-40"><a href="#cb35-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Aquí se instala y configura el software.</span></span>
+<span id="cb35-41"><a href="#cb35-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-42"><a href="#cb35-42" aria-hidden="true" tabindex="-1"></a><span class="ex">%post</span></span>
+<span id="cb35-43"><a href="#cb35-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Evita preguntas interactivas durante la instalación</span></span>
+<span id="cb35-44"><a href="#cb35-44" aria-hidden="true" tabindex="-1"></a>    <span class="bu">export</span> <span class="va">DEBIAN_FRONTEND</span><span class="op">=</span>noninteractive</span>
+<span id="cb35-45"><a href="#cb35-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-46"><a href="#cb35-46" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-47"><a href="#cb35-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Actualizar sistema</span></span>
+<span id="cb35-48"><a href="#cb35-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-49"><a href="#cb35-49" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt</span> update</span>
+<span id="cb35-50"><a href="#cb35-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-51"><a href="#cb35-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-52"><a href="#cb35-52" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Instalar dependencias necesarias</span></span>
+<span id="cb35-53"><a href="#cb35-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-54"><a href="#cb35-54" aria-hidden="true" tabindex="-1"></a>    <span class="ex">apt</span> install <span class="at">-y</span> <span class="dt">\</span></span>
+<span id="cb35-55"><a href="#cb35-55" aria-hidden="true" tabindex="-1"></a>        build-essential <span class="dt">\</span></span>
+<span id="cb35-56"><a href="#cb35-56" aria-hidden="true" tabindex="-1"></a>        cmake <span class="dt">\</span></span>
+<span id="cb35-57"><a href="#cb35-57" aria-hidden="true" tabindex="-1"></a>        git <span class="dt">\</span></span>
+<span id="cb35-58"><a href="#cb35-58" aria-hidden="true" tabindex="-1"></a>        wget <span class="dt">\</span></span>
+<span id="cb35-59"><a href="#cb35-59" aria-hidden="true" tabindex="-1"></a>        curl <span class="dt">\</span></span>
+<span id="cb35-60"><a href="#cb35-60" aria-hidden="true" tabindex="-1"></a>        ca-certificates <span class="dt">\</span></span>
+<span id="cb35-61"><a href="#cb35-61" aria-hidden="true" tabindex="-1"></a>        libopenmpi-dev <span class="dt">\</span></span>
+<span id="cb35-62"><a href="#cb35-62" aria-hidden="true" tabindex="-1"></a>        openmpi-bin <span class="dt">\</span></span>
+<span id="cb35-63"><a href="#cb35-63" aria-hidden="true" tabindex="-1"></a>        libboost-all-dev <span class="dt">\</span></span>
+<span id="cb35-64"><a href="#cb35-64" aria-hidden="true" tabindex="-1"></a>        bison <span class="dt">\</span></span>
+<span id="cb35-65"><a href="#cb35-65" aria-hidden="true" tabindex="-1"></a>        flex <span class="dt">\</span></span>
+<span id="cb35-66"><a href="#cb35-66" aria-hidden="true" tabindex="-1"></a>        zlib1g-dev</span>
+<span id="cb35-67"><a href="#cb35-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-68"><a href="#cb35-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-69"><a href="#cb35-69" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Descargar código fuente de RevBayes</span></span>
+<span id="cb35-70"><a href="#cb35-70" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-71"><a href="#cb35-71" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> /opt</span>
+<span id="cb35-72"><a href="#cb35-72" aria-hidden="true" tabindex="-1"></a>    <span class="fu">git</span> clone <span class="at">--branch</span> development https://github.com/revbayes/revbayes.git</span>
+<span id="cb35-73"><a href="#cb35-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-74"><a href="#cb35-74" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-75"><a href="#cb35-75" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compilar RevBayes con soporte MPI</span></span>
+<span id="cb35-76"><a href="#cb35-76" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-77"><a href="#cb35-77" aria-hidden="true" tabindex="-1"></a>    <span class="bu">cd</span> /opt/revbayes/projects/cmake</span>
+<span id="cb35-78"><a href="#cb35-78" aria-hidden="true" tabindex="-1"></a>    <span class="fu">chmod</span> +x build.sh</span>
+<span id="cb35-79"><a href="#cb35-79" aria-hidden="true" tabindex="-1"></a>    <span class="ex">./build.sh</span> <span class="at">-mpi</span> true</span>
+<span id="cb35-80"><a href="#cb35-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-81"><a href="#cb35-81" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-82"><a href="#cb35-82" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Copiar ejecutables a una ruta accesible</span></span>
+<span id="cb35-83"><a href="#cb35-83" aria-hidden="true" tabindex="-1"></a>    <span class="co"># --------------------------------------------------------</span></span>
+<span id="cb35-84"><a href="#cb35-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> rb-mpi <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb35-85"><a href="#cb35-85" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cp</span> rb-mpi /usr/local/bin/rb-mpi</span>
+<span id="cb35-86"><a href="#cb35-86" aria-hidden="true" tabindex="-1"></a>        <span class="fu">chmod</span> 755 /usr/local/bin/rb-mpi</span>
+<span id="cb35-87"><a href="#cb35-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb35-88"><a href="#cb35-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-89"><a href="#cb35-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">[</span> <span class="ot">-f</span> rb <span class="bu">]</span><span class="kw">;</span> <span class="cf">then</span></span>
+<span id="cb35-90"><a href="#cb35-90" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cp</span> rb /usr/local/bin/rb</span>
+<span id="cb35-91"><a href="#cb35-91" aria-hidden="true" tabindex="-1"></a>        <span class="fu">chmod</span> 755 /usr/local/bin/rb</span>
+<span id="cb35-92"><a href="#cb35-92" aria-hidden="true" tabindex="-1"></a>    <span class="cf">fi</span></span>
+<span id="cb35-93"><a href="#cb35-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-94"><a href="#cb35-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-95"><a href="#cb35-95" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-96"><a href="#cb35-96" aria-hidden="true" tabindex="-1"></a><span class="co"># %runscript</span></span>
+<span id="cb35-97"><a href="#cb35-97" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb35-98"><a href="#cb35-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Define qué ocurre cuando se ejecuta el contenedor con:</span></span>
+<span id="cb35-99"><a href="#cb35-99" aria-hidden="true" tabindex="-1"></a><span class="co"># apptainer run archivo.sif</span></span>
+<span id="cb35-100"><a href="#cb35-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-101"><a href="#cb35-101" aria-hidden="true" tabindex="-1"></a><span class="ex">%runscript</span></span>
+<span id="cb35-102"><a href="#cb35-102" aria-hidden="true" tabindex="-1"></a>    <span class="bu">echo</span> <span class="st">"RevBayes con MPI listo para usarse"</span></span>
+<span id="cb35-103"><a href="#cb35-103" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">"</span><span class="va">$@</span><span class="st">"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="construir-el-contenedor-a-partir-del-archivo-.def" class="level3">
 <h3 class="anchored" data-anchor-id="construir-el-contenedor-a-partir-del-archivo-.def">🔧 Construir el contenedor a partir del archivo <code>.def</code></h3>
 <p>Una vez que el archivo <code>revbayes_mpi.def</code> está listo, el siguiente paso es construir la imagen <code>.sif</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build revbayes_mpi.sif revbayes_mpi.def</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> build revbayes_mpi.sif revbayes_mpi.def</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si todo sale bien, al final tendrás un archivo como este:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">revbayes_mpi.sif</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">revbayes_mpi.sif</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Ese archivo ya contiene:</p>
 <ul>
 <li><p>Ubuntu 22.04</p></li>
@@ -831,82 +921,16 @@ y estos comandos sincronizan el sistema con esos repositorios</p>
 <section id="probar-el-contenedor" class="level3">
 <h3 class="anchored" data-anchor-id="probar-el-contenedor">Probar el contenedor</h3>
 <p>Una forma sencilla de verificar que el contenedor se construyó correctamente es ejecutar comandos directamente con <code>exec</code>, sin necesidad de entrar en una shell interactiva.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec revbayes_mpi.sif which rb-mpi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec revbayes_mpi.sif which rb-mpi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>También puedes comprobar que el programa funciona correctamente con:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec revbayes_mpi.sif rb-mpi <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-</section>
-<section id="uso-de-volúmenes-montaje-de-carpetas" class="level2">
-<h2 class="anchored" data-anchor-id="uso-de-volúmenes-montaje-de-carpetas">📂 Uso de volúmenes (montaje de carpetas)</h2>
-<p>Cuando trabajas con contenedores, tus datos normalmente están <strong>fuera del contenedor</strong>, en tu sistema.</p>
-<p>👉 Para que el contenedor pueda verlos, es necesario <strong>montar (bind) directorios</strong>.</p>
-<section id="montar-una-carpeta" class="level3">
-<h3 class="anchored" data-anchor-id="montar-una-carpeta">Montar una carpeta</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /ruta/local:/ruta/contenedor contenedor.sif comando</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="ejemplo-práctico" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-práctico">Ejemplo práctico</h3>
-<p>Supongamos que tienes tus datos en:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/home/usuario/proyecto/datos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Puedes montarlos dentro del contenedor así:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /home/usuario/proyecto/datos:/data revbayes_mpi.sif ls /data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>👉 Dentro del contenedor, la carpeta aparecerá como:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="ex">/data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="usar-tus-archivos-en-revbayes" class="level3">
-<h3 class="anchored" data-anchor-id="usar-tus-archivos-en-revbayes">📂 Usar tus archivos en RevBayes</h3>
-<p>Si tienes un archivo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="ex">analysis.Rev</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>puedes ejecutarlo así:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> /home/usuario/proyecto/datos:/data revbayes_mpi.sif rb-mpi /data/analysis.Rev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="uso-de-pwd-muy-importante" class="level3">
-<h3 class="anchored" data-anchor-id="uso-de-pwd-muy-importante">Uso de <code>pwd</code> (muy importante)</h3>
-<p>Para evitar escribir rutas largas, puedes usar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>👉 Esto muestra tu directorio actual.</p>
-</section>
-<section id="ejemplo-práctico-con-pwd" class="level3">
-<h3 class="anchored" data-anchor-id="ejemplo-práctico-con-pwd">Ejemplo práctico con <code>pwd</code></h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data revbayes_mpi.sif rb-mpi /data/analysis.Rev</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>👉 Aquí:</p>
-<ul>
-<li><p><code>$(pwd)</code> → ruta actual en tu sistema</p></li>
-<li><p><code>/data</code> → ruta dentro del contenedor</p></li>
-</ul>
-</section>
-<section id="ventaja-de-usar-pwd" class="level3">
-<h3 class="anchored" data-anchor-id="ventaja-de-usar-pwd">Ventaja de usar <code>pwd</code></h3>
-<ul>
-<li><p>evita errores de ruta</p></li>
-<li><p>hace scripts más portables</p></li>
-<li><p>facilita reproducibilidad</p></li>
-</ul>
-</section>
-<section id="nota-importante" class="level3">
-<h3 class="anchored" data-anchor-id="nota-importante">⚠️ Nota importante</h3>
-<p>Apptainer ya monta automáticamente algunas rutas como:</p>
-<ul>
-<li><p><code>$HOME</code></p></li>
-<li><p>el directorio actual (en muchos casos)</p></li>
-</ul>
-<p>👉 Pero usar <code>--bind</code> explícito es más claro y reproducible.</p>
-</section>
-<section id="probar-que-el-volumen-funciona" class="level3">
-<h3 class="anchored" data-anchor-id="probar-que-el-volumen-funciona">🧪 Probar que el volumen funciona</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data revbayes_mpi.sif ls /data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>👉 Si ves tus archivos, el montaje funcionó correctamente.</p>
-</section>
-<section id="bonus-muy-útil" class="level3">
-<h3 class="anchored" data-anchor-id="bonus-muy-útil">🚀 Bonus (muy útil)</h3>
-<p>También puedes montar múltiples carpetas:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec <span class="at">--bind</span> <span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>:/data,/otra/ruta:/ref contenedor.sif comando</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> exec revbayes_mpi.sif rb-mpi <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="buscar-imágenes-existentes-antes-de-construir-un-contenedor" class="level2">
 <h2 class="anchored" data-anchor-id="buscar-imágenes-existentes-antes-de-construir-un-contenedor">🔎 Buscar imágenes existentes antes de construir un contenedor</h2>
 <p>Antes de crear un contenedor desde cero, es recomendable revisar si ya existe una imagen disponible en<br>
-👉 <u>Docker Hub</u> (<a href="https://hub.docker.com/">https://hub.docker.com</a>)</p>
+👉 <a href="https://hub.docker.com/"><u>Docker Hub</u></a><br>
+👉 <a href="https://quay.io/"><u>Quay.io</u></a></p>
 <p>En este repositorio hay miles de imágenes creadas por la comunidad, incluyendo:</p>
 <ul>
 <li><p>sistemas operativos</p></li>
@@ -918,7 +942,7 @@ y estos comandos sincronizan el sistema con esos repositorios</p>
 <section id="ejemplo-1" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-1">Ejemplo</h3>
 <p>En lugar de construir manualmente un contenedor para MrBayes, puedes usar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull docker://cyverseuk/mrbayes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apptainer</span> pull quay.io/biocontainers/mrbayes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>👉 Esta imagen ya contiene el software instalado y listo para usarse.</p>
 </section>
 <section id="ventajas-de-usar-imágenes-existentes" class="level3">
