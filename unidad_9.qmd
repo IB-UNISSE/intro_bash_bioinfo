@@ -26,7 +26,7 @@ Actualmente hay decenas de proyectos involucrados en el desarrollo, adopción y 
 | Integración HPC  | ❌         | ⚠️                    | ✅            |
 | Formato imagen   | layered    | layered               | `.sif`        |
 
-## [Apptainer](#0)
+## [Apptainer](https://apptainer.org/)
 
 **Apptainer** es una plataforma de contenedores de código abierto enfocada en ciencia y cómputo de alto rendimiento (HPC). Permite ejecutar aplicaciones dentro de entornos aislados que incluyen todas sus dependencias, facilitando la reproducibilidad y evitando conflictos de software, sin requerir privilegios de administrador.
 
@@ -46,13 +46,22 @@ Esto se debe a que utiliza características propias del kernel de Linux, como:
 
 ### ¿De dónde vienen las imágenes?
 
-Las imágenes provienen generalmente de:\
-\
-👉 <https://hub.docker.com>\
-\
-Docker Hub es una plataforma donde se almacenan miles de imágenes listas para usar.\
-\
-Cada imagen tiene versiones llamadas \*\*tags\*\*:
+Las imágenes de contenedores provienen generalmente de repositorios en línea como:
+
+👉 [[Docker Hub]{.underline}](https://hub.docker.com/)\
+👉 [[Quay.io]{.underline}](https://quay.io/)
+
+#### 📦 Docker Hub
+
+Docker Hub es una plataforma donde se almacenan miles de imágenes listas para usar:
+
+-   sistemas operativos
+
+-   lenguajes de programación
+
+-   herramientas científicas
+
+Cada imagen tiene versiones llamadas **tags**, por ejemplo:
 
 -   `ubuntu:22.04`
 
@@ -62,7 +71,27 @@ Cada imagen tiene versiones llamadas \*\*tags\*\*:
 
 💡 Esto permite elegir exactamente qué entorno queremos usar.
 
-#### 📥 Descargar imágenes
+#### 🧬 ¿Qué son los BioContainers?
+
+Existen repositorios especializados llamados **BioContainers**, que contienen imágenes enfocadas en bioinformática.
+
+👉 Son contenedores que ya incluyen software científico instalado, como:
+
+-   MrBayes
+
+-   BLAST
+
+-   FastQC
+
+-   Bowtie2
+
+👉 Muchos de estos contenedores están disponibles en:
+
+-   Docker Hub
+
+-   Quay.io (más actualizado en muchos casos)
+
+## 📥 Descargar imágenes
 
 El comando `pull` permite descargar una imagen y convertirla al formato de Apptainer (`.sif`), que es el formato estándar para ejecutar contenedores.
 
@@ -86,7 +115,7 @@ También es posible descargar una versión concreta de una imagen usando una eti
 apptainer pull docker://centos:7
 ```
 
-### Uso básico de contenedores
+## Uso básico de contenedores
 
 UUna vez que hemos descargado una imagen con `pull`, podemos comenzar a interactuar con ella.
 
@@ -213,15 +242,13 @@ apptainer build --sandbox NOMBRE_DEL_DIRECTORIO IMAGEN_BASE.sif
 #### Ejemplo
 
 ``` bash
-apptainer build --sandbox mi_contenedor ubuntu_latest.sif
+apptainer build --sandbox mrbayes ubuntu_latest.sif
 ```
-
-`NBODY` **es el nombre del directorio que se va a crear**
 
 Puedes usar cualquier nombre:
 
 ```         
-mi_contenedor
+mrbayes
 ubuntu_editable
 test_container
 bioinfo_env
@@ -230,7 +257,7 @@ bioinfo_env
 Esto creará una carpeta llamada:
 
 ``` bash
-mi_contenedor/
+mrbayes/
 ```
 
 Y dentro:
@@ -252,7 +279,7 @@ Y dentro:
 Una vez creado el sandbox, puedes entrar a él con una shell interactiva y trabajar dentro del contenedor como si fuera otro sistema Linux.
 
 ``` bash
-apptainer shell mi_contenedor/
+apptainer shell mrbayes/
 ```
 
 👉 Esto abre una terminal dentro del contenedor, desde donde puedes navegar, revisar archivos o ejecutar comandos.
@@ -270,7 +297,7 @@ exit
 Cuando quieres modificar un sandbox, por ejemplo para instalar paquetes o compilar programas, necesitas abrirlo con opciones adicionales.
 
 ``` bash
-apptainer shell --writable --fakeroot --pwd / mi_contenedor
+apptainer shell --writable --fakeroot --pwd / mrbayes
 ```
 
 `--writable`
@@ -423,7 +450,7 @@ Compilar es el proceso de:
 Cuando ya terminaste de personalizar tu sandbox, puedes convertirlo en una imagen final para transportarlo y ejecutarlo fácilmente.
 
 ``` bash
-sudo apptainer build mrbayes_mpi.sif mi_contenedor
+apptainer build --fakeroot mrbayes_mpi.sif mrbayes
 ```
 
 👉 Esto crea un archivo `.sif` a partir del sandbox `mi_contenedor`.
@@ -444,11 +471,113 @@ apptainer exec mrbayes_mpi.sif mb analisis/data/analysis.nex
 
 Si el programa fue compilado con soporte para MPI, puede ejecutarse usando varios núcleos.
 
-```         
-apptainer exec mrbayes_mpi.sif mpirun -np 8 mb analisis/data/analysis.nex
+``` bash
+apptainer exec mrbayes_mpi.sif mpirun -np 4 mb 
 ```
 
-👉 En este caso, MrBayes se ejecuta usando 8 procesos paralelos.
+👉 En este caso, MrBayes se ejecuta usando 4 procesos paralelos.
+
+## 📂 Uso de volúmenes (montaje de carpetas)
+
+Cuando trabajas con contenedores, tus datos normalmente están **fuera del contenedor**, en tu sistema.
+
+👉 Para que el contenedor pueda verlos, es necesario **montar (bind) directorios**.
+
+### Montar una carpeta
+
+``` bash
+apptainer exec --bind /ruta/local:/ruta/contenedor contenedor.sif comando
+```
+
+### Ejemplo práctico
+
+Supongamos que tienes tus datos en:
+
+``` bash
+/home/usuario/proyecto/datos
+```
+
+Puedes montarlos dentro del contenedor así:
+
+``` bash
+apptainer exec --bind /home/usuario/proyecto/datos:/data revbayes_mpi.sif ls /data
+```
+
+👉 Dentro del contenedor, la carpeta aparecerá como:
+
+``` bash
+/data
+```
+
+### 📂 Usar tus archivos en RevBayes
+
+Si tienes un archivo:
+
+``` bash
+analysis.Rev
+```
+
+puedes ejecutarlo así:
+
+``` bash
+apptainer exec --bind /home/usuario/proyecto/datos:/data revbayes_mpi.sif rb-mpi /data/analysis.Rev
+```
+
+### Uso de `pwd` (muy importante)
+
+Para evitar escribir rutas largas, puedes usar:
+
+``` bash
+pwd
+```
+
+👉 Esto muestra tu directorio actual.
+
+### Ejemplo práctico con `pwd`
+
+``` bash
+apptainer exec --bind $(pwd):/data revbayes_mpi.sif rb-mpi /data/analysis.Rev
+```
+
+👉 Aquí:
+
+-   `$(pwd)` → ruta actual en tu sistema
+
+-   `/data` → ruta dentro del contenedor
+
+### Ventaja de usar `pwd`
+
+-   evita errores de ruta
+
+-   hace scripts más portables
+
+-   facilita reproducibilidad
+
+### ⚠️ Nota importante
+
+Apptainer ya monta automáticamente algunas rutas como:
+
+-   `$HOME`
+
+-   el directorio actual (en muchos casos)
+
+👉 Pero usar `--bind` explícito es más claro y reproducible.
+
+### 🧪 Probar que el volumen funciona
+
+``` bash
+apptainer exec --bind $(pwd):/data revbayes_mpi.sif ls /data
+```
+
+👉 Si ves tus archivos, el montaje funcionó correctamente.
+
+### 🚀 Bonus (muy útil)
+
+También puedes montar múltiples carpetas:
+
+``` bash
+apptainer exec --bind $(pwd):/data,/otra/ruta:/ref contenedor.sif comando
+```
 
 ## ¿Qué es un archivo `.def`?
 
@@ -560,13 +689,11 @@ From: ubuntu:22.04
 # No se ejecuta durante el build, sino en tiempo de uso.
 
 %environment
-    # Configuración de idioma y codificación (UTF-8)
-    # Evita errores con caracteres especiales y asegura compatibilidad.
+    # Configuración de idioma y codificación
     export LANG=C.UTF-8
     export LC_ALL=C.UTF-8
 
-    # Indica dónde buscar bibliotecas compartidas al ejecutar programas.
-    # Es importante cuando se instalan librerías manualmente en /usr/local/lib
+    # Ruta donde se buscarán bibliotecas compartidas
     export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 
 
@@ -574,57 +701,59 @@ From: ubuntu:22.04
 # %post
 # ============================================================
 # Esta sección se ejecuta durante la construcción del contenedor.
-# Aquí es donde realmente se instala y configura el software.
+# Aquí se instala y configura el software.
 
 %post
     # Evita preguntas interactivas durante la instalación
     export DEBIAN_FRONTEND=noninteractive
 
     # --------------------------------------------------------
-    # 🔄 Actualizar sistema
+    # Actualizar sistema
     # --------------------------------------------------------
-    # Actualiza la lista de paquetes disponibles desde los repositorios
     apt update
 
     # --------------------------------------------------------
-    # 📦 Instalación de dependencias
+    # Instalar dependencias necesarias
     # --------------------------------------------------------
-    # Se instalan herramientas necesarias para compilar software
-    # y librerías requeridas por RevBayes.
-
     apt install -y \
-        build-essential \   # compiladores (gcc, g++)
-        cmake \             # sistema de construcción
-        git \               # descarga código fuente
-        libopenmpi-dev \    # librerías de MPI (paralelización)
-        openmpi-bin \       # ejecutables MPI (mpirun)
-        libboost-all-dev    # librerías Boost necesarias
+        build-essential \
+        cmake \
+        git \
+        wget \
+        curl \
+        ca-certificates \
+        libopenmpi-dev \
+        openmpi-bin \
+        libboost-all-dev \
+        bison \
+        flex \
+        zlib1g-dev
 
     # --------------------------------------------------------
-    # Descargar código fuente
+    # Descargar código fuente de RevBayes
     # --------------------------------------------------------
-    # Se descarga el repositorio de RevBayes desde GitHub.
-    # Se usa la rama 'development', que es la recomendada para compilación.
-
     cd /opt
     git clone --branch development https://github.com/revbayes/revbayes.git
 
     # --------------------------------------------------------
-    # ⚙Compilación del programa
+    # Compilar RevBayes con soporte MPI
     # --------------------------------------------------------
-    # Se entra al directorio de compilación y se ejecuta el script build.sh
-    # con soporte para MPI activado.
-
-    cd revbayes/projects/cmake
+    cd /opt/revbayes/projects/cmake
+    chmod +x build.sh
     ./build.sh -mpi true
 
     # --------------------------------------------------------
-    # Instalación del ejecutable
+    # Copiar ejecutables a una ruta accesible
     # --------------------------------------------------------
-    # Se copia el ejecutable generado a una ruta estándar del sistema
-    # para que pueda ejecutarse desde cualquier lugar.
+    if [ -f rb-mpi ]; then
+        cp rb-mpi /usr/local/bin/rb-mpi
+        chmod 755 /usr/local/bin/rb-mpi
+    fi
 
-    cp rb-mpi /usr/local/bin/rb-mpi
+    if [ -f rb ]; then
+        cp rb /usr/local/bin/rb
+        chmod 755 /usr/local/bin/rb
+    fi
 
 
 # ============================================================
@@ -634,11 +763,7 @@ From: ubuntu:22.04
 # apptainer run archivo.sif
 
 %runscript
-    # Mensaje informativo al iniciar el contenedor
     echo "RevBayes con MPI listo para usarse"
-
-    # Ejecuta cualquier comando que el usuario pase al contenedor
-    # "$@" representa todos los argumentos recibidos
     exec "$@"
 ```
 
@@ -680,112 +805,11 @@ También puedes comprobar que el programa funciona correctamente con:
 apptainer exec revbayes_mpi.sif rb-mpi --help
 ```
 
-## 📂 Uso de volúmenes (montaje de carpetas)
-
-Cuando trabajas con contenedores, tus datos normalmente están **fuera del contenedor**, en tu sistema.
-
-👉 Para que el contenedor pueda verlos, es necesario **montar (bind) directorios**.
-
-### Montar una carpeta
-
-``` bash
-apptainer exec --bind /ruta/local:/ruta/contenedor contenedor.sif comando
-```
-
-### Ejemplo práctico
-
-Supongamos que tienes tus datos en:
-
-``` bash
-/home/usuario/proyecto/datos
-```
-
-Puedes montarlos dentro del contenedor así:
-
-``` bash
-apptainer exec --bind /home/usuario/proyecto/datos:/data revbayes_mpi.sif ls /data
-```
-
-👉 Dentro del contenedor, la carpeta aparecerá como:
-
-``` bash
-/data
-```
-
-### 📂 Usar tus archivos en RevBayes
-
-Si tienes un archivo:
-
-``` bash
-analysis.Rev
-```
-
-puedes ejecutarlo así:
-
-``` bash
-apptainer exec --bind /home/usuario/proyecto/datos:/data revbayes_mpi.sif rb-mpi /data/analysis.Rev
-```
-
-### Uso de `pwd` (muy importante)
-
-Para evitar escribir rutas largas, puedes usar:
-
-``` bash
-pwd
-```
-
-👉 Esto muestra tu directorio actual.
-
-### Ejemplo práctico con `pwd`
-
-``` bash
-apptainer exec --bind $(pwd):/data revbayes_mpi.sif rb-mpi /data/analysis.Rev
-```
-
-👉 Aquí:
-
--   `$(pwd)` → ruta actual en tu sistema
-
--   `/data` → ruta dentro del contenedor
-
-### Ventaja de usar `pwd`
-
--   evita errores de ruta
-
--   hace scripts más portables
-
--   facilita reproducibilidad
-
-### ⚠️ Nota importante
-
-Apptainer ya monta automáticamente algunas rutas como:
-
--   `$HOME`
-
--   el directorio actual (en muchos casos)
-
-👉 Pero usar `--bind` explícito es más claro y reproducible.
-
-### 🧪 Probar que el volumen funciona
-
-``` bash
-apptainer exec --bind $(pwd):/data revbayes_mpi.sif ls /data
-```
-
-👉 Si ves tus archivos, el montaje funcionó correctamente.
-
-### 🚀 Bonus (muy útil)
-
-También puedes montar múltiples carpetas:
-
-``` bash
-apptainer exec --bind $(pwd):/data,/otra/ruta:/ref contenedor.sif comando
-```
-
 ## 🔎 Buscar imágenes existentes antes de construir un contenedor
 
 Antes de crear un contenedor desde cero, es recomendable revisar si ya existe una imagen disponible en\
-👉 [Docker Hub]{.underline} ([https://hub.docker.com](https://hub.docker.com/))
+👉 [[Docker Hub]{.underline}](https://hub.docker.com/)\
+👉 [[Quay.io]{.underline}](https://quay.io/)
 
 En este repositorio hay miles de imágenes creadas por la comunidad, incluyendo:
 
@@ -804,7 +828,7 @@ En este repositorio hay miles de imágenes creadas por la comunidad, incluyendo:
 En lugar de construir manualmente un contenedor para MrBayes, puedes usar:
 
 ``` bash
-apptainer pull docker://cyverseuk/mrbayes
+apptainer pull quay.io/biocontainers/mrbayes
 ```
 
 👉 Esta imagen ya contiene el software instalado y listo para usarse.
